@@ -1,4 +1,4 @@
- <button ng-click="dummySignin()">Dummy Signin</button>
+ <!--<button ng-click="dummySignin()">Dummy Signin</button>
  <form id="frmLogin" role="form">
          <h2>Login</h2>
 
@@ -12,4 +12,16 @@
         </div>
         <button ng-click="dummySignin()" type="submit" class="btn btn-default btn-block">Login</button>
 
-    </form>
+    </form>-->
+    <div class="auth-forms">
+
+  <h2>Log In</h2>
+
+  <form ng-submit="login()">
+    <p ng-show="error" class="text-danger"></p>
+    <input type="email" ng-model="user.email" placeholder="Email" class="form-control"><br>
+    <input type="password" ng-model="user.password" placeholder="Password" class="form-control"><br>
+    <input type="submit" value="Log in" class="btn btn-primary" />
+  </form>
+
+</div>

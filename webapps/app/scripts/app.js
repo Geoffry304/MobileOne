@@ -17,7 +17,8 @@ var app = angular.module('webappsApp', [
     'ngSanitize',
     'ngTouch',
     'firebase'
-  ]);
+  ])
+  .constant('FIREBASE_URL','https://mobileone.firebaseIO.com');
 
   app.config(function ($routeProvider) {
     $routeProvider
@@ -25,10 +26,24 @@ var app = angular.module('webappsApp', [
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/login', {
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
-      })
+      .when('/register', {
+    templateUrl: 'views/register.html',
+    controller: 'AuthCtrl',
+    resolve: {
+      user: function(Auth) {
+        return Auth.resolveUser();
+      }
+    }
+  })
+  .when('/login', {
+    templateUrl: 'views/login.html',
+    controller: 'AuthCtrl',
+    resolve: {
+      user: function(Auth){
+        return Auth.resolveUser();
+      }
+    }
+  })
       .otherwise({
         redirectTo: '/'
       });
