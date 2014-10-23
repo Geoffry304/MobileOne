@@ -38,7 +38,15 @@ public class Adres {
         }
 
     }
-//test invalid
+/*
+Nieuwe regel code :
+ifl
+else
+bla bla
+blalbla
+
+
+ */
     public int getPostcode() {
 
         return postcode;
