@@ -38,7 +38,7 @@ public class Adres {
         }
 
     }
-
+//test invalid
     public int getPostcode() {
 
         return postcode;
