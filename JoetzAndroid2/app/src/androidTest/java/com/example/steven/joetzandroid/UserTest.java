@@ -1,6 +1,11 @@
-package com.example.steven.joetzandroid.Domain;
+package com.example.steven.joetzandroid;
 
 import android.test.InstrumentationTestCase;
+
+import com.example.steven.joetzandroid.Domain.Kind;
+import com.example.steven.joetzandroid.Domain.LeeftijdsCategorie;
+import com.example.steven.joetzandroid.Domain.Ouder;
+import com.example.steven.joetzandroid.Domain.User;
 
 import junit.framework.Assert;
 
@@ -91,5 +96,12 @@ public class UserTest extends InstrumentationTestCase {
         o.addKind(k);
         o.removeKind(k);
         assertFalse(o.getKinderen().contains(k));
+    }
+    LeeftijdsCategorie l = new LeeftijdsCategorie(2005,2000);
+    public void testVanLeeftijdTrue()
+    {
+
+        assertTrue(l.getVanLeeftijd() == 9);
+        assertTrue(l.getTotLeeftijd()==14);
     }
 }

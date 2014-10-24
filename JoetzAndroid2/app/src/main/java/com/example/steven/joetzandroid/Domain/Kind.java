@@ -14,15 +14,17 @@ public class Kind {
     private Adres adres;
     private Date birthDate;
     private String rijksRegisternummer;
+    private Ouder ouder;
 
     public Kind() {
     }
 
-    public Kind(String lastName, String fistName, Adres adres, Date birthDate) {
+    public Kind(String lastName, String fistName, Adres adres, Date birthDate,Ouder ouder) {
         this.lastName = lastName;
         this.fistName = fistName;
         this.adres = adres;
         this.birthDate = birthDate;
+        this.ouder = ouder;
     }
 
     public String getLastName() {
@@ -71,5 +73,13 @@ public class Kind {
             throw new IllegalArgumentException();
         }
 
+    }
+    public void setOuder(Ouder ouder)
+    {
+        this.ouder = ouder;
+    }
+    public Ouder getOuder()
+    {
+        return this.ouder;
     }
 }
