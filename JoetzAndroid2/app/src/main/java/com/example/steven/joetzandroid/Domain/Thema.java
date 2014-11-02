@@ -1,9 +1,15 @@
 package com.example.steven.joetzandroid.Domain;
 
+import android.content.Context;
+
+import com.firebase.client.Firebase;
+
 /**
  * Created by Steven on 24/10/14.
  */
 public class Thema {
+
+
 
     private String naam;
     private int id;
