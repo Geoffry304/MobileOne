@@ -3,30 +3,32 @@
 
 /**
  * @ngdoc overview
- * @name webappsApp
+ * @name oefeningTutorialApp
  * @description
- * # webappsApp
+ * # oefeningTutorialApp
  *
  * Main module of the application.
  */
 var app = angular.module('webappsApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch',
-    'firebase'
-  ])
-  .constant('FIREBASE_URL','https://mobileone.firebaseIO.com');
+  'ngCookies',
+  'ngResource',
+  'ngSanitize',
+  'ngRoute',
+  'firebase'
+])
+.constant('FIREBASE_URL','https://mobileone.firebaseio.com/');
 
-  app.config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/register', {
+app.config(function ($routeProvider) {
+$routeProvider
+  .when('/', {
+    templateUrl: 'views/posts.html',
+    controller: 'PostsCtrl'
+  })
+  .when('/posts/:postId', {
+    templateUrl: 'views/showpost.html',
+    controller: 'PostViewCtrl'
+  })
+  .when('/register', {
     templateUrl: 'views/register.html',
     controller: 'AuthCtrl',
     resolve: {
@@ -44,7 +46,12 @@ var app = angular.module('webappsApp', [
       }
     }
   })
-      .otherwise({
-        redirectTo: '/'
-      });
+  .when('/users/:userId', {
+    templateUrl: 'views/profile.html',
+    controller: 'ProfileCtrl'
+  })
+  .otherwise({
+    redirectTo: '/'
   });
+
+});
