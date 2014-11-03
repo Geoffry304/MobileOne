@@ -1,6 +1,8 @@
 {
   "rules": {
-
+  ".read": true,
+  ".write": true,
+  
     "posts": {
       // anyone can view posts
       ".read": true,
@@ -51,6 +53,13 @@
         ".read": "auth.uid === $uid",
         ".write": "!data.exists() && auth.uid === $uid"
       }
+    },
+    
+    "vakantie": {
+      
+      ".read": true,
+      ".write": true
+
     },
 
     "user_posts": {

@@ -8,7 +8,6 @@ var Kamp = {
     all: kampen,
     create: function (kamp) {
       return kampen.$add(kamp);
-      });
     },
     get: function (kampId) {
       return $firebase(ref.child('kampen').child(kampId)).$asObject();
