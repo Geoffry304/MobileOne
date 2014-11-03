@@ -3,32 +3,32 @@
 
 /**
  * @ngdoc overview
- * @name webappsApp
+ * @name oefeningTutorialApp
  * @description
- * # webappsApp
+ * # oefeningTutorialApp
  *
  * Main module of the application.
  */
 var app = angular.module('webappsApp', [
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'firebase'
-  ])
-  .constant('FIREBASE_URL','https://mobileone.firebaseio.com');
+  'ngCookies',
+  'ngResource',
+  'ngSanitize',
+  'ngRoute',
+  'firebase'
+])
+.constant('FIREBASE_URL','https://mobileone.firebaseio.com/');
 
-  app.config(function ($routeProvider) {
-  $routeProvider
-    .when('/', {
-      templateUrl: 'views/posts.html',
-      controller: 'PostsCtrl'
-    })
-      .when('/posts/:postId', {
-      templateUrl: 'views/showpost.html',
-      controller: 'PostViewCtrl'
-     })
-      .when('/register', {
+app.config(function ($routeProvider) {
+$routeProvider
+  .when('/', {
+    templateUrl: 'views/posts.html',
+    controller: 'PostsCtrl'
+  })
+  .when('/posts/:postId', {
+    templateUrl: 'views/showpost.html',
+    controller: 'PostViewCtrl'
+  })
+  .when('/register', {
     templateUrl: 'views/register.html',
     controller: 'AuthCtrl',
     resolve: {
@@ -46,23 +46,12 @@ var app = angular.module('webappsApp', [
       }
     }
   })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .when('/vakantie', {
-        templateUrl: 'views/vakantie.html',
-        controller: 'VakantieCtrl'
-      })
-      .when('/vakantie/:vakantieId', {
-        templateUrl: 'views/ToonVakantie.html',
-        controller: 'ToonVakantieCtrl'
-      })
-      .when('/users/:userId', {
-        templateUrl: 'views/profile.html',
-        controller: 'ProfileCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
+  .when('/users/:userId', {
+    templateUrl: 'views/profile.html',
+    controller: 'ProfileCtrl'
+  })
+  .otherwise({
+    redirectTo: '/'
   });
+
+});
