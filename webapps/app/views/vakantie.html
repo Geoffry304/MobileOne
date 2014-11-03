@@ -1,0 +1,4 @@
+<div ng-repeat="vak in vakantie">
+<a ng-href="#/vakantie/{{vak.$id}}">{{vak.naam}}</a>
+</div>
+<button ng-click="maakVakantie()" type="submit" class="btn btn-default btn-block">Voeg een vakantie toe</button>
