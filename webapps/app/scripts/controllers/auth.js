@@ -1,5 +1,5 @@
 'use strict';
-
+/*global app:true*/
 app.controller('AuthCtrl', function($scope, $location, Auth, user) {
 	if(user){
 		$location.path('/');

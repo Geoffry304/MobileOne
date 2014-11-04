@@ -1,5 +1,5 @@
 'use strict';
-
+/*global app:true*/
 app.factory('Profile', function($window, FIREBASE_URL, $firebase, Post, $q, $location){
 	var ref = new $window.Firebase(FIREBASE_URL);
 
