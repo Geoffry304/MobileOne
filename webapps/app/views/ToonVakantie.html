@@ -1,4 +1,4 @@
-<h2>{{vakantie.naam}}</h2>
+<legend>{{vakantie.naam}}</legend>
 <div class="form-group">
     <label for="Naam">Naam:</label>
     <br>
@@ -6,7 +6,9 @@
     <br>
     <label for="Naam">Leeftijdscategorie:</label>
     <br>
-    <label for="Naam">{{vakantie.leeftijdscategorie}}</label>
+    <label for="Naam">Van: {{vakantie.leeftijdscategorie.van}} Tot: {{vakantie.leeftijdscategorie.tot}}</label>
 </div>
 <button ng-show="signedIn()" type="submit" class="btn btn-default btn-block">Schrijf in</button>
+<h5 ng-show="!signedIn()" class="transparantmessage"> Log in om in te schrijven voor een vakantie </h5>
+
 
