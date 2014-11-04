@@ -1,5 +1,5 @@
 'use strict';
-
+/*global app:true*/
 app.filter('hostnameFromUrl', function() {
 	return function (str) {
 		var url = document.createElement('a');

@@ -1,10 +1,10 @@
 'use strict';
-
+/*global app:true*/
 app.factory('Post', function ($firebase, FIREBASE_URL){
 	var ref = new Firebase(FIREBASE_URL);
 	var posts = $firebase(ref.child('posts')).$asArray();
 
-var Post = {
+  var Post = {
     all: posts,
     create: function (post) {
       return posts.$add(post).then(function(postRef) {
