@@ -1,7 +1,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+   xmlns:tools="http://schemas.android.com/tools"
     tools:context=".StartActivity" >
-    <item android:id="@+id/action_settings"
+    <item android:id="@+id/action_login"
+        android:icon="@drawable/ic_action_person"
         android:title="@string/login"
-        android:orderInCategory="100" />
+        android:showAsAction="always">
+
+        </item>
+
+
 </menu>

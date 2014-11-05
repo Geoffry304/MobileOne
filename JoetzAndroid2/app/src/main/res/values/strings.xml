@@ -9,4 +9,8 @@
     <string name="password">Paswoord:</string>
     <string name="login">Log in</string>
     <string name="register">Registreer</string>
+    <string name="APP_FB_ID">1401619376727163</string>
+    <string name="registreer_text">Heeft u nog geen profiel bij ons? Klik dan hieronder op registreer en vul uw gegevens in.</string>
+    <string name="registreer_fb">Log in met uw Facebook account, en vul uw profiel verder aan.</string>
+    <string name="login_simple">Bent u reeds geregistreerd? Dan kan u hier inloggen met uw e-mail adres en paswoord.</string>
 </resources>
