@@ -2,7 +2,17 @@ body {
   background: #F3F3F3;
 }
 
+.transparantmessage {
+  color: transparent;
+  color:#bbb;
+  text-align: center;
+}
 
+.customlinks a {
+  text-decoration: none;
+  color: #ddd;
+
+}
 /* NAV BAR */
 .nav-pic {
   margin: -2px 5px 0 0;

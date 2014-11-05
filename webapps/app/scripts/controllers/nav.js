@@ -1,6 +1,5 @@
 'use strict';
-
-
+/*global app:true*/
 app.controller('NavCtrl', function ($scope, $location, Post, Auth) {
   $scope.post = {url: 'http://', title: ''};
   $scope.signedIn = Auth.signedIn;

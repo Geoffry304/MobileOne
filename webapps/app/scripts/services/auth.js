@@ -1,5 +1,5 @@
 'use strict';
-
+/*global app:true*/
 app.factory('Auth', function ($firebaseSimpleLogin, FIREBASE_URL, $rootScope, $firebase, $location){
 
 	var ref = new Firebase(FIREBASE_URL);

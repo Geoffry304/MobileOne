@@ -50,6 +50,10 @@ var app = angular.module('webappsApp', [
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
+      .when('/vakanties', {
+        templateUrl: 'views/vakanties.html',
+        controller: 'VakantieCtrl'
+      })
       .when('/vakantie', {
         templateUrl: 'views/vakantie.html',
         controller: 'VakantieCtrl'
@@ -65,6 +69,10 @@ var app = angular.module('webappsApp', [
       .when('/users/:userId', {
         templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl'
+      })
+      .when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl'
       })
       .otherwise({
         redirectTo: '/'
