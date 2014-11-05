@@ -1,10 +1,7 @@
 'use strict';
 
 app.controller('VakantieCtrl', function ($scope, $location, Vakantie) {
-/*var vakantie = {
-	naam: "test",
-	leeftijdscategorie: "16-17"
-};*/
+
 $scope.vakanties = Vakantie.all;
 $scope.fotos = {foto1:'', foto2:'', foto3:''};
 $scope.plaats = {plaatsnaam:'', contact:{telNr: '', website: '', adres:{straat:'', nr:'', postcode:'', gemeente:'', long:'', lat:''}}};

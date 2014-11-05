@@ -54,6 +54,10 @@ var app = angular.module('webappsApp', [
         templateUrl: 'views/vakantie.html',
         controller: 'VakantieCtrl'
       })
+      .when('/vakanties', {
+        templateUrl: 'views/vakanties.html',
+        controller: 'VakantieCtrl'
+      })
       .when('/vakantie/:vakantieId', {
         templateUrl: 'views/ToonVakantie.html',
         controller: 'ToonVakantieCtrl'

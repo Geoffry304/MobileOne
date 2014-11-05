@@ -1,0 +1,17 @@
+
+
+<div class="container posts-page">
+  <div class="post row" ng-repeat="vakantie in vakanties">
+    <div class="col-xs-1">
+    </div>
+    <div class="col-md-9 col-xs-11">
+
+      <div class="info">
+          {{ vakantie.naam }}
+      </div>
+      <div>
+        <a ng-href="#/vakantie/{{ vakantie.$id }}">Go!</a>
+      </div>
+    </div>
+  </div>
+</div>
