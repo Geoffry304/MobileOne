@@ -1,14 +1,13 @@
 'use strict';
-
+/*global app:true*/
 app.factory('Kamp', function ($firebase, FIREBASE_URL){
 	var ref = new Firebase(FIREBASE_URL);
 	var kampen = $firebase(ref.child('kampen')).$asArray();
 
-var Kamp = {
+  var Kamp = {
     all: kampen,
     create: function (kamp) {
       return kampen.$add(kamp);
-      });
     },
     get: function (kampId) {
       return $firebase(ref.child('kampen').child(kampId)).$asObject();

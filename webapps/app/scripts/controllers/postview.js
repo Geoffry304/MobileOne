@@ -1,5 +1,5 @@
 'use strict';
-
+/*global app:true*/
 app.controller('PostViewCtrl', function($scope, $routeParams, Post, Auth){
 	$scope.post = Post.get($routeParams.postId);
 	$scope.comments = Post.comments($routeParams.postId);

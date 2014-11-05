@@ -1,5 +1,5 @@
 'use strict';
-
+/*global app:true*/
 app.factory('Auth', function ($firebaseSimpleLogin, FIREBASE_URL, $rootScope, $firebase, $location){
 
 	var ref = new Firebase(FIREBASE_URL);
@@ -10,7 +10,7 @@ app.factory('Auth', function ($firebaseSimpleLogin, FIREBASE_URL, $rootScope, $f
 		register: function(user) {
 			return auth.$createUser(user.email, user.password);
 		},
-		createProfile: function (user) {		
+		createProfile: function (user) {
 			var profile = {
 				username: user.username,
 				md5_hash: user.md5_hash
@@ -20,7 +20,7 @@ app.factory('Auth', function ($firebaseSimpleLogin, FIREBASE_URL, $rootScope, $f
 			return profileRef.$set(user.uid, profile);
 		},
 		login: function (user) {
-      	return auth.$login('password', user);
+      		return auth.$login('password', user);
     	},
 		logout: function() {
 			$location.path('/');

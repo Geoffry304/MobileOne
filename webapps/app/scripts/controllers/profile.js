@@ -1,5 +1,5 @@
 'use strict';
-
+/*global app:true*/
 app.controller('ProfileCtrl', function($scope, $routeParams, Profile) {
 	var uid = $routeParams.userId;
 

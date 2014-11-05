@@ -1,6 +1,5 @@
 'use strict';
-
-
+/*global app:true*/
 app.controller('KampenCtrl', function ($scope, $location ,  Kamp, Auth) {
 	$scope.kampen = Kamp.all;
 	$scope.user = Auth.user;
