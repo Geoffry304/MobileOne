@@ -14,5 +14,3 @@ app.factory('Inschrijving', function ($firebase, FIREBASE_URL) {
 		}
 	};
 });
-
-mksdlqfjmlqdjsf
