@@ -19,39 +19,43 @@ var app = angular.module('webappsApp', [
 .constant('FIREBASE_URL','https://mobileone.firebaseio.com/');
 
 app.config(function ($routeProvider) {
-$routeProvider
-  .when('/', {
-    templateUrl: 'views/posts.html',
-    controller: 'PostsCtrl'
-  })
-  .when('/posts/:postId', {
-    templateUrl: 'views/showpost.html',
-    controller: 'PostViewCtrl'
-  })
-  .when('/register', {
-    templateUrl: 'views/register.html',
-    controller: 'AuthCtrl',
-    resolve: {
-      user: function(Auth) {
-        return Auth.resolveUser();
+  $routeProvider
+    .when('/', {
+      templateUrl: 'views/posts.html',
+      controller: 'PostsCtrl'
+    })
+    .when('/posts/:postId', {
+      templateUrl: 'views/showpost.html',
+      controller: 'PostViewCtrl'
+    })
+    .when('/register', {
+      templateUrl: 'views/register.html',
+      controller: 'AuthCtrl',
+      resolve: {
+        user: function(Auth) {
+          return Auth.resolveUser();
+        }
       }
-    }
-  })
-  .when('/login', {
-    templateUrl: 'views/login.html',
-    controller: 'AuthCtrl',
-    resolve: {
-      user: function(Auth){
-        return Auth.resolveUser();
+    })
+    .when('/login', {
+      templateUrl: 'views/login.html',
+      controller: 'AuthCtrl',
+      resolve: {
+        user: function(Auth){
+          return Auth.resolveUser();
+        }
       }
-    }
-  })
-  .when('/users/:userId', {
-    templateUrl: 'views/profile.html',
-    controller: 'ProfileCtrl'
-  })
-  .otherwise({
-    redirectTo: '/'
-  });
+    })
+    .when('/users/:userId', {
+      templateUrl: 'views/profile.html',
+      controller: 'ProfileCtrl'
+    })
+    .when('/inschrijven', {
+      templateUrl: 'views/inschrijven.html',
+      controller: 'InschrijvingCtrl'
+    })
+    .otherwise({
+      redirectTo: '/'
+    });
 
 });
