@@ -2,13 +2,59 @@
 <div class="form-group">
     <label for="Naam">Naam:</label>
     <br>
-    <label for="Naam">{{vakantie.naam}}</label>
+    <p>{{vakantie.naam}}</p>
+    <label for="Leeftijdscategorie">Leeftijdscategorie:</label>
     <br>
-    <label for="Naam">Leeftijdscategorie:</label>
+    <label for="Leeftijdscategorie">Van: {{vakantie.leeftijdscategorie.van}}<br> Tot: {{vakantie.leeftijdscategorie.tot}}</label>
     <br>
-    <label for="Naam">Van: {{vakantie.leeftijdscategorie.van}} Tot: {{vakantie.leeftijdscategorie.tot}}</label>
+    <label for="Promo tekst">Promo tekst:</label>
+    <br>
+    <p>{{vakantie.promoTekst}} </p>
+    <label for="Plaatsnaam">plaatsnaam:</label>
+    <br>
+    <p>{{vakantie.plaats.plaatsnaam}} </p>
+    <label for="Telefoon">Tel:</label>
+    <br>
+    <p>{{vakantie.plaats.contact.telNr}} </p>
+    <label for="Website">Website:</label>
+    <br>
+    <p><a href={{vakantie.plaats.contact.website}} rel="external">{{vakantie.plaats.contact.website}}</a> </p>
+    <label for="Adres">Adres:</label>
+    <br>
+    <p>{{vakantie.plaats.contact.adres.straat}} nr. {{vakantie.plaats.contact.adres.nr}} {{vakantie.plaats.contact.adres.gemeente}} {{vakantie.plaats.contact.adres.postcode}} </p>
+    <label for="Vakantieperiode">periode:</label>
+    <br>
+    <p>Van: {{vakantie.vakantiePeriode.periode.van}} Tot: {{vakantie.vakantiePeriode.periode.tot}}</p>
+    <label for="Maximum">Maximum aantal leden:</label>
+    <br>
+    <p> {{vakantie.maxAantalId}} </p>
+    <label for="Maximum">Maximum aantal leden:</label>
+    <br>
+    <p> {{vakantie.maxAantalId}} </p>
+    <label for="Bus">Bus:</label>
+    <br>
+    <p ng-if="vakantie.busVervoer === 'true'"> Ja </p>
+    <p ng-if="vakantie.busVervoer !== 'true'"> Nee </p>
+    <label for="Eigen">Eigen vervoer:</label>
+    <br>
+    <p ng-if="vakantie.eigenVervoer === 'true'"> Ja </p>
+    <p ng-if="vakantie.eigenVervoer !== 'true'"> Nee </p>
+    <label for="Fiscaal">Fiscaal aftrekbaar:</label>
+    <br>
+    <p ng-if="vakantie.fiscaalAftrek === 'true'"> Ja </p>
+    <p ng-if="vakantie.fiscaalAftrek !== 'true'"> Nee </p>
 </div>
 <button ng-show="signedIn()" type="submit" class="btn btn-default btn-block">Schrijf in</button>
-<h5 ng-show="!signedIn()" class="transparantmessage"> Log in om in te schrijven voor een vakantie </h5>
-
-
+<h5 ng-show="!signedIn()" class="transparantmessage"> Log in om in te schrijven voor een vakantie en om comments te zien</h5>
+<div ng-show="signedIn()">
+<h4>Comments:</h4><br/>
+<div ng-repeat="com in comments" class="comments">
+<p  class="commentText">{{com}}</p>
+</div>
+<br>
+<form>
+<textarea ng-model="comment" type="textarea" placeholder="Comment" class="textarea"></textarea>
+<br>
+<button ng-click="voegCommentToe(comment)" type="submit" value="Submit" class="custombutton">Voeg een comment toe </button>
+</form>
+</div>

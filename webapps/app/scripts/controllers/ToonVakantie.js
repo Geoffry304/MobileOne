@@ -6,4 +6,9 @@ app.controller('ToonVakantieCtrl', function ($scope, $routeParams, Vakantie, Aut
 
   $scope.vakantie = Vakantie.get($routeParams.vakantieId);
   $scope.signedIn = Auth.signedIn;
+  $scope.comments = Vakantie.getComments($routeParams.vakantieId);
+
+    $scope.voegCommentToe = function(comment) {
+  	Vakantie.comment(comment, $routeParams.vakantieId);
+  };
 });
