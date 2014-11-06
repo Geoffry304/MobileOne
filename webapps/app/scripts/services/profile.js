@@ -22,27 +22,11 @@ app.factory('Profile', function($window, FIREBASE_URL, $firebase, Post, $q, $loc
 			return profileRef.$update(userId, profileUpdate);
 
     	},
-		getPosts: function(userId) {
-			var defer = $q.defer();
-
-			$firebase(ref.child('user_posts').child(userId))
-			.$asArray()
-			.$loaded()
-			.then(function(data) {
-				var posts = {};
-
-				for (var i = 0; i<data.length; i++) {
-					var value = data[i].$value;
-					posts[value] = Post.get(value);
-				}
-				defer.resolve(posts);
-			},
-			function(err){
-				$location.path('/');
-			});
-
-			return defer.promise;
+		createKind: function(userId, kind){
+			var kindRef = $firebase(ref.child('profile').child(userId).child('kinderen').child(kind.rijksregisternummer)).$asArray();
+			return kindRef.$add(kind);
 		}
-	};
+
+};
 	return profile;
 });

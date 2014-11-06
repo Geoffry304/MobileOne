@@ -6,7 +6,21 @@
         <h2>{{ profile.username }}</h2>
       </span>
 
-      <div class="control-group">
+      
+
+</div>
+  <div class="row">
+
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-target="#profiel" data-toggle="tab">Profiel</a></li>
+      <li><a data-target="#kinderen" data-toggle="tab">Kinderen</a></li>
+    </ul>
+
+  </div>
+
+  <div class="tab-content">
+  <div class="tab-pane active" id="profiel">
+    <div class="control-group">
         <label class="control-label" for="">Username</label>
         <input ng-model="profile.username" type="text" placeholder="Username" class="input-xlarge">
 </div>
@@ -42,6 +56,59 @@
 
  <button class="btn btn-success" ng-click="submitProfiel()">Opslaan</button>
     </div>
+
+
+    <div class="container tab-pane" id="kinderen">
+        <div class="control-group">
+        <label class="control-label" for="">Naam</label>
+        <input ng-model="kind.naam" type="text" placeholder="Naam" class="input-xlarge">
 </div>
 
+      <div class="control-group">
+        <label class="control-label" for="">Voornaam</label>
+        <input ng-model="kind.voornaam" type="text" placeholder="Voornaam" class="input-xlarge">
 </div>
+      <div class="control-group">
+        <label class="control-label" for="">Geboortedatum</label>
+        <input ng-model="kind.geboortedatum" type="text" placeholder="Geboortedatum" class="input-xlarge">
+</div>
+
+      <div class="control-group">
+        <label class="control-label" for="">Rijksregisternummer</label>
+        <input ng-model="kind.rijksregisternummer" type="text" placeholder="Rijksregisternr" class="input-xlarge">
+</div>
+
+<div class="control-group">
+  <div class="controls">
+      <input type="checkbox" ng-model"anders">
+      Adres is anders dan ouder
+    </label>
+  </div>
+</div>
+<div ng-checked="anders">
+<div class="control-group">
+        <label class="control-label" for="">Straat</label>
+        <input ng-model="kind.straat" type="text" placeholder="Straat" class="input-xlarge">
+</div>
+
+<div class="control-group">
+        <label class="control-label" for="">Nummer</label>
+        <input ng-model="kind.nummer" type="text" placeholder="Nummer" class="input-xlarge">
+</div>
+
+<div class="control-group">
+        <label class="control-label" for="">Postcode</label>
+        <input ng-model="kind.postcode" type="text" placeholder="Postcode" class="input-xlarge">
+</div>
+<div class="control-group">
+        <label class="control-label" for="">Gemeente</label>
+        <input ng-model="kind.gemeente" type="text" placeholder="Gemeente" class="input-xlarge">
+</div>
+</div>
+<button class="btn btn-success" ng-click="submitKind()">Opslaan</button>
+  </div>
+</div>
+</div>
+  </div>
+
+
