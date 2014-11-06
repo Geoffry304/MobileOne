@@ -13,4 +13,18 @@
     <string name="registreer_text">Heeft u nog geen profiel bij ons? Klik dan hieronder op registreer en vul uw gegevens in.</string>
     <string name="registreer_fb">Log in met uw Facebook account, en vul uw profiel verder aan.</string>
     <string name="login_simple">Bent u reeds geregistreerd? Dan kan u hier inloggen met uw e-mail adres en paswoord.</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="naam">Naam :</string>
+    <string name="voornaam">Voornaam :</string>
+    <string name="straat">Straat :</string>
+    <string name="nr">Nr :</string>
+    <string name="gemeente">Gemeente :</string>
+    <string name="postcode">Postcode :</string>
+    <string name="telefoon">Tel :</string>
+    <string name="gsm">GSM :</string>
+    <string name="renterpassword">Herhaal paswoord :</string>
+    <string name="annuleer">Annuleer</string>
+    <string name="ok">Ok</string>
+    <string name="firebase">https://mobileone.firebaseio.com/</string>
+
 </resources>

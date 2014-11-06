@@ -8,12 +8,15 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.steven.joetzandroid.R;
 import com.facebook.Session;
 import com.facebook.SessionState;
@@ -47,6 +50,8 @@ public class LoginFragment extends Fragment {
 
     private UiLifecycleHelper uiHelper;
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,8 +72,20 @@ public class LoginFragment extends Fragment {
         emailEditText = (EditText) view.findViewById(R.id.emailEditText);
         passwordEditText = (EditText) view.findViewById(R.id.passwordEditText);
         loginButton = (Button) view.findViewById(R.id.buttonLogIn);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logIn();
+            }
+        });
 
         registerButton = (Button) view.findViewById(R.id.registerButton);
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                registreer();
+            }
+        });
 
         return view;
     }
@@ -81,13 +98,14 @@ public class LoginFragment extends Fragment {
                 @Override
                 public void onAuthenticated(AuthData authData) {
 
+                    Toast.makeText(getActivity().getApplicationContext(),"Facebook : ingelogd als =>" +authData.getProviderData().get("displayName").toString(),Toast.LENGTH_LONG).show();
 
                 }
 
                 @Override
                 public void onAuthenticationError(FirebaseError firebaseError) {
                     //onLogged("Error "+firebaseError.getMessage(),false);
-
+                    Toast.makeText(getActivity().getApplicationContext(),firebaseError.getMessage(),Toast.LENGTH_LONG).show();
                 }
             });
         }
@@ -109,11 +127,13 @@ public class LoginFragment extends Fragment {
                         @Override
                         public void onAuthenticated(AuthData authData) {
 
+                                Toast.makeText(getActivity().getApplicationContext(),"AuthId : " +authData.getUid(),Toast.LENGTH_LONG).show();
 
                         }
 
                         @Override
                         public void onAuthenticationError(FirebaseError firebaseError) {
+                            Toast.makeText(getActivity().getApplicationContext(),firebaseError.getMessage(),Toast.LENGTH_LONG).show();
 
                         }
                     }
@@ -122,6 +142,12 @@ public class LoginFragment extends Fragment {
             );
         }
 
+    }
+    public void registreer()
+    {
+        RegisterFragment f = new RegisterFragment();
+        FragmentManager manager = getActivity().getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.frame_container, f).commit();
     }
 
     public EditText getEmailEditText() {
