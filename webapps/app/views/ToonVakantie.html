@@ -49,14 +49,15 @@
 
 <h4>Comments:</h4><br/>
 <div ng-repeat="com in comments" class="comments">
-<p  class="commentText"><b>{{com.tekst}}</b> door de gebruiker: {{com.creator}}</p>
+<p class="commentText"><b>{{com.tekst}}</b></p>
+<p class="authorText"> door de gebruiker: {{com.creator}}</p>
 </div>
 <br>
-<form>
-<textarea ng-model="comment.tekst" type="textarea" placeholder="Comment" class="textarea"></textarea>
+<h4 ng-if="filter === 'true'"> {{error}}</h4>
 <br>
 <form ng-show="signedIn()">
+<textarea ng-model="comment.tekst" type="textarea" placeholder="Comment" class="textarea"></textarea>
+<br>
 <button ng-click="voegCommentToe(comment)" type="submit" value="Submit" class="custombutton">Voeg een comment toe </button>
-
 </form>
 </div>

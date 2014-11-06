@@ -71,6 +71,11 @@ body {
 .commentText {
   padding-left: 6px;
 }
+.authorText {
+  font-size: 10px;
+  vertical-align: bottom;
+  text-align: right;
+}
 /* NAV BAR */
 .nav-pic {
   margin: -2px 5px 0 0;
