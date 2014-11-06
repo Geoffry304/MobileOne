@@ -46,15 +46,14 @@
 </div>
 <button ng-show="signedIn()" type="submit" class="btn btn-default btn-block">Schrijf in</button>
 <h5 ng-show="!signedIn()" class="transparantmessage"> Log in om in te schrijven voor een vakantie en om comments te zien</h5>
-<div ng-show="signedIn()">
+
 <h4>Comments:</h4><br/>
 <div ng-repeat="com in comments" class="comments">
 <p  class="commentText">{{com}}</p>
 </div>
 <br>
-<form>
+<form ng-show="signedIn()">
 <textarea ng-model="comment" type="textarea" placeholder="Comment" class="textarea"></textarea>
 <br>
 <button ng-click="voegCommentToe(comment)" type="submit" value="Submit" class="custombutton">Voeg een comment toe </button>
 </form>
-</div>
