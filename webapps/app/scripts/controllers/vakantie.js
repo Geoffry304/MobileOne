@@ -14,13 +14,12 @@ $scope.maakVakantie = function () {
     
   };
 
-
 	/*var vakantie = {
 		naam: "test",
 		leeftijdscategorie: "16-17"
 	};*/
-	/*$scope.vakanties = Vakantie.all;
-	$scope.vakantie = {naam:'', leeftijdscategorie:{van:'',tot:'' }};*/
+	$scope.vakanties = Vakantie.all;
+	$scope.vakantie = {naam:'', leeftijdscategorie:{van:'',tot:'' }};
 
 
 	$scope.maakVakantie = function () {
