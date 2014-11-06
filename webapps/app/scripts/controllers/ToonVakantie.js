@@ -7,8 +7,11 @@ app.controller('ToonVakantieCtrl', function ($scope, $routeParams, Vakantie, Aut
   $scope.vakantie = Vakantie.get($routeParams.vakantieId);
   $scope.signedIn = Auth.signedIn;
   $scope.comments = Vakantie.getComments($routeParams.vakantieId);
+  $scope.comment = {};
+  $scope.user = Auth.user;
 
-    $scope.voegCommentToe = function(comment) {
-  	Vakantie.comment(comment, $routeParams.vakantieId);
+    $scope.voegCommentToe = function() {
+   	$scope.comment.creator = $scope.user.profile.username;
+  	Vakantie.comment($scope.comment, $routeParams.vakantieId);
   };
 });
