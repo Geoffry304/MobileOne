@@ -32,8 +32,14 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+<<<<<<< Updated upstream
     compile files('firebase-client-android-1.1.1.jar')
     compile 'com.google.android.gms:play-services:5.2.08'
+=======
+    compile files("firebase-client-android-1.1.1.jar")
+
+    compile 'com.google.android.gms:play-services:6.1.71'
+>>>>>>> Stashed changes
     compile 'com.android.support:appcompat-v7:20.0.0'
     compile project(':facebook')
 }
