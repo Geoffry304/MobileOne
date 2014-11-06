@@ -46,7 +46,7 @@
 </div>
 <button ng-show="signedIn()" type="submit" class="btn btn-default btn-block">Schrijf in</button>
 <h5 ng-show="!signedIn()" class="transparantmessage"> Log in om in te schrijven voor een vakantie en om comments te zien</h5>
-<div ng-show="signedIn()">
+
 <h4>Comments:</h4><br/>
 <div ng-repeat="com in comments" class="comments">
 <p  class="commentText"><b>{{com.tekst}}</b> door de gebruiker: {{com.creator}}</p>
