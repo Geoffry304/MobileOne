@@ -55,6 +55,14 @@ app.factory('Auth', function ($firebaseSimpleLogin, FIREBASE_URL, $rootScope, $f
 		angular.copy({}, Auth.user);
 	});
 
+	/*$rootScope.authWithOAuthPopup('facebook', function(error, authData) {
+			if (authData) {
+				console.log(authData.facebook.accessToken);
+			}
+		}, {
+  		scope: 'email,user_likes'
+		});*/
+
 
 return Auth;
 });

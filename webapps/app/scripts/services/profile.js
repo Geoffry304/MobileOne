@@ -7,6 +7,21 @@ app.factory('Profile', function($window, FIREBASE_URL, $firebase, Post, $q, $loc
 		get: function(userId) {
 			return $firebase(ref.child('profile').child(userId)).$asObject();
 		},
+		update: function (userId, profile) {
+         	var profileUpdate = {
+					username: profile.username,
+					gemeente: profile.gemeente,
+					naam: profile.naam,
+					nummer: profile.nummer,
+					postcode: profile.postcode,
+					straat: profile.straat,
+					voornaam: profile.voornaam
+			};
+
+			var profileRef = $firebase(ref.child('profile'));
+			return profileRef.$update(userId, profileUpdate);
+
+    	},
 		getPosts: function(userId) {
 			var defer = $q.defer();
 
