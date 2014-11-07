@@ -22,7 +22,7 @@ app.factory('Auth', function ($firebaseSimpleLogin, FIREBASE_URL, $rootScope, $f
 			return profileRef.$set(user.uid, profile);
 		},
 		login: function (user) {
-      	return auth.$login('password', user);
+      		return auth.$login('password', user);
     	},
 		logout: function() {
 			$location.path('/');

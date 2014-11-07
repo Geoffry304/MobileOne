@@ -1,0 +1,18 @@
+<form class="navbar-form navbar-left" role="search" ng-submit="submitInschrijving()">
+	<div>
+  		<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+	</div>
+	<div>
+		<label>aantal</label>
+		<input type="text" class="form-control" placeholder="Aantal" ng-model="inschrijving.aantal">
+	</div>
+	<div>
+		<label>naam</label>
+		<input type="text" class="form-control" placeholder="Naam" ng-model="inschrijving.naam">
+	</div>
+	<div>
+		<label>aantal</label>
+		<input type="text" class="form-control" placeholder="Voornaam" ng-model="inschrijving.voornaam">
+	</div>
+	<input type="submit" ng-click="submitInschrijving()" value="Schrijf in" class="btn btn-primary" />
+</form>
