@@ -7,7 +7,7 @@ app.factory('Inschrijving', function ($firebase, FIREBASE_URL) {
 		all: inschrijvingen,
 		create: function (inschrijving){
 			return inschrijvingen.$add(inschrijving).then(function(inschrijvingRef) {
-		        $firebase(ref.child('user_inschrijvingen').child(inschrijving.creatorUID)).$add(inschrijvingRef.name());
+		        $firebase(ref.child('user_inschrijvingen').child(inschrijving.creatorUID)).$push(inschrijvingRef.name());
 		        return inschrijvingRef;
 					});
 		}
