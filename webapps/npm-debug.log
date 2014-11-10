@@ -1,0 +1,152 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'bo-g',
+1 verbose cli   'bower-update',
+1 verbose cli   '--allow-root' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.32
+4 warn package.json Mobileone@0.0.0 No description
+5 warn package.json Mobileone@0.0.0 No repository field.
+6 warn package.json Mobileone@0.0.0 No README data
+7 verbose readDependencies using package.json deps
+8 verbose cache add [ 'bo-g', null ]
+9 verbose cache add name=undefined spec="bo-g" args=["bo-g",null]
+10 verbose parsed url { protocol: null,
+10 verbose parsed url   slashes: null,
+10 verbose parsed url   auth: null,
+10 verbose parsed url   host: null,
+10 verbose parsed url   port: null,
+10 verbose parsed url   hostname: null,
+10 verbose parsed url   hash: null,
+10 verbose parsed url   search: null,
+10 verbose parsed url   query: null,
+10 verbose parsed url   pathname: 'bo-g',
+10 verbose parsed url   path: 'bo-g',
+10 verbose parsed url   href: 'bo-g' }
+11 verbose cache add [ 'bower-update', null ]
+12 verbose cache add name=undefined spec="bower-update" args=["bower-update",null]
+13 verbose parsed url { protocol: null,
+13 verbose parsed url   slashes: null,
+13 verbose parsed url   auth: null,
+13 verbose parsed url   host: null,
+13 verbose parsed url   port: null,
+13 verbose parsed url   hostname: null,
+13 verbose parsed url   hash: null,
+13 verbose parsed url   search: null,
+13 verbose parsed url   query: null,
+13 verbose parsed url   pathname: 'bower-update',
+13 verbose parsed url   path: 'bower-update',
+13 verbose parsed url   href: 'bower-update' }
+14 silly lockFile 0e14a4b4-bo-g bo-g
+15 verbose lock bo-g /Users/geoffryvandeneede/.npm/0e14a4b4-bo-g.lock
+16 silly lockFile fa3ba467-bower-update bower-update
+17 verbose lock bower-update /Users/geoffryvandeneede/.npm/fa3ba467-bower-update.lock
+18 silly lockFile 0e14a4b4-bo-g bo-g
+19 silly lockFile 0e14a4b4-bo-g bo-g
+20 silly lockFile fa3ba467-bower-update bower-update
+21 silly lockFile fa3ba467-bower-update bower-update
+22 verbose addNamed [ 'bo-g', '' ]
+23 verbose addNamed [ null, '*' ]
+24 silly lockFile f1e9a4a0-bo-g bo-g@
+25 verbose lock bo-g@ /Users/geoffryvandeneede/.npm/f1e9a4a0-bo-g.lock
+26 verbose addNamed [ 'bower-update', '' ]
+27 verbose addNamed [ null, '*' ]
+28 silly lockFile c5c2e415-bower-update bower-update@
+29 verbose lock bower-update@ /Users/geoffryvandeneede/.npm/c5c2e415-bower-update.lock
+30 silly addNameRange { name: 'bo-g', range: '*', hasData: false }
+31 silly addNameRange { name: 'bower-update', range: '*', hasData: false }
+32 verbose request where is /bo-g
+33 verbose request registry https://registry.npmjs.org/
+34 verbose request id e03d4ad27e82eca5
+35 verbose url raw /bo-g
+36 verbose url resolving [ 'https://registry.npmjs.org/', './bo-g' ]
+37 verbose url resolved https://registry.npmjs.org/bo-g
+38 verbose request where is https://registry.npmjs.org/bo-g
+39 info trying registry request attempt 1 at 12:56:31
+40 http GET https://registry.npmjs.org/bo-g
+41 verbose request where is /bower-update
+42 verbose request registry https://registry.npmjs.org/
+43 verbose url raw /bower-update
+44 verbose url resolving [ 'https://registry.npmjs.org/', './bower-update' ]
+45 verbose url resolved https://registry.npmjs.org/bower-update
+46 verbose request where is https://registry.npmjs.org/bower-update
+47 info trying registry request attempt 1 at 12:56:31
+48 verbose etag "1K5TES7S01KT9IW2HXHFFFMI0"
+49 http GET https://registry.npmjs.org/bower-update
+50 http 304 https://registry.npmjs.org/bower-update
+51 silly registry.get cb [ 304,
+51 silly registry.get   { date: 'Mon, 10 Nov 2014 11:56:31 GMT',
+51 silly registry.get     server: 'Apache',
+51 silly registry.get     via: '1.1 varnish',
+51 silly registry.get     'last-modified': 'Mon, 10 Nov 2014 11:56:31 GMT',
+51 silly registry.get     'cache-control': 'max-age=60',
+51 silly registry.get     etag: '"1K5TES7S01KT9IW2HXHFFFMI0"',
+51 silly registry.get     age: '0',
+51 silly registry.get     'x-served-by': 'cache-lhr6323-LHR',
+51 silly registry.get     'x-cache': 'MISS',
+51 silly registry.get     'x-cache-hits': '0',
+51 silly registry.get     'x-timer': 'S1415620591.496055,VS0,VE158',
+51 silly registry.get     vary: 'Accept',
+51 silly registry.get     'content-length': '0',
+51 silly registry.get     'keep-alive': 'timeout=10, max=50',
+51 silly registry.get     connection: 'Keep-Alive' } ]
+52 verbose etag https://registry.npmjs.org/bower-update from cache
+53 silly addNameRange number 2 { name: 'bower-update', range: '*', hasData: true }
+54 silly addNameRange versions [ 'bower-update', [ '0.0.1', '0.0.2', '0.0.3', '0.0.4' ] ]
+55 verbose addNamed [ 'bower-update', '0.0.4' ]
+56 verbose addNamed [ '0.0.4', '0.0.4' ]
+57 silly lockFile a7ae79d7-bower-update-0-0-4 bower-update@0.0.4
+58 verbose lock bower-update@0.0.4 /Users/geoffryvandeneede/.npm/a7ae79d7-bower-update-0-0-4.lock
+59 silly lockFile a7ae79d7-bower-update-0-0-4 bower-update@0.0.4
+60 silly lockFile a7ae79d7-bower-update-0-0-4 bower-update@0.0.4
+61 silly lockFile c5c2e415-bower-update bower-update@
+62 silly lockFile c5c2e415-bower-update bower-update@
+63 http 404 https://registry.npmjs.org/bo-g
+64 verbose headers { date: 'Mon, 10 Nov 2014 11:56:31 GMT',
+64 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+64 verbose headers   'content-type': 'application/json',
+64 verbose headers   'cache-control': 'max-age=0',
+64 verbose headers   'content-length': '52',
+64 verbose headers   'accept-ranges': 'bytes',
+64 verbose headers   via: '1.1 varnish',
+64 verbose headers   age: '0',
+64 verbose headers   'x-served-by': 'cache-lhr6330-LHR',
+64 verbose headers   'x-cache': 'MISS',
+64 verbose headers   'x-cache-hits': '0',
+64 verbose headers   'x-timer': 'S1415620591.508920,VS0,VE357',
+64 verbose headers   'keep-alive': 'timeout=10, max=50',
+64 verbose headers   connection: 'Keep-Alive' }
+65 silly registry.get cb [ 404,
+65 silly registry.get   { date: 'Mon, 10 Nov 2014 11:56:31 GMT',
+65 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+65 silly registry.get     'content-type': 'application/json',
+65 silly registry.get     'cache-control': 'max-age=0',
+65 silly registry.get     'content-length': '52',
+65 silly registry.get     'accept-ranges': 'bytes',
+65 silly registry.get     via: '1.1 varnish',
+65 silly registry.get     age: '0',
+65 silly registry.get     'x-served-by': 'cache-lhr6330-LHR',
+65 silly registry.get     'x-cache': 'MISS',
+65 silly registry.get     'x-cache-hits': '0',
+65 silly registry.get     'x-timer': 'S1415620591.508920,VS0,VE357',
+65 silly registry.get     'keep-alive': 'timeout=10, max=50',
+65 silly registry.get     connection: 'Keep-Alive' } ]
+66 silly lockFile f1e9a4a0-bo-g bo-g@
+67 silly lockFile f1e9a4a0-bo-g bo-g@
+68 error 404 404 Not Found: bo-g
+68 error 404
+68 error 404 'bo-g' is not in the npm registry.
+68 error 404 You should bug the author to publish it
+68 error 404 It was specified as a dependency of 'Mobileone'
+68 error 404
+68 error 404 Note that you can also install from a
+68 error 404 tarball, folder, or http url, or git url.
+69 error System Darwin 14.0.0
+70 error command "node" "/usr/local/bin/npm" "install" "bo-g" "bower-update" "--allow-root"
+71 error cwd /Volumes/Macintosh HD/MobileOne/webapps
+72 error node -v v0.10.32
+73 error npm -v 1.4.28
+74 error code E404
+75 verbose exit [ 1, true ]
