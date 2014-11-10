@@ -83,6 +83,10 @@ app.config(function ($routeProvider) {
         }
       }
     })
+    .when('/beheerderspagina', {
+      templateUrl: 'views/beheerderspagina.html',
+      controller: 'BeheerderCtrl'
+    })
     .otherwise({
       redirectTo: '/'
     });

@@ -1,4 +1,6 @@
 <legend>{{vakantie.naam}}</legend>
+<button ng-show ='admin(user.profile.role_value)' ng-click='verwijderVakantie()'>Verwijder</button>
+<a ng-show ='admin(user.profile.role_value)' href='#/vakantie'>Wijzig</a>
 <div class="form-group">
     <label for="Naam">Naam:</label>
     <br>

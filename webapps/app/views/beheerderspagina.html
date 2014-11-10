@@ -1,0 +1,7 @@
+<div ng-show='admin(user.profile.role_value)'>
+<h3>Wat wilt u doen?</h3>
+<a href='#/vakantie'>Vakantie toevoegen</a>
+<br>
+<a href='#/vakanties'>Vakanties beheren</a>
+</div>
+<h2 ng-show='!admin(user.profile.role_value) || !signedIn()'>U ben hier niet toegelaten</h2>

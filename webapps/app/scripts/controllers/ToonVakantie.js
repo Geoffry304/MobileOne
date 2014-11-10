@@ -11,6 +11,9 @@ app.controller('ToonVakantieCtrl', function ($scope, $routeParams, Vakantie, Aut
   $scope.user = Auth.user;
   $scope.filter = 'false';
   $scope.error = 'Gebruik gepaste taal!';
+  $scope.verwijderVakantie = function() {
+    return Vakantie.delete($scope.vakantie);
+  };
 
     $scope.voegCommentToe = function() {
    	$scope.comment.creator = $scope.user.profile.username;
@@ -24,6 +27,10 @@ app.controller('ToonVakantieCtrl', function ($scope, $routeParams, Vakantie, Aut
   		$scope.filter='true';
   	}
   };
+
+  $scope.admin = function(role){
+    return role === '99';
+    };
 
   function filter(comment)
   {

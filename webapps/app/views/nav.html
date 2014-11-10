@@ -19,6 +19,9 @@
           {{ user.profile.username}}
         </a>
       </li>
+      <li ng-show="admin(user.profile.role_value)">
+        <a href='#/beheerderspagina'>Beheerderspagina </a>
+      </li>
       <li ng-show="signedIn()">
         <a href="#" ng-click="logout()">
           <button class="btn btn-default navbar-btn" href="#">Logout</button>
