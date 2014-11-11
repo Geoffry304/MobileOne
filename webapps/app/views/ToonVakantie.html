@@ -1,6 +1,8 @@
 <legend>{{vakantie.naam}}</legend>
-<button ng-show ='admin(user.profile.role_value)' ng-click='verwijderVakantie()'>Verwijder</button>
-<a ng-show ='admin(user.profile.role_value)' href='#/vakantie'>Wijzig</a>
+<button ng-show ='admin(user.profile.role_value)'ng-click="toggle_visibility('popupBoxOnePosition');">Verwijder</button>
+<a ng-show ='admin(user.profile.role_value)' href='#/vakantie/change/{{vakantie.$id}}'>Wijzig</a>
+<br ng-show='admin(user.profile.role_value)'>
+<br ng-show='admin(user.profile.role_value)'>
 <div class="form-group">
     <label for="Naam">Naam:</label>
     <br>
@@ -62,4 +64,14 @@
 <br>
 <button ng-click="voegCommentToe(comment)" type="submit" value="Submit" class="custombutton">Voeg een comment toe </button>
 </form>
+</div>
+
+<div id="popupBoxOnePosition">
+    <div class="popupBoxWrapper">
+        <div class="popupBoxContent">
+            <h3>Bevestiging</h3>
+            <p>Bent u zeker dat u deze vakantie wil verwijderen?</p>
+            <a href='#/vakanties' ng-click="verwijderVakantie()">Ja</a> <a href="javascript:void(0)" ng-click="toggle_visibility('popupBoxOnePosition');"> Nee </a>
+        </div>
+    </div>
 </div>

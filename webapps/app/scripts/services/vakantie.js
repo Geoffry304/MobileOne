@@ -14,7 +14,8 @@ app.factory('Vakantie', function (FIREBASE_URL, $firebase){
       return $firebase(ref.child('vakanties').child(vakantieId)).$asObject();
     },
     delete: function (vakantie) {
-      return vakanties.$remove(vakantie);
+      var vakantieRef = $firebase(ref.child('vakanties'));
+      return vakantieRef.$remove(vakantie.$id, vakantie);
     },
     update: function (vakantieId, vakantie) {
       var vakantieUpdate = {
@@ -32,7 +33,8 @@ app.factory('Vakantie', function (FIREBASE_URL, $firebase){
               eigenVervoer: vakantie.eigenVervoer,
               fiscaalAftrek: vakantie.fiscaalAftrek
         };
-      return vakanties.$update(vakantieId, vakantieUpdate);
+        var vakantieRef = $firebase(ref.child('vakanties'));
+      return vakantieRef.$update(vakantieId, vakantieUpdate);
     },
     getComments: function(vakantieId) {
       return $firebase(ref.child('vakanties').child(vakantieId).child('comments')).$asObject();

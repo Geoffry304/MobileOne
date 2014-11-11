@@ -2,6 +2,23 @@ body {
   background: #F3F3F3;
 }
 
+#popupBoxOnePosition{
+                top: 0; left: 0; position: fixed; width: 100%; height: 120%;
+                background-color: rgba(0,0,0,0.7); display: none;
+            }
+            #popupBoxTwoPosition{
+                top: 0; left: 0; position: fixed; width: 100%; height: 120%;
+                background-color: rgba(0,0,0,0.7); display: none;
+            }#popupBoxThreePosition{
+                top: 0; left: 0; position: fixed; width: 100%; height: 120%;
+                background-color: rgba(0,0,0,0.7); display: none;
+            }
+            .popupBoxWrapper{
+                width: 550px; margin: 50px auto; text-align: left;
+            }
+            .popupBoxContent{
+                background-color: #FFF; padding: 15px;
+            }
 .transparantmessage {
   color: transparent;
   color:#bbb;
