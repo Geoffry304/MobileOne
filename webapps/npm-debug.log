@@ -1,0 +1,170 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'generator-bootstrap' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.32
+4 verbose cache add [ 'generator-bootstrap', null ]
+5 verbose cache add name=undefined spec="generator-bootstrap" args=["generator-bootstrap",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'generator-bootstrap',
+6 verbose parsed url   path: 'generator-bootstrap',
+6 verbose parsed url   href: 'generator-bootstrap' }
+7 silly lockFile e568a2d9-generator-bootstrap generator-bootstrap
+8 verbose lock generator-bootstrap /Users/thomas/.npm/e568a2d9-generator-bootstrap.lock
+9 silly lockFile e568a2d9-generator-bootstrap generator-bootstrap
+10 silly lockFile e568a2d9-generator-bootstrap generator-bootstrap
+11 verbose addNamed [ 'generator-bootstrap', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile efcd95bb-generator-bootstrap generator-bootstrap@
+14 verbose lock generator-bootstrap@ /Users/thomas/.npm/efcd95bb-generator-bootstrap.lock
+15 silly addNameRange { name: 'generator-bootstrap', range: '*', hasData: false }
+16 verbose request where is /generator-bootstrap
+17 verbose request registry https://registry.npmjs.org/
+18 verbose request id 1a9f4cf09facd155
+19 verbose url raw /generator-bootstrap
+20 verbose url resolving [ 'https://registry.npmjs.org/', './generator-bootstrap' ]
+21 verbose url resolved https://registry.npmjs.org/generator-bootstrap
+22 verbose request where is https://registry.npmjs.org/generator-bootstrap
+23 info trying registry request attempt 1 at 21:17:03
+24 http GET https://registry.npmjs.org/generator-bootstrap
+25 http 200 https://registry.npmjs.org/generator-bootstrap
+26 silly registry.get cb [ 200,
+26 silly registry.get   { date: 'Sun, 09 Nov 2014 20:17:03 GMT',
+26 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+26 silly registry.get     etag: '"631LNVMBBDOJGLPWWWOSUMEH4"',
+26 silly registry.get     'content-type': 'application/json',
+26 silly registry.get     'cache-control': 'max-age=60',
+26 silly registry.get     'content-length': '14073',
+26 silly registry.get     'accept-ranges': 'bytes',
+26 silly registry.get     via: '1.1 varnish',
+26 silly registry.get     age: '0',
+26 silly registry.get     'x-served-by': 'cache-ams4144-AMS',
+26 silly registry.get     'x-cache': 'HIT',
+26 silly registry.get     'x-cache-hits': '1',
+26 silly registry.get     'x-timer': 'S1415564223.712498,VS0,VE175',
+26 silly registry.get     vary: 'Accept',
+26 silly registry.get     'keep-alive': 'timeout=10, max=50',
+26 silly registry.get     connection: 'Keep-Alive' } ]
+27 silly addNameRange number 2 { name: 'generator-bootstrap', range: '*', hasData: true }
+28 silly addNameRange versions [ 'generator-bootstrap',
+28 silly addNameRange   [ '0.1.0-beta.1',
+28 silly addNameRange     '0.1.0',
+28 silly addNameRange     '0.1.1',
+28 silly addNameRange     '0.1.2',
+28 silly addNameRange     '0.1.3',
+28 silly addNameRange     '0.1.4',
+28 silly addNameRange     '0.1.5',
+28 silly addNameRange     '0.1.6',
+28 silly addNameRange     '0.2.0' ] ]
+29 verbose addNamed [ 'generator-bootstrap', '0.2.0' ]
+30 verbose addNamed [ '0.2.0', '0.2.0' ]
+31 silly lockFile 53e1f184-generator-bootstrap-0-2-0 generator-bootstrap@0.2.0
+32 verbose lock generator-bootstrap@0.2.0 /Users/thomas/.npm/53e1f184-generator-bootstrap-0-2-0.lock
+33 silly lockFile 98a4e0e9-ap-generator-bootstrap-0-2-0-tgz https://registry.npmjs.org/generator-bootstrap/-/generator-bootstrap-0.2.0.tgz
+34 verbose lock https://registry.npmjs.org/generator-bootstrap/-/generator-bootstrap-0.2.0.tgz /Users/thomas/.npm/98a4e0e9-ap-generator-bootstrap-0-2-0-tgz.lock
+35 verbose addRemoteTarball [ 'https://registry.npmjs.org/generator-bootstrap/-/generator-bootstrap-0.2.0.tgz',
+35 verbose addRemoteTarball   'c3bcd6bd288a8d349d6635fda9e46b0c0af53ff6' ]
+36 info retry fetch attempt 1 at 21:17:03
+37 verbose fetch to= /var/folders/6x/ydb55p197k18dn946lcb25sm0000gn/T/npm-1183-StYC-TiP/registry.npmjs.org/generator-bootstrap/-/generator-bootstrap-0.2.0.tgz
+38 http GET https://registry.npmjs.org/generator-bootstrap/-/generator-bootstrap-0.2.0.tgz
+39 http 200 https://registry.npmjs.org/generator-bootstrap/-/generator-bootstrap-0.2.0.tgz
+40 silly lockFile 98a4e0e9-ap-generator-bootstrap-0-2-0-tgz https://registry.npmjs.org/generator-bootstrap/-/generator-bootstrap-0.2.0.tgz
+41 silly lockFile 98a4e0e9-ap-generator-bootstrap-0-2-0-tgz https://registry.npmjs.org/generator-bootstrap/-/generator-bootstrap-0.2.0.tgz
+42 silly lockFile 53e1f184-generator-bootstrap-0-2-0 generator-bootstrap@0.2.0
+43 silly lockFile 53e1f184-generator-bootstrap-0-2-0 generator-bootstrap@0.2.0
+44 silly lockFile efcd95bb-generator-bootstrap generator-bootstrap@
+45 silly lockFile efcd95bb-generator-bootstrap generator-bootstrap@
+46 silly resolved [ { name: 'generator-bootstrap',
+46 silly resolved     version: '0.2.0',
+46 silly resolved     description: 'Yeoman generator for Bootstrap',
+46 silly resolved     keywords:
+46 silly resolved      [ 'yeoman-generator',
+46 silly resolved        'framework',
+46 silly resolved        'component',
+46 silly resolved        'bootstrap',
+46 silly resolved        'ui',
+46 silly resolved        'css',
+46 silly resolved        'sass',
+46 silly resolved        'less' ],
+46 silly resolved     author: { name: 'The Yeoman Team' },
+46 silly resolved     main: 'app/index.js',
+46 silly resolved     repository:
+46 silly resolved      { type: 'git',
+46 silly resolved        url: 'git://github.com/yeoman/generator-bootstrap.git' },
+46 silly resolved     scripts: { test: 'mocha' },
+46 silly resolved     dependencies: { 'yeoman-generator': '^0.17.2' },
+46 silly resolved     devDependencies: { mocha: '*' },
+46 silly resolved     peerDependencies: { yo: '>=1.0.0' },
+46 silly resolved     engines: { node: '>=0.10.0', npm: '>=1.2.10' },
+46 silly resolved     licenses: [ [Object] ],
+46 silly resolved     gitHead: '260cb50fd60c134a6f56ae0facdce48c7b44ecab',
+46 silly resolved     bugs: { url: 'https://github.com/yeoman/generator-bootstrap/issues' },
+46 silly resolved     homepage: 'https://github.com/yeoman/generator-bootstrap',
+46 silly resolved     _id: 'generator-bootstrap@0.2.0',
+46 silly resolved     _shasum: 'c3bcd6bd288a8d349d6635fda9e46b0c0af53ff6',
+46 silly resolved     _from: 'generator-bootstrap@',
+46 silly resolved     _npmVersion: '1.4.14',
+46 silly resolved     _npmUser: { name: 'sindresorhus', email: 'sindresorhus@gmail.com' },
+46 silly resolved     maintainers:
+46 silly resolved      [ [Object],
+46 silly resolved        [Object],
+46 silly resolved        [Object],
+46 silly resolved        [Object],
+46 silly resolved        [Object],
+46 silly resolved        [Object],
+46 silly resolved        [Object],
+46 silly resolved        [Object] ],
+46 silly resolved     dist:
+46 silly resolved      { shasum: 'c3bcd6bd288a8d349d6635fda9e46b0c0af53ff6',
+46 silly resolved        tarball: 'http://registry.npmjs.org/generator-bootstrap/-/generator-bootstrap-0.2.0.tgz' },
+46 silly resolved     directories: {},
+46 silly resolved     _resolved: 'https://registry.npmjs.org/generator-bootstrap/-/generator-bootstrap-0.2.0.tgz' } ]
+47 info install generator-bootstrap@0.2.0 into /usr/local/lib
+48 info installOne generator-bootstrap@0.2.0
+49 verbose lib/node_modules/generator-bootstrap unbuild
+50 verbose tar unpack /Users/thomas/.npm/generator-bootstrap/0.2.0/package.tgz
+51 silly lockFile c25485b4-node-modules-generator-bootstrap tar:///usr/local/lib/node_modules/generator-bootstrap
+52 verbose lock tar:///usr/local/lib/node_modules/generator-bootstrap /Users/thomas/.npm/c25485b4-node-modules-generator-bootstrap.lock
+53 silly lockFile ac492032-ator-bootstrap-0-2-0-package-tgz tar:///Users/thomas/.npm/generator-bootstrap/0.2.0/package.tgz
+54 verbose lock tar:///Users/thomas/.npm/generator-bootstrap/0.2.0/package.tgz /Users/thomas/.npm/ac492032-ator-bootstrap-0-2-0-package-tgz.lock
+55 silly gunzTarPerm modes [ '755', '644' ]
+56 error Error: EACCES, mkdir '/usr/local/lib/node_modules/generator-bootstrap'
+56 error  { [Error: EACCES, mkdir '/usr/local/lib/node_modules/generator-bootstrap']
+56 error   errno: 3,
+56 error   code: 'EACCES',
+56 error   path: '/usr/local/lib/node_modules/generator-bootstrap',
+56 error   fstream_type: 'Directory',
+56 error   fstream_path: '/usr/local/lib/node_modules/generator-bootstrap',
+56 error   fstream_class: 'DirWriter',
+56 error   fstream_stack:
+56 error    [ '/usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
+56 error      '/usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53',
+56 error      'Object.oncomplete (fs.js:107:15)' ] }
+57 error Please try running this command again as root/Administrator.
+58 error System Darwin 14.0.0
+59 error command "node" "/usr/local/bin/npm" "install" "-g" "generator-bootstrap"
+60 error cwd /Users/thomas/Documents/Hogent_Aalst/MobileOne/webapps
+61 error node -v v0.10.32
+62 error npm -v 1.4.28
+63 error path /usr/local/lib/node_modules/generator-bootstrap
+64 error fstream_path /usr/local/lib/node_modules/generator-bootstrap
+65 error fstream_type Directory
+66 error fstream_class DirWriter
+67 error code EACCES
+68 error errno 3
+69 error stack Error: EACCES, mkdir '/usr/local/lib/node_modules/generator-bootstrap'
+70 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
+70 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53
+70 error fstream_stack Object.oncomplete (fs.js:107:15)
+71 verbose exit [ 3, true ]
