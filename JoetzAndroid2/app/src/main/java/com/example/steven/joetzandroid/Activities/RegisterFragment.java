@@ -114,6 +114,13 @@ public class RegisterFragment extends Fragment {
 
                 foutM.add(entry.getKey()+" mag niet leeg zijn");
             }
+            if (entry.getKey() == "e-mail")
+            {
+                if(!emailCheck(entry.getValue().getText().toString()))
+                {
+                    foutM.add("E-mail patroon niet correct (voorbeeld@comp.be)");
+                }
+            }
             if (!passwoordVergelijking()) {
                 foutM.add("Paswoorden komen niet overeen.");
 
@@ -150,6 +157,15 @@ public class RegisterFragment extends Fragment {
         foutText.setText(fout);
     }
 
+    private boolean emailCheck(String email)
+    {
+        if(email.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"))
+        {
+            return true;
+        }
+        return false;
+    }
 
 
 

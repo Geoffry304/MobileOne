@@ -1,6 +1,5 @@
 package com.example.steven.joetzandroid.firebase;
 
-import android.os.AsyncTask;
 import android.util.Log;
 
 import com.example.steven.joetzandroid.Domain.Vakantie;
@@ -24,6 +23,7 @@ public class FirebaseVakantieRepository {
     public FirebaseVakantieRepository()
     {
         vakanties = new ArrayList<Vakantie>();
+        fillVakanties();
     }
 
     public ArrayList<Vakantie> getVakanties()
