@@ -11,6 +11,10 @@ public class Contact {
     private String website;
     private String info;
 
+    public Contact()
+    {
+        adres = new Adres();
+    }
     public Contact(Adres adres, String telnr, String email) {
         this.adres = adres;
         this.telnr = telnr;

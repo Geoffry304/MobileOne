@@ -20,6 +20,8 @@ import com.example.steven.joetzandroid.Domain.Adres;
 import com.example.steven.joetzandroid.Domain.Contact;
 import com.example.steven.joetzandroid.Domain.Ouder;
 import com.example.steven.joetzandroid.R;
+import com.example.steven.joetzandroid.firebase.FirebaseAuth;
+import com.example.steven.joetzandroid.firebase.FirebaseProfile;
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -34,29 +36,24 @@ import java.util.Map;
 public class RegisterFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String TAG = "RegisterFragment";
     private EditText naamEditText;
     private EditText voornaamEditText;
-    private EditText straatEditText;
-    private EditText nummerEditText;
-    private EditText gemeenteEditText;
-    private EditText postCodeEditText;
-    private EditText telnrEditText;
-    private EditText gsmEditText;
     private EditText emailEditText;
     private EditText paswoordEditText;
     private EditText paswoord2EditText;
     private Button cancelButton;
     private Button registerButton;
-    private Firebase ref;
+
     private HashMap<String,EditText> editTexts;
-
-
+    private EditText foutText;
+    private FirebaseAuth auth;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ref = new Firebase("https://mobileone.firebaseio.com/");
+        auth = new FirebaseAuth();
     }
 
     @Override
@@ -69,18 +66,6 @@ public class RegisterFragment extends Fragment {
         editTexts.put("naam", naamEditText);
         voornaamEditText = (EditText)view.findViewById(R.id.voornNaamEditText);
         editTexts.put("voornaam",voornaamEditText);
-        straatEditText = (EditText)view.findViewById(R.id.straatEditText);
-        editTexts.put("straat",straatEditText);
-        nummerEditText = (EditText)view.findViewById(R.id.nummerEditText);
-        editTexts.put("nummer",nummerEditText);
-        gemeenteEditText = (EditText)view.findViewById(R.id.gemeenteEditText);
-        editTexts.put("gemeente",gemeenteEditText);
-        postCodeEditText = (EditText)view.findViewById(R.id.postcodeEditText);
-        editTexts.put("postcode",postCodeEditText);
-        telnrEditText = (EditText)view.findViewById(R.id.telefoonEditText);
-        editTexts.put("telnr",telnrEditText);
-        gsmEditText = (EditText)view.findViewById(R.id.gsmEditText);
-        editTexts.put("gsm",gsmEditText);
         emailEditText = (EditText)view.findViewById(R.id.emailEditTextRegis);
         editTexts.put("e-mail",emailEditText);
         paswoordEditText = (EditText)view.findViewById(R.id.passwordEditText);
@@ -88,11 +73,30 @@ public class RegisterFragment extends Fragment {
         paswoord2EditText = (EditText)view.findViewById(R.id.passwordReEditText);
         editTexts.put("herhaal paswoord",paswoord2EditText);
         cancelButton = (Button)view.findViewById(R.id.cancelButton);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onDestroyView();
+            }
+        });
         registerButton = (Button)view.findViewById(R.id.registerButtonReg);
+        foutText = (EditText)view.findViewById(R.id.foutText);
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                registerButton.setTextColor(getResources().getColor(R.color.list_background_pressed));
+
+                if(foutGegevens())
+                {
                     createUser();
+                }
+
+                else
+                {
+                    setFoutText();
+                }
+
+
             }
         });
         return view;
@@ -101,122 +105,52 @@ public class RegisterFragment extends Fragment {
     {
         return paswoordEditText.getText().toString().equals(paswoord2EditText.getText().toString());
     }
-
+    private ArrayList<String> foutM;
     private boolean foutGegevens()
     {
-        ArrayList<String> foutM = new ArrayList<String>();
-        ArrayList<String> goed = new ArrayList<String>();
-        for(Map.Entry<String, EditText> entry : editTexts.entrySet())
-        {
-            if(entry.getValue().getText().toString().isEmpty())
-            {
+        foutM = new ArrayList<String>();
+        for(Map.Entry<String, EditText> entry : editTexts.entrySet()) {
+            if (entry.getValue().getText().toString().isEmpty()) {
 
-                if(entry.getKey() == "gsm" || entry.getKey() == "telnr")
-                {
-                    if(goed.contains("telnr") || goed.contains("gsm"))
-                    {
-
-                    }
-
-
-
-                        foutM.add(entry.getKey());
-
-                }
-
-
-
-                foutM.add(entry.getKey());
+                foutM.add(entry.getKey()+" mag niet leeg zijn");
             }
-            else if(entry.getKey() == "e-mail")
-            {
-                String email = entry.getValue().getText().toString();
-                if(email.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                    + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"))
-                    {
+            if (!passwoordVergelijking()) {
+                foutM.add("Paswoorden komen niet overeen.");
 
-                    }
-                else
-                {
-
-                    foutM.add(entry.getKey());
-                }
+                paswoordEditText.setText("");
+                paswoord2EditText.setText("");
             }
-            else if(entry.getKey() == "postcode")
-            {
-                int p = Integer.valueOf(entry.getValue().getText().toString());
-                if(p<1000 || p>9999)
-                {
-
-
-                    foutM.add(entry.getKey());
-                }
-                else
-                {
-                    goed.add(entry.getKey());
-                }
-            }
-            goed.add(entry.getKey());
         }
-        if(!passwoordVergelijking())
-        {
-            foutM.add("Paswoorden komen niet overeen.");
-
-
-            paswoordEditText.setText("");
-            paswoord2EditText.setText("");
-        }
-
-        return foutM.isEmpty();
+            return foutM.size()==0;
     }
 
     private Ouder getOuder()
     {
         Ouder ouder = new Ouder(emailEditText.getText().toString(),paswoordEditText.getText().toString(),naamEditText.getText().toString(),voornaamEditText.getText().toString());
-        Adres adres = new Adres(straatEditText.getText().toString(),
-                Integer.valueOf(nummerEditText.getText().toString()),
-                Integer.valueOf(postCodeEditText.getText().toString()),
-                gemeenteEditText.getText().toString());
-        Contact contact = new Contact(adres,telnrEditText.getText().toString(),emailEditText.getText().toString());
-        ouder.setContact(contact);
+
         return ouder;
     }
 
     private void createUser(){
 
-       final Ouder ouder = getOuder();
-        if(ref == null)
-        {
-            ref = new Firebase("https://mobileone.firebaseio.com/");
-        }
-        ref.createUser(ouder.getEmail(),ouder.getPassword(),new Firebase.ResultHandler(){
+        Ouder ouder = getOuder();
 
-
-            @Override
-            public void onSuccess() {
-                ref.authWithPassword(ouder.getEmail(),ouder.getPassword(), new Firebase.AuthResultHandler() {
-                    @Override
-                    public void onAuthenticated(AuthData authData) {
-                        Map<String,String>map = ouder.ouderToHashMap();
-                        map.put("provider",authData.getProvider());
-                        ref.child("profile").child(authData.getUid()).setValue(map);
-                        Log.d("Auth",authData.getUid() + " "+ouder.getFirstName()+" werd toegevoegd");
-                    }
-
-                    @Override
-                    public void onAuthenticationError(FirebaseError firebaseError) {
-                        Log.d("Firebase",firebaseError.getMessage());
-                    }
-                });
-            }
-
-            @Override
-            public void onError(FirebaseError firebaseError) {
-                Log.d("Firebase",firebaseError.getMessage());
-            }
-        });
+        auth.registerUser(ouder.getEmail(),ouder.getPassword());
+        auth.createUserProfileName(ouder);
 
     }
+    private void setFoutText()
+    {
+        String fout = "";
+        for(String s : foutM)
+        {
+            fout += s;
+            fout += "\n";
+        }
+        foutText.setText(fout);
+    }
+
+
 
 
 

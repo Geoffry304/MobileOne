@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.steven.joetzandroid.R;
+import com.example.steven.joetzandroid.firebase.FirebaseAuth;
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
@@ -39,8 +41,8 @@ public class LoginFragment extends Fragment {
     private TextView txtViewSucces;
     private Button loginButton;
     private Button registerButton;
-
-    private Firebase fireRef;
+    private final String TAG = "LoginFragment";
+    private FirebaseAuth fire;
     private Session.StatusCallback callback = new Session.StatusCallback() {
         @Override
         public void call(Session session, SessionState state, Exception exception) {
@@ -55,8 +57,7 @@ public class LoginFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        fireRef.setAndroidContext(this.getActivity());
-        fireRef = new Firebase("https://mobileone.firebaseio.com/");
+        fire = new FirebaseAuth();
         uiHelper = new UiLifecycleHelper(getActivity(),callback);
         uiHelper.onCreate(savedInstanceState);
     }
@@ -92,6 +93,8 @@ public class LoginFragment extends Fragment {
     private void onFacebookSessionStateChange(final Session session, SessionState state, Exception exception)
     {
 
+        fire.loginWithFacebook(session,state,exception);
+/*
         if(state.isOpened())
         {
             fireRef.authWithOAuthToken("facebook",session.getAccessToken(),new Firebase.AuthResultHandler() {
@@ -116,9 +119,24 @@ public class LoginFragment extends Fragment {
 
 
         }
+        */
     }
     public void logIn()
     {
+        if (!emailEditTextEmpty() && !passwordEditTextEmpty())
+        {
+            String email = getEmailText();
+            String password = getPasswordText();
+            if(fire.logIn(email,password))
+            {
+                Log.d(TAG,"Success");
+            }
+            else
+            {
+                Log.d(TAG,"Not success");
+            }
+        }
+        /*
         if(!emailEditTextEmpty() && !passwordEditTextEmpty())
         {
             final String email = getEmailText();
@@ -141,6 +159,7 @@ public class LoginFragment extends Fragment {
 
             );
         }
+        */
 
     }
     public void registreer()
