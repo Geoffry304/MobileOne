@@ -1,171 +1,190 @@
-<form class="form-horizontal" ng-submit="maakVakantie()"><fieldset>
-<legend>Kamp toevoegen</legend>
+<h2 ng-show='!admin(user.profile.role_value)'>U bent eigenlijk niet toegelaten hier maar voor testredenen laat ik dit open </h2>
+<div id="vakantieContainer" class="container">
+<form class="form-horizontal" role="form" ng-submit="Vakantie()"><fieldset>
+<legend>
+  <h1>Kamp toevoegen 
+    <span class="glyphicon glyphicon-plus"></span>
+  </h1>
+</legend>
 
 <!-- Text input-->
-<div class="control-group">
-  <label class="control-label" for="">Naam</label>
-  <div class="controls">
-    <input ng-model="vakantie.naam" type="text" placeholder="Naam" class="input-xlarge">
+<div class="span1">
+<div class="form-group">
+  <label class="control-label col-sm-2" for="">Naam:</label>
+  <div class="col-sm-6">
+    <input ng-model="vakantie.naam" type="text" placeholder="Naam" class="form-control">
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="control-label col-sm-2" for="">Promotekst:</label>
+  <div class="col-sm-6">
+    <input ng-model="vakantie.promoTekst" type="text" placeholder="Promo tekst" class="form-control">
     
   </div>
 </div>
 
 <!-- Text input-->
-<div class="control-group">
-  <label class="control-label" for="">Promo tekst</label>
-  <div class="controls">
-    <input ng-model="vakantie.promoTekst" type="text" placeholder="Promo tekst" class="input-xlarge">
+<div class="form-group">
+  <label class="control-label col-sm-2" for="">Plaatsnaam:</label>
+  <div class="col-sm-6">
+    <input ng-model="vakantie.plaats.plaatsnaam" type="text" placeholder="Plaatsnaam" class="form-control">
     
   </div>
 </div>
 
 <!-- Text input-->
-<div class="control-group">
-  <label class="control-label" for="">Plaatsnaam</label>
-  <div class="controls">
-    <input ng-model="plaats.plaatsnaam" type="text" placeholder="Plaatsnaam" class="input-xlarge">
+<div class="form-group">
+  <label class="control-label col-sm-2" for="">Telefoonnummer:</label>
+  <div class="col-sm-6">
+    <input ng-model="vakantie.plaats.contact.telNr" type="text" placeholder="Telefoonnummer" class="form-control">
     
   </div>
 </div>
 
 <!-- Text input-->
-<div class="control-group">
-  <label class="control-label" for="">Telefoonnummer</label>
-  <div class="controls">
-    <input ng-model="plaats.contact.telNr" type="text" placeholder="Telefoonnummer" class="input-xlarge">
+<div class="form-group">
+  <label class="control-label col-sm-2" for="">Website:</label>
+  <div class="col-sm-6">
+    <input ng-model="vakantie.plaats.contact.website" type="text" placeholder="Website" class="form-control">
     
   </div>
 </div>
 
 <!-- Text input-->
-<div class="control-group">
-  <label class="control-label" for="">Website</label>
-  <div class="controls">
-    <input ng-model="plaats.contact.website" type="text" placeholder="Website" class="input-xlarge">
+<div class="form-group">
+  <label class="control-label col-sm-2" for="">Straat:</label>
+  <div class="col-sm-4">
+    <input ng-model="vakantie.plaats.contact.adres.straat" type="text" placeholder="Straat" class="form-control">
+    
+  </div>
+
+
+<!-- Text input-->
+  <label class="control-label col-sm-1" for="">Nummer:</label>
+  <div class="col-sm-1">
+    <input ng-model="vakantie.plaats.contact.adres.nr" type="text" placeholder="Nr" class="form-control">
     
   </div>
 </div>
 
 <!-- Text input-->
-<div class="control-group">
-  <label class="control-label" for="">Straat</label>
-  <div class="controls">
-    <input ng-model="plaats.contact.adres.straat" type="text" placeholder="Straat" class="input-xlarge">
+<div class="form-group">
+  <label class="control-label col-sm-2" for="">Postcode:</label>
+  <div class="col-sm-1">
+    <input ng-model="vakantie.plaats.contact.adres.postcode" type="text" placeholder="Postcode" class="form-control">
+    
+  </div>
+
+
+<!-- Text input-->
+
+  <label class="control-label col-sm-1" for="">Gemeente:</label>
+  <div class="col-sm-4">
+    <input ng-model="vakantie.plaats.contact.adres.gemeente" type="text" placeholder="Gemeente" class="form-control">
     
   </div>
 </div>
-
-<!-- Text input-->
-<div class="control-group">
-  <label class="control-label" for="">Nummer</label>
-  <div class="controls">
-    <input ng-model="plaats.contact.adres.nr" type="text" placeholder="Nummer" class="input-xlarge">
-    
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="control-group">
-  <label class="control-label" for="">Postcode</label>
-  <div class="controls">
-    <input ng-model="plaats.contact.adres.postcode" type="text" placeholder="Postcode" class="input-xlarge">
-    
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="control-group">
-  <label class="control-label" for="">Gemeente</label>
-  <div class="controls">
-    <input ng-model="plaats.contact.adres.gemeente" type="text" placeholder="Gemeente" class="input-xlarge">
-    
-  </div>
 </div>
 
 <!-- Select Basic -->
-<div class="control-group">
-  <label class="control-label" for="">Vakantieperiode</label>
-  <div class="controls">
-    <select id="" name="" class="input-xlarge">
-      <option>Zomervakantie</option>
-      <option>Krokusvakantie</option>
-      <option>Herfstvakantie</option>
-    </select>
+<div class="form-group">
+  <label class="control-label col-sm-2" for="">Vakantieperiode:</label>
+  <div class="col-sm-6">
+    <div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+  Selecteer...
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Krokusvakantie</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Zomervakantie</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Herfstvakantie</a></li>
+  </ul>
+</div>
   </div>
 </div>
 
 <!-- Text input-->
-<div class="control-group">
-  <label class="control-label" for="">Vakantieperiode van</label>
-  <div class="controls">
-    <input ng-model="vakantiePeriode.periode.van" type="text" placeholder="DD/MM/JJJJ" class="input-xlarge">
+<div class="form-group">
+  <label class="control-label col-sm-2" for="">Prijs:</label>
+  <div class="col-sm-6">
+    <div class="input-group">
+  <span class="input-group-addon">€</span>
+  <input type="text" class="form-control" placeholder="0.00">
+</div>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="control-label col-sm-2" for="">Vakantieperiode van:</label>
+  <div class="col-sm-2">
+    <input ng-model="vakantie.vakantiePeriode.periode.van" type="text" placeholder="DD/MM/JJJJ" class="form-control">
+    
+  </div>
+
+<!-- Text input-->
+  <label class="control-label col-sm-2" for="">tot:</label>
+  <div class="col-sm-2">
+    <input ng-model="vakantie.vakantiePeriode.periode.tot" type="text" placeholder="DD/MM/JJJJ" class="form-control">
     
   </div>
 </div>
 
 <!-- Text input-->
-<div class="control-group">
-  <label class="control-label" for="">Vakantieperiode tot</label>
-  <div class="controls">
-    <input ng-model="vakantiePeriode.periode.tot" type="text" placeholder="DD/MM/JJJJ" class="input-xlarge">
+<div class="form-group">
+  <label class="control-label col-sm-2" for="">Leeftijdscategorie van:</label>
+  <div class="col-sm-2">
+    <input ng-model="vakantie.leeftijdscategorie.van" type="text" placeholder="" class="form-control">
+    
+  </div>
+
+<!-- Text input-->
+  <label class="control-label col-sm-2" for="">tot:</label>
+  <div class="col-sm-2">
+    <input ng-model="vakantie.leeftijdscategorie.tot" type="text" placeholder="" class="form-control">
     
   </div>
 </div>
 
 <!-- Text input-->
-<div class="control-group">
-  <label class="control-label" for="">Leeftijdscategorie van</label>
-  <div class="controls">
-    <input ng-model="vakantie.leeftijdscategorie.van" type="text" placeholder="" class="input-xlarge">
-    
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="control-group">
-  <label class="control-label" for="">Leeftijdscategorie tot</label>
-  <div class="controls">
-    <input ng-model="vakantie.leeftijdscategorie.tot" type="text" placeholder="" class="input-xlarge">
-    
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="control-group">
-  <label class="control-label" for="">maximum #</label>
-  <div class="controls">
-    <input ng-model="vakantie.maxAantalId" type="text" placeholder="" class="input-xlarge">
+<div class="form-group">
+  <label class="control-label col-sm-2" for="">maximum #:</label>
+  <div class="col-sm-6">
+    <input ng-model="vakantie.maxAantalId" type="text" placeholder="" class="form-control">
     
   </div>
 </div>
 
 <!-- Multiple Checkboxes (inline) -->
-<div class="control-group">
-  <label class="control-label" for=""></label>
-  <div class="controls">
+<div class="form-group">
+  <label class="control-label col-sm-2" for=""></label>
+  <div class="col-sm-6">
     <label class="checkbox inline" for="-0">
-      <input type="checkbox" name="" id="-0" value="bus vervoer">
+      <input type="radio" name="" id="-0" value="bus vervoer">
       bus vervoer
     </label>
     <label class="checkbox inline" for="-1">
-      <input type="checkbox" name="" id="-1" value="eigen vervoer">
+      <input type="radio" name="" id="-1" value="eigen vervoer">
       eigen vervoer
     </label>
     <label class="checkbox inline" for="-2">
-      <input type="checkbox" name="" id="-2" value="fiscaal aftrekbaar">
+      <input type="radio" name="" id="-2" value="fiscaal aftrekbaar">
       fiscaal aftrekbaar
     </label>
   </div>
 </div>
 
 <!-- Button -->
-<div class="control-group">
-  <label class="control-label" for=""></label>
-  <div class="controls">
+<div class="form-group">
+  <label class="control-label col-sm-2" for=""></label>
+  <div class="col-sm-6">
     <button class="btn btn-success">Opslaan</button>
   </div>
 </div>
 
 </fieldset>
 </form>
-
+</div>

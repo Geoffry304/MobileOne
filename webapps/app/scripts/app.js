@@ -66,6 +66,10 @@ app.config(function ($routeProvider) {
       templateUrl: 'views/ToonVakantie.html',
       controller: 'ToonVakantieCtrl'
     })
+    .when('/vakantie/change/:vakantieId', {
+      templateUrl: 'views/vakantie.html',
+      controller: 'VakantieCtrl'
+    })
     .when('/users/:userId', {
       templateUrl: 'views/profile.html',
       controller: 'ProfileCtrl'
@@ -82,6 +86,10 @@ app.config(function ($routeProvider) {
           return Auth.resolveUser();
         }
       }
+    })
+    .when('/beheerderspagina', {
+      templateUrl: 'views/beheerderspagina.html',
+      controller: 'BeheerderCtrl'
     })
     .otherwise({
       redirectTo: '/'

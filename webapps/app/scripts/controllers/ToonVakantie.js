@@ -2,7 +2,7 @@
 
 /*global app:true*/
 
-app.controller('ToonVakantieCtrl', function ($scope, $routeParams, Vakantie, Auth) {
+app.controller('ToonVakantieCtrl', function ($scope, $routeParams, $location, Vakantie, Auth) {
 
   $scope.vakantie = Vakantie.get($routeParams.vakantieId);
   $scope.signedIn = Auth.signedIn;
@@ -12,7 +12,12 @@ app.controller('ToonVakantieCtrl', function ($scope, $routeParams, Vakantie, Aut
   $scope.filter = 'false';
   $scope.error = 'Gebruik gepaste taal!';
 
-    $scope.voegCommentToe = function() {
+  $scope.verwijderVakantie = function() {
+    $location.path('/');
+    return Vakantie.delete($scope.vakantie);
+  };
+
+  $scope.voegCommentToe = function() {
    	$scope.comment.creator = $scope.user.profile.username;
    	if(!filter($scope.comment))
    	{
@@ -24,6 +29,18 @@ app.controller('ToonVakantieCtrl', function ($scope, $routeParams, Vakantie, Aut
   		$scope.filter='true';
   	}
   };
+
+  $scope.toggle_visibility = function(id) {
+  var e = document.getElementById(id);
+  if(e.style.display == 'block')
+     e.style.display = 'none';
+  else
+     e.style.display = 'block';
+  };
+
+  $scope.admin = function(role){
+    return role === '99';
+    };
 
   function filter(comment)
   {
@@ -46,5 +63,5 @@ app.controller('ToonVakantieCtrl', function ($scope, $routeParams, Vakantie, Aut
   	}	
   	}
   	return bool;
-  }
+  };
 });

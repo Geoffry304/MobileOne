@@ -13,6 +13,16 @@ public class Ouder extends User {
     private ArrayList<Kind> kinderen;
     private Contact contact;
     private static final String ROLE = "10";
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public Ouder() {
         kinderen = new ArrayList<Kind>();
 
@@ -93,6 +103,13 @@ public class Ouder extends User {
         ouderMap.put("voornaam",this.getFirstName());
         ouderMap.put("email",this.getEmail());
         ouderMap.put("role_value",ROLE);
+
+        return ouderMap;
+    }
+
+    public HashMap<String, String > ouderContactToHashMap()
+    {
+        HashMap<String,String> ouderMap = new HashMap<String, String>();
         if (contact !=null)
         {
             ouderMap.put("straat" , contact.getAdres().getStraat());
@@ -100,9 +117,13 @@ public class Ouder extends User {
             ouderMap.put("postcode",""+contact.getAdres().getPostcode());
             ouderMap.put("gemeente",contact.getAdres().getGemeente());
             if(contact.getTelnr()!=null)
-            ouderMap.put("telnr",contact.getTelnr());
+             ouderMap.put("telnr",contact.getTelnr());
         }
-
         return ouderMap;
+    }
+
+    @Override
+    public String toString() {
+        return "Ouder : " +getId();
     }
 }

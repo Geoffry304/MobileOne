@@ -20,6 +20,8 @@ import android.widget.TextView;
 import com.example.steven.joetzandroid.Adapters.NavDrawerListAdapter;
 import com.example.steven.joetzandroid.Domain.NavDrawerItem;
 import com.example.steven.joetzandroid.R;
+import com.example.steven.joetzandroid.firebase.FirebaseVakantieRepository;
+import com.firebase.client.Firebase;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -63,6 +65,8 @@ public class StartActivity extends FragmentActivity{
         binnenlandView = (ImageView)findViewById(R.id.binnelandImage);
         inleefView = (ImageView)findViewById(R.id.inleefImage);
         */
+        Firebase.setAndroidContext(this);
+        FirebaseVakantieRepository rep = new FirebaseVakantieRepository();
         setContentView(R.layout.activity_main);
 
         mTitle = mDrawerTitle = getTitle();

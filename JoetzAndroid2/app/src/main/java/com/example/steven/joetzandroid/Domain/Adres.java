@@ -18,12 +18,22 @@ public class Adres {
         this.postcode = postcode;
         this.gemeente = gemeente;
     }
+    public Adres()
+    {
+
+    }
 
     public String getStraat() {
+
         return straat;
     }
 
     public void setStraat(String straat) {
+        if(straat.isEmpty())
+        {
+            this.straat = "";
+        }
+
         this.straat = straat;
     }
 

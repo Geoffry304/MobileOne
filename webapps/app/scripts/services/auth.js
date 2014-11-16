@@ -13,9 +13,22 @@ app.factory('Auth', function ($firebaseSimpleLogin, FIREBASE_URL, $rootScope, $f
 		},
 		createProfile: function (user) {
 			var profile = {
-					username: user.username,
-					md5_hash: user.md5_hash,
+					username: user.displayName,
+					md5_hash: "http://www.gravatar.com/avatar/" + user.md5_hash,
 					role_value: '10'
+			};
+
+			var profileRef = $firebase(ref.child('profile'));
+			return profileRef.$set(user.uid, profile);
+		},
+    	createFbProfile: function (user) {
+			var profile = {
+					username: user.thirdPartyUserData.first_name,
+					md5_hash: user.thirdPartyUserData.picture.data.url,
+					role_value: '10',
+					naam: user.thirdPartyUserData.last_name,
+					voornaam: user.thirdPartyUserData.first_name,
+					gemeente: user.thirdPartyUserData.location.name
 			};
 
 			var profileRef = $firebase(ref.child('profile'));
@@ -23,6 +36,13 @@ app.factory('Auth', function ($firebaseSimpleLogin, FIREBASE_URL, $rootScope, $f
 		},
 		login: function (user) {
       		return auth.$login('password', user);
+    	},
+    	facebookLogin: function(user) {
+    		return auth.$login('facebook', {
+    			rememberMe: true,
+    			scope: 'email,user_likes,user_about_me, user_location'
+    		});
+
     	},
 		logout: function() {
 			$location.path('/');

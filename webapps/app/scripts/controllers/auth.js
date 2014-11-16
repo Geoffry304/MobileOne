@@ -14,21 +14,15 @@ app.controller('AuthCtrl', function($scope, $location, Auth, user) {
 		});
 	};
 
-	/*$scope.loginWithFacebook = function() {
-		/*Auth.login('facebook').then(function(user) {
-			console.log('Logged in as: ' + user.uid);
-		}, function(error) {
-			console.error('Login failed: ' + error);
-		});
-		console.log('click');
-		  Auth.authWithOAuthPopup('facebook', function(error, authData) {
-			if (authData) {
-				console.log(authData.facebook.accessToken);
+	$scope.loginWithFacebook = function() {
+		Auth.facebookLogin().then(function(){
+			if (!Auth.user){
+				Auth.createFbProfile(Auth.user);
 			}
-		}, {
-  		scope: 'email,user_likes'
+			//Auth.createFbProfile(Auth.user);
+			$location.path('/');
 		});
-	};*/
+	}
 
 	$scope.register = function() {
 		Auth.register($scope.user).then(function(user) {

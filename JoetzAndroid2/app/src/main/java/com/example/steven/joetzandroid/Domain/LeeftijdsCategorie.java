@@ -1,5 +1,7 @@
 package com.example.steven.joetzandroid.Domain;
 
+import android.util.Log;
+
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -19,7 +21,9 @@ public class LeeftijdsCategorie {
     }
 
     public LeeftijdsCategorie() {
-        yearNow = Calendar.getInstance().get(Calendar.YEAR);
+       Calendar c = Calendar.getInstance();
+        yearNow = c.get(Calendar.YEAR);
+        Log.d("LEEFTIJD",yearNow+"");
     }
 
     public int getVanGeboorteDatum() {
@@ -37,7 +41,7 @@ public class LeeftijdsCategorie {
     }
 
     public void setTotGeboorteDatum(int totGeboorteDatum) {
-        if(totGeboorteDatum > 1900 && totGeboorteDatum < yearNow)
+
         this.totGeboorteDatum = totGeboorteDatum;
     }
     public int getVanLeeftijd()

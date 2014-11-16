@@ -16,4 +16,8 @@ app.controller('NavCtrl', function ($scope, $location, Post, Auth) {
     });
   };
 
+    $scope.admin = function(role){
+    return role === '99';
+    };
+
 });
