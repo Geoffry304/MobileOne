@@ -16,7 +16,8 @@ var app = angular.module('webappsApp', [
     'ngSanitize',
     'firebase'
   ])
-  .constant('FIREBASE_URL','https://mobileone.firebaseio.com');
+  .constant('FIREBASE_URL','https://mobileone.firebaseio.com')
+  .constant('uiCalendarConfig', {calendars: {}});
 
 app.config(function ($routeProvider) {
     $routeProvider

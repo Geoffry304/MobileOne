@@ -21,10 +21,10 @@ app.controller('InschrijvingCtrl', function ($scope, $location, Inschrijving, Pr
 				for (var i = 0; i < $scope.inschrijving.aantal; i += 1){
 					$scope.kinderen.push({naam: '', voornaam: ''});
 				}
-				
+				$scope.voegToe = 'inschrijving doorsturen';
 			}
 		}
-		else {
+		else if ($scope.voegToe === 'inschrijving doorsturen') {
 			$scope.inschrijving.creator = $scope.user.profile.username;
 			$scope.inschrijving.creatorUID = $scope.user.uid;
 			for (var teller = 0; teller < $scope.kinderen.length; teller += 1){
@@ -33,10 +33,6 @@ app.controller('InschrijvingCtrl', function ($scope, $location, Inschrijving, Pr
 			Inschrijving.create($scope.inschrijving).then(function (ref){
 				$scope.alerts.push({ type: 'success', msg: 'Well done! You successfully read this important alert message.' });
 			});
-		}
-
-		if ($scope.voegToe === 'Voeg toe') {
-			$scope.voegToe = 'inschrijving doorsturen';
 		}
 	};
 	$scope.schrijfKindIn = function(teller){
