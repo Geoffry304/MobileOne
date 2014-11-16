@@ -8,19 +8,20 @@ app.controller('InschrijvingCtrl', function ($scope, $location, Inschrijving, Pr
 	$scope.user = Auth.user;
 	$scope.voegToe = 'Voeg toe';
 	$scope.kinderen = [];
-
+	$scope.mijnKinderen = [];
 	$scope.submitInschrijving = function ()
 	{
 		if ($scope.voegToe === 'Voeg toe') {
 			if ($scope.inschrijving.aantal <= 0 || $scope.inschrijving.aantal >= 11){
 				$scope.alerts = [];
 				$scope.alerts.push({ type: 'error', msg: 'een verkeerd aantal toegevoegd.' });
+				$scope.mijnKinderen = Auth.user.profile.getKinderen(Auth.user.uid);
 			}
 			else{
 				for (var i = 0; i < $scope.inschrijving.aantal; i += 1){
 					$scope.kinderen.push({naam: '', voornaam: ''});
 				}
-				$scope.voegToe = 'inschrijving doorsturen';
+				
 			}
 		}
 		else {
@@ -32,6 +33,10 @@ app.controller('InschrijvingCtrl', function ($scope, $location, Inschrijving, Pr
 			Inschrijving.create($scope.inschrijving).then(function (ref){
 				$scope.alerts.push({ type: 'success', msg: 'Well done! You successfully read this important alert message.' });
 			});
+		}
+
+		if ($scope.voegToe === 'Voeg toe') {
+			$scope.voegToe = 'inschrijving doorsturen';
 		}
 	};
 	$scope.schrijfKindIn = function(teller){

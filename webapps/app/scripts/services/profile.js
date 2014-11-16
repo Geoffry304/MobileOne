@@ -25,6 +25,9 @@ app.factory('Profile', function($window, FIREBASE_URL, $firebase, Post, $q, $loc
 			var kindRef = $firebase(ref.child('profile').child(userId).child('kinderen').child(kind.rijksregisternummer)).$asArray();
 			return kindRef.$add(kind);
 		},
+		getKinderen: function(userId){
+			return $firebase(ref.child('kinderen').child(userId)).$asArray();
+		},
 		getInschrijvingen: function(userId) {
 	      var defer = $q.defer();
 
