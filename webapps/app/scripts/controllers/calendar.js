@@ -11,7 +11,7 @@ app.controller('uiCalendarCtrl', ['$scope', '$timeout', '$locale', function($sco
             var wrapper;
 
             if (functionToWrap){
-                wrapper = function(){
+              wrapper = function(){
                     // This happens outside of angular context so we need to wrap it in a timeout which has an implied apply.
                     // In this way the function will be safely executed on the next digest.
 
@@ -20,24 +20,24 @@ app.controller('uiCalendarCtrl', ['$scope', '$timeout', '$locale', function($sco
                     $timeout(function(){
                       functionToWrap.apply(_this, args);
                     });
-                };
+                  };
             }
 
             return wrapper;
-        };
+          };
 
     this.eventsFingerprint = function(e) {
       if (!e._id) {
         e._id = eventSerialId++;
       }
       // This extracts all the information we need from the event. http://jsperf.com/angular-calendar-events-fingerprint/3
-      return "" + e._id + (e.id || '') + (e.title || '') + (e.url || '') + (+e.start || '') + (+e.end || '') +
+      return '' + e._id + (e.id || '') + (e.title || '') + (e.url || '') + (+e.start || '') + (+e.end || '') +
         (e.allDay || '') + (e.className || '') + extraEventSignature(e) || '';
     };
 
     this.sourcesFingerprint = function(source) {
         return source.__id || (source.__id = sourceSerialId++);
-    };
+      };
 
     this.allEvents = function() {
       // return sources.flatten(); but we don't have flatten
@@ -52,7 +52,7 @@ app.controller('uiCalendarCtrl', ['$scope', '$timeout', '$locale', function($sco
           var extEvent = {};
           for(var key in source){
             if(key !== '_uiCalId' && key !== 'events'){
-               extEvent[key] = source[key];
+              extEvent[key] = source[key];
             }
           }
           for(var eI = 0;eI < source.events.length;eI++){
@@ -154,121 +154,27 @@ app.controller('uiCalendarCtrl', ['$scope', '$timeout', '$locale', function($sco
         });
 
         return config;
-    };
-
-  this.getLocaleConfig = function(fullCalendarConfig) {
-    if (!fullCalendarConfig.lang || fullCalendarConfig.useNgLocale) {
+      };
+    this.getLocaleConfig = function(fullCalendarConfig) {
+      if (!fullCalendarConfig.lang || fullCalendarConfig.useNgLocale) {
       // Configure to use locale names by default
-      var tValues = function(data) {
+        var tValues = function(data) {
         // convert {0: "Jan", 1: "Feb", ...} to ["Jan", "Feb", ...]
-        var r, k;
-        r = [];
-        for (k in data) {
-          r[k] = data[k];
-        }
-        return r;
-      };
-      var dtf = $locale.DATETIME_FORMATS;
-      return {
-        monthNames: tValues(dtf.MONTH),
-        monthNamesShort: tValues(dtf.SHORTMONTH),
-        dayNames: tValues(dtf.DAY),
-        dayNamesShort: tValues(dtf.SHORTDAY)
-      };
-    }
-    return {};
-  };
-  }])
-  .directive('uiCalendar', ['uiCalendarConfig', function(uiCalendarConfig) {
-  return {
-    restrict: 'A',
-    scope: {eventSources:'=ngModel',calendarWatchEvent: '&'},
-    controller: 'uiCalendarCtrl',
-    link: function(scope, elm, attrs, controller) {
-
-      var sources = scope.eventSources,
-          sourcesChanged = false,
-          calendar,
-          eventSourcesWatcher = controller.changeWatcher(sources, controller.sourcesFingerprint),
-          eventsWatcher = controller.changeWatcher(controller.allEvents, controller.eventsFingerprint),
-          options = null;
-
-      function getOptions(){
-        var calendarSettings = attrs.uiCalendar ? scope.$parent.$eval(attrs.uiCalendar) : {},
-            fullCalendarConfig;
-
-        fullCalendarConfig = controller.getFullCalendarConfig(calendarSettings, uiCalendarConfig);
-
-        var localeFullCalendarConfig = controller.getLocaleConfig(fullCalendarConfig);
-        angular.extend(localeFullCalendarConfig, fullCalendarConfig);
-        options = { eventSources: sources };
-        angular.extend(options, localeFullCalendarConfig);
-        //remove calendars from options
-        options.calendars = null;
-
-        var options2 = {};
-        for(var o in options){
-          if(o !== 'eventSources'){
-            options2[o] = options[o];
+          var r, k;
+          r = [];
+          for (k in data) {
+            r[k] = data[k];
           }
-        }
-        return JSON.stringify(options2);
+          return r;
+        };
+        var dtf = $locale.DATETIME_FORMATS;
+        return {
+          monthNames: tValues(dtf.MONTH),
+          monthNamesShort: tValues(dtf.SHORTMONTH),
+          dayNames: tValues(dtf.DAY),
+          dayNamesShort: tValues(dtf.SHORTDAY)
+        };
       }
-
-      scope.destroy = function(){
-        if(calendar && calendar.fullCalendar){
-          calendar.fullCalendar('destroy');
-        }
-        if(attrs.calendar) {
-          calendar = uiCalendarConfig.calendars[attrs.calendar] = $(elm).html('');
-        } else {
-          calendar = $(elm).html('');
-        }
-      };
-
-      scope.init = function(){
-        calendar.fullCalendar(options);
-      };
-
-      eventSourcesWatcher.onAdded = function(source) {
-          calendar.fullCalendar('addEventSource', source);
-          sourcesChanged = true;
-      };
-
-      eventSourcesWatcher.onRemoved = function(source) {
-        calendar.fullCalendar('removeEventSource', source);
-        sourcesChanged = true;
-      };
-
-      eventsWatcher.onAdded = function(event) {
-        calendar.fullCalendar('renderEvent', event);
-      };
-
-      eventsWatcher.onRemoved = function(event) {
-        calendar.fullCalendar('removeEvents', function(e) { 
-          return e._id === event._id;
-        });
-      };
-
-      eventsWatcher.onChanged = function(event) {
-        event._start = $.fullCalendar.moment(event.start);
-        event._end = $.fullCalendar.moment(event.end);
-        calendar.fullCalendar('updateEvent', event);
-      };
-
-      eventSourcesWatcher.subscribe(scope);
-      eventsWatcher.subscribe(scope, function(newTokens, oldTokens) {
-        if (sourcesChanged === true) {
-          sourcesChanged = false;
-          // prevent incremental updates in this case
-          return false;
-        }
-      });
-
-      scope.$watch(getOptions, function(newO,oldO){
-          scope.destroy();
-          scope.init();
-        });
-    }
-  };
-}]);
+      return {};
+    };
+  }]);
