@@ -22,7 +22,7 @@
     <p>{{vakantie.plaats.contact.telNr}} </p>
     <label for="Website">Website:</label>
     <br>
-    <p><a href={{vakantie.plaats.contact.website}} rel="external">{{vakantie.plaats.contact.website}}</a> </p>
+    <p><a href={{vakantie.plaats.contact.website}} target="blank">{{vakantie.plaats.contact.website}}</a> </p>
     <label for="Adres">Adres:</label>
     <br>
     <p>{{vakantie.plaats.contact.adres.straat}} nr. {{vakantie.plaats.contact.adres.nr}} {{vakantie.plaats.contact.adres.gemeente}} {{vakantie.plaats.contact.adres.postcode}} </p>
@@ -37,16 +37,16 @@
     <p> {{vakantie.maxAantalId}} </p>
     <label for="Bus">Bus:</label>
     <br>
-    <p ng-if="vakantie.busVervoer === 'true'"> Ja </p>
-    <p ng-if="vakantie.busVervoer !== 'true'"> Nee </p>
+    <p ng-if="vakantie.busVervoer === true"> Ja </p>
+    <p ng-if="vakantie.busVervoer !== true"> Nee </p>
     <label for="Eigen">Eigen vervoer:</label>
     <br>
-    <p ng-if="vakantie.eigenVervoer === 'true'"> Ja </p>
-    <p ng-if="vakantie.eigenVervoer !== 'true'"> Nee </p>
+    <p ng-if="vakantie.eigenVervoer === true"> Ja </p>
+    <p ng-if="vakantie.eigenVervoer !== true"> Nee </p>
     <label for="Fiscaal">Fiscaal aftrekbaar:</label>
     <br>
-    <p ng-if="vakantie.fiscaalAftrek === 'true'"> Ja </p>
-    <p ng-if="vakantie.fiscaalAftrek !== 'true'"> Nee </p>
+    <p ng-if="vakantie.fiscaalAftrek === true"> Ja </p>
+    <p ng-if="vakantie.fiscaalAftrek !== true"> Nee </p>
 </div>
 <button ng-show="signedIn()" type="submit" class="btn btn-default btn-block">Schrijf in</button>
 <h5 ng-show="!signedIn()" class="transparantmessage"> Log in om in te schrijven voor een vakantie en om comments te zien</h5>

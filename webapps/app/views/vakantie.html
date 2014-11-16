@@ -1,6 +1,6 @@
 <h2 ng-show='!admin(user.profile.role_value)'>U bent eigenlijk niet toegelaten hier maar voor testredenen laat ik dit open </h2>
 <div id="vakantieContainer" class="container">
-<form class="form-horizontal" role="form" ng-submit="Vakantie()"><fieldset>
+<form name="form" class="form-horizontal" role="form" novalidate ng-submit="Vakantie()"><fieldset>
 <legend>
   <h1>Kamp toevoegen 
     <span class="glyphicon glyphicon-plus"></span>
@@ -12,7 +12,15 @@
 <div class="form-group">
   <label class="control-label col-sm-2" for="">Naam:</label>
   <div class="col-sm-6">
-    <input ng-model="vakantie.naam" type="text" placeholder="Naam" class="form-control">
+    <input name="Naam" ng-model="vakantie.naam" type="text" placeholder="Naam" class="form-control" ng-minlength="3" required>
+    <div ng-show="form.Naam.$invalid && form.Naam.$dirty">
+      <p ng-show="form.Naam.$error.required">
+        De naam is verplicht.
+      </p>
+      <p ng-show="form.Naam.$error.minlength">
+        De naam moet uit minimum 3 karakters bestaan.
+      </p>
+    </div>
   </div>
 </div>
 
@@ -20,8 +28,18 @@
 <div class="form-group">
   <label class="control-label col-sm-2" for="">Promotekst:</label>
   <div class="col-sm-6">
-    <input ng-model="vakantie.promoTekst" type="text" placeholder="Promo tekst" class="form-control">
-    
+    <input name="promotekst" ng-model="vakantie.promoTekst" type="text" placeholder="Promo tekst" class="form-control" required ng-minlength="3" ng-maxlength="200">
+    <div ng-show="form.promotekst.$invalid && form.promotekst.$dirty">
+      <p ng-show="form.promotekst.$error.required">
+        De promotekst is verplicht.
+      </p>
+      <p ng-show="form.promotekst.$error.minlength">
+        De promotekst moet uit minimum 3 karakters bestaan.
+      </p>
+      <p ng-show="form.promotekst.$error.maxlength">
+        De promotekst mag maar maximum 200 karakters bevatten.
+      </p>
+    </div>
   </div>
 </div>
 
@@ -29,8 +47,36 @@
 <div class="form-group">
   <label class="control-label col-sm-2" for="">Plaatsnaam:</label>
   <div class="col-sm-6">
-    <input ng-model="vakantie.plaats.plaatsnaam" type="text" placeholder="Plaatsnaam" class="form-control">
-    
+    <input name="plaatsnaam" ng-model="vakantie.plaats.plaatsnaam" type="text" placeholder="Plaatsnaam" class="form-control" required ng-minlength="3" ng-maxlength="50">
+    <div ng-show="form.plaatsnaam.$invalid && form.plaatsnaam.$dirty">
+      <p ng-show="form.plaatsnaam.$error.required">
+        De plaatsnaam is verplicht.
+      </p>
+      <p ng-show="form.plaatsnaam.$error.minlength">
+        De plaatsnaam moet uit minimum 3 karakters bestaan.
+      </p>
+      <p ng-show="form.plaatsnaam.$error.maxlength">
+        De plaatsnaam mag maar maximum 50 karakters bevatten.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="control-label col-sm-2" for="">Thema:</label>
+  <div class="col-sm-6">
+    <input name="thema" ng-model="vakantie.thema" type="text" placeholder="Thema" class="form-control" required ng-minlength="3" ng-maxlength="50">
+    <div ng-show="form.thema.$invalid && form.thema.$dirty">
+      <p ng-show="form.thema.$error.required">
+        Het thema is verplicht.
+      </p>
+      <p ng-show="form.thema.$error.minlength">
+        Het thema moet uit minimum 3 karakters bestaan.
+      </p>
+      <p ng-show="form.thema.$error.maxlength">
+        Het thema mag maar maximum 50 karakters bevatten.
+      </p>
+    </div>
   </div>
 </div>
 
@@ -38,8 +84,15 @@
 <div class="form-group">
   <label class="control-label col-sm-2" for="">Telefoonnummer:</label>
   <div class="col-sm-6">
-    <input ng-model="vakantie.plaats.contact.telNr" type="text" placeholder="Telefoonnummer" class="form-control">
-    
+    <input name="telefoon" ng-model="vakantie.plaats.contact.telNr" type="text" placeholder="Telefoonnummer" class="form-control" required ng-pattern="/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{3})/" ng-maxlength="9">
+    <div ng-show="form.telefoon.$invalid && form.telefoon.$dirty">
+      <p ng-show="form.telefoon.$error.required">
+        Een telefoonnummer is verplicht.
+      </p>
+      <p ng-show="form.telefoon.$error.pattern || form.telefoon.$error.maxlength">
+        Dit is geen geldig telefoonnummer.
+      </p>
+    </div>
   </div>
 </div>
 
@@ -47,8 +100,15 @@
 <div class="form-group">
   <label class="control-label col-sm-2" for="">Website:</label>
   <div class="col-sm-6">
-    <input ng-model="vakantie.plaats.contact.website" type="text" placeholder="Website" class="form-control">
-    
+    <input name="website" ng-model="vakantie.plaats.contact.website" type="text" placeholder="https://www.website.be" class="form-control" required ng-pattern="/^(https?:\/\/)(www)\.([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/">
+    <div ng-show="form.website.$invalid && form.website.$dirty">
+      <p ng-show="form.website.$error.required">
+        Een website is verplicht.
+      </p>
+      <p ng-show="form.website.$error.pattern">
+        Dit is geen geldige url.
+      </p>
+    </div>
   </div>
 </div>
 
@@ -56,25 +116,44 @@
 <div class="form-group">
   <label class="control-label col-sm-2" for="">Straat:</label>
   <div class="col-sm-4">
-    <input ng-model="vakantie.plaats.contact.adres.straat" type="text" placeholder="Straat" class="form-control">
-    
+    <input name="straat" ng-model="vakantie.plaats.contact.adres.straat" type="text" placeholder="Straat" class="form-control" required ng-minlength="3">
+    <div ng-show="form.straat.$invalid && form.straat.$dirty">
+      <p ng-show="form.straat.$error.required">
+        Een straat is verplicht.
+      </p>
+      <p ng-show="form.straat.$error.minlength">
+        De straat moet minstens uit 3 karakters bestaan.
+      </p>
+    </div>
   </div>
 
 
 <!-- Text input-->
   <label class="control-label col-sm-1" for="">Nummer:</label>
   <div class="col-sm-1">
-    <input ng-model="vakantie.plaats.contact.adres.nr" type="text" placeholder="Nr" class="form-control">
-    
+    <input name="adresnr" ng-model="vakantie.plaats.contact.adres.nr" type="number" placeholder="Nr" class="form-control" required>
+    <div ng-show="form.adresnr.$invalid && form.adresnr.$dirty">
+      <p ng-show="form.adresnr.$error.required">
+        Een adresnummer is verplicht, of dit is geen getal
+      </p>
+    </div>
   </div>
 </div>
+
 
 <!-- Text input-->
 <div class="form-group">
   <label class="control-label col-sm-2" for="">Postcode:</label>
   <div class="col-sm-1">
-    <input ng-model="vakantie.plaats.contact.adres.postcode" type="text" placeholder="Postcode" class="form-control">
-    
+    <input name="postcode" ng-model="vakantie.plaats.contact.adres.postcode" type="text" placeholder="Postcode" class="form-control"required ng-pattern="/\(?([0-9]{4})/">
+    <div ng-show="form.postcode.$invalid && form.postcode.$dirty">
+      <p ng-show="form.postcode.$error.required">
+        Een postcode is verplicht.
+      </p>
+      <p ng-show="form.postcode.$error.pattern">
+        Een postcode moet 4 cijfers lang zijn.
+      </p>
+    </div>
   </div>
 
 
@@ -82,8 +161,15 @@
 
   <label class="control-label col-sm-1" for="">Gemeente:</label>
   <div class="col-sm-4">
-    <input ng-model="vakantie.plaats.contact.adres.gemeente" type="text" placeholder="Gemeente" class="form-control">
-    
+    <input name="gemeente"ng-model="vakantie.plaats.contact.adres.gemeente" type="text" placeholder="Gemeente" class="form-control" required ng-minlength="3">
+    <div ng-show="form.gemeente.$invalid && form.gemeente.$dirty">
+      <p ng-show="form.gemeente.$error.required">
+        Een gemeente is verplicht.
+      </p>
+      <p ng-show="form.gemeente.$error.minlength">
+        De gemeente moet minstens uit 3 karakters bestaan.
+      </p>
+    </div>
   </div>
 </div>
 </div>
@@ -112,24 +198,44 @@
   <div class="col-sm-6">
     <div class="input-group">
   <span class="input-group-addon">€</span>
-  <input type="text" class="form-control" placeholder="0.00">
-</div>
+  <input name="prijs" ng-model="vakantie.prijs"type="text" class="form-control" placeholder="0.00" required>
+  <div ng-show="form.prijs.$invalid && form.prijs.$dirty">
+      <p ng-show="form.prijs.$error.required">
+        Dit veld is verplicht.
+      </p>
   </div>
+  </div>
+</div>
 </div>
 
 <!-- Text input-->
 <div class="form-group">
   <label class="control-label col-sm-2" for="">Vakantieperiode van:</label>
   <div class="col-sm-2">
-    <input ng-model="vakantie.vakantiePeriode.periode.van" type="text" placeholder="DD/MM/JJJJ" class="form-control">
+    <input name="van" ng-model="vakantie.vakantiePeriode.periode.van" type="date" placeholder="DD/MM/JJJJ" class="form-control" required ng-pattern="/(\d+)(-|\/)(\d+)(?:-|\/)(?:(\d+)\s+(\d+):(\d+)(?::(\d+))?(?:\.(\d+))?)?/">
+    <div ng-show="form.van.$invalid && form.van.$dirty">
+      <p ng-show="form.van.$error.required">
+        Dit veld is verplicht.
+      </p>
+      <p ng-show="form.van.$error.pattern">
+        Ongeldig datumformaat.
+      </p>
+    </div>
     
   </div>
 
 <!-- Text input-->
   <label class="control-label col-sm-2" for="">tot:</label>
   <div class="col-sm-2">
-    <input ng-model="vakantie.vakantiePeriode.periode.tot" type="text" placeholder="DD/MM/JJJJ" class="form-control">
-    
+    <input name="tot" ng-model="vakantie.vakantiePeriode.periode.tot" type="date" placeholder="DD/MM/JJJJ" class="form-control" required ng-pattern="/(\d+)(-|\/)(\d+)(?:-|\/)(?:(\d+)\s+(\d+):(\d+)(?::(\d+))?(?:\.(\d+))?)?/">
+    <div ng-show="form.tot.$invalid && form.tot.$dirty">
+      <p ng-show="form.tot.$error.required">
+        Dit veld is verplicht.
+      </p>
+      <p ng-show="form.tot.$error.pattern">
+        Ongeldig datumformaat.
+      </p>
+    </div>
   </div>
 </div>
 
@@ -137,15 +243,29 @@
 <div class="form-group">
   <label class="control-label col-sm-2" for="">Leeftijdscategorie van:</label>
   <div class="col-sm-2">
-    <input ng-model="vakantie.leeftijdscategorie.van" type="text" placeholder="" class="form-control">
-    
+    <input name="leeftijdvan" ng-model="vakantie.leeftijdscategorie.van" type="text" placeholder="DD/MM/JJJJ" class="form-control" required ng-pattern="/(\d+)(-|\/)(\d+)(?:-|\/)(?:(\d+)\s+(\d+):(\d+)(?::(\d+))?(?:\.(\d+))?)?/">
+    <div ng-show="form.leeftijdvan.$invalid && form.leeftijdvan.$dirty">
+      <p ng-show="form.leeftijdvan.$error.required">
+        Dit veld is verplicht.
+      </p>
+      <p ng-show="form.leeftijdvan.$error.pattern">
+        Ongeldig datumformaat.
+      </p>
+    </div>
   </div>
 
 <!-- Text input-->
   <label class="control-label col-sm-2" for="">tot:</label>
   <div class="col-sm-2">
-    <input ng-model="vakantie.leeftijdscategorie.tot" type="text" placeholder="" class="form-control">
-    
+    <input name="leeftijdtot" ng-model="vakantie.leeftijdscategorie.tot" type="text" placeholder="DD/MM/JJJJ" class="form-control" required ng-pattern="/(\d+)(-|\/)(\d+)(?:-|\/)(?:(\d+)\s+(\d+):(\d+)(?::(\d+))?(?:\.(\d+))?)?/">
+    <div ng-show="form.leeftijdtot.$invalid && form.leeftijdtot.$dirty">
+      <p ng-show="form.leeftijdtot.$error.required">
+        Dit veld is verplicht.
+      </p>
+      <p ng-show="form.leeftijdtot.$error.pattern">
+        Ongeldig datumformaat.
+      </p>
+    </div>
   </div>
 </div>
 
@@ -153,8 +273,12 @@
 <div class="form-group">
   <label class="control-label col-sm-2" for="">maximum #:</label>
   <div class="col-sm-6">
-    <input ng-model="vakantie.maxAantalId" type="text" placeholder="" class="form-control">
-    
+    <input name="max" ng-model="vakantie.maxAantalId" type="number" placeholder="" class="form-control" required>
+    <div ng-show="form.max.$invalid && form.max.$dirty">
+      <p ng-show="form.max.$error.required">
+        Dit veld is verplicht, of dit is geen getal.
+      </p>
+    </div>
   </div>
 </div>
 
@@ -163,15 +287,15 @@
   <label class="control-label col-sm-2" for=""></label>
   <div class="col-sm-6">
     <label class="checkbox inline" for="-0">
-      <input type="radio" name="" id="-0" value="bus vervoer">
+      <input type="checkbox" name="" ng-model="vakantie.busVervoer" id="-0" value="bus vervoer">
       bus vervoer
     </label>
     <label class="checkbox inline" for="-1">
-      <input type="radio" name="" id="-1" value="eigen vervoer">
+      <input type="checkbox" name="" ng-model="vakantie.eigenVervoer" id="-1" value="eigen vervoer">
       eigen vervoer
     </label>
     <label class="checkbox inline" for="-2">
-      <input type="radio" name="" id="-2" value="fiscaal aftrekbaar">
+      <input type="checkbox" name="" ng-model="vakantie.fiscaalAftrek" id="-2" value="fiscaal aftrekbaar">
       fiscaal aftrekbaar
     </label>
   </div>
@@ -181,7 +305,7 @@
 <div class="form-group">
   <label class="control-label col-sm-2" for=""></label>
   <div class="col-sm-6">
-    <button class="btn btn-success">Opslaan</button>
+    <button ng-disabled="form.$invalid" class="btn btn-success">Opslaan</button>
   </div>
 </div>
 

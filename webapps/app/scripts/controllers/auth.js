@@ -22,7 +22,7 @@ app.controller('AuthCtrl', function($scope, $location, Auth, user) {
 			//Auth.createFbProfile(Auth.user);
 			$location.path('/');
 		});
-	}
+	};
 
 	$scope.register = function() {
 		Auth.register($scope.user).then(function(user) {

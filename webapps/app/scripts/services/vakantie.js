@@ -1,6 +1,6 @@
 'use strict';
 /*global app:true*/
-app.factory('Vakantie', function (FIREBASE_URL, $firebase){
+app.factory('Vakantie', function (FIREBASE_URL, $firebase,$location){
 
 	var ref = new Firebase(FIREBASE_URL);
 	var vakanties = $firebase(ref.child('vakanties')).$asArray();
@@ -8,6 +8,7 @@ app.factory('Vakantie', function (FIREBASE_URL, $firebase){
 	var Vakantie = {
     all: vakanties,
     create: function (vakantie) {
+      $location.path('/vakanties');
       return vakanties.$add(vakantie);
     },
     get: function (vakantieId) {
@@ -34,6 +35,7 @@ app.factory('Vakantie', function (FIREBASE_URL, $firebase){
               fiscaalAftrek: vakantie.fiscaalAftrek
         };
         var vakantieRef = $firebase(ref.child('vakanties'));
+        $location.path('/vakanties');
       return vakantieRef.$update(vakantieId, vakantieUpdate);
     },
     getComments: function(vakantieId) {
