@@ -1,8 +1,9 @@
 'use strict';
 /*global app:true*/
-app.controller('MonitorCtrl', function ($scope, $location, Profile, Auth) {
+app.controller('MonitorCtrl', function ($scope, $location, Auth) {
+	$scope.user = Auth.user;
 	$scope.signedIn = Auth.signedIn;
 	$scope.monitor = function(role){
-		return role === '20';
+		return role === '20' || role === '99';
 	};
 });

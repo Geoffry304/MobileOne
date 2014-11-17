@@ -47,6 +47,15 @@ app.config(function ($routeProvider) {
         }
       }
     })
+    .when('/monitor', {
+      templateUrl: 'views/monitor.html',
+      controller: 'MonitorCtrl',
+      resolve: {
+        user: function(Auth){
+          return Auth.resolveUser();
+        }
+      }
+    })
     .when('/about', {
       templateUrl: 'views/about.html',
       controller: 'AboutCtrl'
