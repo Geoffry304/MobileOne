@@ -1,7 +1,7 @@
-<nav class="navbar navbar-default navbar static-top" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top " role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
-  <div>
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
       <span class="sr-only">Toggle navigation</span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
@@ -9,34 +9,48 @@
     </button>
     <a class="navbar-brand" href="#">Mobile One</a>
   </div>
-
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
+<ul ng-controller="NavCtrl" class="nav navbar-nav ">
+        <li><a href="#/vakanties">De Vakanties </a></li>
+        <li><a href="#">Onze kalender</a></li>
+        <li ng-show="admin(user.profile.role_value)">
+        <a href='#/beheerderspagina'>Beheerderspagina </a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Over ons <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="http://www.joetz.be/Pages/WatIsJoetz.aspx" target="blank">Joetz</a></li>
+          </ul>
+      </ul>
   <!-- Collect the nav links, forms, and other content for toggling -->
-  <div ng-controller="NavCtrl" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav navbar-right" >
+  <div ng-controller="NavCtrl" >
+    <ul class="nav navbar-nav navbar-right navbarmargin" >
       <li ng-show="signedIn()">
         <a ng-href="#/users/{{ user.uid }}">
           <img ng-src="{{ user.profile.md5_hash }}" class="nav-pic" />
           {{ user.profile.username}}
         </a>
       </li>
-      <li ng-show="admin(user.profile.role_value)">
-        <a href='#/beheerderspagina'>Beheerderspagina </a>
-      </li>
+
       <li ng-show="signedIn()">
         <a href="#" ng-click="logout()">
-          <button class="btn btn-default navbar-btn" href="#">Logout</button>
+          Logout
+          <!--<button class="btn btn-default navbar-btn" href="#">Logout</button>-->
           </a>
           </li>
           <li ng-hide="signedIn()">
             <a href="#/login">
-              <button class="btn btn-default navbar-btn">Login</button>
+              Login
+              <!--<button class="btn btn-default navbar-btn">Login</button>-->
             </a>
           </li>
           <li ng-hide="signedIn()">
             <a href="#/register">
-              <button class="btn btn-default navbar-btn">Register</button>
+              Register
+              <!--<button class="btn btn-default navbar-btn">Register</button>-->
             </a>
           </li>
         </ul>
-      </div><!-- /.navbar-collapse -->
+      </div>
+    </div><!-- /.navbar-collapse -->
     </nav>
