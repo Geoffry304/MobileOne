@@ -1,15 +1,25 @@
-<div class="auth-forms">
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
-  <h2>Log In</h2>
+<div class="auth-forms">
+  <h2>Inloggen</h2>
 
   <form ng-submit="login()">
-  	<p ng-show="error" class="text-danger">{{error}}</p>
-    <input type="email" ng-model="user.email" placeholder="Email" class="form-control"><br>
-    <input type="password" ng-model="user.password" placeholder="Password" class="form-control"><br>
-    <input type="submit" value="Log in" class="btn btn-primary" />
-
+  	<p ng-show="error" class="alert alert-danger" role="alert">
+  	 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  	{{error}}</p>
+    <input type="email" ng-model="user.email" placeholder="E-mail" class="form-control"><br>
+    <input type="password" ng-model="user.password" placeholder="Paswoord" class="form-control"><br>
+    <button type="submit" value="Log in" class="btn btn-primary btn-block">
+    	<i/>Inloggen
+    </button>
   </form>
-      <input type="submit" value="Login met facebook" class="btn btn-primary" ng-click="loginWithFacebook()"/>
 
+   <button type="submit" style="margin-top: 8px" value="Login met facebook" class="btn btn-block btn-social btn-facebook" ng-click="loginWithFacebook()">
+   <i class="fa fa-facebook"></i> Inloggen met facebook
+   </button>
 
 </div>
