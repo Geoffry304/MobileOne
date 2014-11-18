@@ -1,1 +1,7 @@
 <h2 ng-show='!monitor(user.profile.role_value) || !signedIn()'>U ben hier niet toegelaten</h2>
+<div ng-show='monitor(user.profile.role_value) || signedIn()'>
+	<h2>Kalender<h2>
+	<select ng-model="myColor" ng-options="color.name for color in colors"></select>
+	<h2>Evenement: {{evenementTitel}}</h2>
+
+</div>

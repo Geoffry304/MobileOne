@@ -1,5 +1,6 @@
 'use strict';
-/*global app:true*/
+/*global app:true, $: true*/
+
 app.directive('uiCalendar', ['uiCalendarConfig', function(uiCalendarConfig) {
   return {
     restrict: 'A',

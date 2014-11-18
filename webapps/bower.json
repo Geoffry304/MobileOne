@@ -12,7 +12,8 @@
     "angular-animate": "~1.2.0",
     "angular-touch": "~1.2.0",
     "angular-route": "~1.2.0",
-    "angularfire": "~0.8.2"
+    "angularfire": "~0.8.2",
+    "jssor-slider": ""
   },
   "devDependencies": {
     "angular-mocks": "~1.2.0",

@@ -127,7 +127,7 @@ app.controller('uiCalendarCtrl', ['$scope', '$timeout', '$locale', function($sco
           }
         }
       };
-      return self = {
+      self = {
         subscribe: function(scope, onChanged) {
           scope.$watch(getTokens, function(newTokens, oldTokens) {
             if (!onChanged || onChanged(newTokens, oldTokens) !== false) {
@@ -139,6 +139,8 @@ app.controller('uiCalendarCtrl', ['$scope', '$timeout', '$locale', function($sco
         onChanged: angular.noop,
         onRemoved: angular.noop
       };
+
+      return self;
     };
 
     this.getFullCalendarConfig = function(calendarSettings, uiCalendarConfig){

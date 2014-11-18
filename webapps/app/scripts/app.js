@@ -22,8 +22,8 @@ var app = angular.module('webappsApp', [
 app.config(function ($routeProvider) {
     $routeProvider
     .when('/', {
-      templateUrl: 'views/posts.html',
-      controller: 'PostsCtrl'
+      templateUrl: 'views/homepagina.html',
+      controller: 'HomeCtrl'
     })
     .when('/posts/:postId', {
       templateUrl: 'views/showpost.html',
