@@ -28,7 +28,7 @@ app.factory('Auth', function ($firebaseSimpleLogin, FIREBASE_URL, $rootScope, $f
 					role_value: '10',
 					naam: user.thirdPartyUserData.last_name,
 					voornaam: user.thirdPartyUserData.first_name,
-					gemeente: user.thirdPartyUserData.location.name
+					//gemeente: user.thirdPartyUserData.location.name
 			};
 
 			var profileRef = $firebase(ref.child('profile'));

@@ -16,9 +16,9 @@ app.controller('AuthCtrl', function($scope, $location, Auth, user) {
 
 	$scope.loginWithFacebook = function() {
 		Auth.facebookLogin().then(function(){
-			if (!Auth.user){
+			
 				Auth.createFbProfile(Auth.user);
-			}
+			
 			//Auth.createFbProfile(Auth.user);
 			$location.path('/');
 		});
