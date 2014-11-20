@@ -26,5 +26,6 @@
     <string name="annuleer">Annuleer</string>
     <string name="ok">Ok</string>
     <string name="firebase">https://mobileone.firebaseio.com/</string>
-
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sagittis dolor ac malesuada venenatis. Etiam ac mauris leo. Proin posuere nibh id justo ultricies, placerat fermentum nisi congue. Pellentesque laoreet lorem eros, nec feugiat felis dapibus eget. Pellentesque faucibus lectus ac tellus mollis fringilla. Aliquam efficitur tristique gravida. Nunc a enim et nunc consequat dictum vitae vel turpis. Mauris rutrum imperdiet libero, non feugiat metus sagittis non.
+Donec</string>
 </resources>

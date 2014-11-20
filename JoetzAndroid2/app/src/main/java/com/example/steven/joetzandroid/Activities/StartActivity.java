@@ -5,6 +5,7 @@ import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -28,7 +30,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class StartActivity extends FragmentActivity{
+public class StartActivity extends FragmentActivity implements AdapterView.OnItemClickListener{
 
     private final String TAG = "StartActitivty";
     private ImageView imgJoetz;
@@ -50,7 +52,7 @@ public class StartActivity extends FragmentActivity{
     private NavDrawerListAdapter adapter;
 
     //hasmap die de fragmenten bevat met als key de string die in de lijst staat, later gewoon Fragment openen uit hashmap
-    //private HashMap<String, Fragment> fragmentHashMap;
+    private HashMap<String, Fragment> fragmentHashMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +61,7 @@ public class StartActivity extends FragmentActivity{
         Firebase.setAndroidContext(this);
         //FirebaseVakantieRepository rep = new FirebaseVakantieRepository();
         setContentView(R.layout.activity_main);
-
+        fragmentHashMap = new HashMap<String, Fragment>();
         mTitle = mDrawerTitle = getTitle();
 
 
@@ -71,8 +73,9 @@ public class StartActivity extends FragmentActivity{
         drawerList = (ListView)findViewById(R.id.list_slidermenu);
         navDrawerItems = new ArrayList<NavDrawerItem>();
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[0],navMenuIcons.getResourceId(0,-1)));
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[1],navMenuIcons.getResourceId(1,-1)));
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[2],navMenuIcons.getResourceId(2,-1)));
+        fragmentHashMap.put(navMenuTitles[0], new About());
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[3],navMenuIcons.getResourceId(3,-1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[4],navMenuIcons.getResourceId(4,-1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[5],navMenuIcons.getResourceId(5,-1)));
@@ -83,7 +86,7 @@ public class StartActivity extends FragmentActivity{
 
         adapter = new NavDrawerListAdapter(getApplicationContext(),navDrawerItems);
         drawerList.setAdapter(adapter);
-
+        drawerList.setOnItemClickListener(this);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
 
@@ -103,10 +106,11 @@ public class StartActivity extends FragmentActivity{
 
         };
         drawerLayout.setDrawerListener(drawerToggle);
+
         if(savedInstanceState == null)
         {
-            LoginFragment f = new LoginFragment();
-            getSupportFragmentManager().beginTransaction().add(R.id.frame_container, f).commit();
+            About about = new About();
+            getSupportFragmentManager().beginTransaction().add(R.id.frame_container, about).commit();
         }
     }
 /*
@@ -172,5 +176,17 @@ public class StartActivity extends FragmentActivity{
     public void setTitle(CharSequence title) {
         super.setTitle(title);
         getActionBar().setTitle(mTitle);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+        String item = navDrawerItems.get(i).getTitle();
+        if(fragmentHashMap.containsKey(item))
+        {
+            Fragment f = fragmentHashMap.get(item);
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,f).commit();
+            drawerLayout.closeDrawers();
+        }
     }
 }
