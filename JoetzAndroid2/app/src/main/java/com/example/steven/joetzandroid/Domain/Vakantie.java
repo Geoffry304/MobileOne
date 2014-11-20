@@ -18,8 +18,13 @@ public class Vakantie {
     private String promoTekst;
     private ArrayList<Kind>inschijvingen;
     private ArrayList<Foto>fotos;
-
+    private String naam;
+    private PrijsCategorie  prijsCategorie;
     private String id;
+
+    public Vakantie() {
+
+    }
 
     public String getId() {
         return id;
@@ -29,7 +34,6 @@ public class Vakantie {
         this.id = id;
     }
 
-    private String naam;
 
     public String getNaam() {
         return naam;
@@ -52,7 +56,13 @@ public class Vakantie {
         thema = new Thema();
     }
 
+    public PrijsCategorie getPrijsCategorie() {
+        return prijsCategorie;
+    }
 
+    public void setPrijsCategorie(PrijsCategorie prijsCategorie) {
+        this.prijsCategorie = prijsCategorie;
+    }
 
     public VakantiePeriode getVakantiePeriode() {
         return vakantiePeriode;

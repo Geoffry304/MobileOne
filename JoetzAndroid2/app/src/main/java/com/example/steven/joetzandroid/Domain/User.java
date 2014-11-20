@@ -44,15 +44,17 @@ public class User {
     }
 
     public void setEmail(String email) {
-        if(email.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"))
+
+        if(email != null)
         {
             this.email = email;
         }
         else
         {
-            throw new IllegalArgumentException();
+            this.email = "";
         }
+
+
 
     }
 

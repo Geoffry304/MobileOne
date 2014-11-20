@@ -2,6 +2,8 @@ package com.example.steven.joetzandroid.Domain;
 
 import com.example.steven.joetzandroid.Domain.Adres;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -15,16 +17,26 @@ public class Kind {
     private Date birthDate;
     private String rijksRegisternummer;
     private Ouder ouder;
+    private String id;
 
     public Kind() {
     }
 
-    public Kind(String lastName, String fistName, Adres adres, Date birthDate,Ouder ouder) {
+    public Kind(String id,String lastName, String fistName, Adres adres, Date birthDate,Ouder ouder) {
         this.lastName = lastName;
         this.fistName = fistName;
         this.adres = adres;
         this.birthDate = birthDate;
         this.ouder = ouder;
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getLastName() {
@@ -73,6 +85,11 @@ public class Kind {
             throw new IllegalArgumentException();
         }
 
+    }
+    public String getBirthDateString()
+    {
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        return df.format(birthDate);
     }
     public void setOuder(Ouder ouder)
     {

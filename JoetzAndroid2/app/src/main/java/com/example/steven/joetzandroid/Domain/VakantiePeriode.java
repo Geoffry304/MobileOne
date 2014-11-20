@@ -8,13 +8,26 @@ import java.util.ArrayList;
 public class VakantiePeriode {
 
     private String vakantieNaam;
-    private final int periodeAantal;
     private Periode[] periodes;
+    private int id;
 
-    public VakantiePeriode(String vakantieNaam, int periodeAantal) {
+    public VakantiePeriode()
+    {
+
+    }
+
+    public VakantiePeriode(int id,String vakantieNaam, int periodeAantal) {
         this.vakantieNaam = vakantieNaam;
-        this.periodeAantal = periodeAantal;
         periodes = new Periode[periodeAantal];
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getVakantieNaam() {
@@ -26,7 +39,7 @@ public class VakantiePeriode {
     }
 
     public int getPeriodeAantal() {
-        return periodeAantal;
+        return periodes.length;
     }
 
     public Periode[] getPeriodes() {
@@ -35,7 +48,6 @@ public class VakantiePeriode {
 
     public void setPeriodes(Periode []periodes)
     {
-        if(periodes.length == periodeAantal)
         this.periodes = periodes;
     }
 }

@@ -10,23 +10,33 @@ public class Contact {
     private String email;
     private String website;
     private String info;
+    private int id;
 
     public Contact()
     {
         adres = new Adres();
     }
-    public Contact(Adres adres, String telnr, String email) {
+    public Contact(int id, Adres adres, String telnr, String email) {
         this.adres = adres;
         this.telnr = telnr;
         this.email = email;
+        this.id = id;
     }
 
-    public Contact(Adres adres, String telnr, String email, String website) {
+    public Contact(int id, Adres adres, String telnr, String email, String website) {
         this.adres = adres;
         this.telnr = telnr;
         this.email = email;
         this.website = website;
+        this.id = id;
+    }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Adres getAdres() {

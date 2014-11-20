@@ -11,8 +11,10 @@ public class Adres {
     private String gemeente;
     private double longitude;
     private double latitude;
+    private int id;
 
-    public Adres(String straat, int nummer, int postcode, String gemeente) {
+    public Adres(int id,String straat, int nummer, int postcode, String gemeente) {
+        this.id = id;
         this.straat = straat;
         this.nummer = nummer;
         this.postcode = postcode;
@@ -21,6 +23,14 @@ public class Adres {
     public Adres()
     {
 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getStraat() {

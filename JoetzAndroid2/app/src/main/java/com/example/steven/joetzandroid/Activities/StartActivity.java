@@ -55,18 +55,9 @@ public class StartActivity extends FragmentActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //code weg voor testen van drawer menu
-        //setContentView(R.layout.activity_start);
-        /*imgJoetz = (ImageView)findViewById(R.id.imageView);
-        beschrijvingTxtView = (TextView)findViewById(R.id.beschrijvingTxtView);
 
-        beschrijvingTxtView.setText("Vakanties voor kinderen en jongeren. Provincie West-Vlaanderen");
-
-        binnenlandView = (ImageView)findViewById(R.id.binnelandImage);
-        inleefView = (ImageView)findViewById(R.id.inleefImage);
-        */
         Firebase.setAndroidContext(this);
-        FirebaseVakantieRepository rep = new FirebaseVakantieRepository();
+        //FirebaseVakantieRepository rep = new FirebaseVakantieRepository();
         setContentView(R.layout.activity_main);
 
         mTitle = mDrawerTitle = getTitle();
