@@ -84,7 +84,7 @@
 <div class="form-group">
   <label class="control-label col-sm-2" for="">Telefoonnummer:</label>
   <div class="col-sm-6">
-    <input name="telefoon" ng-model="vakantie.plaats.contact.telNr" type="text" placeholder="Telefoonnummer" class="form-control" required ng-pattern="/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{3})/" ng-maxlength="9">
+    <input name="telefoon" ng-model="vakantie.plaats.contact.telNr" type="tel" placeholder="Telefoonnummer" class="form-control" required ng-pattern="/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{3})/" ng-maxlength="9">
     <div ng-show="form.telefoon.$invalid && form.telefoon.$dirty">
       <p ng-show="form.telefoon.$error.required">
         Een telefoonnummer is verplicht.
@@ -145,13 +145,16 @@
 <div class="form-group">
   <label class="control-label col-sm-2" for="">Postcode:</label>
   <div class="col-sm-1">
-    <input name="postcode" ng-model="vakantie.plaats.contact.adres.postcode" type="text" placeholder="Postcode" class="form-control"required ng-pattern="/\(?([0-9]{4})/">
+    <input name="postcode" ng-model="vakantie.plaats.contact.adres.postcode" type="number" placeholder="Postcode" class="form-control"required ng-pattern="/\(?([0-9]{4})/" ng-maxlength="4">
     <div ng-show="form.postcode.$invalid && form.postcode.$dirty">
       <p ng-show="form.postcode.$error.required">
         Een postcode is verplicht.
       </p>
       <p ng-show="form.postcode.$error.pattern">
         Een postcode moet 4 cijfers lang zijn.
+      </p>
+      <p ng-show="form.postcode.$error.maxlength">
+        Een postcode is maximum 4 cijfers lang.
       </p>
     </div>
   </div>
@@ -198,10 +201,10 @@
   <div class="col-sm-6">
     <div class="input-group">
   <span class="input-group-addon">€</span>
-  <input name="prijs" ng-model="vakantie.prijs"type="text" class="form-control" placeholder="0.00" required>
+  <input name="prijs" ng-model="vakantie.prijs"type="number" class="form-control" placeholder="0.00" required>
   <div ng-show="form.prijs.$invalid && form.prijs.$dirty">
       <p ng-show="form.prijs.$error.required">
-        Dit veld is verplicht.
+        Dit veld is verplicht of is geen getal.
       </p>
   </div>
   </div>
