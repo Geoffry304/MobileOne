@@ -5,7 +5,9 @@ app.controller('VakantieCtrl', function ($scope, $routeParams, $location, Vakant
 $scope.vakanties = Vakantie.all;
 $scope.user = Auth.user;
 //$scope.vakantie = Vakantie.get($routeParams.vakantieId);
-
+$scope.go = function(vakantieId){
+  $location.path('/vakantie/' + vakantieId);
+}
 
 if($routeParams.vakantieId !== undefined)
 {
@@ -13,6 +15,7 @@ if($routeParams.vakantieId !== undefined)
 	$scope.Vakantie = function() {
     return Vakantie.update($routeParams.vakantieId, $scope.vakantie);
   };
+
 }
 else
 {

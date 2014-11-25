@@ -1,5 +1,4 @@
-<div class="bs-example">
-<div class="container">
+<!--<div class="container">
 	<ul class="list-group">
 		<br>
 		<li ng-repeat="vak in vakanties" class="list-group-item">
@@ -9,4 +8,14 @@
 		</li> 
 	</ul>
 </div>
+</div>-->
+<div class="row">
+  <div ng-repeat="vak in vakanties" class="col-sm-6 col-md-4" style="margin-top: 10px;">
+    <div class="thumbnail" style="background-color: #CCCCCC; border-radius: 8px;">
+      <img style="border-radius: 10px; padding: 5px;" src="images/1.jpg" alt="vak.foto moeter staan">
+      <div class="caption">
+        <button class="btn btn-primary btn-block" ng-click="go({{vak.$id}})">{{vak.naam}}</button>
+      </div>
+    </div>
+  </div>
 </div>
