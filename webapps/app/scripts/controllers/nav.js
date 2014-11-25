@@ -2,17 +2,14 @@
 /*global app:true*/
 app.controller('NavCtrl', function ($scope, $location, Post, Auth) {  $scope.signedIn = Auth.signedIn;
   $scope.logout = Auth.logout;
-  $scope.user = Auth.user;
-
-  $scope.submitPost = function () {
-    $scope.post.creator = $scope.user.profile.username;
-    $scope.post.creatorUID = $scope.user.uid;
-    console.log($scope.user.uid);
-    Post.create($scope.post).then(function (ref) {
-      $location.path('/posts/' + ref.name());
-      $scope.post = {url: 'http://', title: ''};
+  $scope.login = function() {
+    console.log('Test');
+    Auth.login($scope.user).then($scope.error = '', function (error) {
+      $scope.error = error.toString();
+      console.log(error.toString());
     });
   };
+  $scope.user = Auth.user;
 
     $scope.admin = function(role){
     return role === '99';
