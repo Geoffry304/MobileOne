@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/bootstrap-social.css">
     <link rel="stylesheet" href="styles/font-awesome.css">
+    <link rel="stylesheet" href="/path/to/ideal-image-slider.css">
+    <link rel="stylesheet" href="/path/to/themes/default/default.css">
     <!-- endbuild -->
 </head>
 <body ng-app="webappsApp">
@@ -25,6 +27,11 @@
       <!-- Add your site or application content here -->
       <div ng-include="'views/nav.html'"></div>
       <div class="container" ng-view=""></div>
+
+    <!-- Add your site or application content here -->
+    <div ng-include="'views/nav.html'"></div>
+    <div class="container-fluid" ng-view=""></div>
+
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -60,9 +67,10 @@
     <script src="bower_components/firebase-simple-login/firebase-simple-login.js"></script>
     <script src="bower_components/mockfirebase/dist/mockfirebase.js"></script>
     <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+    <script src="/path/to/ideal-image-slider.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-    <script src="bower_components/jssor-slider/js/jssor.slider.mini.js"></script>
+    
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
