@@ -1,12 +1,7 @@
-<div >
-	<table>
-		<tbody>
-			<tr>
-				<td ng-repeat="vak in vakanties" class="customlinks"><a ng-href="#/vakantie/{{vak.$id}}">{{vak.naam}} <br ng-show="($index+1)%3==0"> </td>
-				 				 
-   				 <!-- stupid html is stupid -->
-			</tr>
-		</tbody>
-	</table>
-
+<div class="container">
+	<ul class="list-group">
+		<li ng-repeat="vak in vakanties" class="list-group-item">
+			<a class="col-sm-1" ng-href="#/vakantie/{{vak.$id}}">{{vak.naam}} <a ng-href="#/vakantie/{{vak.$id}}">{{vak.thema}} <a class="pull-right" ng-href="#/vakantie/{{vak.$id}}">{{vak.plaats.contact.website}} <br ng-show="($index+1)%3==0"> 
+		</li> 
+	</ul>
 </div>
