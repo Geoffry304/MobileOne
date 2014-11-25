@@ -6,10 +6,23 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
+<<<<<<< HEAD
 .addVak{
   display: inline-block;
   float: right;
 }
+=======
+
+.list-group-item {
+  background : #c0c0c0;
+  color: #000000;
+}
+
+.urlAlignRight {
+  text-align: right;
+}
+
+>>>>>>> origin/master
 .image{
   display: inline-block;
   border: 1px solid transparent;
@@ -211,4 +224,11 @@ body {
 .cmt .author {
   font-size:11px;
   color:#bbb;
+}
+
+#menu1 {
+  background: transparent;
+  padding: 10px;
+  box-shadow: 0 0 30px black;
+
 }

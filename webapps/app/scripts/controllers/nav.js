@@ -18,4 +18,6 @@ app.controller('NavCtrl', function ($scope, $location, Post, Auth) {  $scope.sig
     return role === '99';
     };
 
+    
+
 });
