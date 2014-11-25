@@ -6,7 +6,10 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
-
+.addVak{
+  display: inline-block;
+  float: right;
+}
 .image{
   display: inline-block;
   border: 1px solid transparent;

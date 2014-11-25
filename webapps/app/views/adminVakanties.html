@@ -1,0 +1,14 @@
+<div ng-show='admin(user.profile.role_value)' >
+	<button class="btn btn-success addVak" onClick="window.location.href ='#/admin/vakantie'">Toevoegen</button>
+	<table>
+		<tbody>
+			<tr>
+				<td ng-repeat="vak in vakanties" class="customlinks"><a ng-href="#/vakantie/{{vak.$id}}">{{vak.naam}} </td>
+				 				 
+   				 <!-- stupid html is stupid -->
+			</tr>
+		</tbody>
+	</table>
+
+</div>
+<h2 ng-show='!admin(user.profile.role_value)'>U bent hier niet toegelaten. </h2>

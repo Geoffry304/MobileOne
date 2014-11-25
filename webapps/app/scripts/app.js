@@ -64,7 +64,7 @@ app.config(function ($routeProvider) {
       templateUrl: 'views/vakanties.html',
       controller: 'VakantieCtrl'
     })
-    .when('/vakantie', {
+    .when('/admin/vakantie', {
       templateUrl: 'views/vakantie.html',
       controller: 'VakantieCtrl'
     })
@@ -79,6 +79,10 @@ app.config(function ($routeProvider) {
     .when('/vakantie/change/:vakantieId', {
       templateUrl: 'views/vakantie.html',
       controller: 'VakantieCtrl'
+    })
+    .when('/admin/vakanties', {
+      templateUrl:'views/adminVakanties.html',
+      controller:'VakantieCtrl'
     })
     .when('/users/:userId', {
       templateUrl: 'views/profile.html',
