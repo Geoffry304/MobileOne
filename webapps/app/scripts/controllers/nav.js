@@ -15,6 +15,17 @@ app.controller('NavCtrl', function ($scope, $location, Post, Auth) {  $scope.sig
     return role === '99';
     };
 
+    $scope.loginWithFacebook = function() {
+    console.log('Test fb');
+    Auth.facebookLogin().then(function(){
+      
+        Auth.createFbProfile(Auth.user);
+      
+      //Auth.createFbProfile(Auth.user);
+      $location.path('/');
+    });
+  };
+
     
 
 });

@@ -1,4 +1,5 @@
 <h2>{{vakantie.naam}}</h2>
+<br>
 <button class="btn btn-labeled btn-danger" ng-show ='admin(user.profile.role_value)'ng-click="toggle_visibility('popupBoxOnePosition');"><span class="btn-label"><i class="glyphicon glyphicon-remove"></i></span> Verwijder</button>
 <button class="btn btn-info" ng-show ='admin(user.profile.role_value)' href='#/vakantie/change/{{vakantie.$id}}'>Wijzig</button>
 <br ng-show='admin(user.profile.role_value)'>
@@ -7,114 +8,110 @@
     <tbody>
         <tr>
             <td><label for="Naam">Naam:</label></td>
-            <td><p>{{vakantie.naam}}</p><td>
-            </tr>
-            <tr>
-                <td><label for="Leeftijdscategorie">Leeftijdscategorie:</label><td>
-                    <td><p for="Leeftijdscategorie">Van: {{vakantie.leeftijdscategorie.van}}    Tot: {{vakantie.leeftijdscategorie.tot}}</p></td>
-                </tr>
-                <tr>
-                    <td><label for="Promo tekst">Promo tekst:</label></td>
-                    <td><p>{{vakantie.promoTekst}} </p></td>
-                </tr>
-                <tr>
-                    <td><label for="Plaatsnaam">plaatsnaam:</label></td>
-                    <td><p>{{vakantie.plaats.plaatsnaam}} </p></td>
-                </tr>
-                <tr>
-                    <td><label for="Telefoon">Tel:</label></td>
-                    <td><p>{{vakantie.plaats.contact.telNr}} </p></td>
-                </tr>
-                <tr>
-                    <td><label for="Prijs">Prijs:</label></td>
-                    <td><p>€ {{vakantie.prijs}} </p></td>
-                </tr>
-                <tr>
-                 <td><label for="Website">Website:</label></td>
-                 <td><p><a href={{vakantie.plaats.contact.website}} target="blank">{{vakantie.plaats.contact.website}}</a> </p></td>
-             </tr>
-             <tr>
-                <td><label for="Adres">Adres:</label></td>
-                <td><p>{{vakantie.plaats.contact.adres.straat}} nr. {{vakantie.plaats.contact.adres.nr}} {{vakantie.plaats.contact.adres.gemeente}} {{vakantie.plaats.contact.adres.postcode}} </p></td>
-            </tr>
-            <tr>
-                <td><label for="Vakantieperiode">periode:</label></td>
-                <td><p>Van: {{vakantie.vakantiePeriode.periode.van}} Tot: {{vakantie.vakantiePeriode.periode.tot}}</p></td>
-            </tr>
-            <tr>
-                <td><label for="Maximum">Maximum aantal leden:</label></td>
-                <td><p> {{vakantie.maxAantal}} </p></td>
-            </tr>
-            <tr>
-                <td><label for="Maximum">Maximum aantal leden:</label></td>
-                <td><p> {{vakantie.maxAantalId}} </p></td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="Bus">Bus:</label>
-                </td>
-                <td>
-                    <p ng-if="vakantie.busVervoer === true" style="color:green"> Ja </p>
-                    <p ng-if="vakantie.busVervoer !== true" style="color:red"> Nee </p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="Eigen">Eigen vervoer:</label>
-                </td>
-                <td>
-                    <p ng-if="vakantie.eigenVervoer === true" style="color:green"> Ja </p>
-                    <p ng-if="vakantie.eigenVervoer !== true" style="color:red"> Nee </p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="Fiscaal">Fiscaal aftrekbaar:</label>
-                </td>
-                <td>
-                    <p ng-if="vakantie.fiscaalAftrek === true" style="color:green"> Ja </p>
-                    <p ng-if="vakantie.fiscaalAftrek !== true" style="color:red"> Nee </p>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <button ng-show="signedIn()" type="submit" class="btn btn-success btn-block">Schrijf in</button>
-    <div ng-show="!signedIn()" class="alert alert-danger" role="alert">
-        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-        <h5> Log in om in te schrijven voor een vakantie en om comments te zien.</h5>
-    </div>
+            <td><p>{{vakantie.naam}}</p></td>
+        </tr>
+        <tr>
+            <td><label for="Leeftijdscategorie">Leeftijdscategorie:</label></td>
+            <td><p for="Leeftijdscategorie"><label>Van:</label> {{vakantie.leeftijdscategorie.van}}    <label>Tot:</label> {{vakantie.leeftijdscategorie.tot}}</p></td>
+        </tr>
+        <tr>
+            <td><label for="Promo tekst">Promo tekst:</label></td>
+            <td><p>{{vakantie.promoTekst}} </p></td>
+        </tr>
+        <tr>
+            <td><label for="Plaatsnaam">plaatsnaam:</label></td>
+            <td><p>{{vakantie.plaats.plaatsnaam}} </p></td>
+        </tr>
+        <tr>
+            <td><label for="Telefoon">Tel:</label></td>
+            <td><p>{{vakantie.plaats.contact.telNr}} </p></td>
+        </tr>
+        <tr>
+            <td><label for="Prijs">Prijs:</label></td>
+            <td><p>€ {{vakantie.prijs}} </p></td>
+        </tr>
+        <tr>
+         <td><label for="Website">Website:</label></td>
+         <td><p><a href={{vakantie.plaats.contact.website}} target="blank">{{vakantie.plaats.contact.website}}</a> </p></td>
+     </tr>
+     <tr>
+        <td><label for="Adres">Adres:</label></td>
+        <td><p>{{vakantie.plaats.contact.adres.straat}} nr. {{vakantie.plaats.contact.adres.nr}} {{vakantie.plaats.contact.adres.gemeente}} {{vakantie.plaats.contact.adres.postcode}} </p></td>
+    </tr>
+    <tr>
+        <td><label for="Vakantieperiode">periode:</label></td>
+        <td><p>Van: {{vakantie.vakantiePeriode.periode.van}} Tot: {{vakantie.vakantiePeriode.periode.tot}}</p></td>
+    </tr>
+    <tr>
+        <td><label for="Maximum">Maximum aantal leden:</label></td>
+        <td><p> {{vakantie.maxAantal}} </p></td>
+    </tr>
+    <tr>
+        <td>
+            <label for="Bus">Bus:</label>
+        </td>
+        <td>
+            <p ng-if="vakantie.busVervoer === true" style="color:green"> Ja </p>
+            <p ng-if="vakantie.busVervoer !== true" style="color:red"> Nee </p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label for="Eigen">Eigen vervoer:</label>
+        </td>
+        <td>
+            <p ng-if="vakantie.eigenVervoer === true" style="color:green"> Ja </p>
+            <p ng-if="vakantie.eigenVervoer !== true" style="color:red"> Nee </p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label for="Fiscaal">Fiscaal aftrekbaar:</label>
+        </td>
+        <td>
+            <p ng-if="vakantie.fiscaalAftrek === true" style="color:green"> Ja </p>
+            <p ng-if="vakantie.fiscaalAftrek !== true" style="color:red"> Nee </p>
+        </td>
+    </tr>
+</tbody>
+</table>
+<button ng-show="signedIn()" type="submit" class="btn btn-success btn-block">Schrijf in</button>
+<div ng-show="!signedIn()" class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <h5> Log in om in te schrijven voor een vakantie en om comments te zien.</h5>
+</div>
 
-    <h2>Comments:</h2><br/>
+<h2>Comments:</h2><br/>
 
 
-    <div class="detailBox">
+<div class="detailBox">
     <div class="titleBox">
       <label>Voeg een reactie toe!</label>
-    </div>
-    <div class="commentBox">
-        
-        <p class="taskDescription">Kijk hier naar reacties over dit kamp!</p>
-    </div>
-    <div class="actionBox" >
-        <ul class="commentList" ng-repeat="com in comments">
-            <li>
-                <div class="commenterImage">
-                  <img ng-src="{{ user.profile.md5_hash }}" class="nav-pic" />
-                </div>
-                <div class="commentText">
-                    <p class=""><b>{{com.tekst}}</b></p> <span class="date sub-text">gebruiker: {{com.creator}}</span>
+  </div>
+  <div class="commentBox">
 
-                </div>
-        </ul>
-        <form class="form-inline" role="form">
-            <div class="form-group">
-                <input ng-model="comment.tekst" type="text" placeholder="Uw reactie..." class="form-control"/>
-            </div>
-            <div class="form-group">
-                <button ng-click="voegCommentToe(comment)" type="submit" value="Submit" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></button>
-            </div>
-        </form>
-    </div>
+    <p class="taskDescription">Kijk hier naar reacties over dit kamp!</p>
+</div>
+<div class="actionBox" >
+    <ul class="commentList" ng-repeat="com in comments">
+        <li>
+            <div class="commenterImage">
+              <img ng-src="{{ user.profile.md5_hash }}" class="nav-pic" />
+          </div>
+          <div class="commentText">
+            <p class=""><b>{{com.tekst}}</b></p> <span class="date sub-text">gebruiker: {{com.creator}}</span>
+
+        </div>
+    </ul>
+    <form class="form-inline" role="form">
+        <div class="form-group">
+            <input ng-model="comment.tekst" type="text" placeholder="Uw reactie..." class="form-control"/>
+        </div>
+        <div class="form-group">
+            <button ng-click="voegCommentToe(comment)" type="submit" value="Submit" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></button>
+        </div>
+    </form>
+</div>
 </div>
 
 </div>

@@ -144,7 +144,7 @@
 <!-- Text input-->
 <div class="form-group">
   <label class="control-label col-sm-2" for="">Postcode:</label>
-  <div class="col-sm-1">
+  <div class="col-sm-2">
     <input name="postcode" ng-model="vakantie.plaats.contact.adres.postcode" type="number" placeholder="Postcode" class="form-control"required ng-pattern="/\(?([0-9]{4})/" ng-maxlength="4">
     <div ng-show="form.postcode.$invalid && form.postcode.$dirty">
       <p ng-show="form.postcode.$error.required">
@@ -163,7 +163,7 @@
 <!-- Text input-->
 
   <label class="control-label col-sm-1" for="">Gemeente:</label>
-  <div class="col-sm-4">
+  <div class="col-sm-3">
     <input name="gemeente"ng-model="vakantie.plaats.contact.adres.gemeente" type="text" placeholder="Gemeente" class="form-control" required ng-minlength="3">
     <div ng-show="form.gemeente.$invalid && form.gemeente.$dirty">
       <p ng-show="form.gemeente.$error.required">
