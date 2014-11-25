@@ -8,6 +8,7 @@ app.controller('ToonVakantieCtrl', function ($scope, $routeParams, $location, Va
   $scope.signedIn = Auth.signedIn;
   $scope.comments = Vakantie.getComments($routeParams.vakantieId);
   $scope.comment = {};
+  $scope.creator = {username:'',photo:''};
   $scope.user = Auth.user;
   $scope.filter = 'false';
   $scope.error = 'Gebruik gepaste taal!';
@@ -18,7 +19,9 @@ app.controller('ToonVakantieCtrl', function ($scope, $routeParams, $location, Va
   };
 
   $scope.voegCommentToe = function() {
-   	$scope.comment.creator = $scope.user.profile.username;
+    $scope.creator.username = $scope.user.profile.username;
+    $scope.creator.photo = $scope.user.profile.md5_hash;
+   	$scope.comment.creator = $scope.creator;
    	if(!filter($scope.comment))
    	{
   		Vakantie.comment($scope.comment, $routeParams.vakantieId);

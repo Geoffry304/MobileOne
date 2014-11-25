@@ -96,10 +96,10 @@
     <ul class="commentList" ng-repeat="com in comments">
         <li>
             <div class="commenterImage">
-              <img ng-src="{{ user.profile.md5_hash }}" class="nav-pic" />
+              <img ng-src="{{com.creator.photo}}" class="nav-pic" />
           </div>
           <div class="commentText">
-            <p class=""><b>{{com.tekst}}</b></p> <span class="date sub-text">gebruiker: {{com.creator}}</span>
+            <p class=""><b>{{com.tekst}}</b></p> <span class="date sub-text">gebruiker: {{com.creator.username}}</span>
 
         </div>
     </ul>
