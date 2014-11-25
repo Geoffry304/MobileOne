@@ -1,7 +1,11 @@
+<div class="bs-example">
 <div class="container">
 	<ul class="list-group">
 		<li ng-repeat="vak in vakanties" class="list-group-item">
-			<a class="col-sm-1" ng-href="#/vakantie/{{vak.$id}}">{{vak.naam}} <a ng-href="#/vakantie/{{vak.$id}}">{{vak.thema}} <a class="pull-right" ng-href="#/vakantie/{{vak.$id}}">{{vak.plaats.contact.website}} <br ng-show="($index+1)%3==0"> 
+			<a class="list-group-item-heading" ng-href="#/vakantie/{{vak.$id}}">{{vak.naam}} 
+			<p class="list-group-item-text" ng-href="#/vakantie/{{vak.$id}}">{{vak.promoTekst}} 
+			<p class="list-group-item-text" ng-href="#/vakantie/{{vak.$id}}">{{vak.plaats.contact.website}} <br ng-show="($index+1)%3==0"> 
 		</li> 
 	</ul>
+</div>
 </div>
