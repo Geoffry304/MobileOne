@@ -5,9 +5,7 @@ app.controller('VakantieCtrl', function ($scope, $routeParams, $location, Vakant
 $scope.vakanties = Vakantie.all;
 $scope.user = Auth.user;
 //$scope.vakantie = Vakantie.get($routeParams.vakantieId);
-$scope.go = function(vakantieId){
-  $location.path('/vakantie/' + vakantieId);
-}
+
 
 if($routeParams.vakantieId !== undefined)
 {
@@ -25,6 +23,16 @@ else
     Vakantie.create($scope.vakantie);
   };
 }
+$scope.go = function(vakantieId){
+	if(vakantieId !== undefined)
+	{
+  		$location.path('/vakantie/' + vakantieId);
+  	}
+  	else
+  	{
+  		console.log('got undefined');
+  	}
+};
 	$scope.admin = function(role){
     return role === '99';
     };
