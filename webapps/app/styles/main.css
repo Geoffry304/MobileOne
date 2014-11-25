@@ -6,12 +6,10 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
-<<<<<<< HEAD
 .addVak{
   display: inline-block;
   float: right;
 }
-=======
 
 .list-group-item {
   background : #c0c0c0;
@@ -22,7 +20,6 @@ body {
   text-align: right;
 }
 
->>>>>>> origin/master
 .image{
   display: inline-block;
   border: 1px solid transparent;
@@ -34,6 +31,7 @@ body {
   background-color: rgb(44,169,30);
   text-decoration: none;
   font-size: 2.3em;
+  margin-bottom: 15px;
 }
 
 h2 {
