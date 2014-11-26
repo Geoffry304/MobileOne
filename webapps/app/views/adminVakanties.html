@@ -1,14 +1,15 @@
 <div ng-show='admin(user.profile.role_value)' >
 
 <div class="bs-example">
-<div class="container">
-		<button style="float:right; margin-top: 5px;"class="btn btn-primary" onClick="window.location.href ='#/admin/vakantie'"><span class="glyphicon glyphicon-plus"></span></button>
+<div style="margin-left: 10px;">
+	<button style="float:right; margin-top: 5px;"class="btn btn-primary" onClick="window.location.href ='#/admin/vakantie'"><span class="glyphicon glyphicon-plus"></span></button>
 	<br>
 	<br>
 	<ul class="list-group">
-		<li class="row list-group-item active" style="margin-right: 0px;"> <i class="col-sm-1"> Titel </i><i class="col-sm-1"> Promotekst</i> <i class="col-sm-2 pull-right"> Website</i>
+		<li class="row list-group-item active" style="margin-right: 0px;"> <i class="col-sm-1"> Titel </i><i class="col-sm-1"> Thema</i> <i class="col-sm-2 pull-left"> Website</i>
 		<li ng-repeat="vak in vakanties" class="row list-group-item" style="margin-right: 0px;">
-			<a class="text-primary col-sm-1" ng-href="#/vakantie/{{vak.$id}}">{{vak.naam}} </a> <a class="col-sm-1" ng-href="#/vakantie/{{vak.$id}}">{{vak.thema}} </a> <a class="col-sm-2 pull-right" href={{vak.plaats.contact.website}} target="blank">{{vak.plaats.contact.website}} </a> <br ng-show="($index+1)%3==0"> 
+			<a class="text-primary col-sm-1" ng-href="#/vakantie/{{vak.$id}}">{{vak.naam}} </a> <a class="col-sm-1" ng-href="#/vakantie/{{vak.$id}}">{{vak.thema}} </a> <a class="col-sm-2 pull-left" href={{vak.plaats.contact.website}} target="blank">{{vak.plaats.contact.website}} </a> <br ng-show="($index+1)%3==0"> 
+			<button class="btn btn-labeled btn-danger" ng-show ='admin(user.profile.role_value)'ng-click="toggle_visibility('popupBoxOnePosition');"><span class="btn-label"><i class="glyphicon glyphicon-remove"></i></span> Verwijder</button>
 		</li> 
 	</ul>
 </div>
@@ -16,3 +17,14 @@
 
 </div>
 <h2 ng-show='!admin(user.profile.role_value)'>U bent hier niet toegelaten. </h2>
+
+
+<div id="popupBoxOnePosition">
+    <div class="popupBoxWrapper">
+        <div class="popupBoxContent">
+            <h3>Bevestiging</h3>
+            <p>Bent u zeker dat u deze vakantie wil verwijderen?</p>
+            <a href='#/vakanties' ng-click="verwijderVakantie()">Ja</a> <a href="javascript:void(0)" ng-click="toggle_visibility('popupBoxOnePosition');"> Nee </a>
+        </div>
+    </div>
+</div>
