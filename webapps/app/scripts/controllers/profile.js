@@ -3,6 +3,7 @@
 app.controller('ProfileCtrl', function($scope, $routeParams, Profile) {
 	var uid = $routeParams.userId;
 	$scope.kind = {};
+	$scope.kinderen = Profile.getKinderen(uid);
 	$scope.profile = Profile.get(uid);
 	
 
@@ -12,5 +13,11 @@ app.controller('ProfileCtrl', function($scope, $routeParams, Profile) {
 	};
 	$scope.submitKind = function () {
 		Profile.createKind(uid,$scope.kind);
+		//console.log($scope.kinderen[0]);
+
 	};
+
+
+
+
 });

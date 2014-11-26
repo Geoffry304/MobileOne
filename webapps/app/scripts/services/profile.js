@@ -2,8 +2,10 @@
 /*global app:true*/
 app.factory('Profile', function($window, FIREBASE_URL, $firebase, Post, $q, $location, Inschrijving){
 	var ref = new $window.Firebase(FIREBASE_URL);
+	
 
 	var profile = {
+		all: kinderen,
 		get: function(userId) {
 			return $firebase(ref.child('profile').child(userId)).$asObject();
 		},
@@ -22,11 +24,23 @@ app.factory('Profile', function($window, FIREBASE_URL, $firebase, Post, $q, $loc
 			return profileRef.$update(userId, profileUpdate);
 		},
 		createKind: function(userId, kind){
-			var kindRef = $firebase(ref.child('profile').child(userId).child('kinderen').child(kind.rijksregisternummer)).$asArray();
+			var kindRef = $firebase(ref.child('profile').child(userId).child('kinderen')).$asArray();
 			return kindRef.$add(kind);
 		},
 		getKinderen: function(userId){
-			return $firebase(ref.child('kinderen').child(userId)).$asArray();
+			//var defer = $q.defer();
+
+
+			return $firebase(ref.child('profile').child(userId).child('kinderen'))
+			.$asArray();
+			/*.then(function(data) {
+				var kinderen = {};
+
+				for (var i = 0; i<data.length; i++) {
+					var value = data[i].$value;
+					kinderen[value] = 
+				}
+			});*/
 		},
 		getInschrijvingen: function(userId) {
 	      var defer = $q.defer();

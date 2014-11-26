@@ -32,7 +32,7 @@ app.factory('Auth', function ($firebaseSimpleLogin, FIREBASE_URL, $rootScope, $f
 			};
 
 			var profileRef = $firebase(ref.child('profile'));
-			return profileRef.$set(user.uid, profile);
+			return profileRef.$update(user.uid, profile);
 		},
 		login: function (user) {
       		return auth.$login('password', user);
