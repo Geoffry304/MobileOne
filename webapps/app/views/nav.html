@@ -13,9 +13,6 @@
     <ul ng-controller="NavCtrl" class="nav navbar-nav ">
       <li><a href="#/vakanties">De Vakanties </a></li>
       <li><a href="#">Onze kalender</a></li>
-      <li ng-show="admin(user.profile.role_value)">
-        <a href='#/beheerderspagina'>Beheerderspagina </a>
-      </li>
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Over ons <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
@@ -31,32 +28,35 @@
               {{ user.profile.username}}
             </a>
           </li>
-
+          
+          <li ng-show="admin(user.profile.role_value)">
+            <a href='#/beheerderspagina'>Beheerderspagina </a>
+          </li>
           <li ng-show="signedIn()">
             <a href="#" ng-click="logout()">Logout</a>
           </li>
 
-            <li class="dropdown" ng-hide="signedIn()">
-             <a class="dropdown-toggle" data-toggle="dropdown">
-               Login
-               <b class="caret"></b>
-             </a>
-             <div class="dropdown-menu dropdownMenu">
-              <form ng-submit="login()">
-                <p ng-show="error" class="alert alert-danger" role="alert">
-                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                 {{error}}</p>
-                 <input type="email" ng-model="user.email" placeholder="E-mail" class="form-control"><br>
-                 <input type="password" ng-model="user.password" placeholder="Paswoord" class="form-control"><br>
-                 <button type="submit" value="Log in" class="btn btn-primary btn-block">
-                  <i/>Inloggen
-                </button>
-              </form>
+          <li class="dropdown" ng-hide="signedIn()">
+           <a class="dropdown-toggle" data-toggle="dropdown">
+             Login
+             <b class="caret"></b>
+           </a>
+           <div class="dropdown-menu dropdownMenu">
+            <form ng-submit="login()">
+              <p ng-show="error" class="alert alert-danger" role="alert">
+               <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+               {{error}}</p>
+               <input type="email" ng-model="user.email" placeholder="E-mail" class="form-control"><br>
+               <input type="password" ng-model="user.password" placeholder="Paswoord" class="form-control"><br>
+               <button type="submit" value="Log in" class="btn btn-primary btn-block">
+                <i/>Inloggen
+              </button>
+            </form>
 
-              <button type="submit" style="margin-top: 8px" value="Login met facebook" class="btn btn-block btn-social btn-facebook" ng-click="loginWithFacebook()">
-               <i class="fa fa-facebook"></i> Inloggen met facebook
-             </button>
-           </div>
+            <button type="submit" style="margin-top: 8px" value="Login met facebook" class="btn btn-block btn-social btn-facebook" ng-click="loginWithFacebook()">
+             <i class="fa fa-facebook"></i> Inloggen met facebook
+           </button>
+         </div>
 
 
        </li>
@@ -66,18 +66,18 @@
           <b class="caret"></b>
         </a>
         <div class="dropdown-menu dropdownMenu">
-              <form ng-submit="register()">
-                <p ng-show="error" class="alert alert-danger" role="alert">
-                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                 {{error}}</p>
-                 <input type="email" ng-model="user.email" placeholder="E-mail" class="form-control"><br>
-                 <input type="password" ng-model="user.password" placeholder="Paswoord" class="form-control"><br>
-                 <input type="text" ng-model="user.username" placeholder="Username" class="form-control"><br>
-                 <button type="submit" value="Log in" class="btn btn-primary btn-block">
-                  <i/>Registreer
-                </button>
-              </form>
-           </div>
+          <form ng-submit="register()">
+            <p ng-show="error" class="alert alert-danger" role="alert">
+             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+             {{error}}</p>
+             <input type="email" ng-model="user.email" placeholder="E-mail" class="form-control"><br>
+             <input type="password" ng-model="user.password" placeholder="Paswoord" class="form-control"><br>
+             <input type="text" ng-model="user.username" placeholder="Username" class="form-control"><br>
+             <button type="submit" value="Log in" class="btn btn-primary btn-block">
+              <i/>Registreer
+            </button>
+          </form>
+        </div>
       </li>
     </ul>
   </div>
