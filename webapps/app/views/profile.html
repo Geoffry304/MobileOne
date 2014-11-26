@@ -9,10 +9,10 @@
       
 
     </div>
-      <ul class="nav nav-tabs">
-        <li class="active"><a data-target="#profiel" data-toggle="tab">Profiel</a></li>
-        <li><a data-target="#kinderen" data-toggle="tab">Kinderen</a></li>
-      </ul>
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-target="#profiel" data-toggle="tab">Profiel</a></li>
+      <li><a data-target="#kinderen" data-toggle="tab">Kinderen</a></li>
+    </ul>
 
     <br/>
 
@@ -77,85 +77,92 @@
         <!--<select name="selectedKind">
          <option ng:repeat="kind in kinderen" value="{{kind.rijksregisternummer}}">{{kind.naam}}</option>
        </select>-->
-       <span  class="nullable">
-      <select ng-model="myKinderen" ng-options="kind.naam for kind in kinderen">
-        <option value="">-- Kies kind --</option>
-      </select>
-        </span><br/>
        <form class="form-horizontal">
-
         <div class="form-group">
-          <label class="col-sm-2 control-label" for="">Naam:</label>
-          <div class="col-sm-5">
-            <input ng-model="kind.naam" type="text" placeholder="Naam" class="form-control">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-sm-2 control-label" for="">Voornaam:</label>
-          <div class="col-sm-5">
-            <input ng-model="kind.voornaam" type="text" placeholder="Voornaam" class="form-control">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-sm-2 control-label" for="">Geboortedatum:</label>
-          <div class="col-sm-5">
-            <input ng-model="kind.geboortedatum" type="text" placeholder="Geboortedatum" class="form-control">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-sm-2 control-label" for="">Rijksregisternummer:</label>
-          <div class="col-sm-5">
-            <input ng-model="kind.rijksregisternummer" type="text" placeholder="Rijksregisternr" class="form-control">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="controls">
-            <div class="col-sm-offset-2 col-sm-10">
-              <input type="checkbox" ng-model"anders">
-              Adres is anders dan ouder
-            </label>
-          </div>
+         <label class="col-sm-2 control-label" for="">Kinderen:</label>
+         <div class="col-sm-5">
+           <span  class="nullable">
+             <select class="form-control" ng-model="myKinderen" ng-options="kind.naam for kind in kinderen">
+              <option value="">-- Kies kind --</option>
+            </select>
+          </span>
         </div>
       </div>
 
-      <div ng-checked="anders">
-        <div class="form-group">
-          <label class="col-sm-2 control-label" for="">Straat:</label>
-          <div class="col-sm-2">
-            <input ng-model="kind.straat" type="text" placeholder="Straat" class="form-control">
-          </div>
+      <hr>
 
-          <label class="col-sm-1 control-label" for="">Nummer:</label>
-          <div class="col-sm-1">
-            <input ng-model="kind.nummer" type="text" placeholder="Nummer" class="form-control">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-sm-2 control-label" for="">Postcode:</label>
-          <div class="col-sm-1">
-            <input ng-model="kind.postcode" type="text" placeholder="Postcode" class="form-control">
-          </div>
-
-          <label class="col-sm-1 control-label" for="">Gemeente:</label>
-          <div class="col-sm-3">
-            <input ng-model="kind.gemeente" type="text" placeholder="Gemeente" class="form-control">
-          </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="">Naam:</label>
+        <div class="col-sm-5">
+          <input ng-model="kind.naam" type="text" placeholder="Naam" class="form-control">
         </div>
       </div>
 
       <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <button class="btn btn-success" ng-click="submitKind()">Opslaan</button>
+        <label class="col-sm-2 control-label" for="">Voornaam:</label>
+        <div class="col-sm-5">
+          <input ng-model="kind.voornaam" type="text" placeholder="Voornaam" class="form-control">
         </div>
       </div>
 
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="">Geboortedatum:</label>
+        <div class="col-sm-5">
+          <input ng-model="kind.geboortedatum" type="text" placeholder="Geboortedatum" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="">Rijksregisternummer:</label>
+        <div class="col-sm-5">
+          <input ng-model="kind.rijksregisternummer" type="text" placeholder="Rijksregisternr" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="controls">
+          <div class="col-sm-offset-2 col-sm-10">
+            <input type="checkbox" ng-model"anders">
+            Adres is anders dan ouder
+          </label>
+        </div>
+      </div>
     </div>
-  </form>
+
+    <div ng-checked="anders">
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="">Straat:</label>
+        <div class="col-sm-2">
+          <input ng-model="kind.straat" type="text" placeholder="Straat" class="form-control">
+        </div>
+
+        <label class="col-sm-1 control-label" for="">Nummer:</label>
+        <div class="col-sm-1">
+          <input ng-model="kind.nummer" type="text" placeholder="Nummer" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="">Postcode:</label>
+        <div class="col-sm-1">
+          <input ng-model="kind.postcode" type="text" placeholder="Postcode" class="form-control">
+        </div>
+
+        <label class="col-sm-1 control-label" for="">Gemeente:</label>
+        <div class="col-sm-3">
+          <input ng-model="kind.gemeente" type="text" placeholder="Gemeente" class="form-control">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button class="btn btn-success" ng-click="submitKind()">Opslaan</button>
+      </div>
+    </div>
+
+  </div>
+</form>
 </div>
 </div>
 </div>
