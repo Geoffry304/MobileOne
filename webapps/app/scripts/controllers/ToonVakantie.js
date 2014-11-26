@@ -12,6 +12,9 @@ app.controller('ToonVakantieCtrl', function ($scope, $routeParams, $location, Va
   $scope.user = Auth.user;
   $scope.filter = 'false';
   $scope.error = 'Gebruik gepaste taal!';
+  $scope.change = function(){
+    $location.path('/vakantie/change/' + $routeParams.vakantieId);
+  }
 
   $scope.verwijderVakantie = function() {
     $location.path('/');

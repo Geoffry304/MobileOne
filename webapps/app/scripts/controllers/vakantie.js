@@ -13,6 +13,7 @@ if($routeParams.vakantieId !== undefined)
 	$scope.Vakantie = function() {
     return Vakantie.update($routeParams.vakantieId, $scope.vakantie);
   };
+
 }
 else
 {
@@ -22,6 +23,16 @@ else
     Vakantie.create($scope.vakantie);
   };
 }
+$scope.go = function(vakantieId){
+	if(vakantieId !== undefined)
+	{
+  		$location.path('/vakantie/' + vakantieId);
+  	}
+  	else
+  	{
+  		console.log('got undefined');
+  	}
+};
 	$scope.admin = function(role){
     return role === '99';
     };

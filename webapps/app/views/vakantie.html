@@ -84,7 +84,7 @@
 <div class="form-group">
   <label class="control-label col-sm-2" for="">Telefoonnummer:</label>
   <div class="col-sm-6">
-    <input name="telefoon" ng-model="vakantie.plaats.contact.telNr" type="tel" placeholder="Telefoonnummer" class="form-control" required ng-pattern="/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{3})/" ng-maxlength="9">
+    <input name="telefoon" ng-model="vakantie.plaats.contact.telNr" type="tel" placeholder="Telefoonnummer" class="form-control" required ng-pattern="/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{3,4})/" ng-maxlength="10">
     <div ng-show="form.telefoon.$invalid && form.telefoon.$dirty">
       <p ng-show="form.telefoon.$error.required">
         Een telefoonnummer is verplicht.
@@ -100,7 +100,7 @@
 <div class="form-group">
   <label class="control-label col-sm-2" for="">Website:</label>
   <div class="col-sm-6">
-    <input name="website" ng-model="vakantie.plaats.contact.website" type="text" placeholder="https://www.website.be" class="form-control" required ng-pattern="/^(https?:\/\/)(www)\.([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/">
+    <input name="website" ng-model="vakantie.plaats.contact.website" type="text" placeholder="https://www.website.be" class="form-control" required ng-pattern="/^(https?:\/\/)?(www)\.([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/">
     <div ng-show="form.website.$invalid && form.website.$dirty">
       <p ng-show="form.website.$error.required">
         Een website is verplicht.

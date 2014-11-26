@@ -1,7 +1,7 @@
 <h2>{{vakantie.naam}}</h2>
 <br>
 <button class="btn btn-labeled btn-danger" ng-show ='admin(user.profile.role_value)'ng-click="toggle_visibility('popupBoxOnePosition');"><span class="btn-label"><i class="glyphicon glyphicon-remove"></i></span> Verwijder</button>
-<button class="btn btn-info" ng-show ='admin(user.profile.role_value)' href='#/vakantie/change/{{vakantie.$id}}'>Wijzig</button>
+<button class="btn btn-info" ng-show ='admin(user.profile.role_value)' ng-click="change()">Wijzig</button>
 <br ng-show='admin(user.profile.role_value)'>
 <br ng-show='admin(user.profile.role_value)'>
 <table class="table">
