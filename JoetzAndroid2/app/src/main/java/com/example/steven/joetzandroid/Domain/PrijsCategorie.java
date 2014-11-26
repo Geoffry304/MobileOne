@@ -10,14 +10,24 @@ public class PrijsCategorie {
     private double joetzSterPrijsCat2;
     //info over de prijs kan in de prijsCategorie bijgeplaatst worden
     private String info;
+    private int id;
 
     public PrijsCategorie() {
     }
 
-    public PrijsCategorie(double basisPrijs, double joetzSterPrijsCat1, double joetzSterPrijsCat2) {
+    public PrijsCategorie(int id,double basisPrijs, double joetzSterPrijsCat1, double joetzSterPrijsCat2) {
         this.basisPrijs = basisPrijs;
         this.joetzSterPrijsCat1 = joetzSterPrijsCat1;
         this.joetzSterPrijsCat2 = joetzSterPrijsCat2;
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public double getBasisPrijs() {

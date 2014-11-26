@@ -8,8 +8,10 @@ import com.example.steven.joetzandroid.Domain.Ouder;
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.firebase.client.AuthData;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,6 +49,12 @@ public class FirebaseAuth {
 
                     //Toast.makeText(getActivity().getApplicationContext(), "Facebook : ingelogd als =>" + authData.getProviderData().get("displayName").toString(), Toast.LENGTH_LONG).show();
                     user = authData;
+                    HashMap<String,Object> fbMap = (HashMap<String,Object>) authData.getProviderData().get("cachedUserProfile");
+                    Ouder ouder = new Ouder();
+                    ouder.setFirstName((String)fbMap.get("first_name"));
+                    ouder.setLastName((String)fbMap.get("last_name"));
+                    ouder.setEmail((String)fbMap.get("email"));
+                    checkIfUserHasProfile(user.getUid(),ouder);
                 }
 
                 @Override
@@ -65,6 +73,25 @@ public class FirebaseAuth {
 
         return getUser() != null;
     }
+
+    public void checkIfUserHasProfile(final String id, final Ouder ouder)
+    {
+        ref.child("profile").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(!dataSnapshot.hasChild(id))
+                {
+                    createUserProfileName(ouder);
+                }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+    }
+
 
     public boolean logIn(String email,String password)
     {

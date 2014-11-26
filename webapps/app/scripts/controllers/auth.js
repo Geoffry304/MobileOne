@@ -6,6 +6,7 @@ app.controller('AuthCtrl', function($scope, $location, Auth, user) {
 	}
 
 	$scope.login = function() {
+		console.log('Test');
 		Auth.login($scope.user).then(function() {
 			$location.path('/');
 		}, function (error) {
@@ -15,6 +16,7 @@ app.controller('AuthCtrl', function($scope, $location, Auth, user) {
 	};
 
 	$scope.loginWithFacebook = function() {
+		console.log('Test fb');
 		Auth.facebookLogin().then(function(){
 			
 				Auth.createFbProfile(Auth.user);
@@ -37,4 +39,8 @@ app.controller('AuthCtrl', function($scope, $location, Auth, user) {
 			console.log(error.toString());
 		});
 	};
+
+	$scope.admin = function(role){
+    return role === '99';
+    };
 });

@@ -13,11 +13,13 @@ public class LeeftijdsCategorie {
     private int yearNow;
     private int vanGeboorteDatum;
     private int totGeboorteDatum;
+    private int id;
 
-    public LeeftijdsCategorie(int vanGeboorteDatum, int totGeboorteDatum) {
+    public LeeftijdsCategorie(int id,int vanGeboorteDatum, int totGeboorteDatum) {
         yearNow = Calendar.getInstance().get(Calendar.YEAR);
         this.vanGeboorteDatum = vanGeboorteDatum;
         this.totGeboorteDatum = totGeboorteDatum;
+        this.id = id;
     }
 
     public LeeftijdsCategorie() {
@@ -29,6 +31,14 @@ public class LeeftijdsCategorie {
     public int getVanGeboorteDatum() {
 
         return vanGeboorteDatum;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setVanGeboorteDatum(int vanGeboorteDatum) {

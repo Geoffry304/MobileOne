@@ -84,7 +84,7 @@
 <div class="form-group">
   <label class="control-label col-sm-2" for="">Telefoonnummer:</label>
   <div class="col-sm-6">
-    <input name="telefoon" ng-model="vakantie.plaats.contact.telNr" type="text" placeholder="Telefoonnummer" class="form-control" required ng-pattern="/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{3})/" ng-maxlength="9">
+    <input name="telefoon" ng-model="vakantie.plaats.contact.telNr" type="tel" placeholder="Telefoonnummer" class="form-control" required ng-pattern="/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{3})/" ng-maxlength="9">
     <div ng-show="form.telefoon.$invalid && form.telefoon.$dirty">
       <p ng-show="form.telefoon.$error.required">
         Een telefoonnummer is verplicht.
@@ -144,14 +144,17 @@
 <!-- Text input-->
 <div class="form-group">
   <label class="control-label col-sm-2" for="">Postcode:</label>
-  <div class="col-sm-1">
-    <input name="postcode" ng-model="vakantie.plaats.contact.adres.postcode" type="text" placeholder="Postcode" class="form-control"required ng-pattern="/\(?([0-9]{4})/">
+  <div class="col-sm-2">
+    <input name="postcode" ng-model="vakantie.plaats.contact.adres.postcode" type="number" placeholder="Postcode" class="form-control"required ng-pattern="/\(?([0-9]{4})/" ng-maxlength="4">
     <div ng-show="form.postcode.$invalid && form.postcode.$dirty">
       <p ng-show="form.postcode.$error.required">
         Een postcode is verplicht.
       </p>
       <p ng-show="form.postcode.$error.pattern">
         Een postcode moet 4 cijfers lang zijn.
+      </p>
+      <p ng-show="form.postcode.$error.maxlength">
+        Een postcode is maximum 4 cijfers lang.
       </p>
     </div>
   </div>
@@ -160,7 +163,7 @@
 <!-- Text input-->
 
   <label class="control-label col-sm-1" for="">Gemeente:</label>
-  <div class="col-sm-4">
+  <div class="col-sm-3">
     <input name="gemeente"ng-model="vakantie.plaats.contact.adres.gemeente" type="text" placeholder="Gemeente" class="form-control" required ng-minlength="3">
     <div ng-show="form.gemeente.$invalid && form.gemeente.$dirty">
       <p ng-show="form.gemeente.$error.required">
@@ -184,9 +187,9 @@
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Krokusvakantie</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Zomervakantie</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Herfstvakantie</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1">Krokusvakantie</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1">Zomervakantie</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1">Herfstvakantie</a></li>
   </ul>
 </div>
   </div>
@@ -198,10 +201,10 @@
   <div class="col-sm-6">
     <div class="input-group">
   <span class="input-group-addon">€</span>
-  <input name="prijs" ng-model="vakantie.prijs"type="text" class="form-control" placeholder="0.00" required>
+  <input name="prijs" ng-model="vakantie.prijs"type="number" class="form-control" placeholder="0.00" required>
   <div ng-show="form.prijs.$invalid && form.prijs.$dirty">
       <p ng-show="form.prijs.$error.required">
-        Dit veld is verplicht.
+        Dit veld is verplicht of is geen getal.
       </p>
   </div>
   </div>
@@ -273,7 +276,7 @@
 <div class="form-group">
   <label class="control-label col-sm-2" for="">maximum #:</label>
   <div class="col-sm-6">
-    <input name="max" ng-model="vakantie.maxAantalId" type="number" placeholder="" class="form-control" required>
+    <input name="max" ng-model="vakantie.maxAantal" type="number" placeholder="" class="form-control" required>
     <div ng-show="form.max.$invalid && form.max.$dirty">
       <p ng-show="form.max.$error.required">
         Dit veld is verplicht, of dit is geen getal.

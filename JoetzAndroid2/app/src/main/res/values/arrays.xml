@@ -5,7 +5,7 @@
         <item>Over Joetz</item>
         <item>Vakanties</item>
         <item>Mijn Profiel</item>
-        <item>Bond Mayson</item>
+        <item>Bond Moyson</item>
         <item>Vragen</item>
         <item>Contact</item>
         <item>Joetz Facebook</item>
@@ -13,14 +13,14 @@
     </string-array>
     <!--juiste iconen moeten gezocht worden-->
     <array name="nav_drawer_icons">
-        <item>@drawable/binnenland</item>
-        <item>@drawable/binnenland</item>
-        <item>@drawable/binnenland</item>
-        <item>@drawable/binnenland</item>
-        <item>@drawable/binnenland</item>
-        <item>@drawable/binnenland</item>
-        <item>@drawable/binnenland</item>
-        <item>@drawable/binnenland</item>
+        <item>@drawable/overjoetz</item>
+        <item>@drawable/vakanties</item>
+        <item>@drawable/ic_action_person</item>
+        <item>@drawable/bondmoyson</item>
+        <item>@drawable/vragen</item>
+        <item>@drawable/contact</item>
+        <item>@drawable/facebook</item>
+        <!--<item>@drawable/twitter</item>-->
     </array>
 
 </resources>

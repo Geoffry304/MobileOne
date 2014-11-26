@@ -1,5 +1,7 @@
 package com.example.steven.joetzandroid.Domain;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by Steven on 24/10/14.
  */
@@ -7,6 +9,7 @@ public class Foto {
 
     private String naam;
     private int id;
+    private Bitmap image;
     private String message;
 
     public Foto(String naam, int id, String message) {
@@ -16,6 +19,14 @@ public class Foto {
     }
 
     public Foto() {
+    }
+
+    public Bitmap getImage() {
+        return image;
+    }
+
+    public void setImage(Bitmap image) {
+        this.image = image;
     }
 
     public String getNaam() {

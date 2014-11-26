@@ -11,7 +11,7 @@ app.controller('InschrijvingCtrl', function ($scope, $location, Inschrijving, Pr
 	$scope.mijnKinderen = [];
 	$scope.submitInschrijving = function ()
 	{
-		if ($scope.voegToe === 'Voeg toe') {
+		if ($scope.voegToe == 'Voeg toe') {
 			if ($scope.inschrijving.aantal <= 0 || $scope.inschrijving.aantal >= 11){
 				$scope.alerts = [];
 				$scope.alerts.push({ type: 'error', msg: 'een verkeerd aantal toegevoegd.' });
@@ -24,7 +24,7 @@ app.controller('InschrijvingCtrl', function ($scope, $location, Inschrijving, Pr
 				$scope.voegToe = 'inschrijving doorsturen';
 			}
 		}
-		else if ($scope.voegToe === 'inschrijving doorsturen') {
+		else {
 			$scope.inschrijving.creator = $scope.user.profile.username;
 			$scope.inschrijving.creatorUID = $scope.user.uid;
 			for (var teller = 0; teller < $scope.kinderen.length; teller += 1){
@@ -34,6 +34,7 @@ app.controller('InschrijvingCtrl', function ($scope, $location, Inschrijving, Pr
 				$scope.alerts.push({ type: 'success', msg: 'Well done! You successfully read this important alert message.' });
 			});
 		}
+
 	};
 	$scope.schrijfKindIn = function(teller){
 		Profile.createKind($scope.user.uid, $scope.kinderen[teller]).then(function (ref){

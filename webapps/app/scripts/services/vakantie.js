@@ -29,7 +29,7 @@ app.factory('Vakantie', function (FIREBASE_URL, $firebase,$location){
               vakantiePeriode: {vakantieNaam:vakantie.vakantiePeriode.vakantieNaam, periode:{van: vakantie.vakantiePeriode.periode.van, tot: vakantie.vakantiePeriode.periode.tot}},
               thema: vakantie.thema,
               leeftijdscategorie: {van: vakantie.leeftijdscategorie.van, tot: vakantie.leeftijdscategorie.tot},
-              maxAantalId: vakantie.maxAantalId,
+              maxAantalId: vakantie.maxAantal,
               busVervoer: vakantie.busVervoer,
               eigenVervoer: vakantie.eigenVervoer,
               fiscaalAftrek: vakantie.fiscaalAftrek

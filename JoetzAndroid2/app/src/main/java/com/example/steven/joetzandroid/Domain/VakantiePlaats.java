@@ -7,14 +7,24 @@ public class VakantiePlaats {
 
     private String naam;
     private Contact contact;
+    private int id;
 
-    public VakantiePlaats(String naam, Contact contact) {
+    public VakantiePlaats(int id,String naam, Contact contact) {
         this.naam = naam;
         this.contact = contact;
+        this.id = id;
     }
 
     public VakantiePlaats() {
 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNaam() {

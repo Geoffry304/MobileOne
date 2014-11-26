@@ -16,11 +16,7 @@
         android:orientation="vertical"
         android:layout_gravity="start"
         android:background="@drawable/linear_border">
-        <ImageView
-            android:layout_width="240dp"
-            android:layout_height="200dp"
-            android:src="@drawable/joetzlogo"
-            android:background="@drawable/selectable_background_joetztitlebar"/>
+
 
         <ListView
             android:layout_width="240dp"
