@@ -230,11 +230,11 @@ h2 {
   color:#bbb;
 }
 
-#menu1 {
+.dropdownMenu {
   background: transparent;
   padding: 10px;
   box-shadow: 0 0 30px black;
-
+  width: 300px;
 }
 
 #terugNaarVakanties {

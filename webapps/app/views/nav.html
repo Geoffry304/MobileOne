@@ -34,8 +34,6 @@
 
           <li ng-show="signedIn()">
             <a href="#" ng-click="logout()">Logout</a>
-
-
           </li>
 
             <li class="dropdown" ng-hide="signedIn()">
@@ -43,7 +41,7 @@
                Login
                <b class="caret"></b>
              </a>
-             <div class="dropdown-menu" id="menu1" >
+             <div class="dropdown-menu dropdownMenu">
               <form ng-submit="login()">
                 <p ng-show="error" class="alert alert-danger" role="alert">
                  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -62,11 +60,24 @@
 
 
        </li>
-       <li ng-hide="signedIn()">
-        <a href="#/register">
+       <li class="dropdown" ng-hide="signedIn()">
+        <a class="dropdown-toggle" data-toggle="dropdown">
           Register
-          <!--<button class="btn btn-default navbar-btn">Register</button>-->
+          <b class="caret"></b>
         </a>
+        <div class="dropdown-menu dropdownMenu">
+              <form ng-submit="register()">
+                <p ng-show="error" class="alert alert-danger" role="alert">
+                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                 {{error}}</p>
+                 <input type="email" ng-model="user.email" placeholder="E-mail" class="form-control"><br>
+                 <input type="password" ng-model="user.password" placeholder="Paswoord" class="form-control"><br>
+                 <input type="text" ng-model="user.username" placeholder="Username" class="form-control"><br>
+                 <button type="submit" value="Log in" class="btn btn-primary btn-block">
+                  <i/>Registreer
+                </button>
+              </form>
+           </div>
       </li>
     </ul>
   </div>

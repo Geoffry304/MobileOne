@@ -13,7 +13,7 @@ app.factory('Auth', function ($firebaseSimpleLogin, FIREBASE_URL, $rootScope, $f
 		},
 		createProfile: function (user) {
 			var profile = {
-					username: user.displayName,
+					username: user.username,
 					md5_hash: "http://www.gravatar.com/avatar/" + user.md5_hash,
 					role_value: '10'
 			};

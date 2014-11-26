@@ -2,6 +2,7 @@
 /*global app:true*/
 app.controller('NavCtrl', function ($scope, $location, Post, Auth) {  $scope.signedIn = Auth.signedIn;
   $scope.logout = Auth.logout;
+
   $scope.login = function() {
     console.log('Test');
     Auth.login($scope.user).then($scope.error = '', function (error) {
@@ -24,8 +25,5 @@ app.controller('NavCtrl', function ($scope, $location, Post, Auth) {  $scope.sig
       //Auth.createFbProfile(Auth.user);
       $location.path('/');
     });
-  };
-
-    
-
+  };   
 });
