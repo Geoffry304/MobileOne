@@ -9,4 +9,17 @@ app.controller('BeheerderCtrl', function ($scope, $location, Auth, Vakantie) {
 		return role === '99';
 	};
 
+$scope.toggle_visibility = function(id, vakantieId) {
+	$scope.vakantieId = vakantieId;
+  var e = document.getElementById(id);
+  if(e.style.display == 'block')
+     e.style.display = 'none';
+  else
+     e.style.display = 'block';
+  };
+$scope.verwijderVakantie = function() {
+    $location.path('/');
+    return Vakantie.delete(Vakantie.get($scope.vakantieId));
+  };
+
 });
