@@ -1,7 +1,18 @@
-<div slider id="slider">
+<div slider id="slider" style="margin-top: 10px; margin-bottom: 10px;">
     <img src="../images/1.jpg" src="" alt="Minimum required attributes">
     <img src="../images/2.jpg" src="" alt="Minimum required attributes">
     <img src="../images/3.jpg" src="" alt="Minimum required attributes">
     <img src="../images/4.jpg" src="" alt="Minimum required attributes">
     <img src="../images/5.jpg" src="" alt="Minimum required attributes">
+</div>
+<h3> Enkele van de vakanties </h3>
+<div class="row">
+  <div ng-repeat="vak in vakanties | limitTo:3" class="col-sm-6 col-md-4" style="margin-top: 10px;">
+    <div class="thumbnail" style="background-color: #CCCCCC; border-radius: 8px;">
+      <img style="border-radius: 10px; padding: 5px;" src="images/1.jpg" alt="vak.foto moeter staan">
+      <div class="caption">
+        <button class="btn btn-primary btn-block" ng-click="go(vak.$id)">{{vak.naam}}</button>
+      </div>
+    </div>
+  </div>
 </div>
