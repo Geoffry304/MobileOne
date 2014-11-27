@@ -6,7 +6,7 @@
     <img src="../images/5.jpg" src="" alt="Minimum required attributes">
 </div>
 <h2> Enkele van de vakanties </h2>
-<div class="row">
+<div class="row" ng-controller="VakantieCtrl">
   <div ng-repeat="vak in vakanties | limitTo:3" class="col-sm-6 col-md-4" style="margin-top: 10px;">
     <div class="thumbnail" style="background-color: #CCCCCC; border-radius: 8px;">
       <img style="border-radius: 10px; padding: 5px;" src="images/1.jpg" alt="vak.foto moeter staan">

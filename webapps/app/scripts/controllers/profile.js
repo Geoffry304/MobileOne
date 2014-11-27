@@ -28,7 +28,4 @@ app.controller('ProfileCtrl', function($scope, $routeParams, Profile) {
 
 	};
 
-
-
-
 });
