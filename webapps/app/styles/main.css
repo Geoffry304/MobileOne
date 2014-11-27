@@ -239,7 +239,7 @@ h2 {
   padding: 20px;
   box-shadow: 0 0 30px black;
   width: 300px;
-  background: transparent;
+  background-color: #555555;
 }
 
 #terugNaarVakanties {
