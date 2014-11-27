@@ -1,6 +1,6 @@
 'use strict';
 /*global app:true*/
-app.controller('NavCtrl', function ($scope, $location, Post, Auth) {  $scope.signedIn = Auth.signedIn;
+app.controller('NavCtrl', function ($scope, $location, Auth) {  $scope.signedIn = Auth.signedIn;
   $scope.logout = Auth.logout;
 
   $scope.login = function() {
