@@ -70,7 +70,7 @@ public class StartActivity extends FragmentActivity implements AdapterView.OnIte
         fragmentHashMap = new HashMap<String, Fragment>();
         mTitle = mDrawerTitle = getTitle();
 
-        createTabbarVakantie();
+        //createTabbarVakantie();
         //setActionBarOff();
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
 
@@ -88,6 +88,8 @@ public class StartActivity extends FragmentActivity implements AdapterView.OnIte
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[4],navMenuIcons.getResourceId(4,-1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[5],navMenuIcons.getResourceId(5,-1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[6],navMenuIcons.getResourceId(6,-1)));
+        fragmentHashMap.put(navMenuTitles[6],new VakantieAlgemeenFragment());
+
         //navDrawerItems.add(new NavDrawerItem(navMenuTitles[7],navMenuIcons.getResourceId(7,-1)));
 
         navMenuIcons.recycle();
