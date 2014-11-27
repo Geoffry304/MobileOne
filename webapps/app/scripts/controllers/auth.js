@@ -8,7 +8,6 @@ app.controller('AuthCtrl', function($scope, $location, Auth, user) {
 	$scope.login = function() {
 		console.log('Test');
 		Auth.login($scope.user).then(function() {
-			$location.path('/');
 		}, function (error) {
 			$scope.error = error.toString();
 			console.log(error.toString());
@@ -22,7 +21,6 @@ app.controller('AuthCtrl', function($scope, $location, Auth, user) {
 				Auth.createFbProfile(Auth.user);
 			
 			//Auth.createFbProfile(Auth.user);
-			$location.path('/');
 		});
 	};
 
