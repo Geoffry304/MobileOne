@@ -9,7 +9,7 @@
         <item>Vragen</item>
         <item>Contact</item>
         <item>Joetz Facebook</item>
-        <item>Joetz Twitter</item>
+       <!--<item>Joetz Twitter</item>-->
     </string-array>
     <!--juiste iconen moeten gezocht worden-->
     <array name="nav_drawer_icons">
@@ -23,4 +23,12 @@
         <!--<item>@drawable/twitter</item>-->
     </array>
 
+    <string-array name="tab_bar_items">
+        <item>Algemeen</item>
+        <item>Locatie</item>
+        <item>Foto</item>
+        <item>Periodes</item>
+        <item>Contact</item>
+        <item>Inschrijven</item>
+    </string-array>
 </resources>
