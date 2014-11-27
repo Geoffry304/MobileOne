@@ -9,10 +9,14 @@
       
 
     </div>
+    <div class="row">
+
       <ul class="nav nav-tabs">
         <li class="active"><a data-target="#profiel" data-toggle="tab">Profiel</a></li>
         <li><a data-target="#kinderen" data-toggle="tab">Kinderen</a></li>
       </ul>
+
+    </div>
 
     <br/>
 
@@ -78,7 +82,7 @@
          <option ng:repeat="kind in kinderen" value="{{kind.rijksregisternummer}}">{{kind.naam}}</option>
        </select>-->
        <span  class="nullable">
-      <select ng-model="myKinderen" ng-options="kind.naam for kind in kinderen">
+      <select ng-model="rijksregisternummer" ng-options="kind.rijksregisternummer as kind.voornaam for kind in kinderen" data-ng-model"">
         <option value="">-- Kies kind --</option>
       </select>
         </span><br/>
@@ -115,14 +119,13 @@
         <div class="form-group">
           <div class="controls">
             <div class="col-sm-offset-2 col-sm-10">
-              <input type="checkbox" ng-model"anders">
+              <input type="checkbox" ng-model="anders" id="anders"/>
               Adres is anders dan ouder
-            </label>
           </div>
         </div>
       </div>
 
-      <div ng-checked="anders">
+      <div ng-show="anders">
         <div class="form-group">
           <label class="col-sm-2 control-label" for="">Straat:</label>
           <div class="col-sm-2">

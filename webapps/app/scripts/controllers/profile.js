@@ -12,7 +12,18 @@ app.controller('ProfileCtrl', function($scope, $routeParams, Profile) {
 		Profile.update(uid,$scope.profile);
 	};
 	$scope.submitKind = function () {
-		Profile.createKind(uid,$scope.kind);
+
+		if (document.getElementById('anders').checked = true){
+			$scope.kind.straat = $scope.profile.straat;
+			$scope.kind.nummer = $scope.profile.nummer;
+			$scope.kind.postcode = $scope.profile.postcode;
+			$scope.kind.gemeente = $scope.profile.gemeente;
+			Profile.createKind(uid,$scope.kind);
+		}else
+		{
+			Profile.createKind(uid,$scope.kind);
+		}
+		
 		//console.log($scope.kinderen[0]);
 
 	};
