@@ -26,6 +26,17 @@
     <string name="annuleer">Annuleer</string>
     <string name="ok">Ok</string>
     <string name="firebase">https://mobileone.firebaseio.com/</string>
-    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sagittis dolor ac malesuada venenatis. Etiam ac mauris leo. Proin posuere nibh id justo ultricies, placerat fermentum nisi congue. Pellentesque laoreet lorem eros, nec feugiat felis dapibus eget. Pellentesque faucibus lectus ac tellus mollis fringilla. Aliquam efficitur tristique gravida. Nunc a enim et nunc consequat dictum vitae vel turpis. Mauris rutrum imperdiet libero, non feugiat metus sagittis non.
-Donec</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sagittis dolor ac malesuada venenatis. Etiam ac mauris leo. Proin posuere nibh.</string>
+    <string name="contact">Contact :</string>
+    <string name="straat_joetz">President Kennedypark 2</string>
+    <string name="plaats_joetz">8500 Kortrijk</string>
+    <string name="tel_joetz">Tel. 056 27 47 00</string>
+    <string name="email_joetz">E-mail : joetz.west@joetz.be</string>
+    <string name="contact_persoon">Vera Bulteel</string>
+    <string name="email_vera">E-mail vera.bulteel@joetz.be</string>
+    <string name="tel_vera">Tel. 056 23 03 18</string>
+    <string name="adm_onders">Administratieve ondersteuning</string>
+    <string name="voegtoe">Voeg toe aan contacten</string>
+    <string name="title_activity_vakantie_tabbar">VakantieTabbarActivity</string>
+
 </resources>

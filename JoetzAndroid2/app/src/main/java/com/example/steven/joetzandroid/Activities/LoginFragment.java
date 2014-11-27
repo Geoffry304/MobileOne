@@ -30,10 +30,6 @@ import com.firebase.client.FirebaseError;
 
 import java.util.TimerTask;
 
-/**
- * A simple {@link Fragment} subclass.
- *
- */
 public class LoginFragment extends Fragment {
 
     private EditText emailEditText;

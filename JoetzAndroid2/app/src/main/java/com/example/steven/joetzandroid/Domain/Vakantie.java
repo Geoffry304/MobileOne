@@ -23,7 +23,17 @@ public class Vakantie {
     private String id;
 
     public Vakantie() {
+        this.fotos = new ArrayList<Foto>();
 
+    }
+
+    public void addFoto(Foto f)
+    {
+        if(fotos == null)
+        {
+            fotos = new ArrayList<Foto>();
+        }
+        fotos.add(f);
     }
 
     public String getId() {

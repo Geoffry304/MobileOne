@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/ab_bottom_solid_joetztitlebar">
+
+  <ImageView
+      android:layout_width="80dp"
+      android:layout_height="80dp"
+      android:id="@+id/vakantie_item_image"
+      android:src="@drawable/headerjoetz"
+      android:layout_weight="1"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="2"
+        android:layout_marginLeft="4dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/vakantie_item_title"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="title"
+        android:textColor="@android:color/white"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/vakantie_item_plaats"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="plaats"
+        android:textColor="@android:color/white"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/vakantie_item_leeftijdcat"
+        android:text="12 - 16 j"
+        android:textColor="@android:color/holo_orange_dark"/>
+    </LinearLayout>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_action_next_item"
+        android:textAlignment="center"/>
+
+
+
+</LinearLayout>

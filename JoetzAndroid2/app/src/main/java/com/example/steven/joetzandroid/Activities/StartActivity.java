@@ -1,6 +1,8 @@
 package com.example.steven.joetzandroid.Activities;
 
+import android.app.ActionBar;
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -18,8 +20,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.steven.joetzandroid.Adapters.NavDrawerListAdapter;
+import com.example.steven.joetzandroid.Domain.CreateDummyData;
 import com.example.steven.joetzandroid.Domain.NavDrawerItem;
 import com.example.steven.joetzandroid.R;
 import com.example.steven.joetzandroid.firebase.FirebaseVakantieRepository;
@@ -30,7 +34,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class StartActivity extends FragmentActivity implements AdapterView.OnItemClickListener{
+public class StartActivity extends FragmentActivity implements AdapterView.OnItemClickListener, ActionBar.TabListener{
 
     private final String TAG = "StartActitivty";
     private ImageView imgJoetz;
@@ -60,11 +64,14 @@ public class StartActivity extends FragmentActivity implements AdapterView.OnIte
 
         Firebase.setAndroidContext(this);
         //FirebaseVakantieRepository rep = new FirebaseVakantieRepository();
+        //CreateDummyData dummyData = new CreateDummyData(this);
+        //dummyData.createVakanties();
         setContentView(R.layout.activity_main);
         fragmentHashMap = new HashMap<String, Fragment>();
         mTitle = mDrawerTitle = getTitle();
 
-
+        //createTabbarVakantie();
+        //setActionBarOff();
         navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
 
         navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
@@ -75,12 +82,15 @@ public class StartActivity extends FragmentActivity implements AdapterView.OnIte
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[0],navMenuIcons.getResourceId(0,-1)));
         fragmentHashMap.put(navMenuTitles[0], new About());
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
+        fragmentHashMap.put(navMenuTitles[1],new VakantiePeriodeFragment());
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[3],navMenuIcons.getResourceId(3,-1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[4],navMenuIcons.getResourceId(4,-1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[5],navMenuIcons.getResourceId(5,-1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[6],navMenuIcons.getResourceId(6,-1)));
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[7],navMenuIcons.getResourceId(7,-1)));
+        fragmentHashMap.put(navMenuTitles[6],new VakantieAlgemeenFragment());
+
+        //navDrawerItems.add(new NavDrawerItem(navMenuTitles[7],navMenuIcons.getResourceId(7,-1)));
 
         navMenuIcons.recycle();
 
@@ -110,7 +120,7 @@ public class StartActivity extends FragmentActivity implements AdapterView.OnIte
         if(savedInstanceState == null)
         {
             About about = new About();
-            getSupportFragmentManager().beginTransaction().add(R.id.frame_container, about).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.frame_container, about).addToBackStack(null).commit();
         }
     }
 /*
@@ -146,7 +156,7 @@ public class StartActivity extends FragmentActivity implements AdapterView.OnIte
                 LoginFragment f = new LoginFragment();
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.frame_container,f).commit();
-
+                drawerLayout.closeDrawers();
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -185,8 +195,55 @@ public class StartActivity extends FragmentActivity implements AdapterView.OnIte
         if(fragmentHashMap.containsKey(item))
         {
             Fragment f = fragmentHashMap.get(item);
-            getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,f).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,f).addToBackStack(f.getTag()).commit();
             drawerLayout.closeDrawers();
         }
+    }
+
+    private ActionBar actionbar;
+    public void createTabbarVakantie()
+    {
+        actionbar = this.getActionBar();
+        actionbar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+        String[]items = getResources().getStringArray(R.array.tab_bar_items);
+
+        for(int i = 0;i<items.length;i++)
+        {
+            actionbar.addTab(actionbar.newTab().setText(items[i]).setTabListener(this));
+
+        }
+        setActionBarOff();
+
+    }
+    public void setActionBarOff()
+    {
+        if(actionbar.isShowing())
+        {
+            actionbar.hide();
+        }
+    }
+    public void setActionbarOn()
+    {
+        if (!actionbar.isShowing())
+        {
+            actionbar.show();
+        }
+    }
+
+    
+    @Override
+    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+    }
+
+    @Override
+    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+    }
+
+    @Override
+    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
     }
 }

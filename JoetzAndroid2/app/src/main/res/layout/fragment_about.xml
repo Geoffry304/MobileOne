@@ -16,15 +16,72 @@
            <ImageView
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:src="@drawable/joetzlogo"
-               android:layout_marginBottom="15dp"
-               android:layout_marginTop="15dp"/>
+               android:src="@drawable/headerjoetz2"
+               android:layout_marginBottom="15dp"/>
 
            <TextView
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:textAppearance="?android:attr/textAppearanceMedium"
                android:text="@string/lorem"/>
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="@string/contact"
+               android:textAppearance="?android:attr/textAppearanceLarge"
+               android:layout_marginTop="10dp"/>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textAlignment="center"
+               android:layout_marginTop="5dp"
+               android:text="@string/straat_joetz"/>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textAlignment="center"
+               android:text="@string/plaats_joetz"/>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textAlignment="center"
+               android:text="@string/tel_joetz"/>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/email_joetz"/>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textAlignment="center"
+               android:layout_marginTop="5dp"
+               android:text="@string/contact_persoon"/>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textAlignment="center"
+               android:text="@string/email_vera"/>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textAlignment="center"
+               android:text="@string/tel_vera"/>
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textAlignment="center"
+               android:text="@string/adm_onders"/>
+           <Button
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="7dp"
+               android:layout_marginLeft="8dp"
+               android:layout_marginRight="8dp"
+               android:text="@string/voegtoe"
+               android:background="@drawable/joetz_button"
+               android:textColor="@android:color/white"/>
+
            </LinearLayout>
+
        </ScrollView>
 </FrameLayout>

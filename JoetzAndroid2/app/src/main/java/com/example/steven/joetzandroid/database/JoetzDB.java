@@ -38,7 +38,17 @@ public class JoetzDB {
     private DatabaseHelper helper;
     private SQLiteDatabase database;
 
-    public JoetzDB(Context context) {
+    private static JoetzDB instance;
+
+    public static JoetzDB getDbInstance(Context context)
+    {
+        if (instance == null)
+        {
+            instance = new JoetzDB(context);
+        }
+        return instance;
+    }
+    private JoetzDB(Context context) {
         helper  = new DatabaseHelper(context,DatabaseContstants.DATABASE_NAME,null,DatabaseContstants.DATABASE_VERSION);
 
     }
@@ -144,7 +154,7 @@ public class JoetzDB {
             val.put(DatabaseContstants.COLUMN_VAKANTIE_PLAATS_NAAM, plaats.getNaam());
             long co_id = addContact(plaats.getContact());
             val.put(DatabaseContstants.COLUMN_VAKANTIE_PLAATS_CONTACT_ID, co_id);
-            long a_id = database.insert(DatabaseContstants.TABLE_LEEFTIJD_CAT,null,val);
+            long a_id = database.insert(DatabaseContstants.TABLE_VAKANTIEPLAATS,null,val);
             return a_id;
         }catch(SQLiteException e)
         {
@@ -158,10 +168,14 @@ public class JoetzDB {
             ContentValues val = new ContentValues();
             val.put(DatabaseContstants.COLUMN_VAKANTIE_PERIODE_NAAM, periode.getVakantieNaam());
             long a_id = database.insert(DatabaseContstants.TABLE_VAKANTIEPERIODE,null,val);
-            for(Periode p : periode.getPeriodes())
+            if(periode.getPeriodes()!=null)
             {
-                addPeriode(p,a_id);
+                for(Periode p : periode.getPeriodes())
+                {
+                    addPeriode(p,a_id);
+                }
             }
+            Log.d(TAG,"Periode: "+a_id+" naam : "+periode.getVakantieNaam());
             return a_id;
         }catch(SQLiteException e)
         {
@@ -327,6 +341,21 @@ public class JoetzDB {
 
         return contact;
     }
+    public ArrayList<String> getAllVakantiePeriodes()
+    {
+        ArrayList<String> namen = new ArrayList<String>();
+        String selectQuery = "SELECT DISTINCT "+DatabaseContstants.COLUMN_VAKANTIE_PERIODE_NAAM+" FROM "+DatabaseContstants.TABLE_VAKANTIEPERIODE;
+        Cursor c = database.rawQuery(selectQuery,null);
+
+        if(c .moveToFirst())
+        {
+            do {
+                String s = c.getString(c.getColumnIndex(DatabaseContstants.COLUMN_VAKANTIE_PERIODE_NAAM));
+                namen.add(s);
+            }while (c.moveToNext());
+        }
+                return namen;
+    }
     public VakantiePeriode getVakantiePeriode(int vakantiePeriodeId)
     {
         String selectQuery = "SELECT * FROM "+DatabaseContstants.TABLE_VAKANTIEPERIODE+" WHERE "+DatabaseContstants.COLUMN_VAKANTIE_PERIODE_ID+
@@ -406,7 +435,7 @@ public class JoetzDB {
     public Vakantie getVakantie(String vakantieId)
     {
         String selectQuery = "SELECT * FROM "+DatabaseContstants.TABLE_VAKANTIE+" WHERE "+DatabaseContstants.COLUMN_VAKANTIE_ID+
-                " IS LIKE "+vakantieId;
+                " = '"+vakantieId+"'";
 
         Log.e(TAG,selectQuery);
         Cursor c = database.rawQuery(selectQuery,null);
@@ -436,7 +465,7 @@ public class JoetzDB {
     public ArrayList<Foto> getFotosFromVakantie(String vakantieId)
     {
         ArrayList<Foto> fotos = new ArrayList<Foto>();
-        String selectQuery = "SELECT * FROM "+DatabaseContstants.TABLE_FOTO+" WHERE "+DatabaseContstants.COLUMN_PHOTO_VAK_ID+" IS LIKE "+vakantieId;
+        String selectQuery = "SELECT * FROM "+DatabaseContstants.TABLE_FOTO+" WHERE "+DatabaseContstants.COLUMN_PHOTO_VAK_ID+" = '"+vakantieId+"'";
 
         Cursor c = database.rawQuery(selectQuery,null);
 
@@ -457,6 +486,24 @@ public class JoetzDB {
     {
 
         return BitmapFactory.decodeByteArray(b,0, b.length);
+
+    }
+    public ArrayList<Vakantie> getVakantiesByVakantiePeriode(String periode)
+    {
+        ArrayList<Vakantie> vakanties = new ArrayList<Vakantie>();
+        String selectQuery = "SELECT v."+DatabaseContstants.COLUMN_VAKANTIE_ID+" FROM "+DatabaseContstants.TABLE_VAKANTIE+" AS v JOIN "
+                +DatabaseContstants.TABLE_VAKANTIEPERIODE+" AS p"
+                +" ON v."+DatabaseContstants.COLUMN_VAKANTIE_PERIODE+" = p."+DatabaseContstants.COLUMN_VAKANTIE_PERIODE_ID
+                +" WHERE p."+DatabaseContstants.COLUMN_VAKANTIE_PERIODE_NAAM+" = '"+periode+"'";
+        Cursor c = database.rawQuery(selectQuery,null);
+        if(c.moveToFirst())
+        {
+            do{
+                Vakantie v = getVakantie(c.getString(c.getColumnIndex(DatabaseContstants.COLUMN_VAKANTIE_ID)));
+                vakanties.add(v);
+            }while(c.moveToNext());
+        }
+        return vakanties;
 
     }
 

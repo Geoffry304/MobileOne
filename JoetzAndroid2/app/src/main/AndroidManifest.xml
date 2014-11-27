@@ -18,21 +18,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.facebook.LoginActivity"/>
+        <activity android:name="com.facebook.LoginActivity" />
 
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
-                android:value="@string/APP_FB_ID"/>
-        
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/APP_FB_ID" />
+
+        <activity
+            android:name=".Activities.VakantieTabbarActivity"
+            android:label="@string/title_activity_vakantie_tabbar" >
+        </activity>
     </application>
 
     <!--
      To retrieve OAuth 2.0 tokens or invalidate tokens to disconnect a user. This disconnect
      option is required to comply with the Google+ Sign-In developer policies
     -->
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
 
     <!-- To retrieve the account name (email) as part of sign-in: -->

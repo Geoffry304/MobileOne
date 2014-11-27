@@ -8,7 +8,7 @@ import android.os.AsyncTask;
 public class DatabaseContstants {
 
     public static final String DATABASE_NAME = "joetz_db";
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
 
     //tables
     public static final String TABLE_OUDER = "ouder";

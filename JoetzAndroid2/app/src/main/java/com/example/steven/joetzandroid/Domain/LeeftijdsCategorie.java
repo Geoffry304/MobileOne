@@ -62,4 +62,8 @@ public class LeeftijdsCategorie {
     {
         return yearNow - totGeboorteDatum;
     }
+    public String getVanTotLeeftijdString()
+    {
+        return getVanLeeftijd()+" - "+getTotLeeftijd();
+    }
 }
