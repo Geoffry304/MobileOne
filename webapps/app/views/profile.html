@@ -80,8 +80,10 @@
          <div class="col-sm-5">
            <span  class="nullable">
              <select class="form-control" ng-model="myKinderen" ng-options="kind.naam for kind in kinderen">
+
               <option value="">-- Kies kind --</option>
             </select>
+            {{myKinderen}}
           </span>
         </div>
       </div>

@@ -11,6 +11,9 @@ app.controller('ProfileCtrl', function($scope, $routeParams, Profile) {
 		console.log($scope.profile.username);
 		Profile.update(uid,$scope.profile);
 	};
+	$scope.change = function () {
+		
+	};
 	$scope.submitKind = function () {
 
 		if (document.getElementById('anders').checked = true){

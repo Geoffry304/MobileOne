@@ -1,5 +1,11 @@
 <h2 ng-show='!admin(user.profile.role_value)'>U bent eigenlijk niet toegelaten hier maar voor testredenen laat ik dit open </h2>
 <div id="vakantieContainer">
+<td class="labelField">Image</td>
+    <span class="btn btn-default btn-file">
+      <input type="file" accept="image/*" capture="camera" id="file-upload">
+    </span>
+    <br/>
+    <img id="pano">
 <form name="form" class="form-horizontal" role="form" novalidate ng-submit="Vakantie()"><fieldset>
 <legend>
   <h1>Kamp toevoegen 
@@ -8,8 +14,10 @@
 </legend>
 
 <!-- Text input-->
+
 <div class="span1">
 <div class="form-group">
+
   <label class="control-label col-sm-2" for="">Naam:</label>
   <div class="col-sm-6">
     <input name="Naam" ng-model="vakantie.naam" type="text" placeholder="Naam" class="form-control" ng-minlength="3" required>

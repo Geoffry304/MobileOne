@@ -20,6 +20,7 @@ app.controller('ToonVakantieCtrl', function ($scope, $routeParams, $location, Va
     $location.path('/');
     return Vakantie.delete($scope.vakantie);
   };
+  
 
   $scope.voegCommentToe = function() {
     $scope.creator.username = $scope.user.profile.username;
