@@ -5,16 +5,18 @@ app.factory('Auth', function ($firebaseSimpleLogin, FIREBASE_URL, $rootScope, $f
 	var ref = new Firebase(FIREBASE_URL);
 	var auth = $firebaseSimpleLogin(ref);
 	var vakanties = $firebase(ref.child('vakantie')).$asArray();
+	var usernm = '';
 	
 
 
 	var Auth = {
 		register: function(user) {
+			usernm = user.username;
 			return auth.$createUser(user.email, user.password);
 		},
 		createProfile: function (user) {
 			var profile = {
-					username: user.username,
+					username: usernm,
 					email: user.email,
 					md5_hash: 'http://www.gravatar.com/avatar/' + user.md5_hash,
 					role_value: '10'
