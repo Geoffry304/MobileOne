@@ -2,10 +2,10 @@
 /*global app:true*/
 app.factory('Profile', function($window, FIREBASE_URL, $firebase, $q, $location, Inschrijving){
 	var ref = new $window.Firebase(FIREBASE_URL);
-	
+	var profiles = $firebase(ref.child('profile')).$asArray();
 
 	var profile = {
-		all: kinderen,
+		all: profiles,
 		get: function(userId) {
 			return $firebase(ref.child('profile').child(userId)).$asObject();
 		},

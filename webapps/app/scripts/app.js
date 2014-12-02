@@ -81,6 +81,10 @@ app.config(function ($routeProvider, $locationProvider) {
       templateUrl:'views/adminVakanties.html',
       controller:'VakantieCtrl'
     })
+    .when('/admin/gebruikers', {
+      templateUrl:'views/adminGebruikers.html',
+      controller:'ProfileCtrl'
+    })
     .when('/users/:userId', {
       templateUrl: 'views/profile.html',
       controller: 'ProfileCtrl'
