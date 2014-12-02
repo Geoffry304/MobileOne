@@ -44,7 +44,7 @@ $scope.admin = function(role){
 };
 
 $scope.handleFileSelectAdd = function(evt) {
-  var f = evt.target.files[0];
+  var f = evt.target.files[1];
   var reader = new FileReader();
   reader.onload = (function(theFile) {
     return function(e) {

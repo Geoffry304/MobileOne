@@ -1,0 +1,29 @@
+<div ng-show='admin(user.profile.role_value)' >
+
+<div class="bs-example">
+<div style="margin-left: 10px;">
+	<!--<button style="float:right; margin-top: 5px;"class="btn btn-primary" onClick="window.location.href ='#/admin/vakantie'"><span class="glyphicon glyphicon-plus"></span></button>-->
+	<br>
+	<br>
+	<ul class="list-group">
+		<li class="row list-group-item active" style="margin-right: 0px;"> <i class="col-sm-1"> E-mail </i><i class="col-sm-1"> Voornaam</i> <i class="col-sm-2 pull-left"> Naam</i>
+		<li ng-repeat="user in gebruikers" class="row list-group-item" style="margin-right: 0px;">
+			<a class="text-primary col-sm-1" ng-href="#/users/{{user.$id}}">{{user.email}} </a> <a class="col-sm-1" ng-href="#/users/{{user.$id}}">{{user.voornaam}} </a> <a class="col-sm-2 pull-left">{{user.naam}} </a> 
+			<button class="btn btn-danger btn-xs pull-right" ng-click="toggle_visibility('popupBoxOnePosition', user.$id);"><span class="btn-label"><i class="glyphicon glyphicon-remove"></i></span></button>
+		</li> 
+	</ul>
+</div>
+</div>
+
+</div>
+<h2 ng-show='!admin(user.profile.role_value)'>U bent hier niet toegelaten. </h2>
+
+<div id="popupBoxOnePosition">
+    <div class="popupBoxWrapper">
+        <div class="popupBoxContent">
+            <h3>Bevestiging</h3>
+            <p>Bent u zeker dat u deze vakantie wil verwijderen?</p>
+            <a href='#/beheerderspagina' ng-click="verwijderVakantie()">Ja</a> <a href="javascript:void(0)" ng-click="toggle_visibility('popupBoxOnePosition');"> Nee </a>
+        </div>
+    </div>
+</div>

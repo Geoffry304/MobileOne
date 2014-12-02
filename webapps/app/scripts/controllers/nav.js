@@ -17,9 +17,9 @@ app.controller('NavCtrl', function ($scope, $location, Auth) {  $scope.signedIn 
     };
 
     $scope.loginWithFacebook = function() {
-    console.log('Test fb');
+
     Auth.facebookLogin().then(function(){
-      
+        console.log(Auth.$value);  
         Auth.createFbProfile(Auth.user);
       
       //Auth.createFbProfile(Auth.user);

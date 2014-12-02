@@ -14,7 +14,8 @@ app.factory('Auth', function ($firebaseSimpleLogin, FIREBASE_URL, $rootScope, $f
 		createProfile: function (user) {
 			var profile = {
 					username: user.username,
-					md5_hash: "http://www.gravatar.com/avatar/" + user.md5_hash,
+					email: user.email,
+					md5_hash: 'http://www.gravatar.com/avatar/' + user.md5_hash,
 					role_value: '10'
 			};
 
@@ -25,6 +26,7 @@ app.factory('Auth', function ($firebaseSimpleLogin, FIREBASE_URL, $rootScope, $f
 			var profile = {
 					username: user.thirdPartyUserData.first_name,
 					md5_hash: user.thirdPartyUserData.picture.data.url,
+					email: user.thirdPartyUserData.email,
 					role_value: '10',
 					naam: user.thirdPartyUserData.last_name,
 					voornaam: user.thirdPartyUserData.first_name,
