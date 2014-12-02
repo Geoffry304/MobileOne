@@ -4,6 +4,7 @@ app.controller('VakantieCtrl', function ($scope, $routeParams, $location, Vakant
 
   $scope.vakanties = Vakantie.all;
   $scope.user = Auth.user;
+  $scope.episodeImgData = [];
 //$scope.vakantie = Vakantie.get($routeParams.vakantieId);
 
 
@@ -23,8 +24,20 @@ else
 	$scope.vakantie = {naam:'', promoTekst:'', fotos: $scope.fotos , plaats: {plaatsnaam:'', contact:{telNr: '', website: '', adres:{straat:'', nr:'', postcode:'', gemeente:'', long:'', lat:''}}},prijs:'', vakantiePeriode: {vakantieNaam: '', periode:{van:'', tot:''}}, thema: '', leeftijdscategorie:{van:'', tot:'' }, maxAantal: '', busVervoer: false, eigenVervoer: false, fiscaalAftrek: false};
 	$scope.Vakantie = function() {
     if ($scope.episodeImgData) {
-      $scope.fotos.foto1 = $scope.episodeImgData;
-    }
+      for(var i = 0; i <= $scope.episodeImgData.length; i++)
+      {
+        if(i === 0)
+        {
+          $scope.fotos.foto1 = $scope.episodeImgData[i];
+        }
+        if(i === 1)
+        {
+          $scope.fotos.foto2 = $scope.episodeImgData[i];
+        }
+
+      }
+      
+    };
     Vakantie.create($scope.vakantie);
   };
 }
@@ -44,16 +57,20 @@ $scope.admin = function(role){
 };
 
 $scope.handleFileSelectAdd = function(evt) {
-  var f = evt.target.files[0];
+  for(var i = 0; i < evt.target.files.length; i++)
+  {
+      var f = evt.target.files[i];
   var reader = new FileReader();
   reader.onload = (function(theFile) {
     return function(e) {
       var filePayload = e.target.result;
-      $scope.episodeImgData = e.target.result; 
+      $scope.episodeImgData.push(e.target.result); 
       document.getElementById('pano').src = $scope.episodeImgData; 
     };
   })(f);
   reader.readAsDataURL(f);
+};
+
 };
 var el = document.getElementById('file-upload');
 if(el){
