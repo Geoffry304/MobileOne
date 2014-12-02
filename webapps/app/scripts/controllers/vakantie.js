@@ -5,10 +5,8 @@ app.controller('VakantieCtrl', function ($scope, $routeParams, $location, Vakant
   $scope.vakanties = Vakantie.all;
   $scope.user = Auth.user;
 //$scope.vakantie = Vakantie.get($routeParams.vakantieId);
-var el = document.getElementById('file-upload');
-if(el){
-  el.addEventListener('change', swapper, $scope.handleFileSelectAdd, false);
-}
+
+
 
 
 if($routeParams.vakantieId !== undefined)
@@ -57,4 +55,9 @@ $scope.handleFileSelectAdd = function(evt) {
   })(f);
   reader.readAsDataURL(f);
 };
+var el = document.getElementById('file-upload');
+if(el){
+  el.addEventListener('change',$scope.handleFileSelectAdd, false);
+}
+//document.getElementById('file-upload').addEventListener('change', $scope.handleFileSelectAdd, false);
 });
