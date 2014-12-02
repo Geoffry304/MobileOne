@@ -5,6 +5,7 @@ app.factory('Auth', function ($firebaseSimpleLogin, FIREBASE_URL, $rootScope, $f
 	var ref = new Firebase(FIREBASE_URL);
 	var auth = $firebaseSimpleLogin(ref);
 	var vakanties = $firebase(ref.child('vakantie')).$asArray();
+	
 
 
 	var Auth = {
@@ -23,11 +24,23 @@ app.factory('Auth', function ($firebaseSimpleLogin, FIREBASE_URL, $rootScope, $f
 			return profileRef.$set(user.uid, profile);
 		},
     	createFbProfile: function (user) {
+    		var fb = ref.child('profile').child(user.uid);
+			var role = '10';
+			if(fb !== undefined)
+			{
+				fb.child('role_value').once('value', function(snapshot){
+    				role = snapshot.C.F;
+    		});
+			}
+			else
+			{
+				role = '10';
+			}
 			var profile = {
 					username: user.thirdPartyUserData.first_name,
 					md5_hash: user.thirdPartyUserData.picture.data.url,
 					email: user.thirdPartyUserData.email,
-					role_value: '10',
+					role_value: role,
 					naam: user.thirdPartyUserData.last_name,
 					voornaam: user.thirdPartyUserData.first_name,
 					//gemeente: user.thirdPartyUserData.location.name
