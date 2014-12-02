@@ -38,5 +38,10 @@
     <string name="adm_onders">Administratieve ondersteuning</string>
     <string name="voegtoe">Voeg toe aan contacten</string>
     <string name="title_activity_vakantie_tabbar">VakantieTabbarActivity</string>
+    <string name="Titel">Titel:</string>
+    <string name="Promotekst">Promotekst:</string>
+    <string name="adres">Adres:</string>
+    <string name="website">Website:</string>
+    <string name="mapButton">Klik hier voor google maps</string>
 
 </resources>

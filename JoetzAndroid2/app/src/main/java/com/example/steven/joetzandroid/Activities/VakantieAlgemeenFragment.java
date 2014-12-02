@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.steven.joetzandroid.Domain.Vakantie;
@@ -19,7 +20,9 @@ public class VakantieAlgemeenFragment extends Fragment {
 
 
     private Vakantie vakantie;
-
+    private TextView titelLbl;
+    private TextView promotekstLbl;
+    private ImageView foto;
     private JoetzDB db;
     public VakantieAlgemeenFragment() {
         // Required empty public constructor
@@ -46,7 +49,11 @@ public class VakantieAlgemeenFragment extends Fragment {
 
         if(vakantie != null)
         {
-
+            titelLbl = (TextView)view.findViewById(R.id.titlelbl);
+            promotekstLbl= (TextView)view.findViewById(R.id.promotekstlbl);
+            foto = (ImageView)view.findViewById(R.id.imageView1);
+            titelLbl.setText(titelLbl.toString() + vakantie.getTitel());
+            promotekstLbl.setText(promotekstLbl.toString() + vakantie.getPromoTekst());
         }
 
         return view;
