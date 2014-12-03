@@ -52,7 +52,7 @@ app.controller('ToonVakantieCtrl', function ($scope, $routeParams, $location, Va
   function filter(comment)
   {
   	var subcomment = comment.tekst.split(' ');
-  	var notAllowedWords = ['anal','anus','arse','ass','ballsack','balls','bastard','bitch','biatch','bloody','blowjob','bollock','bollok','boner','boob','bugger','bum','butt','buttplug','clitoris','cock','coon','crap','cunt','damn','dick','dildo','dyke','fag','feck','fellate','fellatio','felching','fuck','fudgepacker','fudge packer','flange','Goddamn','hell','homo','jerk','jizz','knobend','labia','lmao','lmfao','muff','nigger','nigga','omg','penis','piss','poop','prick','pube','pussy','queer','scrotum','sex','shit','sh1t','slut','smegma','spunk','tit','tosser','turd','twat','vagina','wank','whore','wtf'];
+  	var notAllowedWords = ['faggot','anal','anus','arse','ass','ballsack','balls','bastard','bitch','biatch','bloody','blowjob','bollock','bollok','boner','boob','bugger','bum','butt','buttplug','clitoris','cock','coon','crap','cunt','damn','dick','dildo','dyke','fag','feck','fellate','fellatio','felching','fuck','fudgepacker','fudge packer','flange','Goddamn','hell','homo','jerk','jizz','knobend','labia','lmao','lmfao','muff','nigger','nigga','omg','penis','piss','poop','prick','pube','pussy','queer','scrotum','sex','shit','sh1t','slut','smegma','spunk','tit','tosser','turd','twat','vagina','wank','whore','wtf'];
   	var index;
   	var bool;
   	for(var i = 0; i < subcomment.length; i++)
@@ -64,7 +64,7 @@ app.controller('ToonVakantieCtrl', function ($scope, $routeParams, $location, Va
   		{
   			 return true;
   		}
-  		else{
+  		else{ 
   			bool = false;
   		}
   	}	

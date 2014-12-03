@@ -24,17 +24,17 @@ $scope.verwijderVakantie = function() {
     return Vakantie.delete(Vakantie.get($scope.vakantieId));
   };
 
- $scope.toggle_visibility = function(id, gebruikerId) {
+/* $scope.toggle_visibility = function(id, gebruikerId) {
   $scope.gebruikerId = gebruikerId;
   var e = document.getElementById(id);
   if(e.style.display == 'block')
      e.style.display = 'none';
   else
      e.style.display = 'block';
-  };
-$scope.verwijderVakantie = function() {
+  };*/
+/*$scope.verwijderVakantie = function() {
     $location.path('/');
     return Profile.delete(Profile.get($scope.gebruikerId));
-  };
+  };*/
 
 });
