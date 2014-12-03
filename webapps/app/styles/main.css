@@ -49,6 +49,7 @@ h2 {
   background-color: #FFFFFF;
   border-radius: 10px;
   box-shadow: 0 0 10px red;
+  margin-top: 50px;
 }
 
 .image .tekst {
@@ -198,9 +199,8 @@ h2 {
   font-size: 1.5em;
 }
 
-
 .navbar-custom {
-  background-color: #ff2000;
+  background-color: #CD0000;
   border-color: #ffffff;
 }
 .navbar-custom .navbar-brand {
@@ -259,13 +259,19 @@ h2 {
   }
 }
 
-.navbar-brand {
-  height: 45px;
-  width: 120px;
-  padding-bottom: 5px;
-  padding-top: 5px;
-  padding-right: 5px;
+.navbar-brand-center {
+  position: absolute;
+  left: 45%;
+  display: block;
+  width: 160px;
+  text-align: center;
+  height: 180%;
 }
+
+.navbar>.container .navbar-brand-centered, 
+    .navbar>.container-fluid .navbar-brand-centered {
+        margin-left: -70px;
+    }
 
 .nav-tabs {
   margin-top:30px;
