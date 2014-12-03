@@ -23,6 +23,21 @@ app.factory('Profile', function($window, FIREBASE_URL, $firebase, $q, $location,
 			var profileRef = $firebase(ref.child('profile'));
 			return profileRef.$update(userId, profileUpdate);
 		},
+		updateKind: function (kindId, kind, userId) {
+			var profileUpdate = {
+					geboortedatum: kind.geboortedatum,
+					gemeente: kind.gemeente,
+					naam: kind.naam,
+					nummer: kind.nummer,
+					postcode: kind.postcode,
+					straat: kind.straat,
+					voornaam: kind.voornaam,
+					rijksregisternummer: kind.rijksregisternummer
+				};
+
+			var kindRef = $firebase(ref.child('profile').child(userId).child('kinderen'));
+			return kindRef.$update(kindId, profileUpdate);
+		},
 		createKind: function(userId, kind){
 			var kindRef = $firebase(ref.child('profile').child(userId).child('kinderen')).$asArray();
 			return kindRef.$add(kind);
