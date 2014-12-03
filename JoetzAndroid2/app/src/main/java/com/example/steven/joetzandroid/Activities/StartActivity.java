@@ -25,7 +25,10 @@ import android.widget.Toast;
 import com.example.steven.joetzandroid.Adapters.NavDrawerListAdapter;
 import com.example.steven.joetzandroid.Domain.CreateDummyData;
 import com.example.steven.joetzandroid.Domain.NavDrawerItem;
+import com.example.steven.joetzandroid.Domain.Ouder;
 import com.example.steven.joetzandroid.R;
+import com.example.steven.joetzandroid.firebase.FirebaseAuth;
+import com.example.steven.joetzandroid.firebase.FirebaseProfile;
 import com.example.steven.joetzandroid.firebase.FirebaseVakantieRepository;
 import com.firebase.client.Firebase;
 
@@ -34,7 +37,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class StartActivity extends FragmentActivity implements AdapterView.OnItemClickListener, ActionBar.TabListener{
+public class StartActivity extends FragmentActivity implements AdapterView.OnItemClickListener{
 
     private final String TAG = "StartActitivty";
     private ImageView imgJoetz;
@@ -66,6 +69,7 @@ public class StartActivity extends FragmentActivity implements AdapterView.OnIte
         //FirebaseVakantieRepository rep = new FirebaseVakantieRepository();
         //CreateDummyData dummyData = new CreateDummyData(this);
         //dummyData.createVakanties();
+        //dummyData.translateFoto();
         setContentView(R.layout.activity_main);
         fragmentHashMap = new HashMap<String, Fragment>();
         mTitle = mDrawerTitle = getTitle();
@@ -123,16 +127,7 @@ public class StartActivity extends FragmentActivity implements AdapterView.OnIte
             getSupportFragmentManager().beginTransaction().add(R.id.frame_container, about).addToBackStack(null).commit();
         }
     }
-/*
-    public void binnenLandClicked(View view)
-    {
-        Log.d(TAG,"BinnenlandClicked");
-    }
-    public void inleefClicked(View view)
-    {
-        Log.d(TAG,"inleefClicked");
-    }
-*/
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -153,11 +148,25 @@ public class StartActivity extends FragmentActivity implements AdapterView.OnIte
         switch (item.getItemId())
         {
             case R.id.action_login:
-                LoginFragment f = new LoginFragment();
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.frame_container,f).commit();
-                drawerLayout.closeDrawers();
-                break;
+                if(FirebaseAuth.getUser()!=null)
+                {
+                    ProfileFragment f = new ProfileFragment();
+                    FirebaseProfile ouderProfile = new FirebaseProfile(new FirebaseAuth());
+                    Ouder o = ouderProfile.getOuder();
+                    f.setOuder(o);
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    fragmentManager.beginTransaction().replace(R.id.frame_container,f).commit();
+                    drawerLayout.closeDrawers();
+                    break;
+
+                }
+                else {
+                    LoginFragment f = new LoginFragment();
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    fragmentManager.beginTransaction().replace(R.id.frame_container, f).commit();
+                    drawerLayout.closeDrawers();
+                    break;
+                }
         }
         return super.onOptionsItemSelected(item);
     }
@@ -198,52 +207,5 @@ public class StartActivity extends FragmentActivity implements AdapterView.OnIte
             getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,f).addToBackStack(f.getTag()).commit();
             drawerLayout.closeDrawers();
         }
-    }
-
-    private ActionBar actionbar;
-    public void createTabbarVakantie()
-    {
-        actionbar = this.getActionBar();
-        actionbar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
-        String[]items = getResources().getStringArray(R.array.tab_bar_items);
-
-        for(int i = 0;i<items.length;i++)
-        {
-            actionbar.addTab(actionbar.newTab().setText(items[i]).setTabListener(this));
-
-        }
-        setActionBarOff();
-
-    }
-    public void setActionBarOff()
-    {
-        if(actionbar.isShowing())
-        {
-            actionbar.hide();
-        }
-    }
-    public void setActionbarOn()
-    {
-        if (!actionbar.isShowing())
-        {
-            actionbar.show();
-        }
-    }
-
-    
-    @Override
-    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-
-    }
-
-    @Override
-    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-
-    }
-
-    @Override
-    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-
     }
 }

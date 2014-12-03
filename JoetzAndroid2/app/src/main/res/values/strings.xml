@@ -43,5 +43,6 @@
     <string name="adres">Adres:</string>
     <string name="website">Website:</string>
     <string name="mapButton">Klik hier voor google maps</string>
+    <string name="title_activity_vakantie_detail">VakantieDetailActivity</string>
 
 </resources>

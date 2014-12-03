@@ -215,6 +215,10 @@ public class JoetzDB {
             val.put(DatabaseContstants.COLUMN_VAKANTIE_PERIODE, addVakantiePeriode(vakantie.getVakantiePeriode()));
             val.put(DatabaseContstants.COLUMN_VAKANTIE_PRIJSCAT, addPrijsCat(vakantie.getPrijsCategorie()));
             val.put(DatabaseContstants.COLUMN_VAKANTIE_LEEFTIJD, addLeeftijdCat(vakantie.getLeeftijdsCategorie()));
+            for (Foto f : vakantie.getFotos())
+            {
+                addPhotoToVakantie(f,vakantie.getId());
+            }
             //photo aanmaken
 
             long a_id = database.insert(DatabaseContstants.TABLE_VAKANTIE,null,val);
@@ -466,8 +470,10 @@ public class JoetzDB {
     {
         ArrayList<Foto> fotos = new ArrayList<Foto>();
         String selectQuery = "SELECT * FROM "+DatabaseContstants.TABLE_FOTO+" WHERE "+DatabaseContstants.COLUMN_PHOTO_VAK_ID+" = '"+vakantieId+"'";
-
+        Log.d(TAG,selectQuery);
         Cursor c = database.rawQuery(selectQuery,null);
+        if(c!=null)
+        {
 
         if(c.moveToFirst())
         {
@@ -479,14 +485,19 @@ public class JoetzDB {
                 fotos.add(f);
             }while (c.moveToNext());
         }
+
+        }
         return fotos;
     }
 
     public Bitmap getImage(byte[]b)
     {
+        if (b !=null)
+        {
+            return BitmapFactory.decodeByteArray(b,0, b.length);
+        }
 
-        return BitmapFactory.decodeByteArray(b,0, b.length);
-
+        return null;
     }
     public ArrayList<Vakantie> getVakantiesByVakantiePeriode(String periode)
     {
@@ -500,11 +511,27 @@ public class JoetzDB {
         {
             do{
                 Vakantie v = getVakantie(c.getString(c.getColumnIndex(DatabaseContstants.COLUMN_VAKANTIE_ID)));
+                v.setFotos(getFotosFromVakantie(v.getId()));
                 vakanties.add(v);
             }while(c.moveToNext());
         }
         return vakanties;
 
+    }
+    public ArrayList<Vakantie> getAllVakanties()
+    {
+        ArrayList<Vakantie> vakanties = new ArrayList<Vakantie>();
+        String selectQuery = "SELECT * FROM "+DatabaseContstants.TABLE_VAKANTIE;
+        Cursor c = database.rawQuery(selectQuery,null);
+        if(c.moveToFirst())
+        {
+            do{
+                Vakantie v = getVakantie(c.getString(c.getColumnIndex(DatabaseContstants.COLUMN_VAKANTIE_ID)));
+                v.setFotos(getFotosFromVakantie(v.getId()));
+                vakanties.add(v);
+            }while(c.moveToNext());
+        }
+        return vakanties;
     }
 
     public long addPhotoToVakantie(Foto f,String vakantieId)
@@ -513,8 +540,12 @@ public class JoetzDB {
             ContentValues val = new ContentValues();
             val.put(DatabaseContstants.COLUMN_PHOTO_URL, f.getNaam());
             val.put(DatabaseContstants.COLUMN_PHOTO_VAK_ID, vakantieId);
-            val.put(DatabaseContstants.COLUMN_PHOTO_IMAGE,convertFoto(f.getImage()));
-            long a_id = database.insert(DatabaseContstants.TABLE_KIND,null,val);
+            if (f.getImage()!=null)
+            {
+                val.put(DatabaseContstants.COLUMN_PHOTO_IMAGE,convertFoto(f.getImage()));
+            }
+
+            long a_id = database.insert(DatabaseContstants.TABLE_FOTO,null,val);
             return a_id;
         }catch(SQLiteException e)
         {
@@ -529,5 +560,21 @@ public class JoetzDB {
         f.compress(Bitmap.CompressFormat.PNG,100,baos);
         byte[]photo = baos.toByteArray();
         return photo;
+    }
+    public long updateFoto(Foto f,String vakantieId)
+    {
+        try{
+            ContentValues val = new ContentValues();
+            val.put(DatabaseContstants.COLUMN_PHOTO_URL, f.getNaam());
+            val.put(DatabaseContstants.COLUMN_PHOTO_VAK_ID, vakantieId);
+            val.put(DatabaseContstants.COLUMN_PHOTO_IMAGE,convertFoto(f.getImage()));
+            long a_id = database.update(DatabaseContstants.TABLE_FOTO, val, DatabaseContstants.COLUMN_PHOTO_ID+"="+f.getId(), null);
+            Log.d(TAG,"Foto updated : "+a_id);
+            return a_id;
+        }catch(SQLiteException e)
+        {
+            Log.e(TAG,e.getMessage());
+            return -1;
+        }
     }
 }

@@ -3,12 +3,14 @@ package com.example.steven.joetzandroid.Activities;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.steven.joetzandroid.Adapters.VakantieListAdapter;
@@ -17,7 +19,7 @@ import com.example.steven.joetzandroid.R;
 
 import java.util.ArrayList;
 
-public class VakantiesFragment extends Fragment {
+public class VakantiesFragment extends Fragment implements AdapterView.OnItemClickListener{
 
     private final String TAG = "VakantiesFragment";
     private ArrayList<Vakantie> vakanties;
@@ -43,8 +45,15 @@ public class VakantiesFragment extends Fragment {
         vakantiesListView = (ListView)view.findViewById(R.id.vakanties_list_view);
         VakantieListAdapter vla = new VakantieListAdapter(getActivity(),vakanties);
         vakantiesListView.setAdapter(vla);
+        vakantiesListView.setOnItemClickListener(this);
         return view;
     }
 
 
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+       Intent intent = new Intent(getActivity(),VakantieDetailActivity.class);
+        intent.putExtra("vakantieId",vakanties.get(i).getId());
+        startActivity(intent);
+    }
 }

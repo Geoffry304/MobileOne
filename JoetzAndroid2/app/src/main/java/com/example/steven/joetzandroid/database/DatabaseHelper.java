@@ -123,7 +123,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_TABLE_PHOTO = "create table "+DatabaseContstants.TABLE_FOTO+
             "( " +DatabaseContstants.COLUMN_PHOTO_ID+" integer primary key autoincrement, "
-            +DatabaseContstants.COLUMN_PHOTO_IMAGE+" blob not null, "
+            +DatabaseContstants.COLUMN_PHOTO_IMAGE+" blob, "
             +DatabaseContstants.COLUMN_PHOTO_URL+" text, "
             +DatabaseContstants.COLUMN_PHOTO_VAK_ID+" text, "
             +DatabaseContstants.COLUMN_PHOTO_OUDER_ID+" text, "

@@ -170,4 +170,9 @@ public class Vakantie {
     public void setTitel(String titel) {
         this.titel = titel;
     }
+
+    @Override
+    public String toString() {
+        return "Vakantie "+getId()+" Foto 0 = "+getFotos().get(0).getNaam()+" size "+getFotos().size();
+    }
 }

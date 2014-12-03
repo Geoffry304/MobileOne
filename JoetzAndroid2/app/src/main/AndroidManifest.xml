@@ -31,6 +31,10 @@
             android:name=".Activities.VakantieTabbarActivity"
             android:label="@string/title_activity_vakantie_tabbar" >
         </activity>
+        <activity
+            android:name=".Activities.VakantieDetailActivity"
+            android:label="@string/title_activity_vakantie_detail" >
+        </activity>
     </application>
 
     <!--
