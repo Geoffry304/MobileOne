@@ -21,6 +21,8 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+  var modRewrite = require('connect-modrewrite');
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 

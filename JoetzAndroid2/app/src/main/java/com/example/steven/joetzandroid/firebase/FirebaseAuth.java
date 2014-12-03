@@ -25,7 +25,7 @@ public class FirebaseAuth {
 
 
     private static final Firebase ref = new Firebase("https://mobileone.firebaseio.com/");
-    private AuthData user;
+    private static AuthData user;
     private final String TAG = "FirebaseAuth";
 
     public FirebaseAuth()
@@ -33,7 +33,7 @@ public class FirebaseAuth {
 
     }
 
-    public AuthData getUser()
+    public static AuthData getUser()
     {
             user = ref.getAuth();
             return user;

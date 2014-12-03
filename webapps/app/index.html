@@ -2,7 +2,8 @@
 <html class="no-js">
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <!--<base href="/">-->
+    <title>Joetz</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -71,6 +72,7 @@
     <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
     <script src="bower_components/jssor-slider/js/jssor.slider.mini.js"></script>
     <script src="bower_components/ideal-image-slider/ideal-image-slider.js"></script>
+    <script src="bower_components/angular-socialshare/angular-socialshare.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     
@@ -92,6 +94,24 @@
     <script src="scripts/controllers/monitor.js"></script>
     <script src="scripts/controllers/homepagina.js"></script>
     <script src="scripts/directives/slider.js"></script>
+
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1401619376727163',
+          xfbml      : true,
+          version    : 'v2.1'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
 
     <!-- endbuild -->
 </body>

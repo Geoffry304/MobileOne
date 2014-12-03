@@ -1,14 +1,17 @@
 package com.example.steven.joetzandroid.Domain;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.steven.joetzandroid.database.JoetzDB;
+
+import java.util.ArrayList;
 
 /**
  * Created by Steven on 25/11/14.
  */
 public class CreateDummyData {
-
+    private static final String TAG = "CreateDummyData";
     private JoetzDB db;
 
     public CreateDummyData(Context context)
@@ -53,9 +56,7 @@ public class CreateDummyData {
 
         vakantie1.setLeeftijdsCategorie(leeftijdsCategorie);
         vakantie1.setPromoTekst("Vijf dagen lang spelen we de leukste spelletjes, voor klein en groot. Samen met je vakantievriendjes beleef je het ene avontuur na het andere. Plezier gegarandeerd!!");
-        Foto f = new Foto();
-        f.setNaam("http://1drv.ms/11TgJts");
-        vakantie1.addFoto(f);
+
         Thema t = new Thema();
         t.setNaam("Aan zee");
         vakantie1.setThema(t);
@@ -72,18 +73,29 @@ public class CreateDummyData {
 
         for( int i = 0; i < 10 ; i++)
         {
+            Foto f = new Foto();
+
             VakantiePeriode periode = new VakantiePeriode();
 
             if(i == 0)
             {
+                f.setNaam("http://stevendc.hostoi.com/images/1.jpg");
+                //f.loadImage();
+                vakantie1.addFoto(f);
                 periode.setVakantieNaam(periodes[i]);
             }
             else if(i>0 && i<3)
             {
+                f.setNaam("http://stevendc.hostoi.com/images/"+i+".jpg");
+                //f.loadImage();
+                vakantie1.addFoto(f);
                 periode.setVakantieNaam(periodes[1]);
             }
-            else if(i>3 && i<8)
+            else if(i>3 && i<6)
             {
+                f.setNaam("http://stevendc.hostoi.com/images/"+i+".jpg");
+                //f.loadImage();
+                vakantie1.addFoto(f);
                 periode.setVakantieNaam(periodes[2]);
             }
             else if (i == 8)
@@ -101,10 +113,28 @@ public class CreateDummyData {
             vakantie1.setVakantiePeriode(periode);
 
             vakantie1.setId("vakantie"+i);
+            Log.d(TAG, vakantie1.toString());
             db.addVakantie(vakantie1);
 
         }
 
 
+    }
+
+    public void translateFoto()
+    {
+       for(Vakantie v : getVakantiesFromDb())
+       {
+         int size = v.getFotos().size() -1;
+           Foto f = v.getFotos().get(size);
+           if (f.getImage() == null)
+           {
+               f.loadImage(v.getId(),db);
+           }
+       }
+    }
+    public ArrayList<Vakantie>getVakantiesFromDb()
+    {
+        return db.getAllVakanties();
     }
 }

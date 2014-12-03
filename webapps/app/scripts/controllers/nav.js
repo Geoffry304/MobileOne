@@ -10,6 +10,16 @@ app.controller('NavCtrl', function ($scope, $location, Auth) {  $scope.signedIn 
       console.log(error.toString());
     });
   };
+    $scope.register = function() {
+    Auth.register($scope.user).then(function(user) {
+      return Auth.login($scope.user).then(function() {
+        return Auth.createProfile(user);
+      })
+    }, function(error) {
+      $scope.error = error.toString();
+      console.log(error.toString());
+    });
+  };
   $scope.user = Auth.user;
 
     $scope.admin = function(role){
@@ -17,13 +27,14 @@ app.controller('NavCtrl', function ($scope, $location, Auth) {  $scope.signedIn 
     };
 
     $scope.loginWithFacebook = function() {
-    console.log('Test fb');
+
     Auth.facebookLogin().then(function(){
-      
+        console.log(Auth.$value);  
         Auth.createFbProfile(Auth.user);
       
       //Auth.createFbProfile(Auth.user);
       $location.path('/');
     });
-  };   
+  };  
+ 
 });

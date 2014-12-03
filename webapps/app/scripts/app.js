@@ -14,12 +14,13 @@ var app = angular.module('webappsApp', [
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'firebase'
+    'firebase',
+    'djds4rce.angular-socialshare'
   ])
   .constant('FIREBASE_URL','https://mobileone.firebaseio.com')
   .constant('uiCalendarConfig', {calendars: {}});
 
-app.config(function ($routeProvider) {
+app.config(function ($routeProvider, $locationProvider) {
     $routeProvider
     .when('/', {
       templateUrl: 'views/homepagina.html',
@@ -80,6 +81,10 @@ app.config(function ($routeProvider) {
       templateUrl:'views/adminVakanties.html',
       controller:'VakantieCtrl'
     })
+    .when('/admin/gebruikers', {
+      templateUrl:'views/adminGebruikers.html',
+      controller:'ProfileCtrl'
+    })
     .when('/users/:userId', {
       templateUrl: 'views/profile.html',
       controller: 'ProfileCtrl'
@@ -104,4 +109,5 @@ app.config(function ($routeProvider) {
     .otherwise({
       redirectTo: '/'
     });
+    //$locationProvider.html5Mode(true);
   });

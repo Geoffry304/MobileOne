@@ -18,6 +18,7 @@ public class Vakantie {
     private String promoTekst;
     private ArrayList<Kind>inschijvingen;
     private ArrayList<Foto>fotos;
+    private String titel;
     private String naam;
     private PrijsCategorie  prijsCategorie;
     private String id;
@@ -160,5 +161,18 @@ public class Vakantie {
 
     public void setFotos(ArrayList<Foto> fotos) {
         this.fotos = fotos;
+    }
+
+    public String getTitel() {
+        return titel;
+    }
+
+    public void setTitel(String titel) {
+        this.titel = titel;
+    }
+
+    @Override
+    public String toString() {
+        return "Vakantie "+getId()+" Foto 0 = "+getFotos().get(0).getNaam()+" size "+getFotos().size();
     }
 }

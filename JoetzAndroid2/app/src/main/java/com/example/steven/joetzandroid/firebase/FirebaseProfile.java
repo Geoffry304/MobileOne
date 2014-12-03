@@ -30,6 +30,7 @@ public class FirebaseProfile implements Firebase.CompletionListener{
         this.completed = false;
         this.ouder = new Ouder();
         setOuderIdFromAuth();
+        makeProfileFromAuth();
 
     }
     public FirebaseProfile()

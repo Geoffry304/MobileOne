@@ -69,7 +69,7 @@ public class FirebaseToObjectsFactory {
         {
             vakantie.setFiscaalAftrek(true);
         }
-     vakantie.setMaxAantalLid(Integer.valueOf((String)map.get("maxAantalld")));
+     vakantie.setMaxAantalLid(Integer.valueOf((String)map.get("maxAantal")));
        Log.d("MAXLEDEN",vakantie.getMaxAantalLid()+"");
         vakantie.setNaam((String)map.get("naam"));
         vakantie.setPromoTekst((String)map.get("promoTekst"));

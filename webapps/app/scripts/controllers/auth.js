@@ -15,11 +15,14 @@ app.controller('AuthCtrl', function($scope, $location, Auth, user) {
 	};
 
 	$scope.loginWithFacebook = function() {
-		console.log('Test fb');
 		Auth.facebookLogin().then(function(){
 			
-				Auth.createFbProfile(Auth.user);
+			console.log('tttttt ');
+
 			
+				//Auth.createFbProfile(Auth.user);
+
+
 			//Auth.createFbProfile(Auth.user);
 		});
 	};

@@ -5,16 +5,20 @@ app.factory('Auth', function ($firebaseSimpleLogin, FIREBASE_URL, $rootScope, $f
 	var ref = new Firebase(FIREBASE_URL);
 	var auth = $firebaseSimpleLogin(ref);
 	var vakanties = $firebase(ref.child('vakantie')).$asArray();
+	var usernm = '';
+	
 
 
 	var Auth = {
 		register: function(user) {
+			usernm = user.username;
 			return auth.$createUser(user.email, user.password);
 		},
 		createProfile: function (user) {
 			var profile = {
-					username: user.username,
-					md5_hash: "http://www.gravatar.com/avatar/" + user.md5_hash,
+					username: usernm,
+					email: user.email,
+					md5_hash: 'http://www.gravatar.com/avatar/' + user.md5_hash,
 					role_value: '10'
 			};
 
@@ -22,10 +26,23 @@ app.factory('Auth', function ($firebaseSimpleLogin, FIREBASE_URL, $rootScope, $f
 			return profileRef.$set(user.uid, profile);
 		},
     	createFbProfile: function (user) {
+    		var fb = ref.child('profile').child(user.uid);
+			var role = '10';
+			if(fb !== undefined)
+			{
+				fb.child('role_value').once('value', function(snapshot){
+    				role = snapshot.C.F;
+    		});
+			}
+			else
+			{
+				role = '10';
+			}
 			var profile = {
 					username: user.thirdPartyUserData.first_name,
 					md5_hash: user.thirdPartyUserData.picture.data.url,
-					role_value: '10',
+					email: user.thirdPartyUserData.email,
+					role_value: role,
 					naam: user.thirdPartyUserData.last_name,
 					voornaam: user.thirdPartyUserData.first_name,
 					//gemeente: user.thirdPartyUserData.location.name

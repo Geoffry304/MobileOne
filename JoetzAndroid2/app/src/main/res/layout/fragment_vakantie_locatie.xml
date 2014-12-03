@@ -1,0 +1,47 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.steven.joetzandroid.Activities.VakantieAlgemeenFragment"
+    >
+
+    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/adreslbl"
+                android:text="@string/adres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:textSize="25dp"/>
+
+            <TextView
+                android:id="@+id/websitelbl"
+                android:text="@string/website"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:textSize="25dp" />
+
+            <Button
+                android:id="@+id/mapButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="@string/mapButton"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>
