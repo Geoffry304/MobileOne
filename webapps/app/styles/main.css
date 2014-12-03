@@ -202,6 +202,7 @@ h2 {
 .navbar-custom {
   background-color: #CD0000;
   border-color: #ffffff;
+  height: 49px;
 }
 .navbar-custom .navbar-brand {
   color: #ecf0f1;
@@ -268,6 +269,21 @@ h2 {
   height: 180%;
 }
 
+.nav-left {
+  position: absolute;
+  display: block;
+  text-align: center;
+  left: 24%;
+}
+
+.nav-right {
+  position: absolute;
+  display: block;
+  text-align: center;
+  right: 27%;
+  text-align: left;
+}
+
 .navbar>.container .navbar-brand-centered, 
     .navbar>.container-fluid .navbar-brand-centered {
         margin-left: -70px;
@@ -314,7 +330,7 @@ h2 {
   padding: 20px;
   box-shadow: 0 0 30px black;
   width: 300px;
-  background-color: #555555;
+  background-color: #CD0000;
 }
 
 #terugNaarVakanties {
