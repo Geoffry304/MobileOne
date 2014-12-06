@@ -66,36 +66,42 @@ public class CreateDummyData {
 
         String[]periodes = {"Krokus 15","Pasen 15","Zomer 15","Herfst 15","Kerst 15 - 16"};
 
+        String urlFoto = "http://stevendc.hostoi.com/images/";
+        ArrayList<Foto> fotos = new ArrayList<Foto>();
 
+        for(int i = 1;i<6;i++)
+        {
 
+                Foto f = new Foto();
+                f.setNaam(urlFoto+i+".jpg");
+                Log.d(TAG,"Foto :  "+f.getNaam());
+                fotos.add(f);
+
+        }
 
 
 
         for( int i = 0; i < 10 ; i++)
         {
-            Foto f = new Foto();
+
 
             VakantiePeriode periode = new VakantiePeriode();
 
             if(i == 0)
             {
-                f.setNaam("http://stevendc.hostoi.com/images/1.jpg");
-                //f.loadImage();
-                vakantie1.addFoto(f);
+
                 periode.setVakantieNaam(periodes[i]);
             }
             else if(i>0 && i<3)
             {
-                f.setNaam("http://stevendc.hostoi.com/images/"+i+".jpg");
-                //f.loadImage();
-                vakantie1.addFoto(f);
+
                 periode.setVakantieNaam(periodes[1]);
             }
             else if(i>3 && i<6)
             {
-                f.setNaam("http://stevendc.hostoi.com/images/"+i+".jpg");
+
                 //f.loadImage();
-                vakantie1.addFoto(f);
+
                 periode.setVakantieNaam(periodes[2]);
             }
             else if (i == 8)
@@ -109,7 +115,7 @@ public class CreateDummyData {
 
 
 
-
+            vakantie1.setFotos(fotos);
             vakantie1.setVakantiePeriode(periode);
 
             vakantie1.setId("vakantie"+i);
@@ -121,18 +127,7 @@ public class CreateDummyData {
 
     }
 
-    public void translateFoto()
-    {
-       for(Vakantie v : getVakantiesFromDb())
-       {
-         int size = v.getFotos().size() -1;
-           Foto f = v.getFotos().get(size);
-           if (f.getImage() == null)
-           {
-               f.loadImage(v.getId(),db);
-           }
-       }
-    }
+
     public ArrayList<Vakantie>getVakantiesFromDb()
     {
         return db.getAllVakanties();

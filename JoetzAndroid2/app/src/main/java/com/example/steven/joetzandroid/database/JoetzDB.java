@@ -45,6 +45,7 @@ public class JoetzDB {
         if (instance == null)
         {
             instance = new JoetzDB(context);
+            //instance.open();
         }
         return instance;
     }
@@ -561,7 +562,7 @@ public class JoetzDB {
         byte[]photo = baos.toByteArray();
         return photo;
     }
-    public long updateFoto(Foto f,String vakantieId)
+    public boolean updateFoto(Foto f,String vakantieId)
     {
         try{
             ContentValues val = new ContentValues();
@@ -569,12 +570,13 @@ public class JoetzDB {
             val.put(DatabaseContstants.COLUMN_PHOTO_VAK_ID, vakantieId);
             val.put(DatabaseContstants.COLUMN_PHOTO_IMAGE,convertFoto(f.getImage()));
             long a_id = database.update(DatabaseContstants.TABLE_FOTO, val, DatabaseContstants.COLUMN_PHOTO_ID+"="+f.getId(), null);
-            Log.d(TAG,"Foto updated : "+a_id);
-            return a_id;
+            Log.e(TAG,"Foto updated : "+a_id);
+            return a_id>0;
         }catch(SQLiteException e)
         {
             Log.e(TAG,e.getMessage());
-            return -1;
+            return false;
         }
+
     }
 }

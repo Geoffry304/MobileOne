@@ -40,10 +40,6 @@ import java.util.List;
 public class StartActivity extends FragmentActivity implements AdapterView.OnItemClickListener{
 
     private final String TAG = "StartActitivty";
-    private ImageView imgJoetz;
-    private TextView beschrijvingTxtView;
-    private ImageView binnenlandView;
-    private ImageView inleefView;
 
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
@@ -67,8 +63,9 @@ public class StartActivity extends FragmentActivity implements AdapterView.OnIte
 
         Firebase.setAndroidContext(this);
         //FirebaseVakantieRepository rep = new FirebaseVakantieRepository();
-        //CreateDummyData dummyData = new CreateDummyData(this);
-        //dummyData.createVakanties();
+        //
+        CreateDummyData dummyData = new CreateDummyData(this);
+        dummyData.createVakanties();
         //dummyData.translateFoto();
         setContentView(R.layout.activity_main);
         fragmentHashMap = new HashMap<String, Fragment>();

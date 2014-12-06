@@ -4,17 +4,14 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
+
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.steven.joetzandroid.Domain.Foto;
 import com.example.steven.joetzandroid.Domain.Ouder;
 import com.example.steven.joetzandroid.Domain.Vakantie;
 import com.example.steven.joetzandroid.R;
@@ -22,7 +19,7 @@ import com.example.steven.joetzandroid.database.JoetzDB;
 import com.example.steven.joetzandroid.firebase.FirebaseAuth;
 import com.example.steven.joetzandroid.firebase.FirebaseProfile;
 
-import java.net.URL;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -55,11 +52,11 @@ public class VakantieDetailActivity extends FragmentActivity implements ActionBa
         vakantie = db.getVakantie(id);
         createTabbarVakantie();
 
-        VakantieDetailFragment detailFragment = new VakantieFotosFragment();
-        detailFragment.setVakantie(vakantie);
+        VakantieFotoGalery fotoGalery = new VakantieFotoGalery();
+        fotoGalery.setVakantie(vakantie);
 
         FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().add(R.id.frame_vakantie_details,detailFragment).addToBackStack(null).commit();
+        manager.beginTransaction().add(R.id.frame_vakantie_details,fotoGalery).addToBackStack(null).commit();
 
     }
 
@@ -125,7 +122,7 @@ public class VakantieDetailActivity extends FragmentActivity implements ActionBa
     @Override
     public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
 
-    }
+     }
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {

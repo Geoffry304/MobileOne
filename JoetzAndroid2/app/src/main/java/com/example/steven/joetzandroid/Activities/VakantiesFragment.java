@@ -50,6 +50,7 @@ public class VakantiesFragment extends Fragment implements AdapterView.OnItemCli
     }
 
 
+
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
        Intent intent = new Intent(getActivity(),VakantieDetailActivity.class);
