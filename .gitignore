@@ -39,3 +39,5 @@ JoetzAndroid2/app/src/main/res/layout/fragment_vakantie_fotos.xml
 JoetzAndroid2/app/src/main/res/layout/fragment_vakantie_foto_galery.xml
 
 *.java
+
+webapps/app/views/nav.html
