@@ -162,17 +162,42 @@ h2 {
   border-radius: 100px;
 }
 
-.navbar{
-  background: url("../images/joetzBrand.jpg") top center no-repeat;
-  background-size: 150px 50px;
-  background-color: #CD0000;
-  box-shadow: 0 0 10px white;
+.navbar-brand{
+    position: absolute;
+    max-height: 40px;
+    width: 100%;
+    left: 0;
+    top: 0;
+    text-align: center;
+    margin: auto;
+    background: transparent;
+}
+
+.nav-center {
+    margin:0;
+    float:none;
+}
+
+.navbar-custom{
+  background-color: #e32517;
+}
+.navbar-right{
+  padding-right: 20px;
+}
+
+.navbar-left{
+  padding-left: 20px;
 }
 
 .navbarLink{
   color: black;
   font-family: 'Lato', sans-serif;
 }
+
+@media (max-width: 767px) {
+  .navbar-custom .navbar-nav .open .dropdown-menu > li > a {
+    color: #ecf0f1;
+  }
 
 
 /* MAIN POSTS PAGE */
