@@ -7,13 +7,16 @@ app.controller('ProfileCtrl', function($scope, $routeParams, Profile) {
 	$scope.profile = Profile.get(uid);
 	
 
+	var rijks;
+
+	rijks = $scope.myKinderen.geboortedatum;
+	$scope.myKinderen = rijks;
+
 	$scope.submitProfiel = function () {
 		console.log($scope.profile.username);
 		Profile.update(uid,$scope.profile);
 	};
-	$scope.change = function () {
-		
-	};
+
 	$scope.submitKind = function () {
 
 

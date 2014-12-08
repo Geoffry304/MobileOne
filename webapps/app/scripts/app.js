@@ -81,6 +81,10 @@ app.config(function ($routeProvider, $locationProvider) {
       templateUrl:'views/adminVakanties.html',
       controller:'VakantieCtrl'
     })
+    .when('/admin/activiteit', {
+      templateUrl:'views/activiteit.html',
+      controller:'ActiviteitCtrl'
+    })
     .when('/admin/gebruikers', {
       templateUrl:'views/adminGebruikers.html',
       controller:'ProfileCtrl'
@@ -104,6 +108,10 @@ app.config(function ($routeProvider, $locationProvider) {
     })
     .when('/beheerderspagina', {
       templateUrl: 'views/beheerderspagina.html',
+      controller: 'BeheerderCtrl'
+    })
+    .when('/monitorpagina', {
+      templateUrl: 'views/monitorpagina.html',
       controller: 'BeheerderCtrl'
     })
     .otherwise({

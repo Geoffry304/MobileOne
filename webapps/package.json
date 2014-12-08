@@ -1,7 +1,9 @@
 {
   "name": "Mobileone",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "imager.js": "^0.4.0"
+  },
   "devDependencies": {
     "grunt": "^0.4.1",
     "grunt-autoprefixer": "^0.7.3",
@@ -31,6 +33,8 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "grunt test"
-  }
+    "test": "grunt test",
+    "start": "node server.js"
+},
+    "main": "server.js"
 }
