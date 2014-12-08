@@ -86,37 +86,12 @@ public class LoginFragment extends Fragment {
 
         return view;
     }
-    private void onFacebookSessionStateChange(final Session session, SessionState state, Exception exception)
-    {
+    private void onFacebookSessionStateChange(final Session session, SessionState state, Exception exception) {
 
-        fire.loginWithFacebook(session,state,exception);
-/*
-        if(state.isOpened())
-        {
-            fireRef.authWithOAuthToken("facebook",session.getAccessToken(),new Firebase.AuthResultHandler() {
-                @Override
-                public void onAuthenticated(AuthData authData) {
-
-                    Toast.makeText(getActivity().getApplicationContext(),"Facebook : ingelogd als =>" +authData.getProviderData().get("displayName").toString(),Toast.LENGTH_LONG).show();
-
-                }
-
-                @Override
-                public void onAuthenticationError(FirebaseError firebaseError) {
-                    //onLogged("Error "+firebaseError.getMessage(),false);
-                    Toast.makeText(getActivity().getApplicationContext(),firebaseError.getMessage(),Toast.LENGTH_LONG).show();
-                }
-            });
-        }
-        else if(state.isClosed())
-        {
-
-
-
-
-        }
-        */
+        fire.loginWithFacebook(session, state, exception);
     }
+
+
     public void logIn()
     {
         if (!emailEditTextEmpty() && !passwordEditTextEmpty())
@@ -126,36 +101,14 @@ public class LoginFragment extends Fragment {
             if(fire.logIn(email,password))
             {
                 Log.d(TAG,"Success");
+                //Toast.makeText(getActivity().getApplicationContext(),"AuthId : " +authData.getUid(),Toast.LENGTH_LONG).show();
             }
             else
             {
                 Log.d(TAG,"Not success");
             }
         }
-        /*
-        if(!emailEditTextEmpty() && !passwordEditTextEmpty())
-        {
-            final String email = getEmailText();
-            final String password = getPasswordText();
-            fireRef.authWithPassword(email,password, new Firebase.AuthResultHandler() {
-                        @Override
-                        public void onAuthenticated(AuthData authData) {
 
-                                Toast.makeText(getActivity().getApplicationContext(),"AuthId : " +authData.getUid(),Toast.LENGTH_LONG).show();
-
-                        }
-
-                        @Override
-                        public void onAuthenticationError(FirebaseError firebaseError) {
-                            Toast.makeText(getActivity().getApplicationContext(),firebaseError.getMessage(),Toast.LENGTH_LONG).show();
-
-                        }
-                    }
-
-
-            );
-        }
-        */
 
     }
     public void registreer()

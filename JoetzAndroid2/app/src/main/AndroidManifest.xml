@@ -8,7 +8,8 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme.Joetztitlebar" >
+        android:theme="@style/Theme.Joetztitlebar"
+        android:largeHeap="true">
         <activity
             android:name=".Activities.StartActivity"
             android:label="@string/app_name" >
@@ -27,10 +28,7 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/APP_FB_ID" />
 
-        <activity
-            android:name=".Activities.VakantieTabbarActivity"
-            android:label="@string/title_activity_vakantie_tabbar" >
-        </activity>
+
         <activity
             android:name=".Activities.VakantieDetailActivity"
             android:label="@string/title_activity_vakantie_detail" >

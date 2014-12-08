@@ -1,6 +1,7 @@
 package com.example.steven.joetzandroid.Adapters;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,15 +15,28 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
+import com.example.steven.joetzandroid.Domain.CustomHttpClient;
 import com.example.steven.joetzandroid.Domain.Foto;
 import com.example.steven.joetzandroid.Domain.Vakantie;
 import com.example.steven.joetzandroid.R;
 import com.example.steven.joetzandroid.database.JoetzDB;
+import com.squareup.picasso.Picasso;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.util.EntityUtils;
 import org.w3c.dom.Text;
 
+import java.io.IOException;
+import java.lang.annotation.Target;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by Steven on 25/11/14.
@@ -69,18 +83,23 @@ public class VakantieListAdapter extends BaseAdapter {
 
 
         int size = vakanties.get(i).getFotos().size()-1;
-        Foto foto = vakanties.get(i).getFotos().get(size);
+        Foto foto = vakanties.get(i).getFotos().get(2);
         Log.d(TAG,"Size "+size);
         if(foto.getImage() != null)
         {
 
-            vakantieLogoView.setImageBitmap(vakanties.get(i).getFotos().get(size).getImage());
+
+            vakantieLogoView.setImageBitmap(foto.getImage());
 
 
         }
         else if(size > -1)
         {
-            new ImageLoaderAsync(foto,this,vakanties.get(i).getId()).execute(foto.getNaam());
+           // new ImageLoaderAsync(foto,this,vakanties.get(i).getId()).execute(foto.getNaam());
+            //Target t = (Target)foto.getImage();
+
+            Picasso.with(context).load(foto.getNaam()).resize(80,50).centerCrop().into(vakantieLogoView);
+
         }
 
 
@@ -103,15 +122,27 @@ public class VakantieListAdapter extends BaseAdapter {
             this.foto = foto;
            this.adapter = baseAdapter;
         }
+
+        private ProgressDialog dialog;
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog = ProgressDialog.show(context,"Download image","Loading ...");
+        }
+
         @Override
         protected void onPostExecute(Bitmap bitmap) {
+           dialog.dismiss();
+
             if(bitmap != null)
             {
-                foto.setImage(bitmap);
-                //vakantieLogoView.setImageBitmap(bitmap);
 
+
+                foto.setImage(bitmap);
+                JoetzDB.getDbInstance(context).updateFoto(foto, vakantieId);
+                //vakantieLogoView.setImageBitmap(foto.getImage());
                 adapter.notifyDataSetChanged();
-                JoetzDB.getDbInstance(context).updateFoto(foto,vakantieId);
+
             }
 
         }
@@ -120,8 +151,9 @@ public class VakantieListAdapter extends BaseAdapter {
         protected Bitmap doInBackground(String... strings) {
             try
             {
-                URL url = new URL(strings[0]);
-                Bitmap bitmap = BitmapFactory.decodeStream(url.openStream());
+
+               // Bitmap bitmap = Berekeningen.getScaledBitmap(strings[0],1,360,640);
+                Bitmap bitmap = Picasso.with(context).load(foto.getNaam()).get();
                 return bitmap;
 
 
@@ -130,5 +162,37 @@ public class VakantieListAdapter extends BaseAdapter {
                 return null;
             }
         }
+/*
+        private Bitmap downloadImage(String... urls) {
+            HttpClient httpClient = CustomHttpClient.getHttpClient();
+            try {
+                HttpGet request = new HttpGet(urls[0]);
+                HttpParams params = new BasicHttpParams();
+                HttpConnectionParams.setSoTimeout(params, 60000); // 1 minute
+                request.setParams(params);
+
+                //publishProgress(25);
+
+                HttpResponse response = httpClient.execute(request);
+
+                //publishProgress(50);
+
+                byte[] image = EntityUtils.toByteArray(response.getEntity());
+
+                //publishProgress(75);
+
+                Bitmap mBitmap = BitmapFactory.decodeByteArray(image, 0,
+                        image.length);
+
+                //publishProgress(100);
+
+                return mBitmap;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+        */
     }
+
 }
