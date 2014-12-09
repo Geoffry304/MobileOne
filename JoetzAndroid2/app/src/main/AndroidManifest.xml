@@ -31,7 +31,10 @@
 
         <activity
             android:name=".Activities.VakantieDetailActivity"
-            android:label="@string/title_activity_vakantie_detail" >
+            android:label="@string/vakanties">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.StartActivity"/>
         </activity>
     </application>
 

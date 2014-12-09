@@ -47,5 +47,5 @@
     <string name="slideshow">Start slide show</string>
     <string name="title_activity_vakantie_algemeen">VakantieAlgemeenActivity</string>
     <string name="title_activity_vakantie_locatie">VakantieLocatieActivity</string>
-
+    <string name="vakanties">Vakanties</string>
 </resources>

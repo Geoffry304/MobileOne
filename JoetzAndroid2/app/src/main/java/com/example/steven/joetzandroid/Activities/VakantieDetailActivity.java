@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -54,12 +55,12 @@ public class VakantieDetailActivity extends FragmentActivity implements ActionBa
         vakantie = db.getVakantie(id);
         createTabbarVakantie();
 
-        VakantieFotoGalery fotoGalery = new VakantieFotoGalery();
-        fotoGalery.setVakantie(vakantie);
 
+       /* VakantieAlgemeenFragment f = new VakantieAlgemeenFragment();
+        f.setVakantie(vakantie);
         FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().add(R.id.frame_vakantie_details,fotoGalery).addToBackStack(null).commit();
-
+        manager.beginTransaction().add(R.id.frame_vakantie_details,f).addToBackStack(null).commit();
+*/
     }
 
     private ActionBar actionbar;
@@ -76,12 +77,14 @@ public class VakantieDetailActivity extends FragmentActivity implements ActionBa
 
         }
 
+        actionbar.setDisplayHomeAsUpEnabled(true);
+
 
     }
     public void fillHashMap(String[]items)
     {
         //fragmenten toevoegen
-        VakantieDetailFragment[]fragmenten = {new VakantieFotoGalery(),new VakantieAlgemeenFragment(),new VakantieDetailPeriodesFragment()};
+        VakantieDetailFragment[]fragmenten = {new VakantieFotoGalery(),new VakantieAlgemeenFragment(),new VakantieDetailPeriodesFragment(),new VakantieDetailInschrijving()};
         for(String item : items)
         {
             for(VakantieDetailFragment fag : fragmenten)
@@ -111,6 +114,12 @@ public class VakantieDetailActivity extends FragmentActivity implements ActionBa
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         switch (item.getItemId()) {
+
+            case android.R.id.home:
+                Intent upIntent = NavUtils.getParentActivityIntent(this);
+                upIntent.putExtra("vakantiePeriodeId",vakantie.getVakantiePeriode().getVakantieNaam());
+                NavUtils.navigateUpTo(this,upIntent);
+                break;
             case R.id.action_login:
                 if (FirebaseAuth.getUser() != null) {
                     ProfileFragment f = new ProfileFragment();
@@ -118,14 +127,14 @@ public class VakantieDetailActivity extends FragmentActivity implements ActionBa
                     Ouder o = ouderProfile.getOuder();
                     f.setOuder(o);
                     FragmentManager fragmentManager = getSupportFragmentManager();
-                    fragmentManager.beginTransaction().replace(R.id.frame_container, f).commit();
+                    fragmentManager.beginTransaction().replace(R.id.frame_vakantie_details, f).commit();
 
                     break;
 
                 } else {
                     LoginFragment f = new LoginFragment();
                     FragmentManager fragmentManager = getSupportFragmentManager();
-                    fragmentManager.beginTransaction().replace(R.id.frame_container, f).commit();
+                    fragmentManager.beginTransaction().replace(R.id.frame_vakantie_details, f).commit();
 
                     break;
                 }

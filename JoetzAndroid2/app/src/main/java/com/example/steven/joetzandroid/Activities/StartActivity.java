@@ -3,6 +3,7 @@ package com.example.steven.joetzandroid.Activities;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -64,8 +65,8 @@ public class StartActivity extends FragmentActivity implements AdapterView.OnIte
         Firebase.setAndroidContext(this);
         //FirebaseVakantieRepository rep = new FirebaseVakantieRepository();
         //
-        CreateDummyData dummyData = new CreateDummyData(this);
-        dummyData.createVakanties();
+        //CreateDummyData dummyData = new CreateDummyData(this);
+        //dummyData.createVakanties();
         //dummyData.translateFoto();
         setContentView(R.layout.activity_main);
         fragmentHashMap = new HashMap<String, Fragment>();
@@ -118,10 +119,27 @@ public class StartActivity extends FragmentActivity implements AdapterView.OnIte
         };
         drawerLayout.setDrawerListener(drawerToggle);
 
+
+
         if(savedInstanceState == null)
         {
-            About about = new About();
-            getSupportFragmentManager().beginTransaction().add(R.id.frame_container, about).addToBackStack(null).commit();
+
+            if(getIntent().getExtras()!=null)
+            {
+                Bundle extras = getIntent().getExtras();
+                String vakantiePeriodeNaam = extras.getString("vakantiePeriodeId");
+                VakantiesFragment fragment = new VakantiesFragment();
+                fragment.setVakantiePeriodeId(vakantiePeriodeNaam);
+                getSupportFragmentManager().beginTransaction().add(R.id.frame_container,fragment).addToBackStack(null).commit();
+
+            }
+            else
+            {
+                About about = new About();
+                getSupportFragmentManager().beginTransaction().add(R.id.frame_container, about).addToBackStack(null).commit();
+            }
+
+
         }
     }
 

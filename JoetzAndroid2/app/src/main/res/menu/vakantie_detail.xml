@@ -1,10 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.steven.joetzandroid.Activities.VakantieDetailActivity" >
+
+
     <item android:id="@+id/action_login"
         android:icon="@drawable/ic_action_person"
         android:title="@string/login"
         android:showAsAction="always">
-
     </item>
 </menu>

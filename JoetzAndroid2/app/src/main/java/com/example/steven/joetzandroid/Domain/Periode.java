@@ -24,6 +24,11 @@ public class Periode {
         this.van = van;
         this.tot = tot;
     }
+    public Periode(String van, String tot)
+    {
+        setVan(van);
+        setTot(tot);
+    }
 
     public Periode() {
     }

@@ -34,9 +34,7 @@ public class VakantieAlgemeenFragment extends VakantieDetailFragment {
 
     @Override
     public void onAttach(Activity activity) {
-        db = JoetzDB.getDbInstance(activity);
-        db.open();
-        vakantie = db.getVakantie("vakantie0");
+        super.onAttach(activity);
     }
 
     @Override
