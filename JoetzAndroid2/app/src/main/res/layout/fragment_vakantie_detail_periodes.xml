@@ -1,0 +1,43 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.steven.joetzandroid.Activities.VakantieDetailPeriodesFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical">
+
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textAppearance="?android:attr/textAppearanceLarge"
+           android:text="Large Text"
+           android:id="@+id/vakantie_detail_periodes_title"
+           android:layout_gravity="center_horizontal"
+           android:layout_marginTop="7dp"
+           android:layout_marginBottom="7dp"/>
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textAppearance="?android:attr/textAppearanceMedium"
+           android:id="@+id/vakantie_detail_periodes_subtitle"
+           android:text="Zomer 15"
+           android:layout_gravity="center_horizontal"
+           android:layout_marginBottom="7dp"
+           />
+       <ListView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:id="@+id/vakantie_detail_periodes_list"
+           android:divider="@drawable/ab_transparent_joetztitlebar">
+
+
+           </ListView>
+
+   </LinearLayout>
+
+</FrameLayout>
