@@ -39,6 +39,11 @@ public class VakantieAlgemeenFragment extends VakantieDetailFragment {
         vakantie = db.getVakantie("vakantie0");
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+    }
 
 
     @Override

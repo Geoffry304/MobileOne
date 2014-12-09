@@ -9,13 +9,13 @@ import android.os.Bundle;
 
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.steven.joetzandroid.Domain.Ouder;
 import com.example.steven.joetzandroid.Domain.Vakantie;
 import com.example.steven.joetzandroid.R;
-import com.example.steven.joetzandroid.VakantieDetailInschrijven;
 import com.example.steven.joetzandroid.database.JoetzDB;
 import com.example.steven.joetzandroid.firebase.FirebaseAuth;
 import com.example.steven.joetzandroid.firebase.FirebaseProfile;
@@ -25,7 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class VakantieDetailActivity extends FragmentActivity implements ActionBar.TabListener {
-
+    private static final String TAG = "VakantieDetailActivity";
     private Vakantie vakantie;
     private Map<String,VakantieDetailFragment> fragmentMap;
     private JoetzDB db;
@@ -37,7 +37,7 @@ public class VakantieDetailActivity extends FragmentActivity implements ActionBa
             this.vakantie = vakantie;
         }
 
-        this.fragmentMap = new HashMap<String, VakantieDetailFragment>();
+
 
     }
     public VakantieDetailActivity(){
@@ -47,6 +47,7 @@ public class VakantieDetailActivity extends FragmentActivity implements ActionBa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vakantie_detail);
+        this.fragmentMap = new HashMap<String, VakantieDetailFragment>();
         Intent intent = getIntent();
         String id = intent.getStringExtra("vakantieId");
         this.db = JoetzDB.getDbInstance(this);
@@ -80,19 +81,19 @@ public class VakantieDetailActivity extends FragmentActivity implements ActionBa
     public void fillHashMap(String[]items)
     {
         //fragmenten toevoegen
-        VakantieDetailFragment[]fragmenten = {new VakantieFotoGalery(),new VakantieAlgemeenFragment(),new VakantieDetailPeriode(),new VakantieDetailInschrijven()};
+        VakantieDetailFragment[]fragmenten = {new VakantieFotoGalery(),new VakantieAlgemeenFragment(),new VakantieDetailPeriodesFragment()};
         for(String item : items)
         {
-            VakantieDetailFragment fragment = null;
-            for(int i = 0; i<fragmenten.length;i++)
+            for(VakantieDetailFragment fag : fragmenten)
             {
-                if(fragmenten[i].getaTag().equals(item))
+                if(fag.getaTag().equals(item))
                 {
-                    fragment = fragmenten[i];
+                    fragmentMap.put(item,fag);
+                    Log.d(TAG,"Key : "+item+" Fragment : "+fag.getaTag());
                 }
 
             }
-            fragmentMap.put(item,fragment);
+
         }
     }
 
