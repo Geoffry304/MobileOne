@@ -16,11 +16,18 @@
     "jssor-slider": "",
     "ideal-image-slider": "~1.4.0",
     "angular-socialshare": "~0.0.6",
-    "imager.js": "~0.4.0"
+    "imager.js": "~0.4.0",
+    "angular-ui-calendar": "latest",
+    "fullcalendar": "~2.2.3",
+    "angular-bootstrap": "~0.12.0"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.0",
     "angular-scenario": "~1.2.0"
   },
-  "appPath": "app"
+  "appPath": "app",
+  "resolutions": {
+    "jquery": "~2.x",
+    "fullcalendar": "~2.2.3"
+  }
 }

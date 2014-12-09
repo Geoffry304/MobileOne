@@ -15,10 +15,11 @@ var app = angular.module('webappsApp', [
     'ngRoute',
     'ngSanitize',
     'firebase',
-    'djds4rce.angular-socialshare'
+    'djds4rce.angular-socialshare',
+    'ui.calendar',
+    'ui.bootstrap'
   ])
-  .constant('FIREBASE_URL','https://mobileone.firebaseio.com')
-  .constant('uiCalendarConfig', {calendars: {}});
+  .constant('FIREBASE_URL','https://mobileone.firebaseio.com');
 
 app.config(function ($routeProvider, $locationProvider) {
     $routeProvider
@@ -96,6 +97,10 @@ app.config(function ($routeProvider, $locationProvider) {
     .when('/about', {
       templateUrl: 'views/about.html',
       controller: 'AboutCtrl'
+    })
+    .when('/activiteiten', {
+      templateUrl: 'views/activiteiten.html',
+      controller: 'CalendarCtrl'
     })
     .when('/inschrijven', {
       templateUrl: 'views/inschrijven.html',
