@@ -81,7 +81,7 @@ public class VakantieDetailActivity extends FragmentActivity implements ActionBa
     public void fillHashMap(String[]items)
     {
         //fragmenten toevoegen
-        VakantieDetailFragment[]fragmenten = {new VakantieFotoGalery(),new VakantieAlgemeenFragment(),new VakantieDetailPeriodesFragment()};
+        VakantieDetailFragment[]fragmenten = {new VakantieAlgemeenFragment(), new VakantieLocatieFragment(), new VakantieFotoGalery(), new VakantieDetailPeriodesFragment()};
         for(String item : items)
         {
             for(VakantieDetailFragment fag : fragmenten)

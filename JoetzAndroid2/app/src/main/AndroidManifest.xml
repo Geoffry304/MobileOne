@@ -33,6 +33,14 @@
             android:name=".Activities.VakantieDetailActivity"
             android:label="@string/title_activity_vakantie_detail" >
         </activity>
+        <activity
+            android:name=".Activities.VakantieAlgemeenActivity"
+            android:label="@string/title_activity_vakantie_algemeen" >
+        </activity>
+        <activity
+            android:name=".Activities.VakantieLocatieActivity"
+            android:label="@string/title_activity_vakantie_locatie" >
+        </activity>
     </application>
 
     <!--

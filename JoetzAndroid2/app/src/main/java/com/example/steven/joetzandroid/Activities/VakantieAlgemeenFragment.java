@@ -3,6 +3,7 @@ package com.example.steven.joetzandroid.Activities;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -18,12 +19,12 @@ import com.example.steven.joetzandroid.database.JoetzDB;
 
 public class VakantieAlgemeenFragment extends VakantieDetailFragment {
 
-
-
+    private Context context;
     private TextView titelLbl;
     private TextView promotekstLbl;
     private ImageView foto;
     private JoetzDB db;
+    public Vakantie vakantie;
     private static final String TAG = "Algemeen";
 
     public VakantieAlgemeenFragment() {
@@ -34,14 +35,14 @@ public class VakantieAlgemeenFragment extends VakantieDetailFragment {
 
     @Override
     public void onAttach(Activity activity) {
-        db = JoetzDB.getDbInstance(activity);
-        db.open();
-        vakantie = db.getVakantie("vakantie0");
+        super.onAttach(activity);
+        this.context = activity;
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+        outState.putString("vakantieId",vakantie.getId());
 
     }
 
@@ -50,6 +51,16 @@ public class VakantieAlgemeenFragment extends VakantieDetailFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        if (savedInstanceState !=null)
+        {
+            this.vakantie = JoetzDB.getDbInstance(context).getVakantie(savedInstanceState.getString("vakantieId"));
+        }
+        else
+        {
+            db = JoetzDB.getDbInstance(context);
+            db.open();
+            vakantie = db.getVakantie("vakantie0");
+        }
         View view = inflater.inflate(R.layout.fragment_vakantie_algemeen, container, false);
 
         if(vakantie != null)
@@ -57,8 +68,8 @@ public class VakantieAlgemeenFragment extends VakantieDetailFragment {
             titelLbl = (TextView)view.findViewById(R.id.titlelbl);
             promotekstLbl= (TextView)view.findViewById(R.id.promotekstlbl);
             foto = (ImageView)view.findViewById(R.id.imageView1);
-            titelLbl.setText(titelLbl.toString() + vakantie.getTitel());
-            promotekstLbl.setText(promotekstLbl.toString() + vakantie.getPromoTekst());
+            titelLbl.setText("Titel: "+ vakantie.getNaam());
+            promotekstLbl.setText("PromoTekst: " + vakantie.getPromoTekst());
         }
 
         return view;
