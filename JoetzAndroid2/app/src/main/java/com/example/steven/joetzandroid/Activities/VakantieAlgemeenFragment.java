@@ -28,7 +28,7 @@ public class VakantieAlgemeenFragment extends VakantieDetailFragment {
 
     public VakantieAlgemeenFragment() {
         // Required empty public constructor
-        setaTag(TAG);
+        //setaTag(TAG);
 
     }
 
