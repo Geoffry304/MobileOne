@@ -45,5 +45,4 @@
     <string name="mapButton">Klik hier voor google maps</string>
     <string name="title_activity_vakantie_detail">VakantieDetailActivity</string>
     <string name="slideshow">Start slide show</string>
-    <string name="periodes">Vakantie periodes : </string>
 </resources>
