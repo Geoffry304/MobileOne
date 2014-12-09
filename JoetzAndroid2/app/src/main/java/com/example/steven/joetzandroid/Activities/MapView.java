@@ -2,6 +2,8 @@ package com.example.steven.joetzandroid.Activities;
 
 import android.app.Activity;
 import android.content.Context;
+import android.location.Geocoder;
+import android.location.Address;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -13,10 +15,14 @@ import android.widget.Toast;
 
 import com.example.steven.joetzandroid.Domain.Vakantie;
 import com.example.steven.joetzandroid.R;
+import com.example.steven.joetzandroid.database.JoetzDB;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.io.IOException;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,7 +43,9 @@ public class MapView extends Fragment {
     private String mParam1;
     private String mParam2;
     private GoogleMap googleMap;
+    private JoetzDB db;
     private Vakantie vakantie;
+    private Context context = null;//moet normaal andere context zijn.
 
     private OnFragmentInteractionListener mListener;
 
@@ -61,6 +69,12 @@ public class MapView extends Fragment {
     public MapView() {
         // Required empty public constructor
     }
+    @Override
+    public void onAttach(Activity activity) {
+        db = JoetzDB.getDbInstance(activity);
+        db.open();
+        vakantie = db.getVakantie("vakantie0");
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,7 +92,11 @@ public class MapView extends Fragment {
         if(vakantie != null) {
             createMapView();
             //adress meegeve voor geolocatie
-            addMarker();
+            try {
+                addMarker();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return view;
     }
@@ -102,12 +120,16 @@ public class MapView extends Fragment {
             Log.e("mapApp", exception.toString());
         }
     }
-    private void addMarker(){
-
+    private void addMarker() throws IOException {
+        Geocoder geocoder =
+                new Geocoder(context);
+        List<Address> adres = geocoder.getFromLocationName("Rooseveltlaan 64 Erpe", 1);
+        adres.get(0).getLatitude();
         //geocoding gebruiken voor omzetten van adress naar gps coordinaten
+        // adres vervangen door firebaseadres
         if(null != googleMap){
             googleMap.addMarker(new MarkerOptions()
-                            .position(new LatLng(0, 0))
+                            .position(new LatLng(adres.get(0).getLatitude(), adres.get(0).getLongitude()))
                             .title("Marker")
                             .draggable(true)
             );
@@ -118,17 +140,6 @@ public class MapView extends Fragment {
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try {
-            mListener = (OnFragmentInteractionListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
         }
     }
 

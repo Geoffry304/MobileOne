@@ -57,6 +57,10 @@ public class VakantieFotosFragment extends VakantieDetailFragment{
     }
 
     @Override
+    public String getaTag() {
+        return TAG;
+    }
+    @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         context = activity.getApplicationContext();

@@ -36,7 +36,10 @@ public class VakantieFotoGalery extends VakantieDetailFragment {
         setaTag(TAG);
     }
 
-
+    @Override
+    public String getaTag() {
+        return TAG;
+    }
     @Override
     public void onAttach(Activity activity) {
 

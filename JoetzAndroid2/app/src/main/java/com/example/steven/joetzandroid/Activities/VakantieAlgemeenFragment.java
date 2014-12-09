@@ -40,6 +40,7 @@ public class VakantieAlgemeenFragment extends VakantieDetailFragment {
     }
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -59,4 +60,8 @@ public class VakantieAlgemeenFragment extends VakantieDetailFragment {
     }
 
 
+    @Override
+    public String getaTag() {
+        return TAG;
+    }
 }
