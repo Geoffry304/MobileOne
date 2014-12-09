@@ -64,8 +64,13 @@ public class CreateDummyData {
 
 
 
-        String[]periodes = {"Krokus 15","Pasen 15","Zomer 15","Herfst 15","Kerst 15 - 16"};
-
+        String[]periodes = {"Krokus 15","Pasen 15","Zomer 15","Herfst 15","Kerst 14 - 15"};
+        Periode[]periodesDatumsPasen= {new Periode("01/04/2015","08/04/2015"),new Periode("09/04/2015","15/04/2015")};
+        Periode[]periodesDatumsKerst= {new Periode("20/12/2014","28/12/2014"),new Periode("29/12/2014","04/12/2015")};
+        Periode[]periodesDatumsHerfst= {new Periode("13/10/2015","30/10/2015")};
+        Periode[]periodesDatumsKrokus= {new Periode("09/02/2015","16/02/2015")};
+        Periode[]periodesDatumsZomer= {new Periode("01/07/2015","08/07/2015"),new Periode("09/07/2015","15/07/2015"),new Periode("16/07/2015","24/07/2015"),
+                new Periode("25/07/2015","02/08/2015"),new Periode("03/08/2015","11/08/2015"),new Periode("12/08/2015","20/08/2015"),new Periode("21/08/2015","29/08/2015")};
         String urlFoto = "http://stevendc.hostoi.com/images/";
         ArrayList<Foto> fotos = new ArrayList<Foto>();
 
@@ -91,11 +96,13 @@ public class CreateDummyData {
             {
 
                 periode.setVakantieNaam(periodes[i]);
+                periode.setPeriodes(periodesDatumsKrokus);
             }
             else if(i>0 && i<3)
             {
 
                 periode.setVakantieNaam(periodes[1]);
+                periode.setPeriodes(periodesDatumsPasen);
             }
             else if(i>3 && i<6)
             {
@@ -103,14 +110,17 @@ public class CreateDummyData {
                 //f.loadImage();
 
                 periode.setVakantieNaam(periodes[2]);
+                periode.setPeriodes(periodesDatumsZomer);
             }
             else if (i == 8)
             {
                 periode.setVakantieNaam(periodes[3]);
+                periode.setPeriodes(periodesDatumsHerfst);
             }
             else
             {
                 periode.setVakantieNaam(periodes[4]);
+                periode.setPeriodes(periodesDatumsKerst);
             }
 
 
