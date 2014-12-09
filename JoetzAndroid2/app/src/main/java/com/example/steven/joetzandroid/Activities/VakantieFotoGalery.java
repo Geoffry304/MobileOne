@@ -30,9 +30,10 @@ public class VakantieFotoGalery extends VakantieDetailFragment {
     private Context context;
     private Button slideShowButton;
     private ImageView img;
-    private static final String TAG = "VakantieFotoGalery";
+    private static final String TAG = "Foto";
     public VakantieFotoGalery() {
         // Required empty public constructor
+        setaTag(TAG);
     }
 
 

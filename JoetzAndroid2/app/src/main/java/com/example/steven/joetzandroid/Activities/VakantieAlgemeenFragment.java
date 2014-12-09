@@ -16,17 +16,19 @@ import com.example.steven.joetzandroid.R;
 import com.example.steven.joetzandroid.database.JoetzDB;
 
 
-public class VakantieAlgemeenFragment extends Fragment {
+public class VakantieAlgemeenFragment extends VakantieDetailFragment {
 
 
-    private Vakantie vakantie;
+
     private TextView titelLbl;
     private TextView promotekstLbl;
     private ImageView foto;
     private JoetzDB db;
+    private static final String TAG = "Algemeen";
+
     public VakantieAlgemeenFragment() {
         // Required empty public constructor
-
+        setaTag(TAG);
 
     }
 
@@ -37,10 +39,7 @@ public class VakantieAlgemeenFragment extends Fragment {
         vakantie = db.getVakantie("vakantie0");
     }
 
-    public void setVakantie(Vakantie vakantie)
-    {
-        this.vakantie = vakantie;
-    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

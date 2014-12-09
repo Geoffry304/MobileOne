@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import com.example.steven.joetzandroid.Domain.Ouder;
 import com.example.steven.joetzandroid.Domain.Vakantie;
 import com.example.steven.joetzandroid.R;
+import com.example.steven.joetzandroid.VakantieDetailInschrijven;
 import com.example.steven.joetzandroid.database.JoetzDB;
 import com.example.steven.joetzandroid.firebase.FirebaseAuth;
 import com.example.steven.joetzandroid.firebase.FirebaseProfile;
@@ -67,7 +68,7 @@ public class VakantieDetailActivity extends FragmentActivity implements ActionBa
         actionbar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         String[]items = getResources().getStringArray(R.array.tab_bar_items);
-
+        fillHashMap(items);
         for(int i = 0;i<items.length;i++)
         {
             actionbar.addTab(actionbar.newTab().setText(items[i]).setTabListener(this));
@@ -75,6 +76,24 @@ public class VakantieDetailActivity extends FragmentActivity implements ActionBa
         }
 
 
+    }
+    public void fillHashMap(String[]items)
+    {
+        //fragmenten toevoegen
+        VakantieDetailFragment[]fragmenten = {new VakantieFotoGalery(),new VakantieAlgemeenFragment(),new VakantieDetailPeriode(),new VakantieDetailInschrijven()};
+        for(String item : items)
+        {
+            VakantieDetailFragment fragment = null;
+            for(int i = 0; i<fragmenten.length;i++)
+            {
+                if(fragmenten[i].getaTag().equals(item))
+                {
+                    fragment = fragmenten[i];
+                }
+
+            }
+            fragmentMap.put(item,fragment);
+        }
     }
 
     @Override
@@ -116,6 +135,14 @@ public class VakantieDetailActivity extends FragmentActivity implements ActionBa
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+        String key = tab.getText().toString();
+        if(fragmentMap.containsKey(key))
+        {
+            VakantieDetailFragment fragment = fragmentMap.get(key);
+            FragmentManager manager = getSupportFragmentManager();
+            fragment.setVakantie(this.vakantie);
+            manager.beginTransaction().replace(R.id.frame_vakantie_details,fragment).addToBackStack(null).commit();
+        }
 
     }
 

@@ -11,8 +11,20 @@ import com.example.steven.joetzandroid.Domain.Vakantie;
 public abstract class VakantieDetailFragment extends Fragment {
 
     protected Vakantie vakantie;
+    private static String aTag;
+
 
     public void setVakantie(Vakantie vakantie){
         this.vakantie = vakantie;
     }
+    public String getaTag()
+    {
+        return aTag;
+    }
+
+    public void setaTag(String tag)
+    {
+        aTag = tag;
+    }
+
 }
