@@ -178,6 +178,10 @@ h2 {
     float:none;
 }
 
+.navbar-default {
+  max-height: 50%;
+}
+
 .navbar-custom{
   background-color: #e32517;
 }
@@ -238,6 +242,7 @@ background-color: #030033;
 .navbar-header {
     color: #CD0000;
     background-color: #CD0000;
+    max-height: 20px;
 }
 
 @media (max-width: 767px) { 
