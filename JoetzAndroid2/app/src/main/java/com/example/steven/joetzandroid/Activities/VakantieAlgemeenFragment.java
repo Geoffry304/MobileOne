@@ -36,10 +36,8 @@ public class VakantieAlgemeenFragment extends VakantieDetailFragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-<<<<<<< HEAD
         this.context = activity;
-=======
->>>>>>> Steven
+
     }
 
     @Override
