@@ -13,8 +13,8 @@
     <a href="#"><img src="../images/joetzBrand.png"/></a>
   </div>
   <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav navbar-left" ng-controller="NavCtrl">
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" ng-controller="NavCtrl">
+    <ul class="nav navbar-nav navbar-left">
       <li><a class="navbarLink" href="#/vakanties">De Vakanties </a></li>
       <li><a class="navbarLink" href="#">Onze kalender</a></li>
       <li class="dropdown">
@@ -37,31 +37,44 @@
         <li ng-show="signedIn()">
           <a class="navbarLink" href="#" ng-click="logout()">Logout</a>
         </li>
+      <!--ul class="nav navbar-nav navbar-right">
+          <li ng-show="signedIn()" class="navbarLink">
+            <a ng-href="#/users/{{ user.uid }}"><img ng-src="{{ user.profile.md5_hash }}" class="nav-pic">{{ user.profile.username}} </a>
+          </li>
+          <!-- Collect the nav links, forms, and other content for toggling
 
-        <li class="dropdown" ng-hide="signedIn()">
-         <a class="navbarLink dropdown-toggle" data-toggle="dropdown">
-           Login
-           <b class="caret"></b>
-         </a>
-         <div class="dropdown-menu dropdownMenu">
-          <form ng-submit="login()">
-            <p ng-show="error" class="alert alert-danger" role="alert">
-             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-             {{error}}</p>
-             <input type="email" ng-model="user.email" placeholder="E-mail" class="form-control"><br>
-             <input type="password" ng-model="user.password" placeholder="Paswoord" class="form-control"><br>
-             <button type="submit" value="Log in" class="btn btn-primary btn-block">
-              <i/>Inloggen
-            </button>
-          </form>
-          <!--<label ng-click="resetPass()">Paswoord vergeten?</label>-->
-          <button type="submit" style="margin-top: 8px" value="Login met facebook" class="btn btn-block btn-social btn-facebook" ng-click="loginWithFacebook()">
-           <i class="fa fa-facebook"></i> Inloggen met facebook
-         </button>
-       </div>
+          
+          <li class="navbarLink" ng-show="admin(user.profile.role_value)">
+            <a href='#/beheerderspagina'>Beheerderspagina </a>
+          </li>
+          <li ng-show="signedIn()">
+            <a class="navbarLink" href="#" ng-click="logout()">Logout</a>
+          </li>-->
+
+          <li class="dropdown" ng-hide="signedIn()">
+           <a class="navbarLink dropdown-toggle" data-toggle="dropdown">
+             Login
+             <b class="caret"></b>
+           </a>
+           <div class="dropdown-menu dropdownMenu">
+            <form ng-submit="login()">
+              <p ng-show="error" class="alert alert-danger" role="alert">
+               <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+               {{error}}</p>
+               <input type="email" ng-model="user.email" placeholder="E-mail" class="form-control"><br>
+               <input type="password" ng-model="user.password" placeholder="Paswoord" class="form-control"><br>
+               <button type="submit" value="Log in" class="btn btn-primary btn-block">
+                <i/>Inloggen
+              </button>
+            </form>
+
+            <button type="submit" style="margin-top: 8px" value="Login met facebook" class="btn btn-block btn-social btn-facebook" ng-click="loginWithFacebook()">
+             <i class="fa fa-facebook"></i> Inloggen met facebook
+           </button>
+         </div>
 
 
-     </li>
+       </li>
      <li class="dropdown" ng-hide="signedIn()">
       <a class="navbarLink dropdown-toggle" data-toggle="dropdown">
         Register
@@ -82,5 +95,8 @@
       </div>
     </li>
   </ul>
-</div><!-- /.navbar-collapse -->
+        </div>
+      </li>
+    </ul>
+  </div><!-- /.navbar-collapse -->
 </nav>

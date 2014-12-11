@@ -48,4 +48,7 @@
     <string name="title_activity_vakantie_algemeen">VakantieAlgemeenActivity</string>
     <string name="title_activity_vakantie_locatie">VakantieLocatieActivity</string>
     <string name="vakanties">Vakanties</string>
+    <string name="Vragen">Is it me you\'re looking for?</string>
+    <string name="Facebookfragment">1 like = extra punt vo projecten 3, 1 share = 2 extra punten</string>
+    <string name="Moyson">Dit is de pagina voor Bond Moyson</string>
 </resources>
