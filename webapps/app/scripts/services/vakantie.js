@@ -45,10 +45,20 @@ app.factory('Vakantie', function (FIREBASE_URL, $firebase,$location){
       var comments = $firebase(ref.child('vakanties').child(vakantieId).child('comments')).$asArray();
       return comments.$add(comment);
     },
+<<<<<<< HEAD
     Inschrijving: function(vakantieId, kind)
     {
         var inschrijving = $firebase(ref.child('vakanties').child(vakantieId).child('inschrijvingen')).$asArray();
         return inschrijving.$add(kind);
+=======
+    getXVakanties: function(aantal){
+      if (aantal > $firebase(ref.child('vakanties'))){
+        return null;
+      }
+      else{
+        return $firebase(ref.child('vakanties')).$asArray().slice(0, aantal);
+      }
+>>>>>>> origin/master
     }
   };
 	return Vakantie;

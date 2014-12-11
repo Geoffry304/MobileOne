@@ -2,10 +2,10 @@
 <merger version="2" >
 
     <dataSet config="main" >
-        <source path="C:\Users\Niels\Documents\GitHub\MobileOne\JoetzAndroid2\facebook\src\main\assets" />
+        <source path="/Users/thomas/Documents/Hogent_Aalst/MobileOne/JoetzAndroid2/facebook/src/main/assets" />
     </dataSet>
     <dataSet config="release" >
-        <source path="C:\Users\Niels\Documents\GitHub\MobileOne\JoetzAndroid2\facebook\src\release\assets" />
+        <source path="/Users/thomas/Documents/Hogent_Aalst/MobileOne/JoetzAndroid2/facebook/src/release/assets" />
     </dataSet>
 
 </merger>
