@@ -30,7 +30,7 @@ app.controller('ToonVakantieCtrl', function ($scope, $routeParams, $location, Va
         method: 'feed',
         name: 'Joetz West-Vlaanderen',
         link: 'localhost:9000/#/vakantie/' + $scope.vakantie.$id,
-        picture: 'http://www.allesoverjeugd.be/sites/default/files/styles/artikel_full/public/nieuws/joetz-idk.jpg?itok=MD8HExEa',
+        picture: 'http://i.imgur.com/zXMUwu8.png',
         //picture: $scope.vakantie.fotos + '.0',
         caption: $scope.vakantie.naam,
         description: $scope.vakantie.promoTekst,
