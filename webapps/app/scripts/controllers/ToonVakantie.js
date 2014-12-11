@@ -10,11 +10,12 @@ app.controller('ToonVakantieCtrl', function ($scope, $routeParams, $location, Va
   $scope.comment = {};
   $scope.creator = {username:'',photo:''};
   $scope.user = Auth.user;
-  $scope.filter = 'false';
+  $scope.filter = 'false';  
   $scope.error = 'Gebruik gepaste taal!';
   $scope.change = function(){
     $location.path('/vakantie/change/' + $routeParams.vakantieId);
   }
+  var test = $scope.vakantie.fotos + '.0';
 
 
   $scope.verwijderVakantie = function() {
@@ -22,13 +23,15 @@ app.controller('ToonVakantieCtrl', function ($scope, $routeParams, $location, Va
     return Vakantie.delete($scope.vakantie);
   };
   $scope.share = function(){
+
+    console.dir($scope.vakantie.fotos);
     FB.ui(
     {
         method: 'feed',
         name: 'Joetz West-Vlaanderen',
         link: 'localhost:9000/#/vakantie/' + $scope.vakantie.$id,
-        //picture: 'http://www.allesoverjeugd.be/sites/default/files/styles/artikel_full/public/nieuws/joetz-idk.jpg?itok=MD8HExEa',
-        picture: $scope.vakantie.fotos.1,
+        picture: 'http://www.allesoverjeugd.be/sites/default/files/styles/artikel_full/public/nieuws/joetz-idk.jpg?itok=MD8HExEa',
+        //picture: $scope.vakantie.fotos + '.0',
         caption: $scope.vakantie.naam,
         description: $scope.vakantie.promoTekst,
         message: ''
