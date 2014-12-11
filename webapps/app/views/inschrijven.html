@@ -1,52 +1,54 @@
--<form class="navbar-form navbar-left" role="search" ng-submit="submitInschrijving()">
+<form class="navbar-form navbar-left" role="search">
 	<div>
   		<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+  		<alert ng-show="alert !==''">{{alert}}</alert>
 	</div>
 	<div>
-		<label>aantal</label>
-		<input type="number" class="form-control" placeholder="Aantal" ng-model="inschrijving.aantal" ng-pattern="/^-?[0-9]\d*(\.\d+)?$/" required/>
+		<!--<label>aantal</label>
+		<input type="number" class="form-control" placeholder="Aantal" ng-model="inschrijving.aantal" ng-pattern="/^-?[0-9]\d*(\.\d+)?$/" required/>-->
+		<select ng-model="Kind" ng-options="kind.naam for kind in kinderen"></select>
 	</div>
-	<div ng-repeat="kind in kinderen" id='kindArray'>
+	<div ng-show="Kind != ''" id='kindArray'>
 		<div class="control-group">
 	    <label class="control-label" for="">Naam</label>
-	    <input ng-model="kind.naam" type="text" placeholder="Naam" class="input-xlarge">
+	    <input ng-model="Kind.naam" type="text" placeholder="Naam" class="input-xlarge">
 	  </div>
 	  <div class="control-group">
 	    <label class="control-label" for="">Voornaam</label>
-	    <input ng-model="kind.voornaam" type="text" placeholder="Voornaam" class="input-xlarge">
+	    <input ng-model="Kind.voornaam" type="text" placeholder="Voornaam" class="input-xlarge">
 	  </div>
 	  <div class="control-group">
 	    <label class="control-label" for="">Geboortedatum</label>
-	    <input ng-model="kind.geboortedatum" type="text" placeholder="Geboortedatum" class="input-xlarge">
+	    <input ng-model="Kind.geboortedatum" type="text" placeholder="Geboortedatum" class="input-xlarge">
 	  </div>
 	  <div class="control-group">
 	    <label class="control-label" for="">Rijksregisternummer</label>
-	    <input ng-model="kind.rijksregisternummer" type="text" placeholder="Rijksregisternr" class="input-xlarge">
+	    <input ng-model="Kind.rijksregisternummer" type="text" placeholder="Rijksregisternr" class="input-xlarge">
 	  </div>
-	  <div class="control-group">
+	  <!--<div class="control-group">
 	    <div class="controls">
 	      <input type="checkbox" ng-model"anders">
 	      <label class="control-label" for="">Adres is anders dan ouder</label>
 	    </div>
-	  </div>
-	  <div ng-checked="anders">
+	  </div>-->
+	  <!--<div ng-checked="anders">-->
 	    <div class="control-group">
 	      <label class="control-label" for="">Straat</label>
-	      <input ng-model="kind.straat" type="text" placeholder="Straat" class="input-xlarge">
+	      <input ng-model="Kind.straat" type="text" placeholder="Straat" class="input-xlarge">
 	    </div>
 	    <div class="control-group">
 	      <label class="control-label" for="">Nummer</label>
-	      <input ng-model="kind.nummer" type="text" placeholder="Nummer" class="input-xlarge">
+	      <input ng-model="Kind.nummer" type="text" placeholder="Nummer" class="input-xlarge">
 	    </div>
 	    <div class="control-group">
 	      <label class="control-label" for="">Postcode</label>
-	      <input ng-model="kind.postcode" type="text" placeholder="Postcode" class="input-xlarge">
+	      <input ng-model="Kind.postcode" type="text" placeholder="Postcode" class="input-xlarge">
 	    </div>
 	    <div class="control-group">
 	      <label class="control-label" for="">Gemeente</label>
-	      <input ng-model="kind.gemeente" type="text" placeholder="Gemeente" class="input-xlarge">
+	      <input ng-model="Kind.gemeente" type="text" placeholder="Gemeente" class="input-xlarge">
 	    </div>
-	  </div>
+	  <!--</div>-->
 	</div>
 	<input type="submit" ng-click="submitInschrijving()" value="{{voegToe}}" class="btn btn-primary" />
 </form>

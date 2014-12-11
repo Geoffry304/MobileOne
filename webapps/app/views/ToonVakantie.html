@@ -78,7 +78,7 @@
 </tbody>
 </table>
 <button ng-click="share()">SHARE</button>
-<button ng-show="signedIn()" type="submit" class="btn btn-success btn-block">Schrijf in</button>
+<button ng-show="signedIn()" type="submit" ng-click="go()" class="btn btn-success btn-block">Schrijf in</button>
 <div ng-show="!signedIn()" class="alert alert-danger" role="alert">
     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
     <h5> Log in om in te schrijven voor een vakantie en om een reactie te plaatsen.</h5>

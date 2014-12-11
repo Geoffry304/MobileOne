@@ -102,7 +102,7 @@ app.config(function ($routeProvider, $locationProvider) {
       templateUrl: 'views/activiteiten.html',
       controller: 'CalendarCtrl'
     })
-    .when('/inschrijven', {
+    .when('/inschrijven/:vakantieId', {
       templateUrl: 'views/inschrijven.html',
       controller: 'InschrijvingCtrl',
       resolve: {

@@ -14,7 +14,12 @@ app.controller('ToonVakantieCtrl', function ($scope, $routeParams, $location, Va
   $scope.error = 'Gebruik gepaste taal!';
   $scope.change = function(){
     $location.path('/vakantie/change/' + $routeParams.vakantieId);
-  }
+  };
+    $scope.go = function(){
+
+    $location.path('/inschrijven/' + $routeParams.vakantieId);
+
+};
   var test = $scope.vakantie.fotos + '.0';
 
 
