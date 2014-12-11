@@ -44,6 +44,14 @@ app.factory('Vakantie', function (FIREBASE_URL, $firebase,$location){
     comment: function(comment, vakantieId) {
       var comments = $firebase(ref.child('vakanties').child(vakantieId).child('comments')).$asArray();
       return comments.$add(comment);
+    },
+    getXVakanties: function(aantal){
+      if (aantal > $firebase(ref.child('vakanties'))){
+        return null;
+      }
+      else{
+        return $firebase(ref.child('vakanties')).$asArray().slice(0, aantal);
+      }
     }
   };
 	return Vakantie;
