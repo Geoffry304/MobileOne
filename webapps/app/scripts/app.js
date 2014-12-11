@@ -25,7 +25,7 @@ app.config(function ($routeProvider, $locationProvider) {
     $routeProvider
     .when('/', {
       templateUrl: 'views/homepagina.html',
-      controller: 'HomeCtrl'
+      controller: 'VakantieCtrl'
     })
     .when('/register', {
       templateUrl: 'views/register.html',
