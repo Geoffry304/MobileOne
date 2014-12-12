@@ -78,4 +78,9 @@ public class Contact {
     public void setInfo(String info) {
         this.info = info;
     }
+
+    @Override
+    public String toString() {
+        return "telnr : "+telnr+"\n"+"url : "+website;
+    }
 }

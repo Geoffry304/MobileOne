@@ -1,0 +1,38 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.steven.joetzandroid.Activities.CommunityFragment"
+    android:layout_marginLeft="12dp"
+    android:layout_marginRight="12dp"
+    android:layout_marginBottom="7dp">
+
+    <!-- TODO: Update blank fragment layout -->
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Voeg bericht toe"
+            android:textColor="@android:color/white"
+            android:background="@drawable/joetz_button"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/add_message_button"
+            />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:transcriptMode="alwaysScroll"
+        android:stackFromBottom="true"
+        android:divider="@drawable/progress_primary_joetztitlebar"
+        android:id="@+id/community_list_view_messages"
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/add_message_button"></ListView>
+
+
+
+</RelativeLayout>

@@ -47,13 +47,17 @@ public class FirebaseAuth {
                 @Override
                 public void onAuthenticated(AuthData authData) {
 
+                    Log.d(TAG,authData.getProviderData().toString());
                     //Toast.makeText(getActivity().getApplicationContext(), "Facebook : ingelogd als =>" + authData.getProviderData().get("displayName").toString(), Toast.LENGTH_LONG).show();
                     user = authData;
                     HashMap<String,Object> fbMap = (HashMap<String,Object>) authData.getProviderData().get("cachedUserProfile");
+
                     Ouder ouder = new Ouder();
+
                     ouder.setFirstName((String)fbMap.get("first_name"));
                     ouder.setLastName((String)fbMap.get("last_name"));
                     ouder.setEmail((String)fbMap.get("email"));
+                    ouder.setFoto(("http://graph.facebook.com/"+(fbMap.get("id"))+"/picture?type=large"));
                     checkIfUserHasProfile(user.getUid(),ouder);
                 }
 
@@ -82,6 +86,10 @@ public class FirebaseAuth {
                 if(!dataSnapshot.hasChild(id))
                 {
                     createUserProfileName(ouder);
+                }
+                else
+                {
+                    //updateUserProfile(ouder);
                 }
             }
 

@@ -90,7 +90,7 @@ public class VakantieLocatie extends Fragment {
             websitelbl= (TextView)view.findViewById(R.id.websitelbl);
             adreslbl.setText(adreslbl.toString() + vakantie.getVakantiePlaats().getContact().getAdres());
             websitelbl.setText(websitelbl.toString() + vakantie.getVakantiePlaats().getContact().getWebsite());
-            mapButton = (Button)view.findViewById(R.id.mapButton);
+            //mapButton = (Button)view.findViewById(R.id.mapButton);
         }
 
         return view;

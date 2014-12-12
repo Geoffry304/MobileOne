@@ -2,7 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/com_facebook_tooltip_black_background"
     tools:context="com.example.steven.joetzandroid.Activities.VakantieFotosFragment"
     android:id="@+id/vakantie_fotos_top_layout">
 

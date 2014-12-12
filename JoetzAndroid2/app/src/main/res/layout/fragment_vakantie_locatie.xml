@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.steven.joetzandroid.Activities.VakantieAlgemeenFragment"
-    android:id="@+id/vakantie_locatie_layout">
+    android:id="@+id/vakantie_locatie_layout"
+    android:background="@drawable/ab_solid_joetztitlebar">
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
@@ -13,33 +14,71 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginRight="12dp"
+            android:layout_marginLeft="12dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="0">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/headerjoetz2"
+                    android:background="@drawable/ab_stacked_solid_joetztitlebar"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/vakantie_locatie_title"
+                    android:textColor="@android:color/white"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Title"
+                    android:layout_marginBottom="7dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:id="@+id/vakantie_locatie_info"
+                    android:layout_marginBottom="6dp"/>
             <TextView
                 android:id="@+id/adreslbl"
                 android:text="@string/adres"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:textSize="25dp"/>
+                android:textColor="@android:color/white"/>
+
 
             <TextView
                 android:id="@+id/websitelbl"
                 android:text="@string/website"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:textSize="25dp" />
+                android:textColor="@android:color/white"
+                android:layout_marginBottom="6dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:id="@+id/vakantie_detail_locatie_vervoer"
+                    android:layout_marginBottom="6dp"/>
+            </LinearLayout>
 
-            <Button
-                android:id="@+id/mapButton"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/mapButton"/>
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_weight="1">
+          <fragment
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_marginTop="7dp"
+              android:id="@+id/locatie_map"
+              android:name="com.google.android.gms.maps.SupportMapFragment"
+              />
+            </LinearLayout>
         </LinearLayout>
 
     </ScrollView>

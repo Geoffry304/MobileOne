@@ -52,10 +52,9 @@ public class Adres {
     }
 
     public void setNummer(int nummer) {
-        if(nummer > 0)
-        {
+
            this.nummer = nummer;
-        }
+
 
     }
 /*
@@ -73,10 +72,9 @@ blalbla
     }
 
     public void setPostcode(int postcode) {
-        if(postcode<10000&&postcode>999)
-        {
+
             this.postcode = postcode;
-        }
+
 
     }
 
@@ -102,5 +100,11 @@ blalbla
 
     public void setLatitude(double latitude) {
         this.latitude = latitude;
+    }
+
+
+    @Override
+    public String toString() {
+        return straat+" "+nummer+"\n"+gemeente+" "+postcode;
     }
 }
