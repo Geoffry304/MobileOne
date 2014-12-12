@@ -28,8 +28,8 @@ import java.util.List;
 public class MapView extends VakantieDetailFragment {
 
     private GoogleMap googleMap;
-    private JoetzDB db;
-    private Vakantie vakantie;
+    //private JoetzDB db;
+
     private Context context;
 
     public MapView() {
@@ -52,16 +52,11 @@ public class MapView extends VakantieDetailFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_map_view, container, false);
-        if (savedInstanceState !=null)
+       /* if (savedInstanceState !=null)
         {
             this.vakantie = JoetzDB.getDbInstance(context).getVakantie(savedInstanceState.getString("vakantieId"));
         }
-        else
-        {
-            db = JoetzDB.getDbInstance(context);
-            db.open();
-            vakantie = db.getVakantie("vakantie0");
-        }
+
         if(vakantie != null) {
             createMapView();
             //adress meegeve voor geolocatie
@@ -70,12 +65,12 @@ public class MapView extends VakantieDetailFragment {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
+        }*/
         return view;
     }
     private void createMapView() {
         try {
-            if (null == googleMap) {
+            if (googleMap == null) {
                 googleMap = ((SupportMapFragment) getFragmentManager().findFragmentById(
                         R.id.mapView)).getMap();
 
@@ -83,7 +78,7 @@ public class MapView extends VakantieDetailFragment {
                  * If the map is still null after attempted initialisation,
                  * show an error to the user
                  */
-                if (null == googleMap) {
+                if (googleMap == null) {
                     Context context = null;//moet normaal andere context zijn.
                     Toast.makeText(context,
                             "Error creating map", Toast.LENGTH_SHORT).show();
@@ -93,19 +88,5 @@ public class MapView extends VakantieDetailFragment {
             Log.e("mapApp", exception.toString());
         }
     }
-    private void addMarker() throws IOException {
-        Geocoder geocoder =
-                new Geocoder(context);
-        List<Address> adres = geocoder.getFromLocationName("Rooseveltlaan 64 Erpe", 1);
-        adres.get(0).getLatitude();
-        //geocoding gebruiken voor omzetten van adress naar gps coordinaten
-        // adres vervangen door firebaseadres
-        if(null != googleMap){
-            googleMap.addMarker(new MarkerOptions()
-                            .position(new LatLng(adres.get(0).getLatitude(), adres.get(0).getLongitude()))
-                            .title("Marker")
-                            .draggable(true)
-            );
-        }
-    }
+
 }

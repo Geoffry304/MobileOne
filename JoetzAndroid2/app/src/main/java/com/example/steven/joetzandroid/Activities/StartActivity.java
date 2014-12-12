@@ -29,6 +29,7 @@ import com.example.steven.joetzandroid.Domain.NavDrawerItem;
 import com.example.steven.joetzandroid.Domain.Ouder;
 import com.example.steven.joetzandroid.R;
 import com.example.steven.joetzandroid.firebase.FirebaseAuth;
+import com.example.steven.joetzandroid.firebase.FirebaseMessages;
 import com.example.steven.joetzandroid.firebase.FirebaseProfile;
 import com.example.steven.joetzandroid.firebase.FirebaseVakantieRepository;
 import com.firebase.client.Firebase;
@@ -63,11 +64,7 @@ public class StartActivity extends FragmentActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
 
         Firebase.setAndroidContext(this);
-        //FirebaseVakantieRepository rep = new FirebaseVakantieRepository();
-        //
-        //CreateDummyData dummyData = new CreateDummyData(this);
-        //dummyData.createVakanties();
-        //dummyData.translateFoto();
+
         setContentView(R.layout.activity_main);
         fragmentHashMap = new HashMap<String, Fragment>();
         mTitle = mDrawerTitle = getTitle();
@@ -84,10 +81,11 @@ public class StartActivity extends FragmentActivity implements AdapterView.OnIte
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[0],navMenuIcons.getResourceId(0,-1)));
         fragmentHashMap.put(navMenuTitles[0], new About());
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
-        fragmentHashMap.put(navMenuTitles[1],new VakantiePeriodeFragment());
+        fragmentHashMap.put(navMenuTitles[1], new VakantiePeriodeFragment());
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[3],navMenuIcons.getResourceId(3,-1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[4],navMenuIcons.getResourceId(4,-1)));
+        fragmentHashMap.put(navMenuTitles[4],new CommunityFragment());
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[5],navMenuIcons.getResourceId(5,-1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[6],navMenuIcons.getResourceId(6,-1)));
         fragmentHashMap.put(navMenuTitles[6],new VakantieAlgemeenFragment());
@@ -182,6 +180,7 @@ public class StartActivity extends FragmentActivity implements AdapterView.OnIte
                     drawerLayout.closeDrawers();
                     break;
                 }
+
         }
         return super.onOptionsItemSelected(item);
     }

@@ -6,15 +6,18 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.steven.joetzandroid.Domain.BitmapTransformation;
 import com.example.steven.joetzandroid.Domain.Vakantie;
 import com.example.steven.joetzandroid.R;
 import com.example.steven.joetzandroid.database.JoetzDB;
+import com.squareup.picasso.Picasso;
 
 
 public class VakantieAlgemeenFragment extends VakantieDetailFragment {
@@ -24,7 +27,7 @@ public class VakantieAlgemeenFragment extends VakantieDetailFragment {
     private TextView promotekstLbl;
     private ImageView foto;
     private JoetzDB db;
-    public Vakantie vakantie;
+
     private static final String TAG = "Algemeen";
 
     public VakantieAlgemeenFragment() {
@@ -36,16 +39,15 @@ public class VakantieAlgemeenFragment extends VakantieDetailFragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-<<<<<<< HEAD
+
         this.context = activity;
-=======
->>>>>>> Steven
+
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString("vakantieId",vakantie.getId());
+        //outState.putString("vakantieId",vakantie.getId());
 
     }
 
@@ -58,21 +60,19 @@ public class VakantieAlgemeenFragment extends VakantieDetailFragment {
         {
             this.vakantie = JoetzDB.getDbInstance(context).getVakantie(savedInstanceState.getString("vakantieId"));
         }
-        else
-        {
-            db = JoetzDB.getDbInstance(context);
-            db.open();
-            vakantie = db.getVakantie("vakantie0");
-        }
+
         View view = inflater.inflate(R.layout.fragment_vakantie_algemeen, container, false);
 
         if(vakantie != null)
         {
             titelLbl = (TextView)view.findViewById(R.id.titlelbl);
             promotekstLbl= (TextView)view.findViewById(R.id.promotekstlbl);
-            foto = (ImageView)view.findViewById(R.id.imageView1);
-            titelLbl.setText("Titel: "+ vakantie.getNaam());
-            promotekstLbl.setText("PromoTekst: " + vakantie.getPromoTekst());
+            foto = (ImageView)view.findViewById(R.id.vakantie_algemeen_imageview);
+
+            fillUpImage();
+            titelLbl.setText( vakantie.getNaam());
+            promotekstLbl.setText( vakantie.getPromoTekst());
+
         }
 
         return view;
@@ -82,5 +82,22 @@ public class VakantieAlgemeenFragment extends VakantieDetailFragment {
     @Override
     public String getaTag() {
         return TAG;
+    }
+
+    private void fillUpImage()
+    {
+        int max_width = 1024;
+        int max_height = 768;
+
+        int size = (int)Math.ceil(Math.sqrt(max_height*max_width));
+        Log.d(TAG, "width " + max_width + "height " + max_height + " size " + size);
+
+        Picasso.with(context)
+                .load(vakantie.getFotos().get(0).getNaam())
+                .transform(new BitmapTransformation(max_width,max_height))
+                .skipMemoryCache()
+                .resize(size,size)
+                .centerInside()
+                .into(foto);
     }
 }
