@@ -29,6 +29,11 @@ body {
   border-radius: 10px;
 }
 
+#schrijfIn {
+  background-color: green;
+  width: 120px;
+}
+
 .image{
   display: inline-block;
   border: 1px solid transparent;
@@ -45,8 +50,7 @@ body {
 
 h2 {
   font-family: Century Gothic, sans-serif;
-  color: #333333;
-  text-decoration: underline;
+  color: #CD0000;
 }
 
 .container{
@@ -157,6 +161,7 @@ h2 {
   vertical-align: bottom;
   text-align: right;
 }
+
 /* NAV BAR */
 .nav-pic {
   margin: -2px 5px 0 0;

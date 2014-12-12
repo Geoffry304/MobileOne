@@ -77,16 +77,19 @@
     </tr>
 </tbody>
 </table>
-<button ng-click="share()">SHARE</button>
-<button ng-show="signedIn()" type="submit" ng-click="go()" class="btn btn-success btn-block">Schrijf in</button>
+<button ng-show="signedIn()" type="submit" ng-click="go()" class="btn btn-lg btn-success pull-left">Schrijf in</button>
+<button type="submit" style="margin-top: 8px" value="Login met facebook" class="btn btn-sm btn-social btn-facebook pull-right" ng-click="share()">
+    <i class="fa fa-facebook"></i> Delen op facebook!
+</button>
+<br>
+<br>
+<hr/>
 <div ng-show="!signedIn()" class="alert alert-danger" role="alert">
     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
     <h5> Log in om in te schrijven voor een vakantie en om een reactie te plaatsen.</h5>
 </div>
 
 <h2>Reacties:</h2><br/>
-
-
 <div class="detailBox">
     <div class="titleBox">
       <label>Voeg een reactie toe!</label>
