@@ -25,6 +25,10 @@ body {
   font-size: 25px;
 }
 
+#slider {
+  border-radius: 10px;
+}
+
 .image{
   display: inline-block;
   border: 1px solid transparent;
@@ -181,12 +185,15 @@ h2 {
 .navbar-custom{
   background-color: #e32517;
 }
+
 .navbar-right{
-  padding-right: 20px;
+  padding-right: 10px;
+  padding-left: 20px;
 }
 
 .navbar-left{
-  padding-left: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .navbarLink{
@@ -194,12 +201,59 @@ h2 {
   font-family: 'Lato', sans-serif;
 }
 
-@media (max-width: 767px) {
-  .navbar-custom .navbar-nav .open .dropdown-menu > li > a {
-    color: #ecf0f1;
-  }
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+color: #000;  /*Sets the text hover color on navbar*/
 }
 
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active >   
+ a:hover, .navbar-default .navbar-nav > .active > a:focus {
+color: white; /*BACKGROUND color for active*/
+background-color: #030033;
+}
+
+  .navbar-default {
+    background-color: #0f006f;
+    border-color: #030033;
+}
+
+  .dropdown-menu > li > a:hover,
+   .dropdown-menu > li > a:focus {
+    color: #262626;
+   text-decoration: none;
+  background-color: #66CCFF;  /*change color of links in drop down here*/
+   }
+
+ .nav > li > a:hover,
+ .nav > li > a:focus {
+    text-decoration: none;
+    background-color: silver; /*Change rollover cell color here*/
+  }
+
+
+  .navbar-default .navbar-nav > li > a {
+   color: white; /*Change active text color here*/
+    }
+
+    .navbar-collapse {
+    color: #CD0000;
+    background-color: #CD0000;
+}
+
+.navbar-header {
+    color: #CD0000;
+    background-color: #CD0000;
+}
+
+@media (max-width: 767px) { 
+    .navbar-brand {
+        padding: 0;        
+    }
+
+    .navbar-brand img {
+        margin-top: 5px;
+        margin-left: 5px;
+    }
+}
 
 /* MAIN POSTS PAGE */
 .post {

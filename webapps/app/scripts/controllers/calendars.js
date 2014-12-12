@@ -6,6 +6,7 @@ app.controller('CalendarCtrl', function ($scope, $compile, uiCalendarConfig, Act
 	var d = date.getDate();
 	var m = date.getMonth();
 	var y = date.getFullYear();
+    var aantal = document.getElementById('aantal').innerHTML;
 
 	$scope.changeTo = 'Hungarian';
 	/* event source that pulls from google.com */
@@ -23,18 +24,25 @@ app.controller('CalendarCtrl', function ($scope, $compile, uiCalendarConfig, Act
         {title: 'Birthday Party',start: new Date(y, m, d + 1, 19, 0),end: new Date(y, m, d + 1, 22, 30),allDay: false},
         {title: 'Click for Google',start: new Date(y, m, 28),end: new Date(y, m, 29),url: 'http://google.com/'}
         ];*/
-        $scope.events = Activiteit.all;
-        console.log($scope.events.$toArray.length);
+        $scope.activiteiten = Activiteit.all;
+        $scope.events = [];
+        console.log("dit is het aantal " + aantal);
+        $scope.events = $scope.activiteiten;
 
-        for (var i = 0; i < $scope.events.length; i++){
+        console.log($scope.events);
+        for (var i = 0; i < 2; i++){
+            console.log(i);
+            console.log($scope.activiteiten);
 
         }
+
         /* event source that calls a function on every view switch */
         $scope.eventsF = function (start, end, timezone, callback) {
         	var s = new Date(start).getTime() / 1000;
         	var e = new Date(end).getTime() / 1000;
         	var m = new Date(start).getMonth();
         	var events = [{title: 'Feed Me ' + m,start: s + (50000),end: s + (100000),allDay: false, className: ['customFeed']}];
+            console.log($scope.activiteiten.length);
         	callback(events);
         };
 

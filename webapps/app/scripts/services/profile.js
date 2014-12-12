@@ -45,7 +45,6 @@ app.factory('Profile', function($window, FIREBASE_URL, $firebase, $q, $location,
 		getKinderen: function(userId){
 			//var defer = $q.defer();
 
-
 			return $firebase(ref.child('profile').child(userId).child('kinderen'))
 			.$asArray();
 			/*.then(function(data) {

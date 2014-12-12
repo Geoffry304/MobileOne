@@ -25,7 +25,7 @@ app.config(function ($routeProvider, $locationProvider) {
     $routeProvider
     .when('/', {
       templateUrl: 'views/homepagina.html',
-      controller: 'HomeCtrl'
+      controller: 'VakantieCtrl'
     })
     .when('/register', {
       templateUrl: 'views/register.html',
@@ -102,7 +102,7 @@ app.config(function ($routeProvider, $locationProvider) {
       templateUrl: 'views/activiteiten.html',
       controller: 'CalendarCtrl'
     })
-    .when('/inschrijven', {
+    .when('/inschrijven/:vakantieId', {
       templateUrl: 'views/inschrijven.html',
       controller: 'InschrijvingCtrl',
       resolve: {

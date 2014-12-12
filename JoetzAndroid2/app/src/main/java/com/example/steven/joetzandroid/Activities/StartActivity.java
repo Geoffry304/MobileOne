@@ -88,7 +88,10 @@ public class StartActivity extends FragmentActivity implements AdapterView.OnIte
         fragmentHashMap.put(navMenuTitles[4],new CommunityFragment());
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[5],navMenuIcons.getResourceId(5,-1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[6],navMenuIcons.getResourceId(6,-1)));
-        fragmentHashMap.put(navMenuTitles[6],new VakantieAlgemeenFragment());
+        fragmentHashMap.put(navMenuTitles[5],new VakantieContactFragment());
+        fragmentHashMap.put(navMenuTitles[4],new VragenFragment());
+        fragmentHashMap.put(navMenuTitles[6], new FacebookFragment());
+        fragmentHashMap.put(navMenuTitles[3], new BondMoysonFragment());
 
         //navDrawerItems.add(new NavDrawerItem(navMenuTitles[7],navMenuIcons.getResourceId(7,-1)));
 

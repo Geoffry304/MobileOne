@@ -10,7 +10,7 @@ app.controller('NavCtrl', function ($scope, $location, Auth) {  $scope.signedIn 
       console.log(error.toString());
     });
   };
-    $scope.register = function() {
+  $scope.register = function() {
     Auth.register($scope.user).then(function(user) {
       return Auth.login($scope.user).then(function() {
         return Auth.createProfile(user);
@@ -20,21 +20,26 @@ app.controller('NavCtrl', function ($scope, $location, Auth) {  $scope.signedIn 
       console.log(error.toString());
     });
   };
+
+  $scope.resetPass = function(){
+    //Moet nog een parameter bij, maar eeerst de layout ervoor.
+    Auth.resetPass();
+  };
   $scope.user = Auth.user;
 
-    $scope.admin = function(role){
+  $scope.admin = function(role){
     return role === '99';
-    };
+  };
 
-    $scope.loginWithFacebook = function() {
+  $scope.loginWithFacebook = function() {
 
     Auth.facebookLogin().then(function(){
-        console.log(Auth.$value);  
-        Auth.createFbProfile(Auth.user);
+      console.log(Auth.$value);  
+      Auth.createFbProfile(Auth.user);
       
       //Auth.createFbProfile(Auth.user);
       $location.path('/');
     });
   };  
- 
+
 });

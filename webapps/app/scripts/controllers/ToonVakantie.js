@@ -10,16 +10,38 @@ app.controller('ToonVakantieCtrl', function ($scope, $routeParams, $location, Va
   $scope.comment = {};
   $scope.creator = {username:'',photo:''};
   $scope.user = Auth.user;
-  $scope.filter = 'false';
+  $scope.filter = 'false';  
   $scope.error = 'Gebruik gepaste taal!';
   $scope.change = function(){
     $location.path('/vakantie/change/' + $routeParams.vakantieId);
-  }
+  };
+    $scope.go = function(){
+
+    $location.path('/inschrijven/' + $routeParams.vakantieId);
+
+};
+  var test = $scope.vakantie.fotos + '.0';
+
 
   $scope.verwijderVakantie = function() {
     $location.path('/');
     return Vakantie.delete($scope.vakantie);
   };
+  $scope.share = function(){
+
+    console.dir($scope.vakantie.fotos);
+    FB.ui(
+    {
+        method: 'feed',
+        name: 'Joetz West-Vlaanderen',
+        link: 'localhost:9000/#/vakantie/' + $scope.vakantie.$id,
+        picture: 'http://i.imgur.com/zXMUwu8.png',
+        //picture: $scope.vakantie.fotos + '.0',
+        caption: $scope.vakantie.naam,
+        description: $scope.vakantie.promoTekst,
+        message: ''
+    });
+  }
   
 
   $scope.voegCommentToe = function() {
