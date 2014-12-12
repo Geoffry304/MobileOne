@@ -10,19 +10,34 @@ app.controller('InschrijvingCtrl', function ($scope, $location, $routeParams, In
 	$scope.voegToe = 'Voeg toe';
 	$scope.kinderen = Profile.getKinderen($scope.user.uid);
 	$scope.Kind = '';
+
 	$scope.mijnKinderen = [];
+	var counter = 0;
 
 	$scope.submitInschrijving = function ()
 	{
-		if($scope.Kind.InschrijvingsId != undefined)
-		{
-			$scope.Kind.InschrijvingsId = $scope.Kind.$id;
-			Vakantie.Inschrijving($routeParams.vakantieId, $scope.Kind);
-		}
+		/*if($scope.Kind.vakantieId == undefined)
+		{*/
+			$scope.Inschrijving = Profile.getInschrijving($scope.user.uid, $scope.Kind.$id);
+			$scope.Inschrijving.$loaded(function(vakanties)
+			{
+			if($scope.Inschrijving.inschrijving == undefined)
+			{
+				$scope.alert ='';
+				Vakantie.Inschrijving($routeParams.vakantieId, $scope.Kind);
+				return Profile.Inschrijving($scope.user.uid, $scope.Kind.$id, $scope.Kind);
+			}
+			else{
+				$scope.alert = 'Dit kind is al ingeschreven voor een vakantie.';
+			}
+			});
+			
+
+		/*}
 		else
 		{
-			$scope.alert = 'Dit kind is al ingeschreven.';
-		}
+			$scope.alert = '';
+		}*/
 		
 
 		/*if ($scope.voegToe == 'Voeg toe') {
@@ -30,7 +45,7 @@ app.controller('InschrijvingCtrl', function ($scope, $location, $routeParams, In
 				$scope.alerts = [];
 				$scope.alerts.push({ type: 'error', msg: 'een verkeerd aantal toegevoegd.' });
 				$scope.kinderen = Profile.getKinderen($scope.user.uid);
-			//}
+			//}*/
 			/*else{
 				for (var i = 0; i < $scope.inschrijving.aantal; i += 1){
 					$scope.kinderen.push({naam: '', voornaam: ''});

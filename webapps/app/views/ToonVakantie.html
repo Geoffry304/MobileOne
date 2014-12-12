@@ -1,4 +1,4 @@
-<h2>{{vakantie.naam}}</h2>
+<h2>{{vakantie.naam}}<span ng-show="beschikbaarheid === false" class=" alert alert-danger glyphicon glyphicon-warning-sign" aria-hidden="true"></span></h2> 
 <a href="#/vakanties"><button id="terugNaarVakanties" class="btn btn-default pull-right">Terug naar vakanties <span class="glyphicon glyphicon-chevron-right"></span></button></a>
 <br>
 <button class="btn btn-labeled btn-danger" ng-show ='admin(user.profile.role_value)'ng-click="toggle_visibility('popupBoxOnePosition');"><span class="btn-label"><i class="glyphicon glyphicon-remove"></i></span> Verwijder</button>
@@ -78,10 +78,14 @@
 </tbody>
 </table>
 <button ng-click="share()">SHARE</button>
-<button ng-show="signedIn()" type="submit" ng-click="go()" class="btn btn-success btn-block">Schrijf in</button>
+<button ng-show="signedIn() && beschikbaarheid === true" type="submit" ng-click="go()" class="btn btn-success btn-block">Schrijf in</button>
 <div ng-show="!signedIn()" class="alert alert-danger" role="alert">
     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
     <h5> Log in om in te schrijven voor een vakantie en om een reactie te plaatsen.</h5>
+</div>
+<div ng-show="beschikbaarheid === false" class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <h5> Het spijt ons. Deze vakantie is al volzet.</h5>
 </div>
 
 <h2>Reacties:</h2><br/>

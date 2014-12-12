@@ -56,6 +56,10 @@ app.factory('Profile', function($window, FIREBASE_URL, $firebase, $q, $location,
 				}
 			});*/
 		},
+		getKind: function(userId,kindId){
+			return $firebase(ref.child('profile').child(userId).child('kinderen').child(kindId)).$asObject();
+
+		},
 		getInschrijvingen: function(userId) {
 	      var defer = $q.defer();
 
@@ -73,6 +77,24 @@ app.factory('Profile', function($window, FIREBASE_URL, $firebase, $q, $location,
 	        });
 
 	      return defer.promise;
+	    },
+	    Inschrijving: function(userId, kindId, kind){
+	    	var kindinschrijving = {
+	    		geboortedatum: kind.geboortedatum,
+					gemeente: kind.gemeente,
+					naam: kind.naam,
+					nummer: kind.nummer,
+					postcode: kind.postcode,
+					straat: kind.straat,
+					voornaam: kind.voornaam,
+					rijksregisternummer: kind.rijksregisternummer,
+					inschrijving: "ingeschreven"
+	    	};
+	    	var inschrijving = $firebase(ref.child('profile').child(userId).child('kinderen'));
+	    	return inschrijving.$update(kindId, kindinschrijving);
+	    },
+	    getInschrijving: function(userId, kindId){
+	    	return $firebase(ref.child('profile').child(userId).child('kinderen').child(kindId)).$asObject();
 	    }
 	};
 	return profile;

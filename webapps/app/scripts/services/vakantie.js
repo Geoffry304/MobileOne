@@ -49,6 +49,10 @@ app.factory('Vakantie', function (FIREBASE_URL, $firebase,$location){
     {
         var inschrijving = $firebase(ref.child('vakanties').child(vakantieId).child('inschrijvingen')).$asArray();
         return inschrijving.$add(kind);
+    },
+    getInschrijvingen: function(vakantieId)
+    {
+      return $firebase(ref.child('vakanties').child(vakantieId).child('inschrijvingen')).$asArray();
     }
   };
 	return Vakantie;

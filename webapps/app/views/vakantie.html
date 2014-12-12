@@ -189,17 +189,12 @@
 <div class="form-group">
   <label class="control-label col-sm-2" for="">Vakantieperiode:</label>
   <div class="col-sm-6">
-    <div class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-  Selecteer...
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+  <select ng-model="vakantie.vakantiePeriode.vakantieNaam" ng-options="periode for periode in periodedropdown"></select>
+ <!-- <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
     <li role="presentation"><a role="menuitem" tabindex="-1">Krokusvakantie</a></li>
     <li role="presentation"><a role="menuitem" tabindex="-1">Zomervakantie</a></li>
     <li role="presentation"><a role="menuitem" tabindex="-1">Herfstvakantie</a></li>
-  </ul>
-</div>
+  </ul>-->
   </div>
 </div>
 

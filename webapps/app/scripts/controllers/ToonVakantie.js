@@ -12,6 +12,7 @@ app.controller('ToonVakantieCtrl', function ($scope, $routeParams, $location, Va
   $scope.user = Auth.user;
   $scope.filter = 'false';  
   $scope.error = 'Gebruik gepaste taal!';
+  $scope.beschikbaarheid = '';
   $scope.change = function(){
     $location.path('/vakantie/change/' + $routeParams.vakantieId);
   };
@@ -20,6 +21,25 @@ app.controller('ToonVakantieCtrl', function ($scope, $routeParams, $location, Va
     $location.path('/inschrijven/' + $routeParams.vakantieId);
 
 };
+var beschikbaar = function(){
+  var ingeschreven = Vakantie.getInschrijvingen($routeParams.vakantieId);
+  ingeschreven.$loaded(function(aantal)
+  {
+    $scope.vakantie.$loaded(function(vak)
+    {
+      if(aantal.length < vak.maxAantal)
+    {
+      $scope.beschikbaarheid = true;
+    }
+    else
+    {
+      $scope.beschikbaarheid = false;
+    }
+  });
+    
+  });
+}
+beschikbaar();
   var test = $scope.vakantie.fotos + '.0';
 
 
