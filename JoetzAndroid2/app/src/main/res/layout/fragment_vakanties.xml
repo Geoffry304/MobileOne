@@ -2,16 +2,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.steven.joetzandroid.Activities.VakantiesFragment">
+    tools:context="com.example.steven.joetzandroid.Activities.VakantiesFragment"
+    android:background="@drawable/ab_solid_joetztitlebar">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginRight="12dp"
+        android:layout_marginLeft="12dp">
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/headerjoetz2"/>
+            android:src="@drawable/headerjoetz2"
+            android:background="@drawable/ab_stacked_solid_joetztitlebar"/>
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -302,8 +302,8 @@ public class JoetzDB {
         Adres a = new Adres();
         a.setId(c.getInt(c.getColumnIndex(DatabaseContstants.COLUMN_ADRES_ID)));
         a.setStraat(c.getString(c.getColumnIndex(DatabaseContstants.COLUMN_ADRES_STRAAT)));
-        a.setNummer(c.getInt(c.getColumnIndex(DatabaseContstants.COLUMN_ADRES_STRAAT)));
-        a.setPostcode(c.getInt(c.getColumnIndex(DatabaseContstants.COLUMN_ADRES_NUMMER)));
+        a.setNummer(c.getInt(c.getColumnIndex(DatabaseContstants.COLUMN_ADRES_NUMMER)));
+        a.setPostcode(c.getInt(c.getColumnIndex(DatabaseContstants.COLUMN_ADRES_POSTC)));
         a.setGemeente(c.getString(c.getColumnIndex(DatabaseContstants.COLUMN_ADRES_GEMEENTE)));
 
         return a;

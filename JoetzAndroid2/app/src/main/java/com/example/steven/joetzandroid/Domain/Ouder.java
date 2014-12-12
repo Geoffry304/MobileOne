@@ -12,6 +12,7 @@ public class Ouder extends User {
     private Ouder partner;
     private ArrayList<Kind> kinderen;
     private Contact contact;
+    private Foto foto;
     private static final String ROLE = "10";
     private String id;
 
@@ -54,6 +55,20 @@ public class Ouder extends User {
         {
             kinderen.add(kind);
         }
+    }
+    public void setFoto(String url)
+    {
+        if (foto ==null)
+        {
+            foto = new Foto();
+        }
+        foto.setNaam(url);
+
+    }
+
+    public Foto getFoto()
+    {
+        return foto;
     }
 
     public boolean removeKind(Kind kind)
@@ -102,6 +117,10 @@ public class Ouder extends User {
         ouderMap.put("naam", this.getLastName());
         ouderMap.put("voornaam",this.getFirstName());
         ouderMap.put("email",this.getEmail());
+        if (foto != null)
+        {
+            ouderMap.put("md5_hash",this.foto.getNaam());
+        }
         ouderMap.put("role_value",ROLE);
 
         return ouderMap;

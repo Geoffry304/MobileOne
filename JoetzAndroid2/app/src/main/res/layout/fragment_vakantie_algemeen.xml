@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.steven.joetzandroid.Activities.VakantieAlgemeenFragment"
-    android:id="@+id/vakantie_algemeen_layout">
+    android:id="@+id/vakantie_algemeen_layout"
+    android:background="@drawable/ab_solid_joetztitlebar">
 
     <!-- TODO: Update blank fragment layout -->
 <ScrollView
@@ -13,7 +14,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp">
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/headerjoetz2"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@drawable/ab_stacked_solid_joetztitlebar"
+            />
         <TextView
             android:id="@+id/titlelbl"
             android:text="@string/Titel"
@@ -21,8 +32,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:textSize="25dp"/>
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center_horizontal"/>
 
         <TextView
             android:id="@+id/promotekstlbl"
@@ -31,17 +43,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:textSize="25dp" />
+            android:textColor="@android:color/white"/>
 
         <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/headerjoetz2"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            />
-
+            android:layout_marginTop="12dp"
+            android:background="@drawable/ab_stacked_solid_joetztitlebar"
+            android:id="@+id/vakantie_algemeen_imageview"/>
         </LinearLayout>
 
     </ScrollView>
