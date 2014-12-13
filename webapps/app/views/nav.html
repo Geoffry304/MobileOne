@@ -66,6 +66,7 @@
                <button type="submit" value="Log in" class="btn btn-primary btn-block">
                 <i/>Inloggen
               </button>
+              <div style="font-size: 80%; position: relative;" data-toggle="modal" data-target="#myModal"><a href="#">Wachtwoord vergeten?</a></div>
             </form>
 
             <button type="submit" style="margin-top: 8px" value="Login met facebook" class="btn btn-block btn-social btn-facebook" ng-click="loginWithFacebook()">
@@ -100,3 +101,32 @@
 </ul>
 </div><!-- /.navbar-collapse -->
 </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Wachtwoord resetten</h4>
+      </div>
+      <div class="modal-body">
+        <p>Geef het e-mailadres mee dat je gebruikte om te registreren!</p>
+        <br>
+        <br>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="">E-mail:</label>
+          <div class="col-sm-6" style="top: -9px">
+            <input name="Email" ng-model="" type="text" placeholder="E-mail" class="form-control">
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Sluiten</button>
+        <button type="button" class="btn btn-primary">Wachtwoord herstellen!</button>
+      </div>
+    </div>
+  </div>
+</div>
