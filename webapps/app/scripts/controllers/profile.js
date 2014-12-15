@@ -5,17 +5,27 @@ app.controller('ProfileCtrl', function($scope, $routeParams, Profile, Auth) {
 	$scope.myKinderen = {};
 	$scope.kinderen = Profile.getKinderen(uid);
 	$scope.profile = Profile.get(uid);
-	$scope.errormessage= '';
+	$scope.errormessage = '';
 	
 
-	var rijks;
-
-	rijks = $scope.myKinderen.geboortedatum;
-	$scope.myKinderen = rijks;
 
 	$scope.submitProfiel = function () {
 		console.log($scope.profile.username);
 		Profile.update(uid,$scope.profile);
+	};
+
+	$scope.change = function() {
+	var rijks;
+
+	rijks = $scope.myKinderen.geboortedatum.split('/');
+	var d = rijks[0];
+	var m = rijks[1];
+	var y = rijks[2];
+	console.log(d);
+	console.log(m);
+	console.log(y.slice(-2));
+	$scope.myKinderen.rijksregisternummer = y.slice(-2) + '.' + m + '.' + d + '-';
+
 	};
 
 	$scope.submitKind = function () {
