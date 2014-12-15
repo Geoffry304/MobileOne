@@ -68,9 +68,9 @@ app.factory('Auth', function ($firebaseSimpleLogin, FIREBASE_URL, $rootScope, $f
 			resetPass: function(email) {
 				return auth.$sendPasswordResetEmail(email, function(error) {
 					if (error === null) {
-						console.log("Password reset email sent successfully");
+						console.log('Password reset email sent successfully');
 					} else {
-						console.log("Error sending password reset email:", error);
+						console.log('Error sending password reset email:', error);
 					}
 				});
 
@@ -78,9 +78,9 @@ app.factory('Auth', function ($firebaseSimpleLogin, FIREBASE_URL, $rootScope, $f
 			changePass: function(email, oldPassword, newPassword){
 				return auth.$changePassword(email, oldPassword, newPassword, function(error) {
 					if (error === null) {
-						console.log("Password changed successfully");
+						console.log('Password changed successfully');
 					} else {
-						console.log("Error changing password:", error);
+						console.log('Error changing password:', error);
 					}
 				});
 			},

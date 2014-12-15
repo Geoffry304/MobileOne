@@ -5,6 +5,10 @@
 app.controller('ToonVakantieCtrl', function ($scope, $routeParams, $location, Vakantie, Auth) {
 
   $scope.vakantie = Vakantie.get($routeParams.vakantieId);
+  $scope.vakantie.$loaded().then(function(){
+    $scope.fotos = $scope.vakantie.fotos;
+    console.log($scope.fotos);
+  
   $scope.signedIn = Auth.signedIn;
   $scope.comments = Vakantie.getComments($routeParams.vakantieId);
   $scope.comment = {};
@@ -46,7 +50,10 @@ var beschikbaar = function(){
   });
 }
 beschikbaar();
-  var test = $scope.vakantie.fotos + '.0';
+
+  console.log($scope.fotos);
+  //var test = $scope.vakantie.fotos[0];
+  //console.log(test);
 
 
   $scope.verwijderVakantie = function() {
@@ -120,4 +127,5 @@ beschikbaar();
   	}
   	return bool;
   };
+  });
 });
