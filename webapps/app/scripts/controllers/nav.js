@@ -25,7 +25,7 @@ app.controller('NavCtrl', function ($scope, $location, Auth) {  $scope.signedIn 
     });
   }
   else{
-    $scope.errormessage = "het wachtwoord komt niet overeen.";
+    $scope.errormessage = 'het wachtwoord komt niet overeen.';
   }
   };
 

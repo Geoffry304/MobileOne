@@ -5,6 +5,7 @@ app.controller('ProfileCtrl', function($scope, $routeParams, Profile, Auth) {
 	$scope.myKinderen = {};
 	$scope.kinderen = Profile.getKinderen(uid);
 	$scope.profile = Profile.get(uid);
+	$scope.errormessage= '';
 	
 
 	var rijks;
@@ -53,8 +54,14 @@ app.controller('ProfileCtrl', function($scope, $routeParams, Profile, Auth) {
 	};
 
 	$scope.changePass = function(){
+		if ($scope.nieuwTwee == $scope.nieuw){
+			Auth.changePass($scope.profile.email, $scope.oud, $scope.nieuw);
+		} else
+		{
+			$scope.errormessage = 'het wachtwoord komt niet overeen.';
+		}
     
-    //Auth.changePass(email, old, new);
+    
 
   };
 
