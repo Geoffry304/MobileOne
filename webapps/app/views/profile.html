@@ -9,9 +9,10 @@
       
 
     </div>
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs nav-justified">
       <li class="active"><a data-target="#profiel" data-toggle="tab">Profiel</a></li>
       <li><a data-target="#kinderen" data-toggle="tab">Kinderen</a></li>
+      <li><a data-target="#wachtwoordReset" data-toggle="tab">Wachtwoord wijzigen</a></li>
     </ul>
 
     <br/>  
@@ -70,6 +71,25 @@
             </div>
           </div>
         </form>
+      </div>
+
+      <div class="tab-pane" id="wachtwoordReset">
+        <form role="form" class="">
+          <div class="form-group">
+            <label for="oldPassword">Oud wachtwoord:</label>
+            <input type="password" class="form-control" id="oldPassword" placeholder="Oud wachtwoord">
+          </div>
+          <div class="form-group">
+            <label for="newPassword">Nieuw wachtwoord:</label>
+            <input type="password" class="form-control" id="newPassword" placeholder="Nieuw wachtwoord">
+          </div>
+          <div class="form-group">
+            <label for="newPassword2">Nieuw wachtwoord:</label>
+            <input type="password" class="form-control" id="newPassword2" placeholder="Herhaal nieuw wachtwoord">
+          </div>
+          <button type="submit" class="btn btn-default" id="">Wijzig wachtwoord</button>
+        </form>
+        <br>
       </div>
 
 

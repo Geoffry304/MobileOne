@@ -54,7 +54,7 @@ app.controller('ProfileCtrl', function($scope, $routeParams, Profile, Auth) {
 
 	$scope.changePass = function(){
     
-    Auth.changePass(email, old, new);
+    //Auth.changePass(email, old, new);
 
   };
 
