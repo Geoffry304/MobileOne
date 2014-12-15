@@ -36,6 +36,9 @@
             <li class="navbarLink" ng-show="user.profile.role_value >= 20">
               <a href='#/activiteiten'>Monitorpagina</a>
             </li>
+            <li class="navbarLink" ng-show="monitor(user.profile.role_value)">
+              <a href='#/activiteiten'>Monitorpagina </a>
+            </li>
             <li ng-show="signedIn()">
               <a class="navbarLink" href="#" ng-click="logout()">Logout</a>
             </li>

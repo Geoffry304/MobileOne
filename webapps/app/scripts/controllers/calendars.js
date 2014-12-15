@@ -47,6 +47,7 @@ app.controller('CalendarCtrl', function ($scope, $compile, uiCalendarConfig, Act
 
         /* alert on eventClick */
         $scope.alertOnEventClick = function( date, jsEvent, view){
+            $('#activiteitModal').modal('show');
         	$scope.alertMessage = (date.title + ' was clicked ');
         };
         /* alert on Drop */

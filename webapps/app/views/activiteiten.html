@@ -4,3 +4,78 @@
 <div ui-calendar="uiConfig.calendar" ng-model="eventSources"></div>
 
 </div>
+
+<div class="modal fade" id="activiteitModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="NavCtrl">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Activiteit</h4>
+      </div>
+      <div class="modal-body ">
+        <br>
+        <br>
+    <form class="form-horizontal">
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="">Naam:</label>
+          <div class="col-sm-6" style="top: -9px">
+            <label id="activiteitNaam" type="text" class="control-label">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="">Soort:</label>
+          <div class="col-sm-6" style="top: -9px">
+            <label id="activiteitSoort" type="text" class="control-label">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="">Periode van:</label>
+          <div class="col-sm-2" style="top: -9px">
+            <label id="activiteitPeriodeVan" type="text" class="control-label">
+          </div>
+          <label class="control-label col-sm-2" for="">tot:</label>
+          <div class="col-sm-2" style="top: -9px">
+            <label id="activiteitPeriodeTot" type="text" class="control-label">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="">Prijs:</label>
+          <div class="col-sm-6" style="top: -9px">
+            <label id="activiteitPrijs" type="text" class="control-label">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="">Straat:</label>
+          <div class="col-sm-2" style="top: -9px">
+            <label id="activiteitStraat" type="text" class="control-label">
+          </div>
+          <label class="control-label col-sm-2" for="">Nr:</label>
+          <div class="col-sm-2" style="top: -9px">
+            <label id="activiteitNr" type="text" class="control-label">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="">Gemeente:</label>
+          <div class="col-sm-6" style="top: -9px">
+            <label id="activiteitGemeente" type="text" class="control-label">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="">Postcode:</label>
+          <div class="col-sm-6" style="top: -9px">
+            <label id="activiteitGemeente" type="text" class="control-label">
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+  </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Sluiten</button>
+        <button type="button" class="btn btn-success" ng-click="">Inschrijven!</button>
+      </div>
+    </div>
+  </div>
+</div>
