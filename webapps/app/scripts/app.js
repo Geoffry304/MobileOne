@@ -119,6 +119,14 @@ app.config(function ($routeProvider, $locationProvider) {
       templateUrl: 'views/monitorpagina.html',
       controller: 'BeheerderCtrl'
     })
+    .when('/activiteit/:activiteitId', {
+      templateUrl: 'views/ToonActiviteit.html',
+      controller: 'ToonActiviteitCtrl'
+    })
+    .when('/activiteit/change/:activiteitId', {
+      templateUrl: 'views/activiteit.html',
+      controller: 'ActiviteitCtrl'
+    })
     .otherwise({
       redirectTo: '/'
     });

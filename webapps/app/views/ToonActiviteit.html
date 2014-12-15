@@ -1,0 +1,58 @@
+<h2>{{Activiteit.naam}}</h2> 
+
+<a href="#/activiteiten"><button id="terugNaarActiviteiten" class="btn btn-default pull-right">Terug naar Activiteiten <span class="glyphicon glyphicon-chevron-right"></span></button></a>
+<br>
+<button class="btn btn-labeled btn-danger" ng-show ='admin(user.profile.role_value)'ng-click="toggle_visibility('popupBoxOnePosition');"><span class="btn-label"><i class="glyphicon glyphicon-remove"></i></span> Verwijder</button>
+<button class="btn btn-info" ng-show ='admin(user.profile.role_value)' ng-click="change()">Wijzig</button>
+<!--<div facebook data-name='Fb Share' data-url='http://localhost:9000/vakantie/-JbXQl98nmXCNGWR632n' data-picture-url='http://plnk.co/img/plunker.png' data-caption='Testing Facebook Shae' data-shares='shares'> <a href>Share To facebook<a> <p>Number of Shares: {{shares}}</p> </div><-->
+<br ng-show='admin(user.profile.role_value)'>
+<br ng-show='admin(user.profile.role_value)'>
+<table class="table">
+    <tbody>
+        <tr>
+            <td><label for="Naam">Naam:</label></td>
+            <td><p>{{activiteit.naam}}</p></td>
+        </tr>
+        <tr>
+            <td><label for="Promo tekst">Promo tekst:</label></td>
+            <td><p>{{activiteit.promoTekst}} </p></td>
+        </tr>
+        <tr>
+            <td><label for="Prijs">Prijs:</label></td>
+            <td><p>€ {{activiteit.prijs}} </p></td>
+        </tr>
+     <tr>
+        <td><label for="Adres">Adres:</label></td>
+        <td><p>{{activiteit.adres.straat}} nr. {{activiteit.adres.nr}} {{activiteit.adres.gemeente}} {{activiteit.adres.postcode}} </p></td>
+    </tr>
+    <tr>
+        <td><label for="Vakantieperiode">periode:</label></td>
+        <td><p>Van: {{activiteit.periode.van}} Tot: {{activiteit.periode.tot}}</p></td>
+    </tr>
+    <tr>
+        <td><label for="Maximum">Maximum aantal leden:</label></td>
+        <td><p> {{activiteit.maxAantal}} </p></td>
+    </tr>
+</tbody>
+</table>
+<button ng-show="signedIn()" type="submit" ng-click="go()" class="btn btn-lg btn-success pull-left">Schrijf in</button>
+<div ng-show="!signedIn()" class="alert alert-danger" style="width: 500px;" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <h5> Log in om in te schrijven voor een vakantie en om een reactie te plaatsen.</h5>
+</div>
+<br ng-hide="!signedIn()">
+<br ng-hide="!signedIn()">
+<hr/>
+
+
+</div>
+
+<div id="popupBoxOnePosition">
+    <div class="popupBoxWrapper">
+        <div class="popupBoxContent">
+            <h3>Bevestiging</h3>
+            <p>Bent u zeker dat u deze vakantie wil verwijderen?</p>
+            <a href='#/vakanties' ng-click="verwijderVakantie()">Ja</a> <a href="javascript:void(0)" ng-click="toggle_visibility('popupBoxOnePosition');"> Nee </a>
+        </div>
+    </div>
+</div>

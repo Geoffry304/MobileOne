@@ -1,0 +1,28 @@
+<div ng-show='admin(user.profile.role_value)' >
+
+<div class="bs-example">
+<div style="margin-left: 10px;">
+	<br>
+	<br>
+	<ul class="list-group">
+		<li class="row list-group-item active" style="margin-right: 0px;"> <i class="col-sm-1"> Titel </i><i class="col-sm-1"> Promotekst</i> <i class="col-sm-2 pull-left"> Soort</i>
+		<li ng-repeat="activiteit in activiteiten" class="row list-group-item" style="margin-right: 0px;">
+			<a class="text-primary col-sm-1" ng-href="#/activiteit/{{activiteit.$id}}">{{activiteit.naam}} </a> <a class="col-sm-1" ng-href="#/activiteit/{{activiteit.$id}}">{{acitivteit.promotekst}} </a> <a class="col-sm-2 pull-left" href={{vak.plaats.contact.website}} target="blank">{{activiteit.soort}} </a> 
+			<button class="btn btn-danger btn-xs pull-right" ng-click="toggle_visibility('popupBoxOnePosition', vak.$id);"><span class="btn-label"><i class="glyphicon glyphicon-remove"></i></span></button>
+		</li> 
+	</ul>
+</div>
+</div>
+
+</div>
+<h2 ng-show='!admin(user.profile.role_value)'>U bent hier niet toegelaten. </h2>
+
+<div id="popupBoxOnePosition">
+    <div class="popupBoxWrapper">
+        <div class="popupBoxContent">
+            <h3>Bevestiging</h3>
+            <p>Bent u zeker dat u deze vakantie wil verwijderen?</p>
+            <a href='#/beheerderspagina' ng-click="verwijderVakantie()">Ja</a> <a href="javascript:void(0)" ng-click="toggle_visibility('popupBoxOnePosition');"> Nee </a>
+        </div>
+    </div>
+</div>
