@@ -3,6 +3,7 @@ package com.example.steven.joetzandroid.firebase;
 import android.util.Log;
 
 import com.example.steven.joetzandroid.Domain.Contact;
+import com.example.steven.joetzandroid.Domain.Kind;
 import com.example.steven.joetzandroid.Domain.Ouder;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -78,17 +79,33 @@ public class FirebaseProfile implements Firebase.CompletionListener{
 
 
     }
-    private boolean updateOuder(Ouder ouder)
+
+    public boolean updateOuder(Ouder ouder)
+    {
+        Firebase ouderRef = ref.child(ouder.getId());
+        ouderRef.setValue(ouder.ouderToHashMap(),this);
+        return completed;
+    }
+
+    public boolean updateOuderContact(Ouder ouder)
     {
         Firebase ouderRef = ref.child(ouder.getId());
         ouderRef.setValue(ouder.ouderContactToHashMap(),this);
         return completed;
     }
 
-    private boolean updateOuderContact(Ouder ouder)
+    public boolean updateKind(Kind kind){
+
+
+        Firebase kindRef = ref.child(kind.getOuder().getId()).child(kind.getId());
+        kindRef.setValue(kind.kindToHashMap(),this);
+        return completed;
+    }
+
+    public boolean updateKindAdres(Kind kind)
     {
-        Firebase ouderRef = ref.child(ouder.getId());
-        ouderRef.setValue(ouder.ouderContactToHashMap(),this);
+        Firebase kindRef = ref.child(kind.getOuder().getId()).child(kind.getId());
+        kindRef.setValue(kind.kindAdresToHashMap(),this);
         return completed;
     }
 

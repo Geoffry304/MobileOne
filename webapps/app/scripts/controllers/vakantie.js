@@ -5,7 +5,7 @@ app.controller('VakantieCtrl', function ($scope, $routeParams, $location, Vakant
   $scope.vakanties = Vakantie.all;
   $scope.user = Auth.user;
   $scope.episodeImgData = [];
-  $scope.periodedropdown = ["Krokusvakantie", "Zomervakantie", "Herfstvakantie"];
+  $scope.periodedropdown = ['Krokusvakantie', 'Zomervakantie', 'Herfstvakantie'];
 
 if($routeParams.vakantieId !== undefined)
 {

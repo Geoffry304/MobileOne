@@ -93,7 +93,11 @@
 <br ng-hide="!signedIn() || beschikbaarheid === false">
 <br ng-hide="!signedIn() || beschikbaarheid === false">
 <hr/>
-
+<ul>
+    <li ng-repeat="foto in fotos">
+    <img ng-src="{{foto}}" />
+    </li>
+</ul>
 <h2>Reacties:</h2><br/>
 <div class="detailBox">
     <div class="titleBox">

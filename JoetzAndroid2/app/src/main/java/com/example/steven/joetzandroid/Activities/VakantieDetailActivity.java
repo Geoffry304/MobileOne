@@ -85,12 +85,12 @@ public class VakantieDetailActivity extends FragmentActivity implements ActionBa
     {
         //fragmenten toevoegen
 
-<<<<<<< HEAD
+
         VakantieDetailFragment[]fragmenten = {new VakantieAlgemeenFragment(), new VakantieLocatieFragment(), new VakantieFotoGalery(), new VakantieDetailPeriodesFragment()};
         //VakantieDetailFragment[]fragmenten = {new VakantieFotoGalery(),new VakantieAlgemeenFragment(),new VakantieDetailPeriodesFragment(),new VakantieDetailInschrijving()};
-=======
+
         VakantieDetailFragment[]fragmenten = {new VakantieAlgemeenFragment(), new VakantieLocatieFragment(), new VakantieFotoGalery(), new VakantieDetailPeriodesFragment(),new VakantieDetailInschrijving()};
->>>>>>> Steven
+
 
         for(String item : items)
         {

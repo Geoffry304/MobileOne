@@ -5,6 +5,7 @@ import com.example.steven.joetzandroid.Domain.Adres;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 
 /**
  * Created by Steven on 23/10/14.
@@ -98,5 +99,29 @@ public class Kind {
     public Ouder getOuder()
     {
         return this.ouder;
+    }
+
+    public HashMap<String, String > kindAdresToHashMap()
+    {
+        HashMap<String,String> kindAdresMap = new HashMap<String, String>();
+        if (adres !=null)
+        {
+            kindAdresMap.put("straat" , adres.getStraat());
+            kindAdresMap.put("nummer",""+adres.getNummer());
+            kindAdresMap.put("postcode",""+adres.getPostcode());
+            kindAdresMap.put("gemeente",adres.getGemeente());
+
+        }
+        return kindAdresMap;
+    }
+
+    public HashMap<String,String>kindToHashMap()
+    {
+        HashMap<String,String> kindMap = new HashMap<String, String>();
+        kindMap.put("naam", this.getLastName());
+        kindMap.put("voornaam",this.getFistName());
+        kindMap.put("rijksregisternummer",this.getRijksRegisternummer());
+
+        return kindMap;
     }
 }
