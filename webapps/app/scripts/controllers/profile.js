@@ -1,10 +1,11 @@
 'use strict';
 /*global app:true*/
-app.controller('ProfileCtrl', function($scope, $routeParams, Profile) {
+app.controller('ProfileCtrl', function($scope, $routeParams, Profile, Auth) {
 	var uid = $routeParams.userId;
 	$scope.myKinderen = {};
 	$scope.kinderen = Profile.getKinderen(uid);
 	$scope.profile = Profile.get(uid);
+	$scope.errormessage= '';
 	
 
 	var rijks;
@@ -51,5 +52,17 @@ app.controller('ProfileCtrl', function($scope, $routeParams, Profile) {
 		//console.log($scope.kinderen[0]);
 
 	};
+
+	$scope.changePass = function(){
+		if ($scope.nieuwTwee == $scope.nieuw){
+			Auth.changePass($scope.profile.email, $scope.oud, $scope.nieuw);
+		} else
+		{
+			$scope.errormessage = 'het wachtwoord komt niet overeen.';
+		}
+    
+    
+
+  };
 
 });

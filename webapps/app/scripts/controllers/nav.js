@@ -25,13 +25,15 @@ app.controller('NavCtrl', function ($scope, $location, Auth) {  $scope.signedIn 
     });
   }
   else{
-    $scope.errormessage = "het wachtwoord komt niet overeen.";
+    $scope.errormessage = 'het wachtwoord komt niet overeen.';
   }
   };
 
   $scope.resetPass = function(){
-    //Moet nog een parameter bij, maar eeerst de layout ervoor.
-    Auth.resetPass();
+    var i = document.getElementById('email').value.trim();
+    Auth.resetPass(i);
+    document.getElementById('resetLabel').innerHTML = 'Er is een e-mail verzonden naar het door u opgegeven e-mailadres.';
+    $('#closemodal').modal('hide');
   };
   $scope.user = Auth.user;
 

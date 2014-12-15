@@ -7,6 +7,8 @@ app.controller('BeheerderCtrl', function ($scope, $location, Auth, Vakantie, Pro
   $scope.gebruikers = Profile.all;
 	$scope.adminvak = 'views/adminVakanties.html';
   $scope.admingebruiker = 'views/adminGebruikers.html';
+  $scope.wachtwoordReset = 'views/adminWachtwoordreset.html';
+
 	$scope.admin = function(role){
 		return role === '99';
 	};
