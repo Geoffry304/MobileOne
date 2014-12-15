@@ -7,10 +7,10 @@
 
 	<div class="row">
 
-		<ul class="nav nav-tabs">
-			<li class="active"><a data-target="#vakanties" data-toggle="tab">Vakanties</a></li>
-			<li><a data-target="#monitoren" data-toggle="tab">Monitoren</a></li>
-			<li><a data-target="#gebruikers" data-toggle="tab">Gebruikers</a></li>
+		<ul class="nav nav-tabs nav-justified">
+			<li role="presentation" class="active"><a data-target="#vakanties" data-toggle="tab">Vakanties</a></li>
+			<li role="presentation"><a data-target="#gebruikers" data-toggle="tab">Gebruikers</a></li>
+			<li role="presentation"><a data-target="#wachtwoordReset" data-toggle="tab">Wachtwoord wijzigen</a></li>
 		</ul>
 
 	</div>
@@ -23,9 +23,10 @@
 		</div>
 
 
-		<div class="tab-pane" id="monitoren">
-
+		<div class="tab-pane" id="wachtwoordReset">
+			<div ng-include src="wachtwoordReset"></div>
 		</div>
+
 		<div class="tab-pane" id="gebruikers">
 		<div ng-include src="admingebruiker"></div>
 		</div>

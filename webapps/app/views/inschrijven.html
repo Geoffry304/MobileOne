@@ -6,25 +6,30 @@
 	<div>
 		<!--<label>aantal</label>
 		<input type="number" class="form-control" placeholder="Aantal" ng-model="inschrijving.aantal" ng-pattern="/^-?[0-9]\d*(\.\d+)?$/" required/>-->
-		<select ng-model="Kind" ng-options="kind.naam for kind in kinderen"></select>
+		<select class="btn-info" ng-model="Kind" ng-options="kind.naam for kind in kinderen"></select>
 	</div>
 	<div ng-show="Kind != ''" id='kindArray'>
-		<div class="control-group">
-	    <label class="control-label" for="">Naam</label>
-	    <input ng-model="Kind.naam" type="text" placeholder="Naam" class="input-xlarge">
+	<br>
+	<div class="row">
+	    <label class="control-label col-lg-6" for="">Naam:</label>
+	    <input ng-model="Kind.naam" type="text" placeholder="Naam" class="form-control col-lg-6">
 	  </div>
-	  <div class="control-group">
-	    <label class="control-label" for="">Voornaam</label>
-	    <input ng-model="Kind.voornaam" type="text" placeholder="Voornaam" class="input-xlarge">
+	  <br>
+	  <div class="row">
+	    <label class="control-label col-lg-6" for="">Voornaam:</label>
+	    <input ng-model="Kind.voornaam" type="text" placeholder="Voornaam" class="form-control col-lg-6">
 	  </div>
-	  <div class="control-group">
-	    <label class="control-label" for="">Geboortedatum</label>
-	    <input ng-model="Kind.geboortedatum" type="text" placeholder="Geboortedatum" class="input-xlarge">
+	  <br>
+	  <div class="row">
+	    <label class="control-label col-lg-6" for="">Geboortedatum:</label>
+	    <input ng-model="Kind.geboortedatum" type="text" placeholder="Geboortedatum" class="form-control col-lg-6">
 	  </div>
-	  <div class="control-group">
-	    <label class="control-label" for="">Rijksregisternummer</label>
-	    <input ng-model="Kind.rijksregisternummer" type="text" placeholder="Rijksregisternr" class="input-xlarge">
+	  <br>
+	  <div class="row">
+	    <label class="control-label col-md-6" for="">Rijksregisternummer:</label>
+	    <input ng-model="Kind.rijksregisternummer" type="text" placeholder="Rijksregisternr" class="form-control col-lg-6">
 	  </div>
+	  <br>
 	  <!--<div class="control-group">
 	    <div class="controls">
 	      <input type="checkbox" ng-model"anders">
@@ -32,23 +37,27 @@
 	    </div>
 	  </div>-->
 	  <!--<div ng-checked="anders">-->
-	    <div class="control-group">
-	      <label class="control-label" for="">Straat</label>
-	      <input ng-model="Kind.straat" type="text" placeholder="Straat" class="input-xlarge">
+	    <div class="row">
+	      <label class="control-label col-lg-6" for="">Straat:</label>
+	      <input ng-model="Kind.straat" type="text" placeholder="Straat" class="form-control col-lg-6">
 	    </div>
-	    <div class="control-group">
-	      <label class="control-label" for="">Nummer</label>
-	      <input ng-model="Kind.nummer" type="text" placeholder="Nummer" class="input-xlarge">
+	    <br>
+	    <div class="row">
+	      <label class="control-label col-lg-6" for="">Nummer:</label>
+	      <input ng-model="Kind.nummer" type="text" placeholder="Nummer" class="form-control col-lg-6">
 	    </div>
-	    <div class="control-group">
-	      <label class="control-label" for="">Postcode</label>
-	      <input ng-model="Kind.postcode" type="text" placeholder="Postcode" class="input-xlarge">
+	    <br>
+	    <div class="row">
+	      <label class="control-label col-lg-6" for="">Postcode:</label>
+	      <input ng-model="Kind.postcode" type="text" placeholder="Postcode" class="form-control col-lg-6">
 	    </div>
-	    <div class="control-group">
-	      <label class="control-label" for="">Gemeente</label>
-	      <input ng-model="Kind.gemeente" type="text" placeholder="Gemeente" class="input-xlarge">
+	    <br>
+	    <div class="row">
+	      <label class="control-label col-lg-6" for="">Gemeente:</label>
+	      <input ng-model="Kind.gemeente" type="text" placeholder="Gemeente" class="form-control col-lg-6">
 	    </div>
 	  <!--</div>-->
 	</div>
+	<br>
 	<input type="submit" ng-click="submitInschrijving(Kind.vakanties)" value="{{voegToe}}" class="btn btn-primary" />
 </form>

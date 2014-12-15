@@ -117,7 +117,7 @@
 </nav>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="NavCtrl">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -131,15 +131,19 @@
         <div class="form-group">
           <label class="control-label col-sm-2" for="">E-mail:</label>
           <div class="col-sm-6" style="top: -9px">
-            <input name="Email" ng-model="user.email" type="text" placeholder="E-mail" class="form-control">
+            <input name="Email" id="email" type="text" placeholder="E-mail" class="form-control">
+            <br>
+            <label id="resetLabel" style="color: green;"></label>
           </div>
         </div>
       </div>
       <br>
       <br>
+      <br>
+      <br>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Sluiten</button>
-        <button type="button" class="btn btn-primary">Wachtwoord herstellen!</button>
+        <button type="button" class="btn btn-primary" ng-click="resetPass()">Wachtwoord herstellen!</button>
       </div>
     </div>
   </div>
