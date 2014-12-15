@@ -9,8 +9,21 @@ app.controller('VakantieCtrl', function ($scope, $routeParams, $location, Vakant
 
 if($routeParams.vakantieId !== undefined)
 {
+  $scope.fotos = [];
 	$scope.vakantie = Vakantie.get($routeParams.vakantieId);
 	$scope.Vakantie = function() {
+    if ($scope.episodeImgData) {
+      if($scope.vakantie.fotos == undefined)
+      {
+        $scope.vakantie.fotos = $scope.fotos;
+      }
+      for(var i = 0; i < $scope.episodeImgData.length; i++)
+      {
+
+        $scope.vakantie.fotos.push($scope.episodeImgData[i]);
+      }
+      
+    };
     return Vakantie.update($routeParams.vakantieId, $scope.vakantie);
   };
 
@@ -18,7 +31,7 @@ if($routeParams.vakantieId !== undefined)
 else
 {
   $scope.fotos = [];
-	$scope.vakantie = {naam:'', promoTekst:'', fotos: 'foto' + $scope.fotos , plaats: {plaatsnaam:'', contact:{telNr: '', website: '', adres:{straat:'', nr:'', postcode:'', gemeente:'', long:'', lat:''}}},prijs:'', vakantiePeriode: {vakantieNaam: '', periode:{van:'', tot:''}}, thema: '', leeftijdscategorie:{van:'', tot:'' }, maxAantal: '', busVervoer: false, eigenVervoer: false, fiscaalAftrek: false};
+	$scope.vakantie = {naam:'', promoTekst:'', fotos: $scope.fotos , plaats: {plaatsnaam:'', contact:{telNr: '', website: '', adres:{straat:'', nr:'', postcode:'', gemeente:'', long:'', lat:''}}},prijs:'', vakantiePeriode: {vakantieNaam: '', periode:{van:'', tot:''}}, thema: '', leeftijdscategorie:{van:'', tot:'' }, maxAantal: '', busVervoer: false, eigenVervoer: false, fiscaalAftrek: false};
 	$scope.Vakantie = function() {
     if ($scope.episodeImgData) {
       for(var i = 0; i < $scope.episodeImgData.length; i++)
