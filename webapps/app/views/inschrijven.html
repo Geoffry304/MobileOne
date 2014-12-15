@@ -1,28 +1,30 @@
-<form class="navbar-form navbar-left" role="search">
-	<div>
-  		<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-  		<alert ng-show="alert !==''">{{alert}}</alert>
-	</div>
+<div style="margin-top: 10px;"ng-show="alert !==''" class="alert alert-warning" role="alert">
+    <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+    <p> {{alert}}</p>
+</div>
+<form name="form" ng-hide="toevoegen === true" ng-show="kinderen.length > 0 && toevoegen === false" class="navbar-form navbar-left" role="search">
 	<div>
 		<!--<label>aantal</label>
 		<input type="number" class="form-control" placeholder="Aantal" ng-model="inschrijving.aantal" ng-pattern="/^-?[0-9]\d*(\.\d+)?$/" required/>-->
-		<select ng-model="Kind" ng-options="kind.naam for kind in kinderen"></select>
+		<select ng-model="Kind" ng-options="kind.naam for kind in kinderen" id="checkKind"></select>
 	</div>
+	<br>
 	<div ng-show="Kind != ''" id='kindArray'>
 		<div class="control-group">
-	    <label class="control-label" for="">Naam</label>
+	    <label class="control-label" for="">Naam:</label>
 	    <input ng-model="Kind.naam" type="text" placeholder="Naam" class="input-xlarge">
 	  </div>
 	  <div class="control-group">
-	    <label class="control-label" for="">Voornaam</label>
+	    <label class="control-label" for="">Voornaam:</label>
 	    <input ng-model="Kind.voornaam" type="text" placeholder="Voornaam" class="input-xlarge">
 	  </div>
 	  <div class="control-group">
-	    <label class="control-label" for="">Geboortedatum</label>
-	    <input ng-model="Kind.geboortedatum" type="text" placeholder="Geboortedatum" class="input-xlarge">
+	    <label class="control-label" for="">Geboortedatum:</label>
+	    <input name="geboortedatum"ng-model="Kind.geboortedatum" type="text" placeholder="Geboortedatum" class="input-xlarge" >
+	     
 	  </div>
 	  <div class="control-group">
-	    <label class="control-label" for="">Rijksregisternummer</label>
+	    <label class="control-label" for="">Rijksregisternummer:</label>
 	    <input ng-model="Kind.rijksregisternummer" type="text" placeholder="Rijksregisternr" class="input-xlarge">
 	  </div>
 	  <!--<div class="control-group">
@@ -33,22 +35,132 @@
 	  </div>-->
 	  <!--<div ng-checked="anders">-->
 	    <div class="control-group">
-	      <label class="control-label" for="">Straat</label>
+	      <label class="control-label" for="">Straat:</label>
 	      <input ng-model="Kind.straat" type="text" placeholder="Straat" class="input-xlarge">
 	    </div>
 	    <div class="control-group">
-	      <label class="control-label" for="">Nummer</label>
+	      <label class="control-label" for="">Nummer:</label>
 	      <input ng-model="Kind.nummer" type="text" placeholder="Nummer" class="input-xlarge">
 	    </div>
 	    <div class="control-group">
-	      <label class="control-label" for="">Postcode</label>
+	      <label class="control-label" for="">Postcode:</label>
 	      <input ng-model="Kind.postcode" type="text" placeholder="Postcode" class="input-xlarge">
 	    </div>
 	    <div class="control-group">
-	      <label class="control-label" for="">Gemeente</label>
+	      <label class="control-label" for="">Gemeente:</label>
 	      <input ng-model="Kind.gemeente" type="text" placeholder="Gemeente" class="input-xlarge">
 	    </div>
 	  <!--</div>-->
 	</div>
+	<br>
 	<input type="submit" ng-click="submitInschrijving(Kind.vakanties)" value="{{voegToe}}" class="btn btn-primary" />
 </form>
+<button style="float:right; margin-top:10px;"class="btn btn-primary" ng-click="ToggleToevoegen()">{{Toggle}}</button>
+
+<div ng-hide="toevoegen === false" ng-show="kinderen.length === 0 || toevoegen === true">
+	<br>
+	<div ng-show="alert !==''" class="alert alert-success" style="width: 300px;" role="alert">
+    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+    <p> {{alert}}</p>
+</div>
+<h2 id="kindToevoegen">Kind toevoegen</h2>
+      <form name="form">
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="">Naam:</label>
+        <div class="col-sm-5">
+          <input name="naam"ng-model="myKinderen.naam" type="text" placeholder="Naam" class="form-control" required>
+          <div ng-show="form.naam.$invalid && form.naam.$dirty">
+      <p ng-show="form.naam.$error.required">
+        Dit veld is verplicht.
+      </p>
+
+    </div>
+        </div>
+      </div><br><br><br ng-show="form.naam.$invalid && form.naam.$dirty"><br ng-show="form.naam.$invalid && form.naam.$dirty">
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="">Voornaam:</label>
+        <div class="col-sm-5">
+          <input name="voornaam" ng-model="myKinderen.voornaam" type="text" placeholder="Voornaam" class="form-control" required>
+      <div ng-show="form.voornaam.$invalid && form.voornaam.$dirty">
+      <p ng-show="form.voornaam.$error.required">
+        Dit veld is verplicht.
+      </p>
+
+    </div>
+        </div>
+      </div><br><br><br ng-show="form.voornaam.$invalid && form.voornaam.$dirty">
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="">Geboortedatum:</label>
+        <div class="col-sm-5">
+          <input name="geboortedatum" ng-model="myKinderen.geboortedatum" type="text" placeholder="Geboortedatum" class="form-control" required ng-pattern="/(\d+)(-|\/)(\d+)(?:-|\/)(?:(\d+)\s+(\d+):(\d+)(?::(\d+))?(?:\.(\d+))?)?/">
+          <div ng-show="form.geboortedatum.$invalid && form.geboortedatum.$dirty">
+      <p ng-show="form.geboortedatum.$error.required">
+        Dit veld is verplicht.
+      </p>
+      <p ng-show="form.geboortedatum.$error.pattern">
+        Ongeldig datumformaat.
+      </p>
+    </div>
+
+        </div>
+      </div><br><br><br ng-show="form.geboortedatum.$invalid && form.geboortedatum.$dirty">
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="">Rijksregisternummer:</label>
+        <div class="col-sm-5">
+          <input name="rijksregisternummer" ng-model="myKinderen.rijksregisternummer" type="text" placeholder="Rijksregisternr" class="form-control" required>
+          <div ng-show="form.rijksregisternummer.$invalid && form.rijksregisternummer.$dirty">
+	      <p ng-show="form.rijksregisternummer.$error.required">
+	        Dit veld is verplicht.
+	      </p>
+
+    		</div>
+        </div>
+      </div><br><br><br ng-show="form.rijksregisternummer.$invalid && form.rijksregisternummer.$dirty">
+
+      <div class="form-group">
+        <div class="controls">
+          <div class="col-sm-offset-2 col-sm-10">
+            <input type="checkbox" ng-model="anders" id="anders">
+            Adres is anders dan ouder
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div ng-show="anders">
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="">Straat:</label>
+        <div class="col-sm-2">
+          <input ng-model="myKinderen.straat" type="text" placeholder="Straat" class="form-control">
+        </div>
+
+        <label class="col-sm-1 control-label" for="">Nummer:</label>
+        <div class="col-sm-1">
+          <input ng-model="myKinderen.nummer" type="text" placeholder="Nummer" class="form-control">
+        </div>
+      </div><br><br><br>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="">Postcode:</label>
+        <div class="col-sm-1">
+          <input ng-model="myKinderen.postcode" type="text" placeholder="Postcode" class="form-control">
+        </div>
+
+        <label class="col-sm-1 control-label" for="">Gemeente:</label>
+        <div class="col-sm-3">
+          <input ng-model="myKinderen.gemeente" type="text" placeholder="Gemeente" class="form-control">
+        </div>
+      </div>
+    </div>
+</form>
+    <br><br>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button class="btn btn-success" ng-click="submitKind()">Opslaan</button>
+      </div>
+    </div>
+</div>

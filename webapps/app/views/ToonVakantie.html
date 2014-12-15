@@ -113,6 +113,12 @@
 
         </div>
     </ul>
+    <div ng-show="filter === true" class="alert alert-danger">      
+        <span class="glyphicon glyphicon-warning-sign"></span>
+    <p>
+        Let op je taal!!
+    </p>
+</div>
     <form class="form-inline" role="form" ng-show="signedIn()">
         <div class="form-group">
             <input ng-model="comment.tekst" type="text" placeholder="Uw reactie..." class="form-control"/>

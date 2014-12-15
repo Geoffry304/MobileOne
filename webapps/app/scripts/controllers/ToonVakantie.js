@@ -10,7 +10,7 @@ app.controller('ToonVakantieCtrl', function ($scope, $routeParams, $location, Va
   $scope.comment = {};
   $scope.creator = {username:'',photo:''};
   $scope.user = Auth.user;
-  $scope.filter = 'false';  
+  $scope.filter = false;  
   $scope.error = 'Gebruik gepaste taal!';
   $scope.beschikbaarheid = '';
   $scope.change = function(){
@@ -77,11 +77,12 @@ beschikbaar();
    	if(!filter($scope.comment))
    	{
   		Vakantie.comment($scope.comment, $routeParams.vakantieId);
-  		$scope.filter='false';
+  		$scope.filter=false;
+      $scope.comment = null;
   	}	
   	else
   	{
-  		$scope.filter='true';
+  		$scope.filter=true;
   	}
   };
 
