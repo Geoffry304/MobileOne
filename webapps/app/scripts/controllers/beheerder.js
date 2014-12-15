@@ -1,13 +1,15 @@
 'use strict';
 /*global app:true*/
-app.controller('BeheerderCtrl', function ($scope, $location, Auth, Vakantie, Profile) {
+app.controller('BeheerderCtrl', function ($scope, $location, Auth, Vakantie, Profile, Activiteit) {
 	$scope.user = Auth.user;
 	$scope.signedIn = Auth.signedIn;
 	$scope.vakanties = Vakantie.all;
   $scope.gebruikers = Profile.all;
+  $scope.activiteiten = Activiteit.all;
 	$scope.adminvak = 'views/adminVakanties.html';
   $scope.admingebruiker = 'views/adminGebruikers.html';
   $scope.wachtwoordReset = 'views/adminWachtwoordreset.html';
+  $scope.adminactiviteiten = 'views/adminactiviteiten.html';
 
 	$scope.admin = function(role){
 		return role === '99';

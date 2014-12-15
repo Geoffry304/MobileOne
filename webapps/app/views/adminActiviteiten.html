@@ -2,13 +2,12 @@
 
 <div class="bs-example">
 <div style="margin-left: 10px;">
-	<button style="float:right; margin-top: 5px;"class="btn btn-primary" onClick="window.location.href ='#/admin/vakantie'"><span class="glyphicon glyphicon-plus"></span></button>
 	<br>
 	<br>
 	<ul class="list-group">
-		<li class="row list-group-item active" style="margin-right: 0px;"> <i class="col-sm-3"> Titel </i><i class="col-sm-2"> Thema</i> <i class="col-sm-2 pull-left"> Website</i>
-		<li ng-repeat="vak in vakanties" class="row list-group-item" style="margin-right: 0px;">
-			<a class="text-primary col-sm-3" ng-href="#/vakantie/{{vak.$id}}">{{vak.naam}} </a> <a class="col-sm-2" ng-href="#/vakantie/{{vak.$id}}">{{vak.thema}} </a> <a class="col-sm-2 pull-left" href={{vak.plaats.contact.website}} target="blank">{{vak.plaats.contact.website}} </a> 
+		<li class="row list-group-item active" style="margin-right: 0px;"> <i class="col-sm-1"> Titel </i><i class="col-sm-1"> Promotekst</i> <i class="col-sm-2 pull-left"> Soort</i>
+		<li ng-repeat="activiteit in activiteiten" class="row list-group-item" style="margin-right: 0px;">
+			<a class="text-primary col-sm-1" ng-href="#/activiteit/{{activiteit.$id}}">{{activiteit.naam}} </a> <a class="col-sm-1" ng-href="#/activiteit/{{activiteit.$id}}">{{acitivteit.promotekst}} </a> <a class="col-sm-2 pull-left" href={{vak.plaats.contact.website}} target="blank">{{activiteit.soort}} </a> 
 			<button class="btn btn-danger btn-xs pull-right" ng-click="toggle_visibility('popupBoxOnePosition', vak.$id);"><span class="btn-label"><i class="glyphicon glyphicon-remove"></i></span></button>
 		</li> 
 	</ul>

@@ -30,7 +30,7 @@
 <div class="form-group">
   <label class="control-label col-sm-2" for="">Promotekst:</label>
   <div class="col-sm-6">
-    <input name="promotekst" ng-model="vakantie.promoTekst" type="text" placeholder="Promo tekst" class="form-control" required ng-minlength="3" ng-maxlength="200">
+    <input name="promotekst" ng-model="vakantie.promoTekst" type="text" placeholder="Promo tekst" class="form-control" required ng-minlength="3" ng-maxlength="500">
     <div ng-show="form.promotekst.$invalid && form.promotekst.$dirty">
       <p ng-show="form.promotekst.$error.required">
         De promotekst is verplicht.
@@ -39,7 +39,7 @@
         De promotekst moet uit minimum 3 karakters bestaan.
       </p>
       <p ng-show="form.promotekst.$error.maxlength">
-        De promotekst mag maar maximum 200 karakters bevatten.
+        De promotekst mag maar maximum 500 karakters bevatten.
       </p>
     </div>
   </div>
@@ -243,7 +243,7 @@
 <div class="form-group">
   <label class="control-label col-sm-2" for="">Leeftijdscategorie van:</label>
   <div class="col-sm-2">
-    <input name="leeftijdvan" ng-model="vakantie.leeftijdscategorie.van" type="date" placeholder="JJJ/MM/DD" class="form-control" required ng-pattern="/(\d+)(-|\/)(\d+)(?:-|\/)(?:(\d+)\s+(\d+):(\d+)(?::(\d+))?(?:\.(\d+))?)?/">
+    <input name="leeftijdvan" ng-model="vakantie.leeftijdscategorie.van" type="date" placeholder="JJJJ/MM/DD" class="form-control" required ng-pattern="/(\d+)(-|\/)(\d+)(?:-|\/)(?:(\d+)\s+(\d+):(\d+)(?::(\d+))?(?:\.(\d+))?)?/">
     <div ng-show="form.leeftijdvan.$invalid && form.leeftijdvan.$dirty">
       <p ng-show="form.leeftijdvan.$error.required">
         Dit veld is verplicht.

@@ -35,6 +35,11 @@ app.factory('Activiteit', function (FIREBASE_URL, $firebase,$location){
         $location.path('/activiteiten');
       return activiteitRef.$update(activiteitId, activiteitUpdate);
     },
+    Inschrijving: function(activiteitId, monitor)
+    {
+        var inschrijving = $firebase(ref.child('activiteiten').child(activiteitId).child('inschrijvingen')).$asArray();
+        return inschrijving.$add(monitor);
+    },
     getComments: function(activiteitId) {
       return $firebase(ref.child('activiteiten').child(activiteitId).child('comments')).$asObject();
     },

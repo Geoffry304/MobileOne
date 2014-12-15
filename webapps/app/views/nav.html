@@ -15,8 +15,7 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" ng-controller="NavCtrl">
     <ul class="nav navbar-nav navbar-left">
-      <li><a class="navbarLink" href="#/vakanties">De Vakanties </a></li>
-      <li><a class="navbarLink" href="#">Onze kalender</a></li>
+      <li><a class="navbarLink" href="#/vakanties">De vakanties</a></li>
       <li class="dropdown">
         <a class="navbarLink dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Over ons <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
@@ -32,7 +31,10 @@
         <a ng-href="#/users/{{ user.uid }}"><img ng-src="{{ user.profile.md5_hash }}" class="nav-pic">{{user.profile.username}}</a>
         </li>
             <li class="navbarLink" ng-show="admin(user.profile.role_value)">
-              <a href='#/beheerderspagina'>Beheerderspagina </a>
+              <a href='#/beheerderspagina'>Beheerderspagina</a>
+            </li>
+            <li class="navbarLink" ng-show="user.profile.role_value >= 20">
+              <a href='#/activiteiten'>Monitorpagina</a>
             </li>
             <li ng-show="signedIn()">
               <a class="navbarLink" href="#" ng-click="logout()">Logout</a>
