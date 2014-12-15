@@ -17,7 +17,9 @@ app.controller('CalendarCtrl', function ($scope, $compile, uiCalendarConfig, Act
                     title: $scope.activiteiten[i].naam,
                     start: $scope.activiteiten[i].periode.van,
                     end: $scope.activiteiten[i].periode.tot,
-                    className: ['openSesame']
+                    className: ['openSesame'],
+                    color: 'red',
+                    textColor: 'black'
                 });
             }});
 
@@ -25,9 +27,10 @@ app.controller('CalendarCtrl', function ($scope, $compile, uiCalendarConfig, Act
 
     /* event source that pulls from google.com */
     $scope.eventSource = {
-      url: "http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic",
+      url: "http://www.google.com/calendar/feeds/eu__nl%40holiday.calendar.google.com/public/basic",
             className: 'gcal-event',           // an option!
-            currentTimezone: 'America/Chicago' // an option!
+            color: 'red',
+            currentTimezone: 'Europe/Brussels' // an option!
         };
         /* event source that contains custom events on the scope */
         $scope.events = [];
