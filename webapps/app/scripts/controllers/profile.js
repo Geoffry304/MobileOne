@@ -1,6 +1,6 @@
 'use strict';
 /*global app:true*/
-app.controller('ProfileCtrl', function($scope, $routeParams, Profile) {
+app.controller('ProfileCtrl', function($scope, $routeParams, Profile, Auth) {
 	var uid = $routeParams.userId;
 	$scope.myKinderen = {};
 	$scope.kinderen = Profile.getKinderen(uid);
@@ -51,5 +51,11 @@ app.controller('ProfileCtrl', function($scope, $routeParams, Profile) {
 		//console.log($scope.kinderen[0]);
 
 	};
+
+	$scope.changePass = function(){
+    
+    Auth.changePass(email, old, new);
+
+  };
 
 });
