@@ -56,6 +56,7 @@ app.controller('ProfileCtrl', function($scope, $routeParams, Profile, Auth) {
 	$scope.changePass = function(){
 		if ($scope.nieuwTwee == $scope.nieuw){
 			Auth.changePass($scope.profile.email, $scope.oud, $scope.nieuw);
+			document.getElementById('wijzigLabel').innerHTML = 'Wachtwoord is gewijzigd.';
 		} else
 		{
 			$scope.errormessage = 'het wachtwoord komt niet overeen.';
