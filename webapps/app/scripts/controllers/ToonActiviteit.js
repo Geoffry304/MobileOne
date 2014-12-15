@@ -19,9 +19,9 @@ app.controller('ToonActiviteitCtrl', function ($scope, $routeParams, $location, 
 
 };
 
-  $scope.verwijderVakantie = function() {
+  $scope.verwijderActiviteit = function() {
     $location.path('/');
-    return Vakantie.delete($scope.vakantie);
+    return Activiteit.delete($scope.activiteit);
   };  
 
   $scope.toggle_visibility = function(id) {
