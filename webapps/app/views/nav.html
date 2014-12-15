@@ -82,12 +82,26 @@
           <b class="caret"></b>
         </a>
         <div class="dropdown-menu dropdownMenu">
-          <form ng-submit="register()">
+          <form name="form" ng-submit="register()">
             <p ng-show="error" class="alert alert-danger" role="alert">
              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
              {{error}}</p>
              <input type="email" ng-model="user.email" placeholder="E-mail" class="form-control"><br>
-             <input type="password" ng-model="user.password" placeholder="Paswoord" class="form-control"><br>
+             <input name="password" type="password" ng-model="user.password" placeholder="Paswoord" class="form-control" ng-minlength="3" required>
+             <div ng-show="form.password.$invalid && form.password.$dirty">
+              <p style="color: white;"ng-show="form.password.$error.required">
+                Het wachtwoord is verplicht.
+              </p>
+              <p style="color: white;" ng-show="form.password.$error.minlength">
+                Het wachtwoord moet uit minimum 3 karakters bestaan.
+              </p>
+            </div>
+            <br>
+            <input name="confirm" type="password" ng-model="user.confirm" placeholder="Bevestig paswoord" class="form-control">
+            <p style="color:white" ng-show="errormessage !== ''">
+              {{errormessage}}
+            </p>
+            <br>
              <input type="text" ng-model="user.username" placeholder="Username" class="form-control"><br>
              <button type="submit" value="Log in" class="btn btn-primary btn-block">
               <i/>Registreer
@@ -117,7 +131,7 @@
         <div class="form-group">
           <label class="control-label col-sm-2" for="">E-mail:</label>
           <div class="col-sm-6" style="top: -9px">
-            <input name="Email" ng-model="" type="text" placeholder="E-mail" class="form-control">
+            <input name="Email" ng-model="user.email" type="text" placeholder="E-mail" class="form-control">
           </div>
         </div>
       </div>

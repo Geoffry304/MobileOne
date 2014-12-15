@@ -4,6 +4,7 @@ app.controller('AuthCtrl', function($scope, $location, Auth, user) {
 	if(user){
 		$location.path('/');
 	}
+	$scope.errormessage = '';
 
 	$scope.login = function() {
 		console.log('Test');
@@ -32,7 +33,9 @@ app.controller('AuthCtrl', function($scope, $location, Auth, user) {
 	};
 
 	$scope.register = function() {
-		Auth.register($scope.user).then(function(user) {
+		if($scope.user.confirm == $scope.user.password)
+		{
+					Auth.register($scope.user).then(function(user) {
 			return Auth.login($scope.user).then(function() {
 				user.username = $scope.user.username;
 				return Auth.createProfile(user);
@@ -43,6 +46,12 @@ app.controller('AuthCtrl', function($scope, $location, Auth, user) {
 			$scope.error = error.toString();
 			console.log(error.toString());
 		});
+		}
+		else
+		{
+			$scope.errormessage = "het wachtwoord komt niet overeen.";
+		}
+
 	};
 
 	$scope.admin = function(role){

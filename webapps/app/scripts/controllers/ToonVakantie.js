@@ -21,6 +21,12 @@ app.controller('ToonVakantieCtrl', function ($scope, $routeParams, $location, Va
     $location.path('/inschrijven/' + $routeParams.vakantieId);
 
 };
+$scope.calculateAge = function calculateAge(birthday) { // birthday is a date
+    var datum = new Date(birthday); 
+    var ageDifMs = Date.now() - datum.getTime();
+    var ageDate = new Date(ageDifMs); // miliseconds from epoch
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+};
 var beschikbaar = function(){
   var ingeschreven = Vakantie.getInschrijvingen($routeParams.vakantieId);
   ingeschreven.$loaded(function(aantal)

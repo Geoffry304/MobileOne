@@ -2,6 +2,7 @@
 /*global app:true*/
 app.controller('NavCtrl', function ($scope, $location, Auth) {  $scope.signedIn = Auth.signedIn;
   $scope.logout = Auth.logout;
+  $scope.errormessage= '';
 
   $scope.login = function() {
     console.log('Test');
@@ -11,6 +12,9 @@ app.controller('NavCtrl', function ($scope, $location, Auth) {  $scope.signedIn 
     });
   };
   $scope.register = function() {
+    if($scope.user.confirm == $scope.user.password)
+    {
+      $scope.errormessage='';
     Auth.register($scope.user).then(function(user) {
       return Auth.login($scope.user).then(function() {
         return Auth.createProfile(user);
@@ -19,6 +23,10 @@ app.controller('NavCtrl', function ($scope, $location, Auth) {  $scope.signedIn 
       $scope.error = error.toString();
       console.log(error.toString());
     });
+  }
+  else{
+    $scope.errormessage = "het wachtwoord komt niet overeen.";
+  }
   };
 
   $scope.resetPass = function(){

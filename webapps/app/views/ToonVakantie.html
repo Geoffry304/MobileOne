@@ -14,7 +14,7 @@
         </tr>
         <tr>
             <td><label for="Leeftijdscategorie">Leeftijdscategorie:</label></td>
-            <td><p for="Leeftijdscategorie"><label>Van:</label> {{vakantie.leeftijdscategorie.van}}    <label>Tot:</label> {{vakantie.leeftijdscategorie.tot}}</p></td>
+            <td><p for="Leeftijdscategorie"><label>Van:</label> {{ calculateAge(vakantie.leeftijdscategorie.van) }} <label>Tot:</label> {{ calculateAge(vakantie.leeftijdscategorie.tot) }}</p></td>
         </tr>
         <tr>
             <td><label for="Promo tekst">Promo tekst:</label></td>

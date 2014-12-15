@@ -1,11 +1,5 @@
 <h2 ng-show='!admin(user.profile.role_value)'>U bent eigenlijk niet toegelaten hier maar voor testredenen laat ik dit open </h2>
 <div id="vakantieContainer">
-<td class="labelField">Image</td>
-    <span class="btn btn-default btn-file">
-      <input type="file" accept="image/*" capture="camera" id="file-upload" multiple>
-    </span>
-    <br/>
-    <img ng-repeat="foto in episodeImgData" src="{{foto}}" height="50" width="50">
 <form name="form" class="form-horizontal" role="form" novalidate ng-submit="Vakantie()"><fieldset>
 <legend>
   <h1>Kamp toevoegen 
@@ -249,7 +243,7 @@
 <div class="form-group">
   <label class="control-label col-sm-2" for="">Leeftijdscategorie van:</label>
   <div class="col-sm-2">
-    <input name="leeftijdvan" ng-model="vakantie.leeftijdscategorie.van" type="text" placeholder="DD/MM/JJJJ" class="form-control" required ng-pattern="/(\d+)(-|\/)(\d+)(?:-|\/)(?:(\d+)\s+(\d+):(\d+)(?::(\d+))?(?:\.(\d+))?)?/">
+    <input name="leeftijdvan" ng-model="vakantie.leeftijdscategorie.van" type="date" placeholder="JJJ/MM/DD" class="form-control" required ng-pattern="/(\d+)(-|\/)(\d+)(?:-|\/)(?:(\d+)\s+(\d+):(\d+)(?::(\d+))?(?:\.(\d+))?)?/">
     <div ng-show="form.leeftijdvan.$invalid && form.leeftijdvan.$dirty">
       <p ng-show="form.leeftijdvan.$error.required">
         Dit veld is verplicht.
@@ -263,7 +257,7 @@
 <!-- Text input-->
   <label class="control-label col-sm-2" for="">tot:</label>
   <div class="col-sm-2">
-    <input name="leeftijdtot" ng-model="vakantie.leeftijdscategorie.tot" type="text" placeholder="DD/MM/JJJJ" class="form-control" required ng-pattern="/(\d+)(-|\/)(\d+)(?:-|\/)(?:(\d+)\s+(\d+):(\d+)(?::(\d+))?(?:\.(\d+))?)?/">
+    <input name="leeftijdtot" ng-model="vakantie.leeftijdscategorie.tot" type="date" placeholder="JJJJ/MM/DD" class="form-control" required ng-pattern="/(\d+)(-|\/)(\d+)(?:-|\/)(?:(\d+)\s+(\d+):(\d+)(?::(\d+))?(?:\.(\d+))?)?/">
     <div ng-show="form.leeftijdtot.$invalid && form.leeftijdtot.$dirty">
       <p ng-show="form.leeftijdtot.$error.required">
         Dit veld is verplicht.
@@ -304,6 +298,17 @@
       <input type="checkbox" name="" ng-model="vakantie.fiscaalAftrek" id="-2" value="fiscaal aftrekbaar">
       fiscaal aftrekbaar
     </label>
+  </div>
+</div>
+<div class="form-group">
+  <label class="control-label col-sm-2" for="">Voeg enkele foto's toe:</label>
+  <div class="col-sm-6">
+    <td class="labelField">Image</td>
+    <span class="btn btn-default btn-file">
+      <input type="file" accept="image/*" capture="camera" id="file-upload" multiple>
+    </span>
+    <br/>
+    <img ng-repeat="foto in episodeImgData" src="{{foto}}" height="50" width="50">
   </div>
 </div>
 
