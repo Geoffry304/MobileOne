@@ -28,6 +28,7 @@
   "appPath": "app",
   "resolutions": {
     "jquery": "~2.x",
-    "fullcalendar": "~2.2.3"
+    "fullcalendar": "~2.2.3",
+    "angular-bootstrap": "~0.12.0"
   }
 }
