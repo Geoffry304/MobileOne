@@ -23,6 +23,15 @@ app.factory('Profile', function($window, FIREBASE_URL, $firebase, $q, $location,
 			var profileRef = $firebase(ref.child('profile'));
 			return profileRef.$update(userId, profileUpdate);
 		},
+
+		updateRole: function(userId, role_value) {
+			var profileUpdate = {
+				role_value: role_value
+			};
+
+			var profileRef = $firebase(ref.child('profile'));
+			return profileRef.$update(userId, profileUpdate);
+		},
 		updateKind: function (kindId, kind, userId) {
 			var profileUpdate = {
 					geboortedatum: kind.geboortedatum,

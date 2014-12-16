@@ -57,8 +57,9 @@ app.controller('CalendarCtrl', function ($scope, $compile, uiCalendarConfig, Act
         	$scope.alertMessage = (date.id + ' was clicked ');
 
              $scope.schrijfIn = function(){
-                //console.log($scope.user);
                 Activiteit.Inschrijving(date.id, $scope.user.uid);
+                document.getElementById('activiteitLabel').innerHTML = 'Je bent ingeschreven voor deze activiteit.';
+                $('#btnInschrijven').prop('disabled', true);
         };
         };
         /* alert on Drop */
