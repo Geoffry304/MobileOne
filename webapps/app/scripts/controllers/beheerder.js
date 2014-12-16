@@ -9,7 +9,7 @@ app.controller('BeheerderCtrl', function ($scope, $location, Auth, Vakantie, Pro
 	$scope.adminvak = 'views/adminVakanties.html';
   $scope.admingebruiker = 'views/adminGebruikers.html';
   $scope.wachtwoordReset = 'views/adminWachtwoordreset.html';
-  $scope.adminactiviteiten = 'views/adminactiviteiten.html';
+  $scope.adminactiviteiten = 'views/adminActiviteiten.html';
 
 	$scope.admin = function(role){
 		return role === '99';
@@ -30,7 +30,8 @@ $scope.verwijderVakantie = function() {
 
   $scope.updateRole = function(){
     //userId, rolevalue
-    Profile.updateRole();
+    //Profile.updateRole();
+    console.log($scope.gebruiker);
   };
 
 /* $scope.toggle_visibility = function(id, gebruikerId) {
