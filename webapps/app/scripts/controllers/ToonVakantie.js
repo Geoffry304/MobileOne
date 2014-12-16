@@ -2,7 +2,11 @@
 
 /*global app:true*/
 
+
 app.controller('ToonVakantieCtrl', function ($scope, $routeParams, $location, Vakantie, Auth) {
+
+
+
 
   $scope.vakantie = Vakantie.get($routeParams.vakantieId);
   $scope.vakantie.$loaded().then(function(){
@@ -17,6 +21,13 @@ app.controller('ToonVakantieCtrl', function ($scope, $routeParams, $location, Va
   $scope.filter = false;  
   $scope.error = 'Gebruik gepaste taal!';
   $scope.beschikbaarheid = '';
+
+  $scope.currentImage = $scope.fotos[0];
+    
+  $scope.setCurrentImage = function(foto) {
+    $scope.currentImage = foto;
+  };
+
   $scope.change = function(){
     $location.path('/vakantie/change/' + $routeParams.vakantieId);
   };

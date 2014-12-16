@@ -93,11 +93,28 @@
 <br ng-hide="!signedIn() || beschikbaarheid === false">
 <br ng-hide="!signedIn() || beschikbaarheid === false">
 <hr/>
-<ul>
-    <li ng-repeat="foto in fotos">
-    <img ng-src="{{foto}}" />
-    </li>
-</ul>
+
+
+<div class="row">
+    <div class="col-md-9">
+        <div class="albumImage">
+            <img ng-src="{{currentImage}}"/>
+        </div>
+    </div><!-- End of Column -->
+    <div class="col-md-3">
+        <div>
+            <ul class="listSpecial">
+              <li ng-repeat="foto in fotos" ng-click="setCurrentImage(foto)">
+                <img class="imgSpecial" ng-src="{{foto}}"/>
+              </li>
+            </ul><!-- End of List -->
+        </div><!-- End of Wrapper -->
+    </div><!-- End of Column -->
+</div><!-- End of Row -->
+
+
+
+
 <h2>Reacties:</h2><br/>
 <div class="detailBox">
     <div class="titleBox">
