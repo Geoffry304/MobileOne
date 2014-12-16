@@ -28,6 +28,11 @@ $scope.verwijderVakantie = function() {
     return Vakantie.delete(Vakantie.get($scope.vakantieId));
   };
 
+  $scope.updateRole = function(){
+    //userId, rolevalue
+    Profile.updateRole();
+  };
+
 /* $scope.toggle_visibility = function(id, gebruikerId) {
   $scope.gebruikerId = gebruikerId;
   var e = document.getElementById(id);
