@@ -98,12 +98,13 @@ app.controller('CalendarCtrl', function ($scope, $compile, uiCalendarConfig, Act
         /* Change View */
         $scope.changeView = function(view,calendar) {
         	uiCalendarConfig.calendars[calendar].fullCalendar('changeView',view);
-            
+            $scope.change();
         };
         /* Change View */
         $scope.renderCalender = function(calendar) {
         	if(uiCalendarConfig.calendars[calendar]){
         		uiCalendarConfig.calendars[calendar].fullCalendar('render');
+                $scope.change();
                 
         	}
         };
