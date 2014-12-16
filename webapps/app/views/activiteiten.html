@@ -15,53 +15,53 @@
       <div class="modal-body ">
         <br>
         <br>
-    <form class="form-horizontal">
+    <form class="form-horizontal" ng-model"activiteit">
         <div class="form-group">
           <label class="control-label col-sm-2" for="">Naam:</label>
           <div class="col-sm-6" style="top: -9px">
-            <label id="activiteitNaam" type="text" class="control-label">
+            <label id="activiteitNaam"  type="text" class="control-label">{{activiteit.naam}}</label>
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-sm-2" for="">Soort:</label>
           <div class="col-sm-6" style="top: -9px">
-            <label id="activiteitSoort" type="text" class="control-label">
+            <label id="activiteitSoort"  type="text" class="control-label">{{activiteit.soort}}</label>
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-sm-2" for="">Periode van:</label>
           <div class="col-sm-2" style="top: -9px">
-            <label id="activiteitPeriodeVan" type="text" class="control-label">
+            <label id="activiteitPeriodeVan" type="text" class="control-label">{{activiteit.periode.van}}</label>
           </div>
           <label class="control-label col-sm-2" for="">tot:</label>
           <div class="col-sm-2" style="top: -9px">
-            <label id="activiteitPeriodeTot" type="text" class="control-label">
+            <label id="activiteitPeriodeTot" type="text" class="control-label">{{activiteit.periode.tot}}</label>
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-sm-2" for="">Prijs:</label>
           <div class="col-sm-6" style="top: -9px">
-            <label id="activiteitPrijs" type="text" class="control-label">
+            <label id="activiteitPrijs" type="text" class="control-label">{{activiteit.prijs}}</label>
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-sm-2" for="">Straat:</label>
           <div class="col-sm-2" style="top: -9px">
-            <label id="activiteitStraat" type="text" class="control-label">
+            <label id="activiteitStraat" type="text" class="control-label">{{activiteit.adres.straat}}</label>
           </div>
           <label class="control-label col-sm-2" for="">Nr:</label>
           <div class="col-sm-2" style="top: -9px">
-            <label id="activiteitNr" type="text" class="control-label">
+            <label id="activiteitNr" type="text" class="control-label">{{activiteit.adres.nr}}</label>
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-sm-2" for="">Gemeente:</label>
           <div class="col-sm-6" style="top: -9px">
-            <label id="activiteitGemeente" type="text" class="control-label">
+            <label id="activiteitGemeente" type="text" class="control-label">{{activiteit.adres.gemeente}}</label>
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-sm-2" for="">Postcode:</label>
+          <label class="control-label col-sm-2" for="">Postcode:</label>{{activiteit.adres.postcode}}</label>
           <div class="col-sm-6" style="top: -9px">
             <label id="activiteitGemeente" type="text" class="control-label">
           </div>
@@ -74,7 +74,7 @@
   </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Sluiten</button>
-        <button type="button" class="btn btn-success" ng-click="">Inschrijven!</button>
+        <button type="button" class="btn btn-success" ng-click="schrijfIn()">Inschrijven!</button>
       </div>
     </div>
   </div>

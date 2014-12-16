@@ -1,11 +1,13 @@
 'use strict';
 /*global app:true*/
-app.controller('CalendarCtrl', function ($scope, $compile, uiCalendarConfig, Activiteit) {
+app.controller('CalendarCtrl', function ($scope, $compile, uiCalendarConfig, Activiteit, Auth) {
 
 	var date = new Date();
 	var d = date.getDate();
 	var m = date.getMonth();
 	var y = date.getFullYear();
+    $scope.activiteit;
+    $scope.user = Auth.user;
 
     $scope.change = function() {
 
@@ -14,6 +16,7 @@ app.controller('CalendarCtrl', function ($scope, $compile, uiCalendarConfig, Act
         {
             for (var i = 0; i < $scope.activiteiten.length; i++){
                 $scope.events.push({
+                    id: $scope.activiteiten[i].$id,
                     title: $scope.activiteiten[i].naam,
                     start: $scope.activiteiten[i].periode.van,
                     end: $scope.activiteiten[i].periode.tot,
@@ -45,10 +48,18 @@ app.controller('CalendarCtrl', function ($scope, $compile, uiCalendarConfig, Act
         	callback(events);
         };
 
+
+
         /* alert on eventClick */
         $scope.alertOnEventClick = function( date, jsEvent, view){
             $('#activiteitModal').modal('show');
-        	$scope.alertMessage = (date.title + ' was clicked ');
+            $scope.activiteit = Activiteit.get(date.id);
+        	$scope.alertMessage = (date.id + ' was clicked ');
+
+             $scope.schrijfIn = function(){
+                //console.log($scope.user);
+                Activiteit.Inschrijving(date.id, $scope.user.uid);
+        };
         };
         /* alert on Drop */
         $scope.alertOnDrop = function(event, delta, revertFunc, jsEvent, ui, view){
