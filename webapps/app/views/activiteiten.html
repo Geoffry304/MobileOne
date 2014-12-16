@@ -1,5 +1,4 @@
 <div class="alert-success calAlert" ng-show="alertMessage != undefined && alertMessage != ''">
-                                <h4>{{alertMessage}}</h4>
                                 </div>
 <div ui-calendar="uiConfig.calendar" ng-model="eventSources"></div>
 
@@ -18,63 +17,66 @@
     <form class="form-horizontal" ng-model"activiteit">
         <div class="form-group">
           <label class="control-label col-sm-2" for="">Naam:</label>
-          <div class="col-sm-6" style="top: -9px">
-            <label id="activiteitNaam"  type="text" class="control-label">{{activiteit.naam}}</label>
+          <div class="col-sm-6">
+            <label id="activiteitNaam" style="color: #1485CC;" type="text" class="control-label">{{activiteit.naam}}</label>
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-sm-2" for="">Soort:</label>
-          <div class="col-sm-6" style="top: -9px">
-            <label id="activiteitSoort"  type="text" class="control-label">{{activiteit.soort}}</label>
+          <div class="col-sm-6">
+            <label id="activiteitSoort" style="color: #1485CC;"  type="text" class="control-label">{{activiteit.soort}}</label>
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-sm-2" for="">Periode van:</label>
-          <div class="col-sm-2" style="top: -9px">
-            <label id="activiteitPeriodeVan" type="text" class="control-label">{{activiteit.periode.van}}</label>
+          <div class="col-sm-3">
+            <label id="activiteitPeriodeVan" style="color: #1485CC;" type="text" class="control-label">{{activiteit.periode.van}}</label>
           </div>
-          <label class="control-label col-sm-2" for="">tot:</label>
-          <div class="col-sm-2" style="top: -9px">
-            <label id="activiteitPeriodeTot" type="text" class="control-label">{{activiteit.periode.tot}}</label>
+          <label class="control-label col-sm-1" for="">tot:</label>
+          <div class="col-sm-3">
+            <label id="activiteitPeriodeTot" style="color: #1485CC;" type="text" class="control-label">{{activiteit.periode.tot}}</label>
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-sm-2" for="">Prijs:</label>
-          <div class="col-sm-6" style="top: -9px">
-            <label id="activiteitPrijs" type="text" class="control-label">{{activiteit.prijs}}</label>
+          <div class="col-sm-3">
+            <label id="activiteitPrijs" style="color: #1485CC;" type="text" class="control-label">{{activiteit.prijs}} EUR</label>
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-sm-2" for="">Straat:</label>
-          <div class="col-sm-2" style="top: -9px">
-            <label id="activiteitStraat" type="text" class="control-label">{{activiteit.adres.straat}}</label>
+          <div class="col-sm-2">
+            <label id="activiteitStraat" style="color: #1485CC;" type="text" class="control-label">{{activiteit.adres.straat}}</label>
           </div>
           <label class="control-label col-sm-2" for="">Nr:</label>
-          <div class="col-sm-2" style="top: -9px">
-            <label id="activiteitNr" type="text" class="control-label">{{activiteit.adres.nr}}</label>
+          <div class="col-sm-2">
+            <label id="activiteitNr" style="color: #1485CC;" type="text" class="control-label">{{activiteit.adres.nr}}</label>
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-sm-2" for="">Gemeente:</label>
-          <div class="col-sm-6" style="top: -9px">
-            <label id="activiteitGemeente" type="text" class="control-label">{{activiteit.adres.gemeente}}</label>
+          <div class="col-sm-6">
+            <label id="activiteitGemeente" style="color: #1485CC;" type="text" class="control-label">{{activiteit.adres.gemeente}}</label>
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-sm-2" for="">Postcode:</label>{{activiteit.adres.postcode}}</label>
-          <div class="col-sm-6" style="top: -9px">
-            <label id="activiteitGemeente" type="text" class="control-label">
+          <label class="control-label col-sm-2" for="">Postcode:</label>
+          <div class="col-sm-6">
+            <label id="activiteitPostcode" style="color: #1485CC;" type="text" class="control-label">{{activiteit.adres.postcode}}</label>
           </div>
+        </div>
+        <div class="form-group">
+          <label id="activiteitLabel" style="color: green; margin-left: 20px;" type="text" class="control-label"></label>
         </div>
       </div>
       <br>
-      <br>
+      
       <br>
       <br>
   </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Sluiten</button>
-        <button type="button" class="btn btn-success" ng-click="schrijfIn()">Inschrijven!</button>
+        <button type="button" class="btn btn-success" ng-click="schrijfIn()" id="btnInschrijven">Inschrijven!</button>
       </div>
     </div>
   </div>
