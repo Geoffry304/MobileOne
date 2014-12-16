@@ -5,6 +5,7 @@ app.controller('ActiviteitCtrl', function ($scope, $routeParams, $location, Acti
   $scope.activiteiten = Activiteit.all;
   $scope.user = Auth.user;
   $scope.eventSources = [];
+  $scope.soort = ["Activiteit","Vorming"];
 
   $scope.uiConfig = {
       calendar:{

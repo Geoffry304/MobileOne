@@ -112,18 +112,10 @@
 
 <!-- Select Basic -->
 <div class="form-group">
-  <label class="control-label col-sm-2" for="">Vorming/Activiteit?:</label>
+  <label class="control-label col-sm-2" for="">Soort:</label>
   <div class="col-sm-6">
-    <div class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-  Selecteer...
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-    <li role="presentation"><a role="menuitem" tabindex="-1">Activiteit</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1">Vorming</a></li>
-  </ul>
-</div>
+  <select ng-model="activiteit.soort" ng-options="srt for srt in soort"></select>
+
   </div>
 </div>
 

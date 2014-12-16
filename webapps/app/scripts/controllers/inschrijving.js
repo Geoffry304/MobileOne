@@ -4,6 +4,7 @@ app.controller('InschrijvingCtrl', function ($scope, $location, $routeParams, In
 	$scope.inschrijving = {aantal: '', naam: '', voornaam: ''};
 	$scope.alerts = [];
 	$scope.alert = '';
+	$scope.alert2= '';
 	$scope.signedIn = Auth.signedIn;
 	$scope.logout = Auth.logout;
 	$scope.user = Auth.user;
@@ -25,10 +26,12 @@ app.controller('InschrijvingCtrl', function ($scope, $location, $routeParams, In
 		{
 			$scope.Toggle = "Voeg een kind toe";
 			$scope.alert = '';
+			$scope.alert2= '';
 		}
 		else{
 			$scope.Toggle = "Terug naar inschrijving";
 			$scope.alert = '';
+			$scope.alert2= '';
 		}
 	}
 	$scope.submitInschrijving = function ()
@@ -40,7 +43,7 @@ app.controller('InschrijvingCtrl', function ($scope, $location, $routeParams, In
 			{
 			if($scope.Inschrijving.inschrijving == undefined)
 			{
-				$scope.alert ='';
+				$scope.alert2 ='Inschrijving succesvol.';
 				Vakantie.Inschrijving($routeParams.vakantieId, $scope.Kind);
 				return Profile.Inschrijving($scope.user.uid, $scope.Kind.$id, $scope.Kind);
 			}
