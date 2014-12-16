@@ -6,9 +6,9 @@
 	<br>
 	<br>
 	<ul class="list-group">
-		<li class="row list-group-item active" style="margin-right: 0px;"> <i class="col-sm-1"> Titel </i><i class="col-sm-1"> Promotekst</i> <i class="col-sm-2 pull-left"> Soort</i>
+		<li class="row list-group-item active" style="margin-right: 0px;"> <i class="col-sm-2"> Titel </i><i class="col-sm-3"> Promotekst</i> <i class="col-sm-2 pull-left"> Soort</i>
 		<li ng-repeat="activiteit in activiteiten" class="row list-group-item" style="margin-right: 0px;">
-			<a class="text-primary col-sm-1" ng-href="#/activiteit/{{activiteit.$id}}">{{activiteit.naam}} </a> <a class="col-sm-1" ng-href="#/activiteit/{{activiteit.$id}}">{{activiteit.promoTekst}} </a> <a class="col-sm-2 pull-left" ng-href="#/activiteit/{{activiteit.$id}}">{{activiteit.soort}} </a> 
+			<a class="text-primary col-sm-2" ng-href="#/activiteit/{{activiteit.$id}}">{{activiteit.naam}} </a> <a class="col-sm-3" ng-href="#/activiteit/{{activiteit.$id}}">{{activiteit.promoTekst}} </a> <a class="col-sm-2 pull-left" ng-href="#/activiteit/{{activiteit.$id}}">{{activiteit.soort}} </a> 
 		</li> 
 	</ul>
 </div>
