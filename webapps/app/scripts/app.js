@@ -17,8 +17,7 @@ var app = angular.module('webappsApp', [
     'firebase',
     'djds4rce.angular-socialshare',
     'ui.calendar',
-    'ui.bootstrap',
-    'bootstrapLightbox'
+    'ui.bootstrap'
   ])
   .constant('FIREBASE_URL','https://mobileone.firebaseio.com');
 

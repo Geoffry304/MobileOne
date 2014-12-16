@@ -2,7 +2,7 @@
 
 /*global app:true*/
 
-app.controller('ToonVakantieCtrl', function ($scope, Lightbox,$routeParams, $location, Vakantie, Auth) {
+app.controller('ToonVakantieCtrl', function ($scope, $routeParams, $location, Vakantie, Auth) {
 
   $scope.vakantie = Vakantie.get($routeParams.vakantieId);
   $scope.vakantie.$loaded().then(function(){
@@ -17,12 +17,6 @@ app.controller('ToonVakantieCtrl', function ($scope, Lightbox,$routeParams, $loc
   $scope.filter = false;  
   $scope.error = 'Gebruik gepaste taal!';
   $scope.beschikbaarheid = '';
-
-
-  $scope.openLightboxModal = function (index) {
-    Lightbox.openModal($scope.fotos, index);
-  };
-
   $scope.change = function(){
     $location.path('/vakantie/change/' + $routeParams.vakantieId);
   };
