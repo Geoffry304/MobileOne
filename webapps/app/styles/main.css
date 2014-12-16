@@ -257,6 +257,8 @@ background-color: #030033;
     .navbar-brand img {
         margin-top: 5px;
         margin-left: 5px;
+        max-width: 200px;
+        max-height: 80px;
     }
 }
 
