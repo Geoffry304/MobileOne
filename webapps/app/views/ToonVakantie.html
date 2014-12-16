@@ -94,9 +94,14 @@
 <br ng-hide="!signedIn() || beschikbaarheid === false">
 <hr/>
 <ul>
-    <li ng-repeat="foto in fotos">
+    <!--<li ng-repeat="foto in fotos">
     <img ng-src="{{foto}}" />
-    </li>
+    </li>-->
+      <li ng-repeat="foto in fotos">
+    <a ng-click="openLightboxModal($index)">
+      <img ng-src="{{foto}}" class="img-thumbnail" alt="">
+    </a>
+  </li>
 </ul>
 <h2>Reacties:</h2><br/>
 <div class="detailBox">

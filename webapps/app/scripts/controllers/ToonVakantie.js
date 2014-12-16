@@ -2,7 +2,7 @@
 
 /*global app:true*/
 
-app.controller('ToonVakantieCtrl', function ($scope, $routeParams, $location, Vakantie, Auth) {
+app.controller('ToonVakantieCtrl', function ($scope, $routeParams, $location, Vakantie, Auth, Lightbox) {
 
   $scope.vakantie = Vakantie.get($routeParams.vakantieId);
   $scope.vakantie.$loaded().then(function(){
@@ -25,6 +25,10 @@ app.controller('ToonVakantieCtrl', function ($scope, $routeParams, $location, Va
     $location.path('/inschrijven/' + $routeParams.vakantieId);
 
 };
+  $scope.openLightboxModal = function (index) {
+    Lightbox.openModal($scope.fotos, index);
+  };
+
 $scope.calculateAge = function calculateAge(birthday) { // birthday is a date
     var datum = new Date(birthday); 
     var ageDifMs = Date.now() - datum.getTime();
